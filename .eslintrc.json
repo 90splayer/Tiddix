@@ -1,0 +1,61 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react-hooks"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "eslint-config-prettier"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    // Add your custom rules here
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "no-empty-function": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/prop-types": "off",
+    "react/destructuring-assignment": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "spaced-comment": "off",
+    "arrow-body-style": "off",
+    "camelcase": "warn",
+    "object-curly-newline": "off",
+    "max-len": "off",
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-unnecessary-condition": "warn",
+    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "function-paren-newline": "off",
+    "no-nested-ternary": 0,
+    "linebreak-style": 0,
+    "no-unused-vars": 0,
+    "indent": "off",
+    "no-param-reassign": 0,
+    "no-continue": 0,
+    "no-plusplus": 0,
+    "no-multiple-empty-lines": 0,
+    "react/jsx-wrap-multilines": 0,
+    "react/require-default-props": 0,
+    "no-shadow": 0,
+    "no-lonely-if": 0
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
