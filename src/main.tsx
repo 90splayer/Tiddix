@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import App from './App';
 import './index.css';
-import theme from './theme/theme';
-import Fonts from './theme/font';
+import theme from 'app/theme/theme';
+import Fonts from 'app/theme/font';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

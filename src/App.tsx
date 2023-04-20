@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { Button } from '@chakra-ui/react';
-import Home from './pages/Home';
-import About from './pages/About';
-import Nopage from './pages/Nopage';
-import ScrollToTop from './components/ScrollToTop';
+import Home from 'app/pages/Home';
+import About from 'app/pages/About';
+import Nopage from 'app/pages/Nopage';
+import ScrollToTop from 'app/components/ScrollToTop';
 
 function App() {
   return (
