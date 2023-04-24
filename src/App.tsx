@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from 'app/pages/Home';
 import About from 'app/pages/About';
 import Nopage from 'app/pages/Nopage';
-import ScrollToTop from 'app/components/ScrollToTop';
+import ScrollToTop from 'app/components/explore/ScrollToTop';
 
 function App() {
   return (
