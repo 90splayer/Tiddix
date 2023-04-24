@@ -10,12 +10,12 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import heroImg from '../../assets/images/home/heroImg.webp';
+import heroImg from '../../assets/images/home/heroImg.png';
 
 const Intro: FC = () => {
   return (
     <Box>
-      <Container maxW="144rem" pl="7.2rem" pr="0">
+      <Container maxW="144rem" p="11.7rem 0 8.4rem 7.2rem">
         <Flex
           align="center"
           flexDir={{ base: 'column', md: 'row' }}
