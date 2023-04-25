@@ -38,7 +38,7 @@ const Intro: FC = () => {
                 bgClip="text"
                 lineHeight={{ base: '48px', sm: '67px', lg: '73px' }}
                 fontWeight={700}
-                fontSize={{ base: '4.2rem', sm: '6.4rem' }}
+                fontSize={{ base: '4.2rem', md: '6.4rem' }}
               >
                 support
               </Heading>{' '}
