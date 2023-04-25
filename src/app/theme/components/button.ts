@@ -1,8 +1,8 @@
 export const buttonStyles = {
-  // multicolor will be a custom button component
   // default - white bg
   // primary - transaparent bg
   // secondary - "gift creatives..the one for social login will be custom"
+  // multicolor
   // borderless - the one without background and border
   components: {
     Button: {
@@ -10,8 +10,8 @@ export const buttonStyles = {
         borderRadius: '100px',
         border: '1px solid',
         borderColor: 'transparent',
-        bg: 'green',
-        background: 'green',
+        bg: 'white',
+        background: 'white',
         outline: 'none',
         boxSizing: 'border-box',
         color: 'blackShade.1',
@@ -19,230 +19,59 @@ export const buttonStyles = {
         fontFamily: `'Product Sans', sans-serif`,
 
         _hover: {
+          opacity: '0.8',
           _after: {},
+
+          // _disabled: {},
         },
-        _focus: {},
-        _active: {},
-        _disabled: {},
+        // _focus: {},
+        // _active: {},
+        _disabled: {
+          background: 'blackShade.4',
+          color: 'blackShade.1',
+          opacity: 1,
+        },
       },
 
       variants: {
+        primary: {
+          background: 'transparent',
+          color: 'white',
+          border: '2px solid',
+          borderColor: 'blackShade.4',
+
+          // _hover: {
+          //   _disabled: {},
+          // },
+          // _disabled: {},
+          // _active: {},
+          // _focus: {},
+        },
         secondary: {
-          bg: 'white',
-          backgroundColor: 'white',
-          border: '1px solid',
-          borderColor: 'gray.200',
-          color: 'black',
-          _hover: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-            _disabled: {
-              backgroundColor: 'white',
-              color: 'gray.400',
-              border: '1px solid',
-              borderColor: 'gray.200',
-              cursor: 'not-allowed',
-              opacity: 1,
-            },
-          },
-          _disabled: {
-            backgroundColor: 'white',
-            color: 'gray.400',
-            cursor: 'not-allowed',
-            opacity: 1,
-          },
-          _active: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-          },
-          _focus: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-          },
-        },
-        tertiary: {
-          backgroundColor: 'white',
-          border: '1px solid',
-          borderColor: 'white',
-          color: 'black',
-          _hover: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-            _disabled: {
-              backgroundColor: 'gray.100',
-              color: 'gray.400',
-              border: '1px solid',
-              borderColor: 'gray.200',
-              cursor: 'not-allowed',
-              opacity: 1,
-            },
-          },
-          _disabled: {
-            backgroundColor: 'gray.100',
-            color: 'gray.400',
-            cursor: 'not-allowed',
-            opacity: 1,
-          },
-          _active: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-          },
-          _focus: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-          },
-        },
-        error: {
-          backgroundColor: 'white',
-          border: '1px solid',
-          borderColor: 'gray.200',
-          color: 'error.600',
-          _hover: {
-            color: 'error.600',
-            backgroundColor: 'gray.50',
-            _disabled: {
-              backgroundColor: 'white',
-              color: 'gray.400',
-              cursor: 'not-allowed',
-              opacity: 1,
-            },
-          },
-          _disabled: {
-            backgroundColor: 'white',
-            color: 'gray.400',
-            cursor: 'not-allowed',
-            opacity: 1,
-          },
-          _active: {
-            color: 'error.600',
-            backgroundColor: 'gray.50',
-          },
-          _focus: {
-            color: 'error.600',
-            backgroundColor: 'gray.50',
-          },
-        },
-        baseIcon: {
-          borderRadius: 'full',
+          backgroundColor: 'blackShade.3',
           border: '1px solid',
           borderColor: 'transparent',
-          bg: 'black',
-          backgroundColor: 'black',
-          outline: 'none',
-          // boxShadow: 'none',
-          boxSizing: 'border-box',
-          padding: '10px',
-
           color: 'white',
-          fontWeight: 'medium',
-          fontFamily: 'Inter',
-          _hover: {
-            color: 'gray.300',
-            bg: 'black',
-            backgroundColor: 'black',
-            border: '1px solid',
-            borderColor: 'transparent',
-            _disabled: {
-              bg: 'gray.400',
-              backgroundColor: 'gray.400',
-              color: 'white',
-              cursor: 'not-allowed',
-              opacity: 1,
-            },
-          },
-          _focus: {
-            color: 'gray.300',
-            bg: 'black',
-            backgroundColor: 'black',
-            // boxShadow: 'none',
-            border: '1px solid',
-            borderColor: 'transparent',
-          },
-          _active: {
-            color: 'gray.300',
-            // boxShadow: 'none',
-            bg: 'black',
-            backgroundColor: 'black',
-            outline: 'none',
-            border: '1px solid',
-            borderColor: 'transparent',
-          },
-          _disabled: {
-            bg: 'gray.400',
-            backgroundColor: 'gray.400',
-            color: 'white',
-            cursor: 'not-allowed',
-            opacity: 1,
-          },
         },
-        secondaryIcon: {
-          backgroundColor: 'white',
+        multicolor: {
+          background: 'gradientStyle.1',
           border: '1px solid',
-          borderColor: 'gray.200',
-          color: 'black',
-          borderRadius: 'full',
-          padding: '10px',
-          _hover: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-            _disabled: {
-              backgroundColor: 'white',
-              color: 'gray.400',
-              border: '1px solid',
-              borderColor: 'gray.200',
-              cursor: 'not-allowed',
-              opacity: 1,
-            },
-          },
-          _disabled: {
-            backgroundColor: 'white',
-            color: 'gray.400',
-            cursor: 'not-allowed',
-            opacity: 1,
-          },
-          _active: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-          },
-          _focus: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-          },
+          borderColor: 'transparent',
+          color: 'blackShade.1',
         },
-        tertiaryIcon: {
-          borderRadius: 'full',
-
-          backgroundColor: 'white',
+        borderless: {
+          backgroundColor: 'transparent',
           border: '1px solid',
-          borderColor: 'white',
-          color: 'black',
-          padding: '10px',
-          _hover: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-            _disabled: {
-              backgroundColor: 'gray.100',
-              color: 'gray.400',
-              border: '1px solid',
-              borderColor: 'gray.200',
-              cursor: 'not-allowed',
-              opacity: 1,
-            },
-          },
-          _disabled: {
-            backgroundColor: 'gray.100',
-            color: 'gray.400',
-            cursor: 'not-allowed',
-            opacity: 1,
-          },
-          _active: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-          },
-          _focus: {
-            color: 'black',
-            backgroundColor: 'gray.50',
-          },
+          borderColor: 'transparent',
+          color: 'blackShade.4',
+          fontWeight: '400',
+        },
+        error: {
+          backgroundColor: 'red.600',
+          border: '1px solid',
+          borderColor: 'transparent',
+          color: '#fff',
+          fontWeight: '400',
         },
       },
 
@@ -255,19 +84,25 @@ export const buttonStyles = {
         },
         lg: {
           minW: '10',
-          fontSize: 'md',
+          fontSize: '1.6rem',
           height: { base: '48px', sm: '50px', md: '52px' },
 
           p: { base: '12px 24px', sm: '13px 24px', md: '14px 24px' },
         },
         md: {
           minW: '8',
-          fontSize: { base: 'sm', sm: 'md' },
+          fontSize: { base: 'sm', sm: '1.6rem' },
           height: { base: '40px', sm: '46px', md: '48px' },
 
-          p: { base: '8px 16px', sm: '10px 20px', md: '12px 24px' },
+          p: { base: '8px 16px', sm: '10px 20px', md: '20px 30px' },
         },
         sm: {
+          minW: '6',
+          fontSize: 'sm',
+          height: { base: '38px', sm: '39px', md: '40px' },
+          p: { base: '6px 12px', sm: '8px 16px', md: '8px 16px' },
+        },
+        xs: {
           minW: '6',
           fontSize: 'sm',
           height: { base: '38px', sm: '39px', md: '40px' },

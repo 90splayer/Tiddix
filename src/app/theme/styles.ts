@@ -11,7 +11,7 @@ export const globalStyles = {
         bg: 'blackShade.1',
         fontFamily: 'Product Sans',
         // letterSpacing: '-0.5px',
-        fontSize: '1rem',
+        fontSize: '1.6rem',
         color: 'blackShade.4',
       },
       html: {
