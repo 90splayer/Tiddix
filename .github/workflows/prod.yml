@@ -1,6 +1,8 @@
 name: Production CICD
 
 on:
+  push:
+    branches: ['main']
   pull_request:
     branches: ['main']
 
@@ -21,5 +23,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: phasecurve/tiddix-web
-          build-args: VITE_APP_TIDDIX_BASE_URL=${{secrets.TEST_API_BASEURL}}
+          tags: phasecurve/tiddix-web:latest
+          build-args: VITE_APP_TIDDIX_BASE_URL=${{secrets.PROD_API_BASEURL}}
