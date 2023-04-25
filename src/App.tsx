@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { Button } from '@chakra-ui/react';
 import Home from 'app/pages/Home';
 import About from 'app/pages/About';
+import Test from 'app/pages/Test';
 import Nopage from 'app/pages/Nopage';
 import ScrollToTop from 'app/components/explore/ScrollToTop';
 
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/test" element={<Test />} />
         <Route path="*" element={<Nopage />} />
       </Routes>
     </BrowserRouter>
