@@ -1,10 +1,6 @@
 import { extendTheme } from '@chakra-ui/react';
+import { globalStyles } from './styles';
+import { buttonStyles } from './components/button';
+import { headingStyles } from './components/heading';
 
-const theme = extendTheme({
-  fonts: {
-    heading: `'Product Sans', sans-serif`,
-    body: `'Product Sans', sans-serif`,
-  },
-});
-
-export default theme;
+export default extendTheme(globalStyles, buttonStyles, headingStyles);
