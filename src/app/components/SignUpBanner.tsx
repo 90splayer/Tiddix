@@ -9,13 +9,13 @@ const SignUpBanner = () => {
         justify="center"
         spacing="9rem"
         h="45.8rem"
-        color="#fff"
         bgGradient="radial(170.01% 203.82% at 137.98% -39.33%, #FF2727 0%, #FF8CDF 44.52%, #448FFF 100%)"
       >
         <Text
           fontSize="4.8rem"
           lineHeight="54.62px"
           textAlign="center"
+          color="#fff"
           fontWeight="700"
         >
           Join the world’s largest digital

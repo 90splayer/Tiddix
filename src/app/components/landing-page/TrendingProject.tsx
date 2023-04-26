@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   Container,
   Flex,
   Grid,
@@ -26,20 +27,38 @@ const TrendingProject = () => {
       <Text fontSize="2rem" textAlign="center" color="#99A1AA" pb="11rem">
         Check out our weekly updated trending Projects
       </Text>
-      <Grid templateColumns="repeat(4, 1fr)" gap={2}>
-        <GridItem w="100%">
-          <ProjectCard />
-        </GridItem>
-        <GridItem w="100%">
-          <ProjectCard />
-        </GridItem>
-        <GridItem w="100%">
-          <ProjectCard />
-        </GridItem>
-        <GridItem w="100%">
-          <ProjectCard />
-        </GridItem>
-      </Grid>
+      <Flex justify="center" align="center" flexDir="column">
+        <Grid templateColumns="repeat(4, 1fr)" gap="2rem" mb="15rem">
+          <GridItem w="100%">
+            <ProjectCard />
+          </GridItem>
+          <GridItem w="100%">
+            <ProjectCard />
+          </GridItem>
+          <GridItem w="100%">
+            <ProjectCard />
+          </GridItem>
+          <GridItem w="100%">
+            <ProjectCard />
+          </GridItem>
+        </Grid>
+        <Button
+          border="1px solid #fff"
+          borderRadius="10rem"
+          w="22rem"
+          h="59px"
+          fontSize="1.6rem"
+          transition="0.5s ease"
+          boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
+          _hover={{
+            opacity: 0.8,
+          }}
+          bg="transparent"
+          color="#fff"
+        >
+          Explore More Project
+        </Button>
+      </Flex>
     </Container>
   );
 };
