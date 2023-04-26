@@ -13,13 +13,7 @@ import React from 'react';
 
 const ProjectCard = () => {
   return (
-    <Card
-      maxW="30rem"
-      bgColor="#232629"
-      borderRadius="30px"
-      p="16px 14px 37px"
-      color="#fff"
-    >
+    <Card maxW="30rem" bgColor="#232629" borderRadius="30px" p="16px 14px 37px">
       <CardHeader p="0">
         <Flex gap="1rem" alignItems="center">
           <Avatar
@@ -29,7 +23,9 @@ const ProjectCard = () => {
           />
 
           <Flex gap="3px" align="center">
-            <Text fontSize="1.6rem">Segun Adebayo</Text>
+            <Text fontSize="1.6rem" color="#fff">
+              Segun Adebayo
+            </Text>
             <Box w="16.58px" h="16.58px">
               {verify}
             </Box>
@@ -44,7 +40,7 @@ const ProjectCard = () => {
           alt="image"
         />
         <Box pos="absolute" bottom={15} left={15}>
-          <Text fontWeight={700} fontSize="2rem">
+          <Text fontWeight={700} fontSize="2rem" color="#fff">
             The Plant Picazzo
           </Text>
           <Text color="#99A1AA" fontSize="1.4rem">
@@ -54,10 +50,10 @@ const ProjectCard = () => {
       </Box>
       <Flex justify="space-between" align="center" color="#fff">
         <Box>
-          <Text mb="15px" fontSize="1.6rem" fontWeight={700}>
+          <Text mb="15px" fontSize="1.6rem" fontWeight={700} color="#fff">
             Equity
           </Text>
-          <Text fontSize="2.4rem" fontWeight={700}>
+          <Text fontSize="2.4rem" fontWeight={700} color="#fff">
             $ 2,000
           </Text>
         </Box>
@@ -67,7 +63,9 @@ const ProjectCard = () => {
           </Text>
           <Progress
             borderRadius="10px"
-            bgGradient="linear(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)"
+            bgColor="#485155"
+            colorScheme="navy"
+            // bgGradient="linear(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)"
             w="8.8rem"
             size="md"
             value={25}
