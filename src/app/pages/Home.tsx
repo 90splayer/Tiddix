@@ -6,6 +6,7 @@ import CreativeCommunity from 'app/components/landing-page/CreativeCommunity';
 import HowItWork from 'app/components/landing-page/HowItWork';
 import SignUpBanner from 'app/components/SignUpBanner';
 import TrendingProject from 'app/components/landing-page/TrendingProject';
+import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
 
 const Home: FC = () => {
   return (
@@ -14,6 +15,7 @@ const Home: FC = () => {
       <CreativeCommunity />
       <HowItWork />
       <TrendingProject />
+      <BecomeInvestor />
       <SignUpBanner />
     </Box>
   );
