@@ -59,6 +59,12 @@ export const buttonStyles = {
           borderColor: 'transparent',
           color: 'blackShade.1',
         },
+        multiradial: {
+          background: 'gradientStyle.2',
+          border: '1px solid',
+          borderColor: 'transparent',
+          color: 'white',
+        },
         borderless: {
           backgroundColor: 'transparent',
           border: '1px solid',
@@ -78,14 +84,14 @@ export const buttonStyles = {
       sizes: {
         xl: {
           minW: '12',
-          fontSize: 'md',
-          height: { base: '52px', sm: '54px', md: '56px' },
+          fontSize: '1.6rem',
+          height: { base: '2rem', sm: '54px', md: '56px', lg: '59px' },
           p: { base: '14px 24px', sm: '15px 24px', md: '16px 24px' },
         },
         lg: {
           minW: '10',
           fontSize: '1.6rem',
-          height: { base: '48px', sm: '50px', md: '52px' },
+          height: { base: '2rem', sm: '54px', md: '56px', lg: '59px' },
 
           p: { base: '12px 24px', sm: '13px 24px', md: '14px 24px' },
         },
