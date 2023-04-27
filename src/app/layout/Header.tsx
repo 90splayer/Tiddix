@@ -89,19 +89,6 @@ const Header: FC = () => {
                 Investors
               </Text>
             </NavLink>
-
-            <NavLink to="/creative">
-              <Text
-                display={{ base: 'none', md: 'flex', lg: 'flex' }}
-                transition="0.2s ease-in-out"
-                _hover={{
-                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
-                  bgClip: 'text',
-                }}
-              >
-                Creatives
-              </Text>
-            </NavLink>
           </HStack>
 
           <HStack
@@ -129,10 +116,14 @@ const Header: FC = () => {
             <IconButton
               _hover={{ bgColor: '#f4f4f4', color: '#0A0A0A' }}
               onClick={() => setIsMobile('flex')}
+              color="white"
+              bg="#191919"
+              borderRadius="5px"
+              p="2.5rem 1rem"
               aria-label="hamburger menu"
               transition="0.5s ease-in-out"
               size="md"
-              fontSize="28px"
+              fontSize="3.6rem"
               icon={<RxHamburgerMenu />}
             />
           </Box>
