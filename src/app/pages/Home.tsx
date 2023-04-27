@@ -8,6 +8,7 @@ import SignUpBanner from 'app/components/SignUpBanner';
 import TrendingProject from 'app/components/landing-page/TrendingProject';
 import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
 import Header from 'app/layout/Header';
+import { Footer } from 'app/layout/Footer';
 
 const Home: FC = () => {
   return (
@@ -19,6 +20,7 @@ const Home: FC = () => {
       <TrendingProject />
       <BecomeInvestor />
       <SignUpBanner />
+      <Footer />
     </Box>
   );
 };
