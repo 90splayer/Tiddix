@@ -6,6 +6,9 @@ const Test: FC = () => {
     <>
       <Button variant="default">Default Button</Button>
       <Button variant="primary">Primary Button</Button>
+      <Button variant="primary" size="xl">
+        Xlarge Button
+      </Button>
       <Button variant="primary" isDisabled>
         Disabled Primary Button
       </Button>

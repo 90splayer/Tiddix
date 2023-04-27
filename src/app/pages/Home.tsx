@@ -7,10 +7,12 @@ import HowItWork from 'app/components/landing-page/HowItWork';
 import SignUpBanner from 'app/components/SignUpBanner';
 import TrendingProject from 'app/components/landing-page/TrendingProject';
 import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
+import Header from 'app/layout/Header';
 
 const Home: FC = () => {
   return (
     <Box bg="#15181D">
+      <Header />
       <Intro />
       <CreativeCommunity />
       <HowItWork />
