@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Button, Text, Heading } from '@chakra-ui/react';
 import CustomTab from 'app/components/common/CustomTab';
 import { PaletteIcon } from 'app/assets/icons';
+import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
 
 const CustomComponent = ({ name }: any) => {
   return <p>{name} COMPONENT!</p>;
@@ -52,7 +53,7 @@ const Test: FC = () => {
           },
           {
             label: 'Second tab',
-            body: <CustomComponent name="SECOND" />,
+            body: <BecomeInvestor />,
             icon: PaletteIcon,
           },
           {

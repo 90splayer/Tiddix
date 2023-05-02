@@ -1,11 +1,20 @@
-import { Box, Flex, HStack, Heading, Text, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Heading,
+  Input,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import signUpBg from '../../assets/images/signup/signup.png';
 
 const SignUpForm = () => {
   return (
-    <Flex w="full" h="100vh">
+    <Flex w="full">
       <Flex w="40%" flexDir="column" align="center" p="5.1rem 3rem 16rem">
         <HStack
           spacing={{ base: '1.5rem', md: '2rem', lg: '4.8rem' }}
@@ -63,7 +72,7 @@ const SignUpForm = () => {
           </NavLink>
         </HStack>
         <form>
-          <VStack spacing="2rem">
+          <VStack spacing="2rem" maxW="39rem">
             <Box mb="3.6rem">
               <Heading as="h4" fontSize="2.4rem" textAlign="center" mb="9px">
                 Create an account
@@ -72,6 +81,65 @@ const SignUpForm = () => {
                 Get started by creating your creative account.
               </Text>
             </Box>
+            <Flex gap="14px">
+              <Input
+                width="100%"
+                h="6.3rem"
+                placeholder="First Name"
+                _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
+                fontSize="14px"
+                borderRadius="20px"
+                padding={'20px 15px'}
+                _hover={{ border: '2px solid #FF8CDF' }}
+                focusBorderColor="#FF8CDF"
+                border="1px solid #94A3B8"
+                transition="0.7 ease-in-out"
+              />
+              <Input
+                width="100%"
+                h="6.3rem"
+                placeholder="Last Name"
+                _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
+                fontSize="14px"
+                borderRadius="20px"
+                padding={'20px 15px'}
+                _hover={{ border: '2px solid #FF8CDF' }}
+                focusBorderColor="#FF8CDF"
+                border="1px solid #94A3B8"
+                transition="0.7 ease-in-out"
+              />
+            </Flex>
+
+            <Input
+              width="100%"
+              h="6.3rem"
+              placeholder="Email Address"
+              _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
+              fontSize="14px"
+              borderRadius="20px"
+              padding={'20px 15px'}
+              _hover={{ border: '2px solid #FF8CDF' }}
+              focusBorderColor="#FF8CDF"
+              border="1px solid #94A3B8"
+              transition="0.7 ease-in-out"
+            />
+            <Input
+              width="100%"
+              h="6.3rem"
+              placeholder="Password"
+              _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
+              fontSize="14px"
+              borderRadius="20px"
+              padding={'20px 15px'}
+              _hover={{ border: '2px solid #FF8CDF' }}
+              focusBorderColor="#FF8CDF"
+              border="1px solid #94A3B8"
+              transition="0.7 ease-in-out"
+            />
+
+            <Button variant="multicolor" w="100%">
+              Create Account
+            </Button>
           </VStack>
         </form>
       </Flex>
@@ -84,7 +152,7 @@ const SignUpForm = () => {
         flexDir="column"
         justify="end"
         pl="6.8rem"
-        pb="8.9rem"
+        pb="11.9rem"
       >
         <Heading
           as="h2"
