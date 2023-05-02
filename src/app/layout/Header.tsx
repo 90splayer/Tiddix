@@ -95,7 +95,7 @@ const Header: FC = () => {
             spacing="26px"
             display={{ base: 'none', md: 'flex', lg: 'flex' }}
           >
-            <NavLink to="/sign-up">
+            <NavLink to="/signup">
               <Text
                 transition="0.2s ease-in-out"
                 _hover={{
