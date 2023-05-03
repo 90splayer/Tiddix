@@ -84,7 +84,7 @@ const LoginForm = () => {
                 Login to your account
               </Text>
             </Box>
-            <Box>
+            <Box w="39rem">
               <Input
                 width="100%"
                 h="6.3rem"
@@ -99,7 +99,7 @@ const LoginForm = () => {
                 transition="0.7 ease-in-out"
               />
             </Box>
-            <Box>
+            <Box w="39rem">
               <Input
                 w="100%"
                 h="6.3rem"
@@ -113,15 +113,15 @@ const LoginForm = () => {
                 border="1px solid #94A3B8"
                 transition="0.7 ease-in-out"
               />
+              <Text
+                mt="2rem"
+                textAlign="right"
+                color="#fff"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <Link to="#">Forgot Password?</Link>
+              </Text>
             </Box>
-
-            <Flex align="end" justify="end">
-              <Link to="#">
-                <Text color="#fff" _hover={{ textDecoration: 'underline' }}>
-                  Forgot Password?
-                </Text>
-              </Link>
-            </Flex>
 
             <Button variant="multicolor" w="100%" size="xl">
               Create Account
@@ -190,7 +190,7 @@ const LoginForm = () => {
                     bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
                     bgClip="text"
                   >
-                    Login
+                    Sign up
                   </Text>
                 </Link>
               </Text>
