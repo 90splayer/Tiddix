@@ -15,7 +15,7 @@ import signUpBg from '../../assets/images/signup/signup.png';
 import google from '../../assets/images/signup/google.png';
 import facebook from '../../assets/images/signup/facebook.png';
 
-const SignUpForm = () => {
+const LoginForm = () => {
   return (
     <Flex w="full">
       <Flex w="40%" flexDir="column" align="center" p="5.1rem 3rem 16rem">
@@ -78,67 +78,50 @@ const SignUpForm = () => {
           <VStack spacing="2rem" maxW="39rem">
             <Box mb="3.6rem">
               <Heading as="h4" fontSize="2.4rem" textAlign="center" mb="9px">
-                Create an account
+                Welcome Back
               </Heading>
               <Text color="#99A1AA" maxW="32rem" textAlign="center">
-                Get started by creating your creative account.
+                Login to your account
               </Text>
             </Box>
-            <Flex gap="14px">
+            <Box w="39rem">
               <Input
                 width="100%"
                 h="6.3rem"
-                placeholder="First Name"
+                placeholder="Email Address"
                 _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
                 fontSize="14px"
                 borderRadius="20px"
-                padding={'20px 15px'}
+                // padding={'20px 15px'}
                 _hover={{ border: '2px solid #FF8CDF' }}
                 focusBorderColor="#FF8CDF"
                 border="1px solid #94A3B8"
                 transition="0.7 ease-in-out"
               />
+            </Box>
+            <Box w="39rem">
               <Input
-                width="100%"
+                w="100%"
                 h="6.3rem"
-                placeholder="Last Name"
+                placeholder="Password"
                 _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
                 fontSize="14px"
                 borderRadius="20px"
-                padding={'20px 15px'}
+                // padding={'20px 15px'}
                 _hover={{ border: '2px solid #FF8CDF' }}
                 focusBorderColor="#FF8CDF"
                 border="1px solid #94A3B8"
                 transition="0.7 ease-in-out"
               />
-            </Flex>
-
-            <Input
-              width="100%"
-              h="6.3rem"
-              placeholder="Email Address"
-              _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
-              fontSize="14px"
-              borderRadius="20px"
-              padding={'20px 15px'}
-              _hover={{ border: '2px solid #FF8CDF' }}
-              focusBorderColor="#FF8CDF"
-              border="1px solid #94A3B8"
-              transition="0.7 ease-in-out"
-            />
-            <Input
-              width="100%"
-              h="6.3rem"
-              placeholder="Password"
-              _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
-              fontSize="14px"
-              borderRadius="20px"
-              padding={'20px 15px'}
-              _hover={{ border: '2px solid #FF8CDF' }}
-              focusBorderColor="#FF8CDF"
-              border="1px solid #94A3B8"
-              transition="0.7 ease-in-out"
-            />
+              <Text
+                mt="2rem"
+                textAlign="right"
+                color="#fff"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <Link to="#">Forgot Password?</Link>
+              </Text>
+            </Box>
 
             <Button variant="multicolor" w="100%" size="xl">
               Create Account
@@ -207,7 +190,7 @@ const SignUpForm = () => {
                     bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
                     bgClip="text"
                   >
-                    Login
+                    Sign up
                   </Text>
                 </Link>
               </Text>
@@ -247,4 +230,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default LoginForm;

@@ -100,10 +100,11 @@ const Header: FC = () => {
                 Sign Up
               </Button>
             </NavLink>
-
-            <Button variant="multiradial" size="lg">
-              Login
-            </Button>
+            <NavLink to="/login">
+              <Button variant="multiradial" size="lg">
+                Login
+              </Button>
+            </NavLink>
           </HStack>
 
           <Box display={{ base: 'block', md: 'none', lg: 'none' }}>
