@@ -12,7 +12,7 @@ import { Footer } from 'app/layout/Footer';
 
 const Home: FC = () => {
   return (
-    <Box bg="#15181D">
+    <Box>
       <Header />
       <Intro />
       <CreativeCommunity />

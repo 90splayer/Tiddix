@@ -1,21 +1,15 @@
 import React, { FC } from 'react';
 
-import {
-  Box,
-  Container,
-  Flex,
-  HStack,
-  Icon,
-  Text,
-  useColorMode,
-} from '@chakra-ui/react';
+import { Box, Container, Flex, HStack, Icon, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
+import Header from 'app/layout/Header';
 
 const Nopage: FC = () => {
-  const { colorMode } = useColorMode();
+  // const { colorMode } = useColorMode();
   return (
-    <Box bgColor={colorMode === 'light' ? 'white' : '#000'} position="relative">
+    <Box position="relative">
+      <Header />
       <Container
         maxW="1440px"
         px={{ base: '20px', sm: '50px', md: '182px' }}
@@ -28,14 +22,17 @@ const Nopage: FC = () => {
           align="center"
           fontFamily="bold"
         >
-          <Text fontSize={{ base: '24px', md: '32px' }} fontWeight="600">
+          <Text
+            fontSize={{ base: '24px', md: '32px' }}
+            fontWeight="600"
+            color="white"
+          >
             Oops! Page Not Found😔
           </Text>
           <Text
             py="15px"
             textAlign="center"
             fontSize={{ base: '16px', md: '20px' }}
-            color={colorMode === 'light' ? 'gray' : 'darkGray'}
           >
             Sorry, the requested page is not available at the moment...
           </Text>
@@ -53,7 +50,7 @@ const Nopage: FC = () => {
               color="white"
             >
               <Icon as={FaHome} boxSize={5} />
-              <Text>Back to Home</Text>
+              <Text color="#fff">Back to Home</Text>
             </HStack>
           </Link>
         </Flex>

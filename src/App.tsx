@@ -6,6 +6,11 @@ import About from 'app/pages/About';
 import Test from 'app/pages/Test';
 import Nopage from 'app/pages/Nopage';
 import ScrollToTop from 'app/components/explore/ScrollToTop';
+import Explore from 'app/pages/Explore';
+import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
+import Investor from 'app/pages/Investor';
+import Login from 'app/pages/Login';
+import SignUp from 'app/pages/SignUp';
 
 function App() {
   return (
@@ -14,6 +19,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/invest" element={<Investor />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/test" element={<Test />} />
         <Route path="*" element={<Nopage />} />
       </Routes>

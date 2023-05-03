@@ -15,7 +15,7 @@ import heroImg from '../../assets/images/home/heroImg.png';
 const Intro: FC = () => {
   return (
     <Box>
-      <Container maxW="144rem" p="11.7rem 0 8.4rem 7.2rem">
+      <Container maxW="144rem" p="11.7rem 10.2rem 8.4rem 7.2rem">
         <Flex
           align="center"
           flexDir={{ base: 'column', md: 'row' }}

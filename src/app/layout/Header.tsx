@@ -95,16 +95,10 @@ const Header: FC = () => {
             spacing="26px"
             display={{ base: 'none', md: 'flex', lg: 'flex' }}
           >
-            <NavLink to="/sign-up">
-              <Text
-                transition="0.2s ease-in-out"
-                _hover={{
-                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
-                  bgClip: 'text',
-                }}
-              >
+            <NavLink to="/signup">
+              <Button variant="borderless" size="lg">
                 Sign Up
-              </Text>
+              </Button>
             </NavLink>
 
             <Button variant="multiradial" size="lg">

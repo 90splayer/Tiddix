@@ -1,5 +1,12 @@
 import React, { FC } from 'react';
 import { Button, Text, Heading } from '@chakra-ui/react';
+import CustomTab from 'app/components/common/CustomTab';
+import { PaletteIcon } from 'app/assets/icons';
+import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
+
+const CustomComponent = ({ name }: any) => {
+  return <p>{name} COMPONENT!</p>;
+};
 
 const Test: FC = () => {
   return (
@@ -33,7 +40,29 @@ const Test: FC = () => {
       <Heading size="md">Medium heading</Heading>
       <Heading size="lg">Large heading</Heading>
       <Heading size="xl">Extra Large heading</Heading>
-      <Heading size="2xl">Extra Large II heading</Heading>
+      <Heading size="2xl" mb="50">
+        Extra Large II heading
+      </Heading>
+
+      <CustomTab
+        tabs={[
+          {
+            label: 'First tab',
+            body: <CustomComponent name="FIRST" />,
+            icon: PaletteIcon,
+          },
+          {
+            label: 'Second tab',
+            body: <BecomeInvestor />,
+            icon: PaletteIcon,
+          },
+          {
+            label: 'Third tab',
+            body: 'lorem ipsum',
+            icon: PaletteIcon,
+          },
+        ]}
+      />
     </>
   );
 };
