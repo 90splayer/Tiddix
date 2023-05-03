@@ -5,12 +5,15 @@ import {
   HStack,
   Heading,
   Input,
+  Image,
   Text,
   VStack,
 } from '@chakra-ui/react';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import signUpBg from '../../assets/images/signup/signup.png';
+import google from '../../assets/images/signup/google.png';
+import facebook from '../../assets/images/signup/facebook.png';
 
 const SignUpForm = () => {
   return (
@@ -137,9 +140,78 @@ const SignUpForm = () => {
               transition="0.7 ease-in-out"
             />
 
-            <Button variant="multicolor" w="100%">
+            <Button variant="multicolor" w="100%" size="xl">
               Create Account
             </Button>
+
+            <Flex
+              align="center"
+              justify="center"
+              w="100%"
+              bg="#232629"
+              borderRadius="100px"
+              h="6rem"
+              transition="0.5 ease-in-out"
+              _hover={{
+                cursor: 'pointer',
+                boxShadow: '0px 92px 40px -59px rgba(108, 76, 223, 0.15)',
+                transform: 'scale(1.03)',
+              }}
+            >
+              <Link to="#">
+                <HStack justify="center" spacing="10px">
+                  <Box>
+                    <Image src={google} alt="google" />
+                  </Box>
+                  <Text color="#99A1AA" fontWeight="700">
+                    or continue with Google
+                  </Text>
+                </HStack>
+              </Link>
+            </Flex>
+
+            <Flex
+              align="center"
+              justify="center"
+              w="100%"
+              bg="#232629"
+              transition="0.5 ease-in-out"
+              borderRadius="100px"
+              h="6rem"
+              _hover={{
+                cursor: 'pointer',
+                boxShadow: '0px 92px 40px -59px rgba(108, 76, 223, 0.15)',
+                transform: 'scale(1.03)',
+              }}
+            >
+              <Link to="#">
+                <HStack justify="center" spacing="10px">
+                  <Box>
+                    <Image src={facebook} alt="facebook" />
+                  </Box>
+                  <Text color="#99A1AA" fontWeight="700">
+                    or continue with Facebook
+                  </Text>
+                </HStack>
+              </Link>
+            </Flex>
+
+            <Box>
+              <Text fontWeight="700">
+                Already Have an account?{' '}
+                <Link to="/login">
+                  <Text
+                    _hover={{ textDecoration: 'underline', opacity: '0.7' }}
+                    fontWeight="700"
+                    as="span"
+                    bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
+                    bgClip="text"
+                  >
+                    Login
+                  </Text>
+                </Link>
+              </Text>
+            </Box>
           </VStack>
         </form>
       </Flex>

@@ -17,7 +17,6 @@ export const buttonStyles = {
         color: 'blackShade.1',
         fontWeight: '700',
         fontFamily: `'Product Sans', sans-serif`,
-
         _hover: {
           opacity: '0.8',
           _after: {},
@@ -58,12 +57,23 @@ export const buttonStyles = {
           border: '1px solid',
           borderColor: 'transparent',
           color: 'blackShade.1',
+          transition: '0.5 ease-in-out',
+          _hover: {
+            cursor: 'pointer',
+            boxShadow: '0px 92px 40px -59px rgba(108, 76, 223, 0.15)',
+            transform: 'scale(1.03)',
+          },
         },
         multiradial: {
           background: 'gradientStyle.2',
           border: '1px solid',
           borderColor: 'transparent',
           color: 'white',
+          _hover: {
+            cursor: 'pointer',
+            boxShadow: '0px 92px 40px -59px rgba(108, 76, 223, 0.15)',
+            transform: 'scale(1.03)',
+          },
         },
         borderless: {
           backgroundColor: 'transparent',
