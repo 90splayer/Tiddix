@@ -11,6 +11,7 @@ import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
 import Investor from 'app/pages/Investor';
 import Login from 'app/pages/Login';
 import SignUp from 'app/pages/SignUp';
+import LoginForm from 'app/components/login/Login';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/invest" element={<Investor />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/test" element={<Test />} />
         <Route path="*" element={<Nopage />} />
