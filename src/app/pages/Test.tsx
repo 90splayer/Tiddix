@@ -45,6 +45,7 @@ const Test: FC = () => {
       </Heading>
 
       <CustomTab
+        fullWidth
         tabs={[
           {
             label: 'First tab',

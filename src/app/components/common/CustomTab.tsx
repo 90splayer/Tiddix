@@ -51,9 +51,8 @@ const CustomTab: FC<ChkTabProps> = ({
           overflowX="auto"
         >
           <TabList
-            gap="1rem"
-            borderBottom={fullWidth ? '1px' : '0px'}
-            borderBottomColor="gray.50"
+            borderBottom={fullWidth ? '2px' : '0px'}
+            borderBottomColor="blackShade.3"
             marginBottom={6}
             {...rest}
           >
@@ -65,9 +64,8 @@ const CustomTab: FC<ChkTabProps> = ({
                 fontSize="2.0rem"
                 p="1rem 4.0rem"
                 color="blackShade.4"
-                borderBottom="1px"
-                marginBottom="-1px"
-                borderBottomColor="transparent"
+                borderBottom="2px"
+                borderBottomColor="blackShade.3"
                 gap="1rem"
                 _selected={{
                   color: 'white',
@@ -90,6 +88,8 @@ const CustomTab: FC<ChkTabProps> = ({
                 {tab.label}
               </Tab>
             ))}
+
+            <h1>Side button</h1>
           </TabList>
         </Box>
         <TabPanels>
