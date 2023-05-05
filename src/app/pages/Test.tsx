@@ -3,6 +3,7 @@ import { Button, Text, Heading } from '@chakra-ui/react';
 import CustomTab from 'app/components/common/CustomTab';
 import { PaletteIcon } from 'app/assets/icons';
 import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
+import { chkToaster } from 'app/components/common/Toaster';
 
 const CustomComponent = ({ name }: any) => {
   return <p>{name} COMPONENT!</p>;
@@ -64,6 +65,18 @@ const Test: FC = () => {
           },
         ]}
       />
+
+      <Button
+        onClick={() =>
+          chkToaster.success({
+            title: 'Success Title',
+            // description: 'This is a test description here',
+            isClosable: true,
+          })
+        }
+      >
+        Trigger Toast
+      </Button>
     </>
   );
 };
