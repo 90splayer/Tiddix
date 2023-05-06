@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Button, Text, Heading } from '@chakra-ui/react';
+import { Button, Text, Heading, Box, Input, Flex } from '@chakra-ui/react';
 import CustomTab from 'app/components/common/CustomTab';
 import { PaletteIcon } from 'app/assets/icons';
 import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
@@ -12,41 +12,51 @@ const CustomComponent = ({ name }: any) => {
 const Test: FC = () => {
   return (
     <>
-      <Button variant="default">Default Button</Button>
-      <Button variant="primary">Primary Button</Button>
-      <Button variant="primary" size="xl">
-        Xlarge Button
-      </Button>
-      <Button variant="primary" isDisabled>
-        Disabled Primary Button
-      </Button>
-      <Button variant="secondary">Secondary Button</Button>
-      <Button variant="secondary" isDisabled>
-        Disabled Secondary Button
-      </Button>
-      <Button variant="error">Error Button</Button>
-      <Button variant="multicolor">Multicolor Button</Button>
-      <Button variant="borderless">Borderless Button</Button>
-
-      <Button data-text="Active round button"></Button>
+      <Box mb="20">
+        <Heading mb="10">Button Variants</Heading>
+        <Button>default button</Button>
+        <Button variant="primary">primary Button</Button>
+        <Button variant="secondary">secondary Button</Button>
+        <Button variant="whitebg">whitebg Button</Button>
+        <Button variant="multicolor">multicolor Button</Button>
+        <Button variant="borderless">borderless Button</Button>
+        <Button variant="multiradial">multiradial Button</Button>
+        <Button variant="error">error Button</Button>
+      </Box>
+      <Box mb="20">
+        <Heading mb="10">Button Sizes</Heading>
+        <Button size="sm">sm Button</Button>
+        <Button size="md">md Button</Button>
+        <Button size="lg">lg Button</Button>
+      </Box>
+      <Box mb="20">
+        <Heading mb="10">Button States</Heading>
+        <Button variant="primary" isDisabled>
+          Disabled Primary Button
+        </Button>
+        <Button variant="secondary" isDisabled>
+          Disabled Secondary Button
+        </Button>
+      </Box>
       <Text>
         We are a reliable and innovative digital platform that provides
         hassle-free, quick debt and equity funding.
       </Text>
-
-      <Button variant="secondary">HELLO WORLD</Button>
-
-      <Heading size="xs">Extra Small heading</Heading>
-      <Heading size="sm">Small heading</Heading>
-      <Heading size="md">Medium heading</Heading>
-      <Heading size="lg">Large heading</Heading>
-      <Heading size="xl">Extra Large heading</Heading>
-      <Heading size="2xl" mb="50">
-        Extra Large II heading
+      <Heading size="display1">display1 heading</Heading>
+      <Heading size="display2">display2 heading</Heading>
+      <Heading size="h1">h1 Heading</Heading>
+      <Heading size="h2">h2 Heading</Heading>
+      <Heading size="h3">h3 Heading</Heading>
+      <Heading size="h4">h4 Heading</Heading>
+      <Heading size="h5" mb="50">
+        h5 Heading
       </Heading>
-
+      <Text size="body1">body1 text</Text>
+      <Text size="body2" mb="50">
+        body2 text
+      </Text>
       <CustomTab
-        fullWidth
+        // largerHeading
         tabs={[
           {
             label: 'First tab',
@@ -64,19 +74,66 @@ const Test: FC = () => {
             icon: PaletteIcon,
           },
         ]}
+        sideButtons={
+          <>
+            <Button>Siide button</Button>
+            <Button variant="secondary">Siide button</Button>
+          </>
+        }
       />
-
+      <Box mb="100"></Box>
       <Button
         onClick={() =>
           chkToaster.success({
+            title:
+              'Success Title snejnfejn  ejfejfefje  ef dkfnejfen  jfej fe  ebfejfejbeh ueb djfne jfej fehjfne',
+            // description: 'This is a test description here',
+            isClosable: true,
+            duration: 300000,
+          })
+        }
+      >
+        Trigger Success Toast
+      </Button>
+      <Button
+        onClick={() =>
+          chkToaster.warning({
             title: 'Success Title',
             // description: 'This is a test description here',
             isClosable: true,
           })
         }
       >
-        Trigger Toast
+        Trigger Warning Toast
       </Button>
+      <Button
+        onClick={() =>
+          chkToaster.info({
+            title: 'Success Title',
+            // description: 'This is a test description here',
+            isClosable: true,
+          })
+        }
+      >
+        Trigger Info Toast
+      </Button>
+      <Button
+        onClick={() =>
+          chkToaster.error({
+            title: 'Success Title',
+            // description: 'This is a test description here',
+            isClosable: true,
+          })
+        }
+      >
+        Trigger Error Toast
+      </Button>
+      <Box mb="200"></Box>
+      {/* 10 10 10 10 20(56), 20 15(59) */}
+      <Flex w="50%" mb="200" gap="5">
+        <Input type="text" size="md" placeholder="placeholder" />
+        <Input type="text" size="lg" placeholder="placeholder" />
+      </Flex>
     </>
   );
 };

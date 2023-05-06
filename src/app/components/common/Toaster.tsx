@@ -1,13 +1,12 @@
-import { Box, Center, Flex, Spacer, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, Spacer, Text, IconButton } from '@chakra-ui/react';
 import { createStandaloneToast } from '@chakra-ui/toast';
-// import { CloseButton } from 'app/ui/components/atoms/ChkAtoms';
-import // DPIconToastCheck,
-// DPIconToastConfetti,
-// DPIconToastDanger,
-// DPIconToastWarning,
-'app/assets/icons';
-import { MoneyBagIcon } from 'app/assets/icons';
 import theme from 'app/theme/theme';
+import {
+  CheckCircleIcon,
+  InfoIcon,
+  WarningIcon,
+  SmallCloseIcon,
+} from '@chakra-ui/icons';
 
 type ToastType = 'info' | 'success' | 'warning' | 'error';
 
@@ -48,25 +47,25 @@ const Toast = ({
   type,
 }: ToastElementProps & { type: ToastType }) => {
   const colorType = {
-    info: 'gray.200',
-    warning: 'warning.400',
-    error: 'error.400',
-    success: 'pastelGreen.500',
+    info: 'blackShade.3',
+    warning: 'blackShade.3',
+    error: 'blackShade.3',
+    success: 'blackShade.3',
   };
   const iconType = {
-    info: <MoneyBagIcon />,
-    warning: <MoneyBagIcon />,
-    error: <MoneyBagIcon />,
-    success: <MoneyBagIcon />,
+    info: <InfoIcon color="#2196f3" w="20px" h="20px" />,
+    warning: <WarningIcon color="#ffd863" w="20px" h="20px" />,
+    error: <InfoIcon color="#f15349" w="20px" h="20px" />,
+    success: <CheckCircleIcon color="#33ba7c" boxSize="3rem" />,
   };
   return (
     <>
       <Box
         display={{ base: 'none', sm: 'inline-block' }}
-        maxW="max-content"
+        maxW={{ base: '25rem', sm: '40rem' }}
         borderRadius="12px"
-        px={4}
-        py={3}
+        px={8}
+        py={4}
         bg="white"
         border="1px"
         borderColor={colorType[type]}
@@ -75,21 +74,22 @@ const Toast = ({
           <Center
             borderRadius="full"
             bg={`${colorType[type].split('.')[0]}.100`}
-            h="48px"
-            w="48px"
+            h="3rem"
+            w="3rem"
           >
             <Center
               borderRadius="full"
-              h="40px"
-              w="40px"
+              h="3rem"
+              w="3rem"
               bg={`${colorType[type].split('.')[0]}.200`}
+              just
             >
               {iconType[type]}
             </Center>
           </Center>
           <Flex flex={1} flexDirection="column">
             <Text
-              fontSize={{ base: 'sm', sm: 'md' }}
+              fontSize={{ base: '1.0rem', sm: '1.4rem', md: '1.6rem' }}
               color="black"
               fontWeight="medium"
             >
@@ -108,8 +108,15 @@ const Toast = ({
               </>
             )}
           </Flex>
-          {/* {isClosable && <CloseButton onClick={() => toast.onClose()} />} */}
-          {isClosable && 'X'}
+          {isClosable && (
+            <IconButton
+              variant="borderless"
+              p="0"
+              aria-label="Search database"
+              onClick={() => toast.onClose()}
+              icon={<SmallCloseIcon />}
+            />
+          )}
         </Flex>
       </Box>
       <Box display={{ base: 'block', sm: 'none' }} p={6} bg={colorType[type]}>
