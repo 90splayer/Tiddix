@@ -44,6 +44,7 @@ const Test: FC = () => {
       </Text>
       <Heading size="display1">display1 heading</Heading>
       <Heading size="display2">display2 heading</Heading>
+      <Heading size="display3">display3 heading</Heading>
       <Heading size="h1">h1 Heading</Heading>
       <Heading size="h2">h2 Heading</Heading>
       <Heading size="h3">h3 Heading</Heading>

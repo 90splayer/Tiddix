@@ -39,6 +39,14 @@ export const headingStyles = {
           fontSize: { base: '3rem', sm: '3.2rem', md: '4.8rem' },
           lineHeight: { base: '4rem', sm: '4.75rem', md: '5.8rem' },
         },
+        display3: {
+          fontSize: { base: '3rem', sm: '3.2rem', md: '4rem' },
+          lineHeight: { base: '4rem', sm: '4.75rem', md: '4.8rem' },
+        },
+        display4: {
+          fontSize: { base: '2.4rem', sm: '2.8rem', md: '3.6rem' },
+          lineHeight: { base: '3.6rem', sm: '4.2rem', md: '4.5rem' },
+        },
         h1: {
           fontSize: { base: '1.6rem', sm: '2.0rem', md: '2.8rem' },
           lineHeight: { base: '2.5rem', sm: '3.35rem', md: '3.4rem' },

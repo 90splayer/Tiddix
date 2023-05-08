@@ -140,7 +140,7 @@ const SignUpForm = () => {
               transition="0.7 ease-in-out"
             />
 
-            <Button variant="multicolor" w="100%" size="xl">
+            <Button variant="multicolor" w="100%" size="md">
               Create Account
             </Button>
 

@@ -123,7 +123,7 @@ const LoginForm = () => {
               </Text>
             </Box>
 
-            <Button variant="multicolor" w="100%" size="xl">
+            <Button variant="multicolor" size="md" w="100%">
               Create Account
             </Button>
 
@@ -182,7 +182,7 @@ const LoginForm = () => {
             <Box>
               <Text fontWeight="700">
                 Already Have an account?{' '}
-                <Link to="/login">
+                <Link to="/signup">
                   <Text
                     _hover={{ textDecoration: 'underline', opacity: '0.7' }}
                     fontWeight="700"

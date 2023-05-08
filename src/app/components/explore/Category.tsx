@@ -1,21 +1,19 @@
 import { Box, Button, Flex, Heading, Stack, Container } from '@chakra-ui/react';
-import React from 'react';
+import React, { FC } from 'react';
 import CategoryCard from '../CategoryCard';
 
-const Category = () => {
+const Category: FC = () => {
   return (
     <Box>
       <Container maxW="144rem" p="6.4rem 7.4rem 8rem 7.2rem">
         <Stack spacing="3.4rem">
-          <Heading fontSize="4rem" fontWeight="700">
-            Browse by Category
-          </Heading>
+          <Heading size="display3">Browse by Category</Heading>
           <Flex gap="2rem">
-            <Button variant="primary">All</Button>
-            <Button variant="primary">Photograhy</Button>
-            <Button variant="primary">3d Modeling</Button>
-            <Button variant="primary">Travel</Button>
-            <Button variant="primary">Music</Button>
+            <Button size="md">All</Button>
+            <Button size="md">Photograhy</Button>
+            <Button size="md">3d Modeling</Button>
+            <Button size="md">Travel</Button>
+            <Button size="md">Music</Button>
           </Flex>
           <Flex justify="space-between" gap="2rem">
             <CategoryCard />
