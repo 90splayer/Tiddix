@@ -39,14 +39,14 @@ const TopNav: FC = () => {
         zIndex={3}
         p={{
           base: '3.5rem 2rem',
-          sm: '4rem 5rem',
-          md: '5rem 5.2rem',
-          lg: '5rem 7.2rem',
+          sm: '3.6rem 5rem 3rem',
+          md: '3.6rem 5.2rem 3rem',
+          lg: '3.6rem 7.2rem 3rem',
         }}
       >
         <Flex align="center" justify="space-between">
           <HStack
-            spacing={{ base: '15px', md: '20px', lg: '48px' }}
+            spacing={{ base: '15px', lg: '48px' }}
             fontSize={{ md: '1.4rem', lg: '1.6rem' }}
             color="#99A1AA"
           >
@@ -102,7 +102,7 @@ const TopNav: FC = () => {
             </NavLink>
           </HStack>
 
-          <HStack spacing={{ base: '15px', md: '20px', lg: '48px' }}>
+          <HStack spacing={{ base: '15px', lg: '48px' }}>
             <Input
               pos="relative"
               placeholder="Search projects and creatives"
@@ -138,7 +138,7 @@ const TopNav: FC = () => {
             </Flex>
 
             <NavLink to="/login">
-              <Button variant="multiradial" size="lg">
+              <Button variant="primary" size="lg">
                 Logout
               </Button>
             </NavLink>

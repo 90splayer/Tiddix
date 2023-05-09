@@ -18,6 +18,10 @@ export const headingStyles = {
           fontSize: { base: '1.0rem', sm: '1.4rem', md: '1.6rem' },
           lineHeight: { base: '1.25rem', sm: '1.6rem', md: '1.9rem' },
         },
+        body3: {
+          fontSize: { base: '1.0rem', sm: '1.3rem', md: '1.5rem' },
+          lineHeight: { base: '1.25rem', sm: '1.6rem', md: '1.9rem' },
+        },
       },
     },
     Heading: {
