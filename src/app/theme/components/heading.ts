@@ -3,57 +3,73 @@ export const headingStyles = {
     Text: {
       baseStyle: {
         fontFamily: 'Product Sans',
-        // letterSpacing: '-0.01em',
         color: 'blackShade.4',
+        fontSize: '2.0rem',
+        lineHeight: '2.4rem',
+        fontWeight: '400',
       },
+      // font size and line height set for md. base and sm assumed till mobile is ready. Default text is body1
       sizes: {
-        lg: {
-          fontSize: { base: '1rem', sm: '1.062rem', md: '2.4rem' },
-          lineHeight: { base: '1.5rem', sm: '1.625rem', md: '2.8rem' },
+        body1: {
+          fontSize: { base: '1.2rem', sm: '1.6rem', md: '2.0rem' },
+          lineHeight: { base: '1.5rem', sm: '1.9rem', md: '2.4rem' },
         },
-        md: {
-          fontSize: { base: '0.875rem', sm: '0.938rem', md: '2.0rem' },
-          lineHeight: { base: '1.25rem', sm: '1.375rem', md: '2.4rem' },
+        body2: {
+          fontSize: { base: '1.0rem', sm: '1.4rem', md: '1.6rem' },
+          lineHeight: { base: '1.25rem', sm: '1.6rem', md: '1.9rem' },
         },
-        sm: {
-          fontSize: { base: '0.875rem', sm: '0.938rem', md: '1.6rem' },
-          lineHeight: { base: '1.25rem', sm: '1.375rem', md: '2.2rem' },
+        body3: {
+          fontSize: { base: '1.0rem', sm: '1.3rem', md: '1.5rem' },
+          lineHeight: { base: '1.25rem', sm: '1.6rem', md: '1.9rem' },
         },
       },
     },
     Heading: {
       baseStyle: {
         fontFamily: 'Product Sans',
-        letterSpacing: '-0.02em',
-        fontSize: '3.2rem',
+        fontSize: '4.8rem',
+        lineHeight: '5.8rem',
         fontWeight: '700',
         color: 'white',
       },
 
+      // font size and line height set for md. base and sm assumed till mobile is ready. Default heading is display2
       sizes: {
-        '2xl': {
-          fontSize: { base: '3rem', sm: '3.5rem', md: '6.5rem' },
-          lineHeight: { base: '4rem', sm: '4.75rem', md: '7.2rem' },
+        display1: {
+          fontSize: { base: '3rem', sm: '4.8rem', md: '6.4rem' },
+          lineHeight: { base: '4rem', sm: '4.75rem', md: '7.8rem' },
         },
-        xl: {
-          fontSize: { base: '3rem', sm: '3.5rem', md: '4.8rem' },
-          lineHeight: { base: '4rem', sm: '4.75rem', md: '5.4rem' },
+        display2: {
+          fontSize: { base: '3rem', sm: '3.2rem', md: '4.8rem' },
+          lineHeight: { base: '4rem', sm: '4.75rem', md: '5.8rem' },
         },
-        lg: {
-          fontSize: { base: '2rem', sm: '2.5rem', md: '3.6rem' },
-          lineHeight: { base: '2.5rem', sm: '3.35rem', md: '4.0rem' },
+        display3: {
+          fontSize: { base: '3rem', sm: '3.2rem', md: '4rem' },
+          lineHeight: { base: '4rem', sm: '4.75rem', md: '4.8rem' },
         },
-        md: {
-          fontSize: { base: '1.5rem', sm: '1.75rem', md: '2.4rem' },
+        display4: {
+          fontSize: { base: '2.4rem', sm: '2.8rem', md: '3.6rem' },
+          lineHeight: { base: '3.6rem', sm: '4.2rem', md: '4.5rem' },
+        },
+        h1: {
+          fontSize: { base: '1.6rem', sm: '2.0rem', md: '2.8rem' },
+          lineHeight: { base: '2.5rem', sm: '3.35rem', md: '3.4rem' },
+        },
+        h2: {
+          fontSize: { base: '1.6rem', sm: '2.0rem', md: '2.4rem' },
           lineHeight: { base: '2rem', sm: '2.25rem', md: '2.9rem' },
         },
-        sm: {
-          fontSize: { base: '1.5rem', sm: '1.75rem', md: '2.0rem' },
-          lineHeight: { base: '2rem', sm: '2.25rem', md: '2.4rem' },
+        h3: {
+          fontSize: { base: '1.4rem', sm: '1.8rem', md: '2.0rem' },
+          lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
         },
-        xs: {
-          fontSize: { base: '1.5rem', sm: '1.75rem', md: '1.6rem' },
-          lineHeight: { base: '2rem', sm: '2.25rem', md: '2.4rem' },
+        h4: {
+          fontSize: { base: '1.2rem', sm: '1.6rem', md: '1.8rem' },
+          lineHeight: { base: '1.8rem', sm: '2.0rem', md: '2.2rem' },
+        },
+        h5: {
+          fontSize: { base: '1.0rem', sm: '1.75rem', md: '1.6rem' },
+          lineHeight: { base: '1.4rem', sm: '1.6rem', md: '1.9rem' },
         },
       },
     },

@@ -1,20 +1,21 @@
 export const buttonStyles = {
-  // default - white bg
-  // primary - transaparent bg
-  // secondary - "gift creatives..the one for social login will be custom"
+  // white bg - whitebg (use to be default)
+  // primary - transaparent bg - transparent-bg (now default)
+  // primary - "gift creatives..the one for social login will be custom" - blackbg3 (formerly secondary)
+
   // multicolor
   // borderless - the one without background and border
   components: {
     Button: {
       baseStyle: {
         borderRadius: '100px',
-        border: '1px solid',
-        borderColor: 'transparent',
         bg: 'white',
-        background: 'white',
+        background: 'transparent',
+        color: 'white',
+        border: '2px solid',
+        borderColor: 'blackShade.4',
         outline: 'none',
         boxSizing: 'border-box',
-        color: 'blackShade.1',
         fontWeight: '700',
         fontFamily: `'Product Sans', sans-serif`,
         _hover: {
@@ -33,11 +34,15 @@ export const buttonStyles = {
       },
 
       variants: {
-        primary: {
-          background: 'transparent',
-          color: 'white',
-          border: '2px solid',
-          borderColor: 'blackShade.4',
+        whitebg: {
+          border: '1px solid',
+          borderColor: 'transparent',
+          color: 'blackShade.1',
+          background: 'white',
+          // background: 'transparent',
+          // color: 'white',
+          // border: '2px solid',
+          // borderColor: 'blackShade.4',
 
           // _hover: {
           //   _disabled: {},
@@ -46,8 +51,14 @@ export const buttonStyles = {
           // _active: {},
           // _focus: {},
         },
-        secondary: {
+        primary: {
           backgroundColor: 'blackShade.3',
+          border: '1px solid',
+          borderColor: 'transparent',
+          color: 'white',
+        },
+        secondary: {
+          backgroundColor: 'blackShade.2',
           border: '1px solid',
           borderColor: 'transparent',
           color: 'white',
@@ -91,38 +102,28 @@ export const buttonStyles = {
         },
       },
 
+      // height set for md. base and sm assumed till mobile is ready.
       sizes: {
-        xl: {
-          minW: '12',
-          fontSize: '1.6rem',
-          height: { base: '2rem', sm: '54px', md: '56px', lg: '59px' },
-          p: { base: '14px 24px', sm: '15px 24px', md: '16px 24px' },
-        },
         lg: {
           minW: '10',
-          fontSize: '1.6rem',
-          height: { base: '2rem', sm: '54px', md: '56px', lg: '59px' },
-
-          p: { base: '12px 24px', sm: '13px 24px', md: '14px 24px' },
+          fontSize: { base: '1.4rem', sm: '1.8rem', md: '2.0rem' },
+          lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
+          height: { base: '3.5rem', sm: '5.4rem', md: '6.4rem' },
+          p: { base: '12px 24px', sm: '13px 24px', md: '2.0rem 3.0rem' },
         },
         md: {
           minW: '8',
-          fontSize: { base: 'sm', sm: '1.6rem' },
-          height: { base: '40px', sm: '46px', md: '48px' },
-
-          p: { base: '8px 16px', sm: '10px 20px', md: '20px 30px' },
+          fontSize: { base: '1.4rem', sm: '1.8rem', md: '2.0rem' },
+          lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
+          height: { base: '2.5rem', sm: '4.6rem', md: '6.0rem' },
+          p: { base: '8px 16px', sm: '10px 20px', md: '2.0rem 3.0rem' },
         },
         sm: {
           minW: '6',
-          fontSize: 'sm',
-          height: { base: '38px', sm: '39px', md: '40px' },
-          p: { base: '6px 12px', sm: '8px 16px', md: '8px 16px' },
-        },
-        xs: {
-          minW: '6',
-          fontSize: 'sm',
-          height: { base: '38px', sm: '39px', md: '40px' },
-          p: { base: '6px 12px', sm: '8px 16px', md: '8px 16px' },
+          fontSize: { base: '1.4rem', sm: '1.8rem', md: '2.0rem' },
+          lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
+          height: { base: '38px', sm: '39px', md: '5.0rem' },
+          p: { base: '6px 12px', sm: '8px 16px', md: '1.3rem 2.0rem' },
         },
       },
     },

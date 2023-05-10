@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import tiddix from '../../assets/images/tiddix.png';
 import signUpBg from '../../assets/images/signup/signup.png';
 import google from '../../assets/images/signup/google.png';
 import facebook from '../../assets/images/signup/facebook.png';
@@ -26,19 +27,11 @@ const SignUpForm = () => {
           mb="13rem"
         >
           <NavLink to="/">
-            <Heading
-              pr="10px"
-              transition="0.2s ease-in-out"
-              fontSize="3.6rem"
-              bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
-              bgClip="text"
-              fontWeight="700"
-            >
-              tiddix
-            </Heading>
+            <Image src={tiddix} alt="tiddix logo" w="100px" />
           </NavLink>
           <NavLink to="/explore">
             <Text
+              size="body2"
               display={{ base: 'none', md: 'flex', lg: 'flex' }}
               transition="0.2s ease-in-out"
               _hover={{
@@ -51,6 +44,7 @@ const SignUpForm = () => {
           </NavLink>
           <NavLink to="/about">
             <Text
+              size="body2"
               display={{ base: 'none', md: 'flex', lg: 'flex' }}
               transition="0.2s ease-in-out"
               _hover={{
@@ -63,6 +57,7 @@ const SignUpForm = () => {
           </NavLink>
           <NavLink to="/invest">
             <Text
+              size="body2"
               display={{ base: 'none', md: 'flex', lg: 'flex' }}
               transition="0.2s ease-in-out"
               _hover={{
@@ -140,7 +135,7 @@ const SignUpForm = () => {
               transition="0.7 ease-in-out"
             />
 
-            <Button variant="multicolor" w="100%" size="xl">
+            <Button variant="multicolor" w="100%" size="md">
               Create Account
             </Button>
 

@@ -6,6 +6,8 @@ import {
   TabPanel,
   TabListProps,
   Box,
+  Flex,
+  TypographyProps,
 } from '@chakra-ui/react';
 import { FC, ReactElement, useState } from 'react';
 import styled from 'styled-components';
@@ -20,13 +22,15 @@ interface TabProp {
 type ChkTabProps = {
   tabs: Array<TabProp>;
   startIndex?: number;
-  fullWidth?: boolean;
+  sideButtons?: React.ReactNode;
+  largerHeading?: boolean;
 } & TabListProps;
 
 const CustomTab: FC<ChkTabProps> = ({
   tabs,
   startIndex,
-  fullWidth,
+  sideButtons,
+  largerHeading,
   ...rest
 }) => {
   const visibleTabs = tabs.filter((tab) => !tab.hide);
@@ -51,30 +55,35 @@ const CustomTab: FC<ChkTabProps> = ({
           overflowX="auto"
         >
           <TabList
-            gap="1rem"
-            borderBottom={fullWidth ? '1px' : '0px'}
-            borderBottomColor="gray.50"
+            borderBottom="2px"
+            borderBottomColor="blackShade.3"
             marginBottom={6}
             {...rest}
           >
             {visibleTabs.map((tab) => (
               <Tab
-                className="tabItem"
-                fontWeight="medium"
+                fontWeight={largerHeading ? 'bold' : 'medium'}
                 whiteSpace="nowrap"
-                fontSize="2.0rem"
+                fontSize={
+                  largerHeading
+                    ? { base: '1.6rem', sm: '2.0rem', md: '2.8rem' }
+                    : { base: '1.2rem', sm: '1.6rem', md: '2.0rem' }
+                }
+                lineHeight={
+                  largerHeading
+                    ? { base: '2.5rem', sm: '3.35rem', md: '3.4rem' }
+                    : { base: '1.5rem', sm: '1.9rem', md: '2.4rem' }
+                }
                 p="1rem 4.0rem"
                 color="blackShade.4"
-                borderBottom="1px"
-                marginBottom="-1px"
-                borderBottomColor="transparent"
+                borderBottom="2px"
+                borderBottomColor="blackShade.3"
                 gap="1rem"
                 _selected={{
                   color: 'white',
                   borderImage:
                     'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) 1',
                   borderBottom: '2px solid transparent',
-                  fill: 'white',
                 }}
                 _focus={{ color: 'white', boxShadow: 'none' }}
                 _hover={{ color: 'white' }}
@@ -90,6 +99,19 @@ const CustomTab: FC<ChkTabProps> = ({
                 {tab.label}
               </Tab>
             ))}
+
+            {sideButtons && (
+              <Flex
+                borderBottom="2px solid #485155"
+                marginBottom="-.2rem"
+                ml="auto"
+                gap=".5rem"
+                paddingBottom="1.2rem"
+                paddingLeft="4.0rem"
+              >
+                {sideButtons}
+              </Flex>
+            )}
           </TabList>
         </Box>
         <TabPanels>

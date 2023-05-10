@@ -6,17 +6,23 @@ import {
   HStack,
   IconButton,
   Text,
-  // useColorMode,
-  Heading,
-  Button,
   Image,
+  Button,
+  Input,
+  Avatar,
+  Stack,
+  Icon,
 } from '@chakra-ui/react';
 // import { FaSun, FaMoon } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import tiddix from '../assets/images/tiddix.png';
+import tiddix from '../../assets/images/tiddix.png';
 import { NavLink } from 'react-router-dom';
+import love from '../../assets/svgs/dashboard/love.svg';
+import { RiSearchLine } from 'react-icons/ri';
+import { IoWallet } from 'react-icons/io5';
+import { FaHeart } from 'react-icons/fa';
 
-const Header: FC = () => {
+const TopNav: FC = () => {
   const [isMobile, setIsMobile] = useState('none');
 
   const closeMenu = () => setIsMobile('none');
@@ -31,14 +37,14 @@ const Header: FC = () => {
         zIndex={3}
         p={{
           base: '3.5rem 2rem',
-          sm: '4rem 5rem',
-          md: '5rem 5.2rem',
-          lg: '5rem 7.2rem',
+          sm: '3.6rem 5rem 3rem',
+          md: '3.6rem 5.2rem 3rem',
+          lg: '3.6rem 7.2rem 3rem',
         }}
       >
         <Flex align="center" justify="space-between">
           <HStack
-            spacing={{ base: '15px', md: '20px', lg: '48px' }}
+            spacing={{ base: '15px', lg: '48px' }}
             fontSize={{ md: '1.4rem', lg: '1.6rem' }}
             color="#99A1AA"
           >
@@ -47,6 +53,7 @@ const Header: FC = () => {
             </NavLink>
             <NavLink to="/explore">
               <Text
+                size="body2"
                 display={{ base: 'none', md: 'flex', lg: 'flex' }}
                 transition="0.2s ease-in-out"
                 _hover={{
@@ -59,6 +66,7 @@ const Header: FC = () => {
             </NavLink>
             <NavLink to="/about">
               <Text
+                size="body2"
                 display={{ base: 'none', md: 'flex', lg: 'flex' }}
                 transition="0.2s ease-in-out"
                 _hover={{
@@ -71,6 +79,7 @@ const Header: FC = () => {
             </NavLink>
             <NavLink to="/invest">
               <Text
+                size="body2"
                 display={{ base: 'none', md: 'flex', lg: 'flex' }}
                 transition="0.2s ease-in-out"
                 _hover={{
@@ -83,18 +92,44 @@ const Header: FC = () => {
             </NavLink>
           </HStack>
 
-          <HStack
-            spacing="26px"
-            display={{ base: 'none', md: 'flex', lg: 'flex' }}
-          >
-            <NavLink to="/signup">
-              <Button variant="borderless" size="lg">
-                Sign Up
-              </Button>
-            </NavLink>
+          <HStack spacing={{ base: '15px', lg: '48px' }}>
+            <Input
+              pos="relative"
+              placeholder="Search projects and creatives"
+              px="2rem"
+              borderRadius="10rem"
+              border="1px solid #99A1AA"
+              w="30.6rem"
+              h="5.6rem"
+              _placeholder={{
+                fontSize: '1.6rem',
+                color: '#99A1AA',
+                fontWeight: '700',
+              }}
+            />
+
+            <Flex gap="5px">
+              <Icon as={FaHeart} color="pink" />
+              <Text size="body2">13</Text>
+            </Flex>
+            <Flex gap="1.4rem">
+              <Avatar
+                boxSize="40px"
+                name="Segun Adebayo"
+                src="https://bit.ly/sage-adebayo"
+              />
+              <Stack>
+                <Text size="body2">Hello, Segun</Text>
+                <Flex>
+                  <Icon as={IoWallet} w="15px" h="15px" color="#99A1AA" />
+                  <Text size="body2">$50,000</Text>
+                </Flex>
+              </Stack>
+            </Flex>
+
             <NavLink to="/login">
-              <Button variant="multiradial" size="lg">
-                Login
+              <Button variant="primary" size="lg">
+                Logout
               </Button>
             </NavLink>
           </HStack>
@@ -120,4 +155,4 @@ const Header: FC = () => {
   );
 };
 
-export default Header;
+export default TopNav;

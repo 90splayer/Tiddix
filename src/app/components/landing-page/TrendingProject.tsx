@@ -8,7 +8,7 @@ import {
   Heading,
   Text,
 } from '@chakra-ui/react';
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../ProjectCard';
 
 const TrendingProject = () => {
   return (
