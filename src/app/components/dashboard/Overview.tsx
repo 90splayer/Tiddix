@@ -13,7 +13,16 @@ import { verify } from 'app/assets/svgs/home';
 import { IoWallet } from 'react-icons/io5';
 import React, { FC } from 'react';
 import { MdSettings } from 'react-icons/md';
+import { BiRefresh } from 'react-icons/bi';
 import { IoShareSocialSharp } from 'react-icons/io5';
+import {
+  DashboardIcon,
+  InvestmentIcon,
+  PaletteIcon,
+  TestimonialIcon,
+} from 'app/assets/icons';
+import CustomTab from '../common/CustomTab';
+import BecomeInvestor from '../landing-page/BecomeInvestor';
 
 const Overview: FC = () => {
   return (
@@ -28,8 +37,8 @@ const Overview: FC = () => {
           lg: '5rem 7.2rem',
         }}
       >
-        <Flex justify="space-between">
-          <Flex gap="4rem">
+        <Flex justify="space-between" mb="5rem">
+          <Flex gap="4rem" align="center">
             <Box>
               <Avatar
                 border="2px solid pink"
@@ -45,10 +54,10 @@ const Overview: FC = () => {
                 </Text>
                 <Box>{verify}</Box>
               </HStack>
-              <Text>
+              <Text size="body2">
                 Brand / Graphic Design, UI / Visual Design, Product Design
               </Text>
-              <Flex gap="12px">
+              <Flex gap="12px" align="center">
                 <Button variant="secondary" size="sm">
                   Edit Profile
                 </Button>
@@ -58,8 +67,8 @@ const Overview: FC = () => {
                   align="center"
                   justify="center"
                   borderRadius="100%"
-                  w="60px"
-                  h="60px"
+                  w="50px"
+                  h="50px"
                 >
                   <Icon as={MdSettings} fontSize="2rem" color="#fff" />
                 </Flex>
@@ -69,8 +78,8 @@ const Overview: FC = () => {
                   align="center"
                   justify="center"
                   borderRadius="100%"
-                  w="60px"
-                  h="60px"
+                  w="50px"
+                  h="50px"
                 >
                   <Icon as={IoShareSocialSharp} fontSize="2rem" color="#fff" />
                 </Flex>
@@ -96,18 +105,51 @@ const Overview: FC = () => {
             >
               <Icon as={IoWallet} fontSize="3.4rem" color="#000" />
             </Flex>
-            <Flex align="center" gap="1.2rem">
+            <Flex align="flex-end" gap="1.5rem">
               <Stack spacing="1rem">
                 <Text size="body3" color="#fff">
                   Wallet Balance
                 </Text>
-                <Text fontSize="3.2rem" fontStyle="700" color="#fff">
+                <Text fontSize="3.2rem" fontWeight="700" color="#fff">
                   $50,000
                 </Text>
               </Stack>
+
+              <Icon
+                as={BiRefresh}
+                fontSize="2.4rem"
+                color="#fff"
+                cursor="pointer"
+              />
             </Flex>
           </Flex>
         </Flex>
+
+        <CustomTab
+          // largerHeading
+          tabs={[
+            {
+              label: 'Dasboard',
+              body: 'here',
+              icon: DashboardIcon,
+            },
+            {
+              label: 'Project',
+              body: <BecomeInvestor />,
+              icon: PaletteIcon,
+            },
+            {
+              label: 'Investment',
+              body: 'lorem ipsum',
+              icon: InvestmentIcon,
+            },
+            {
+              label: 'Testimonials',
+              body: 'lorem ipsum',
+              icon: TestimonialIcon,
+            },
+          ]}
+        />
       </Container>
     </Box>
   );
