@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import tiddix from '../../assets/images/tiddix.png';
 import signUpBg from '../../assets/images/signup/signup.png';
 import google from '../../assets/images/signup/google.png';
 import facebook from '../../assets/images/signup/facebook.png';
@@ -26,20 +27,12 @@ const LoginForm = () => {
           mb="13rem"
         >
           <NavLink to="/">
-            <Heading
-              pr="10px"
-              transition="0.2s ease-in-out"
-              fontSize="3.6rem"
-              bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
-              bgClip="text"
-              fontWeight="700"
-            >
-              tiddix
-            </Heading>
+            <Image src={tiddix} alt="tiddix logo" w="100px" />
           </NavLink>
           <NavLink to="/explore">
             <Text
               display={{ base: 'none', md: 'flex', lg: 'flex' }}
+              size="body2"
               transition="0.2s ease-in-out"
               _hover={{
                 bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
@@ -53,6 +46,7 @@ const LoginForm = () => {
             <Text
               display={{ base: 'none', md: 'flex', lg: 'flex' }}
               transition="0.2s ease-in-out"
+              size="body2"
               _hover={{
                 bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
                 bgClip: 'text',
@@ -65,6 +59,7 @@ const LoginForm = () => {
             <Text
               display={{ base: 'none', md: 'flex', lg: 'flex' }}
               transition="0.2s ease-in-out"
+              size="body2"
               _hover={{
                 bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
                 bgClip: 'text',

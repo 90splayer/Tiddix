@@ -6,18 +6,16 @@ import {
   HStack,
   IconButton,
   Text,
-  Heading,
+  Image,
   Button,
   Input,
-  InputGroup,
-  InputRightElement,
   Avatar,
   Stack,
   Icon,
 } from '@chakra-ui/react';
 // import { FaSun, FaMoon } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
-// import { MdOutlineClose } from 'react-icons/md';
+import tiddix from '../../assets/images/tiddix.png';
 import { NavLink } from 'react-router-dom';
 import love from '../../assets/svgs/dashboard/love.svg';
 import { RiSearchLine } from 'react-icons/ri';
@@ -51,15 +49,7 @@ const TopNav: FC = () => {
             color="#99A1AA"
           >
             <NavLink to="/">
-              <Heading
-                pr="10px"
-                transition="0.2s ease-in-out"
-                size="display4"
-                bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
-                bgClip="text"
-              >
-                tiddix
-              </Heading>
+              <Image src={tiddix} alt="tiddix logo" w="120px" />
             </NavLink>
             <NavLink to="/explore">
               <Text

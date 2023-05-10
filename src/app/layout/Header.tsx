@@ -9,10 +9,11 @@ import {
   // useColorMode,
   Heading,
   Button,
+  Image,
 } from '@chakra-ui/react';
 // import { FaSun, FaMoon } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
-// import { MdOutlineClose } from 'react-icons/md';
+import tiddix from '../assets/images/tiddix.png';
 import { NavLink } from 'react-router-dom';
 
 const Header: FC = () => {
@@ -42,16 +43,7 @@ const Header: FC = () => {
             color="#99A1AA"
           >
             <NavLink to="/">
-              <Heading
-                pr="10px"
-                transition="0.2s ease-in-out"
-                fontSize="3.6rem"
-                bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
-                bgClip="text"
-                fontWeight="700"
-              >
-                tiddix
-              </Heading>
+              <Image src={tiddix} alt="tiddix logo" w="120px" />
             </NavLink>
             <NavLink to="/explore">
               <Text

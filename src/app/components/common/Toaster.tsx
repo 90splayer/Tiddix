@@ -82,7 +82,6 @@ const Toast = ({
               h="3rem"
               w="3rem"
               bg={`${colorType[type].split('.')[0]}.200`}
-              just
             >
               {iconType[type]}
             </Center>
