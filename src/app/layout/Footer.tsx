@@ -22,7 +22,7 @@ export const Footer: FC = () => {
   const { colorMode } = useColorMode();
   return (
     <Box>
-      <Container maxW="1440px" p="7.5rem 7.2rem 7.1rem">
+      <Container maxW="1440px" p="0 7.2rem 7.1rem">
         <Stack
           spacing={{ base: '50px', md: '110px' }}
           p="14.7rem 5.1rem 11.5rem"
