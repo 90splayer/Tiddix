@@ -8,6 +8,7 @@ export const inputStyles = {
           border: '1px',
           // borderRadius: '12px',
           borderColor: 'gray.200',
+          transition: '0.7 ease-in-out',
         },
       },
       sizes: {
@@ -37,9 +38,9 @@ export const inputStyles = {
             // borderRadius: '12px',
             borderColor: 'blackShade.4',
             // padding: '12px 14px',
-            _placeholder: { color: 'gray.400' },
+            _placeholder: { color: 'blackShade.4' },
             _hover: {
-              borderColor: '#FF8CDF',
+              border: '2px solid #FF8CDF',
             },
             _focusVisible: {
               border: '2px solid #FF8CDF',
