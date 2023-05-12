@@ -10,6 +10,7 @@ export const UserData = [
     total_investment: '$150,000',
     total_liabilities: '-$50,000',
     liability_count: '07',
+    likes: '10',
     project_count: '05',
     investment_count: '13',
   },
