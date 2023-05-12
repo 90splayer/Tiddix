@@ -22,7 +22,13 @@ import { RiSearchLine } from 'react-icons/ri';
 import { IoWallet } from 'react-icons/io5';
 import { FaHeart } from 'react-icons/fa';
 
-const TopNav: FC = () => {
+type Props = {
+  firstName: string;
+  avartar: string;
+  bal: string;
+  likes: string;
+};
+const TopNav: FC<Props> = ({ firstName, avartar, bal, likes }) => {
   const [isMobile, setIsMobile] = useState('none');
 
   const closeMenu = () => setIsMobile('none');
@@ -110,19 +116,15 @@ const TopNav: FC = () => {
 
             <Flex gap="5px">
               <Icon as={FaHeart} color="pink" />
-              <Text size="body2">13</Text>
+              <Text size="body2">{likes}</Text>
             </Flex>
             <Flex gap="1.4rem">
-              <Avatar
-                boxSize="40px"
-                name="Segun Adebayo"
-                src="https://bit.ly/sage-adebayo"
-              />
+              <Avatar boxSize="40px" name="Segun Adebayo" src={avartar} />
               <Stack>
-                <Text size="body2">Hello, Segun</Text>
+                <Text size="body2">Hello, {firstName}</Text>
                 <Flex>
                   <Icon as={IoWallet} w="15px" h="15px" color="#99A1AA" />
-                  <Text size="body2">$50,000</Text>
+                  <Text size="body2">{bal}</Text>
                 </Flex>
               </Stack>
             </Flex>

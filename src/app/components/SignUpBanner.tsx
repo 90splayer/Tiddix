@@ -3,7 +3,7 @@ import React from 'react';
 
 const SignUpBanner = () => {
   return (
-    <Container maxW="144rem" p="7.5rem 7.2rem">
+    <Container maxW="144rem" p="7.5rem 7.2rem 15rem">
       <VStack
         borderRadius="40px"
         justify="center"

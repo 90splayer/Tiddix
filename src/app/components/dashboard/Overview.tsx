@@ -23,6 +23,7 @@ import {
 } from 'app/assets/icons';
 import CustomTab from '../common/CustomTab';
 import BecomeInvestor from '../landing-page/BecomeInvestor';
+import DashboardOverview from './DashboardOverview';
 
 const Overview: FC = () => {
   return (
@@ -130,7 +131,7 @@ const Overview: FC = () => {
           tabs={[
             {
               label: 'Dasboard',
-              body: 'here',
+              body: <DashboardOverview />,
               icon: DashboardIcon,
             },
             {
