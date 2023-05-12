@@ -12,6 +12,7 @@ export const UserData = [
     liability_count: '07',
     likes: '10',
     project_count: '05',
+    fund_detail: ['Total Projects', 'Total Investments', 'Total Liabilities'],
     investment_count: '13',
   },
 ];

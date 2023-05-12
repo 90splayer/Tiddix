@@ -5,8 +5,9 @@ type Props = {
   icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   count: string;
   price?: string;
+  fundDetail: string;
 };
-const OverviewCard: FC<Props> = ({ icon, count, price }) => {
+const OverviewCard: FC<Props> = ({ icon, count, price, fundDetail }) => {
   return (
     <Flex
       bg="#232629"
@@ -31,7 +32,7 @@ const OverviewCard: FC<Props> = ({ icon, count, price }) => {
         <Heading size="display2">{count}</Heading>
       </Flex>
       <Flex justify="space-between" align="center">
-        <Text color="#fff">Total Projects</Text>
+        <Text color="#fff">{fundDetail}</Text>
         <Text color="#fff" fontWeight="700">
           {price}
         </Text>
