@@ -9,14 +9,10 @@ export default function LoginButton({ colorMode, onMobile }: any) {
   const api = useApiPrivate();
   const authContext = useAuth();
 
-  console.log('LOGGED IN?????', isAuthenticated(), authContext?.auth);
-
   const logout = (e: any) => {
     e.preventDefault();
     authContext?.setAuth(null);
-    api.post('/logout').then(() => {
-      console.log('LOGGED OUT SUCCESSFULLY');
-    });
+    api.post('/logout');
   };
 
   return !isAuthenticated() ? (

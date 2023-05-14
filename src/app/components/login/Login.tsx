@@ -20,6 +20,11 @@ import facebook from '../../assets/images/signup/facebook.png';
 import { object, string } from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import api from 'app/api/tiddix';
+import { chkToaster } from '../common/Toaster';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import useAuth from 'app/hooks/useAuth';
 
 type LoginInputT = {
   email: string;
@@ -33,6 +38,13 @@ const schema = object().shape({
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const authContext = useAuth();
+
+  // get where the user wanted to go before they got redirected to the login page
+  const from = location.state?.from.pathname || '/';
 
   const {
     handleSubmit,
@@ -49,9 +61,25 @@ const LoginForm = () => {
 
   const onSubmitHandler = (data: LoginInputT) => {
     setLoading(true);
-    console.log('DATA', data);
-    reset();
-    setLoading(false);
+    const { email, password } = data;
+
+    api
+      .post('/login', { email, password })
+      .then(({ data }) => {
+        const { access_token } = data;
+        authContext?.setAuth({ email, access_token });
+
+        setLoading(false);
+        reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        chkToaster.error({
+          title: error.response.data.message || 'Unable to login',
+        });
+
+        setLoading(false);
+      });
   };
 
   return (

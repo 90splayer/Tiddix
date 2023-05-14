@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 
 export type AuthUserT = {
   email: string;
-  password: string;
+  // password: string;
   access_token: string;
 };
 
@@ -25,8 +25,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [persist, setPersist] = useState<string>(
     localStorage.getItem('persist') || 'false',
   );
-
-  console.log('TYPE OF PERSIST', persist);
 
   return (
     <AuthContext.Provider value={{ auth, setAuth, persist, setPersist }}>

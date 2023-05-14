@@ -29,11 +29,6 @@ export default function PersistLogin() {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(`isLoading: ${isLoading}`);
-    console.log(`aT: ${JSON.stringify(authContext?.auth?.access_token)}`);
-  }, [isLoading]);
-
   return (
     <>
       {!(authContext?.persist === 'true') ? (

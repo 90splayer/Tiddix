@@ -13,21 +13,30 @@ import Login from 'app/pages/Login';
 import SignUp from 'app/pages/SignUp';
 import LoginForm from 'app/components/login/Login';
 import Dashboard from 'app/pages/Dashboard';
+import PersistLogin from 'app/components/auth/PersistLogin';
+import RequireAuth from 'app/components/auth/RequireAuth';
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/invest" element={<Investor />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="*" element={<Nopage />} />
+        <Route element={<PersistLogin />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="*" element={<Nopage />} />
+
+          {/* PROTECTED ROUTES */}
+          {/* <Route element={<PersistLogin />}> */}
+          <Route element={<RequireAuth />}>
+            <Route path="/invest" element={<Investor />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );

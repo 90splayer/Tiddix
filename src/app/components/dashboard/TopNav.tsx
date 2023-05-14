@@ -21,14 +21,9 @@ import love from '../../assets/svgs/dashboard/love.svg';
 import { RiSearchLine } from 'react-icons/ri';
 import { IoWallet } from 'react-icons/io5';
 import { FaHeart } from 'react-icons/fa';
+import AccountState from '../auth/AccountState';
 
-type Props = {
-  firstName: string;
-  avartar: string;
-  bal: string;
-  likes: string;
-};
-const TopNav: FC<Props> = ({ firstName, avartar, bal, likes }) => {
+const TopNav = () => {
   const [isMobile, setIsMobile] = useState('none');
 
   const closeMenu = () => setIsMobile('none');
@@ -98,43 +93,22 @@ const TopNav: FC<Props> = ({ firstName, avartar, bal, likes }) => {
             </NavLink>
           </HStack>
 
-          <HStack spacing={{ base: '15px', lg: '48px' }}>
-            <Input
-              pos="relative"
-              placeholder="Search projects and creatives"
-              px="2rem"
-              borderRadius="10rem"
-              border="1px solid #99A1AA"
-              w="30.6rem"
-              h="5.6rem"
-              _placeholder={{
-                fontSize: '1.6rem',
-                color: '#99A1AA',
-                fontWeight: '700',
-              }}
-            />
+          <Input
+            pos="relative"
+            placeholder="Search projects and creatives"
+            px="2rem"
+            borderRadius="10rem"
+            border="1px solid #99A1AA"
+            w="30.6rem"
+            h="5.6rem"
+            _placeholder={{
+              fontSize: '1.6rem',
+              color: '#99A1AA',
+              fontWeight: '700',
+            }}
+          />
 
-            <Flex gap="5px">
-              <Icon as={FaHeart} color="pink" />
-              <Text size="body2">{likes}</Text>
-            </Flex>
-            <Flex gap="1.4rem">
-              <Avatar boxSize="40px" name="Segun Adebayo" src={avartar} />
-              <Stack>
-                <Text size="body2">Hello, {firstName}</Text>
-                <Flex>
-                  <Icon as={IoWallet} w="15px" h="15px" color="#99A1AA" />
-                  <Text size="body2">{bal}</Text>
-                </Flex>
-              </Stack>
-            </Flex>
-
-            <NavLink to="/login">
-              <Button variant="primary" size="lg">
-                Logout
-              </Button>
-            </NavLink>
-          </HStack>
+          <AccountState />
 
           <Box display={{ base: 'block', md: 'none', lg: 'none' }}>
             <IconButton
