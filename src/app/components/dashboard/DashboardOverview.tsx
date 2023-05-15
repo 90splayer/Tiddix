@@ -1,4 +1,12 @@
-import { Box, Grid, GridItem } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Text,
+  Stack,
+} from '@chakra-ui/react';
 import React, { FC } from 'react';
 import OverviewCard from './OverviewCard';
 import {
@@ -8,6 +16,7 @@ import {
 } from 'app/assets/icons';
 import { UserData } from 'app/components/data/dashboard/UserData';
 import NoTransaction from './NoTransaction';
+import { Link } from 'react-router-dom';
 
 const DashboardOverview: FC = () => {
   return (
@@ -42,6 +51,69 @@ const DashboardOverview: FC = () => {
               price={item.total_liabilities}
               fundDetail={item.fund_detail[2]}
             />
+          </GridItem>
+          <GridItem w="100%">
+            <Flex
+              bg="#232629"
+              flexDir="column"
+              justify="space-between"
+              maxW="411px"
+              h="239px"
+              p="25px 30px 40px"
+              borderRadius="30px"
+            >
+              <Stack spacing="8px">
+                <Text color="#fff">Total funding</Text>
+                <Heading size="display4">{item.total_funding}</Heading>
+              </Stack>
+              <Link to={''}>
+                <Text textDecor="underline" size="body2">
+                  view projects
+                </Text>
+              </Link>
+            </Flex>
+          </GridItem>
+          <GridItem w="100%">
+            <Flex
+              bg="#232629"
+              flexDir="column"
+              justify="space-between"
+              maxW="411px"
+              h="239px"
+              p="25px 30px 40px"
+              borderRadius="30px"
+            >
+              <Stack spacing="8px">
+                <Text color="#fff">Total funding</Text>
+                <Heading size="display4">{item.total_funding}</Heading>
+              </Stack>
+              <Link to={''}>
+                <Text textDecor="underline" size="body2">
+                  view projects
+                </Text>
+              </Link>
+            </Flex>
+          </GridItem>
+          <GridItem w="100%">
+            <Flex
+              bg="#232629"
+              flexDir="column"
+              justify="space-between"
+              maxW="411px"
+              h="239px"
+              p="25px 30px 40px"
+              borderRadius="30px"
+            >
+              <Stack spacing="8px">
+                <Text color="#fff">Total funding</Text>
+                <Heading size="display4">{item.total_funding}</Heading>
+              </Stack>
+              <Link to={''}>
+                <Text textDecor="underline" size="body2">
+                  view projects
+                </Text>
+              </Link>
+            </Flex>
           </GridItem>
         </Grid>
       ))}
