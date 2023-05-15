@@ -8,15 +8,87 @@ import {
   Image,
   Text,
   VStack,
+  FormControl,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import tiddix from '../../assets/images/tiddix.png';
 import signUpBg from '../../assets/images/signup/signup.png';
 import google from '../../assets/images/signup/google.png';
 import facebook from '../../assets/images/signup/facebook.png';
+import { object, string, ref } from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
+import api from 'app/api/tiddix';
+import { chkToaster } from '../common/Toaster';
+
+type SignUpInputT = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  confirmPassword: string;
+};
+
+const schema = object().shape({
+  email: string().email().required('Email is Required'),
+  firstName: string().required('Your First Name is Required'),
+  lastName: string().required('Your Last Name is Required'),
+  password: string().min(8).max(32).required(),
+  confirmPassword: string()
+    .oneOf([ref('password')], "Passwords Don't Match")
+    .required(),
+});
 
 const SignUpForm = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const {
+    handleSubmit,
+    register,
+    // reset,
+    formState: { errors },
+  } = useForm<SignUpInputT>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+    },
+  });
+
+  const onSubmitHandler = (data: SignUpInputT) => {
+    setLoading(true);
+    const { email, firstName, lastName, password } = data;
+    api
+      .post('/register', {
+        email: email,
+        first_name: firstName,
+        last_name: lastName,
+        password: password,
+      })
+      .then((response: any) => {
+        setLoading(false);
+        chkToaster.success({
+          title: 'Account created successfully',
+          description: 'Please check your email for verification link',
+        });
+
+        setTimeout(() => {
+          navigate('/login', { replace: true });
+        }, 3000);
+      })
+      .catch((error: any) => {
+        setLoading(false);
+        chkToaster.error({
+          title: error.response.data.message,
+        });
+      });
+  };
+
   return (
     <Flex w="full">
       <Flex w="40%" flexDir="column" align="center" p="5.1rem 3rem 16rem">
@@ -69,7 +141,7 @@ const SignUpForm = () => {
             </Text>
           </NavLink>
         </HStack>
-        <form>
+        <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
           <VStack spacing="2rem" maxW="39rem">
             <Box mb="3.6rem">
               <Heading as="h4" fontSize="2.4rem" textAlign="center" mb="9px">
@@ -79,63 +151,82 @@ const SignUpForm = () => {
                 Get started by creating your creative account.
               </Text>
             </Box>
-            <Flex gap="14px">
-              <Input
-                width="100%"
-                h="6.3rem"
-                placeholder="First Name"
-                _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
-                fontSize="14px"
-                borderRadius="20px"
-                padding={'20px 15px'}
-                _hover={{ border: '2px solid #FF8CDF' }}
-                focusBorderColor="#FF8CDF"
-                border="1px solid #94A3B8"
-                transition="0.7 ease-in-out"
-              />
-              <Input
-                width="100%"
-                h="6.3rem"
-                placeholder="Last Name"
-                _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
-                fontSize="14px"
-                borderRadius="20px"
-                padding={'20px 15px'}
-                _hover={{ border: '2px solid #FF8CDF' }}
-                focusBorderColor="#FF8CDF"
-                border="1px solid #94A3B8"
-                transition="0.7 ease-in-out"
-              />
+            <Flex gap="1.4rem">
+              <FormControl isRequired isInvalid={!!errors.firstName}>
+                <Input
+                  size="lg"
+                  placeholder="First Name"
+                  {...register('firstName')}
+                />
+                {errors.firstName && (
+                  <Text color="#C21E56" fontSize="1.5rem">
+                    {errors.firstName.message}
+                  </Text>
+                )}
+              </FormControl>
+
+              <FormControl isRequired isInvalid={!!errors.firstName}>
+                <Input
+                  size="lg"
+                  placeholder="Last Name"
+                  {...register('lastName')}
+                />
+                {errors.lastName && (
+                  <Text color="#C21E56" fontSize="1.5rem">
+                    {errors.lastName.message}
+                  </Text>
+                )}
+              </FormControl>
             </Flex>
 
-            <Input
-              width="100%"
-              h="6.3rem"
-              placeholder="Email Address"
-              _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
-              fontSize="14px"
-              borderRadius="20px"
-              padding={'20px 15px'}
-              _hover={{ border: '2px solid #FF8CDF' }}
-              focusBorderColor="#FF8CDF"
-              border="1px solid #94A3B8"
-              transition="0.7 ease-in-out"
-            />
-            <Input
-              width="100%"
-              h="6.3rem"
-              placeholder="Password"
-              _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
-              fontSize="14px"
-              borderRadius="20px"
-              padding={'20px 15px'}
-              _hover={{ border: '2px solid #FF8CDF' }}
-              focusBorderColor="#FF8CDF"
-              border="1px solid #94A3B8"
-              transition="0.7 ease-in-out"
-            />
+            <FormControl isRequired isInvalid={!!errors.email}>
+              <Input
+                size="lg"
+                placeholder="Email Address"
+                {...register('email')}
+              />
+              {errors.email && (
+                <Text color="#C21E56" fontSize="1.5rem">
+                  {errors.email.message}
+                </Text>
+              )}
+            </FormControl>
 
-            <Button variant="multicolor" w="100%" size="md">
+            <FormControl isRequired isInvalid={!!errors.password}>
+              <Input
+                size="lg"
+                placeholder="Password"
+                type="password"
+                {...register('password')}
+              />
+              {errors.password && (
+                <Text color="#C21E56" fontSize="1.5rem">
+                  {errors.password.message}
+                </Text>
+              )}
+            </FormControl>
+
+            <FormControl isRequired isInvalid={!!errors.confirmPassword}>
+              <Input
+                size="lg"
+                placeholder="Confirm Password"
+                type="password"
+                {...register('confirmPassword')}
+              />
+              {errors.confirmPassword && (
+                <Text color="#C21E56" fontSize="1.5rem">
+                  {errors.confirmPassword.message}
+                </Text>
+              )}
+            </FormControl>
+
+            <Button
+              variant="multicolor"
+              w="100%"
+              size="md"
+              type="submit"
+              isLoading={loading}
+            >
               Create Account
             </Button>
 

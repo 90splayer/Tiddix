@@ -33,7 +33,7 @@ type LoginInputT = {
 
 const schema = object().shape({
   email: string().email().required('Email is Required'),
-  password: string().min(6).max(32).required(),
+  password: string().min(8).max(32).required(),
 });
 
 const LoginForm = () => {
