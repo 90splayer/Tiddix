@@ -22,7 +22,11 @@ export const buttonStyles = {
           opacity: '0.8',
           _after: {},
 
-          // _disabled: {},
+          _disabled: {
+            background: 'blackShade.4',
+            color: 'blackShade.1',
+            opacity: 1,
+          },
         },
         // _focus: {},
         // _active: {},

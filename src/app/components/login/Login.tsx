@@ -8,15 +8,80 @@ import {
   Image,
   Text,
   VStack,
+  FormControl,
+  FormErrorMessage,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import tiddix from '../../assets/images/tiddix.png';
 import signUpBg from '../../assets/images/signup/signup.png';
 import google from '../../assets/images/signup/google.png';
 import facebook from '../../assets/images/signup/facebook.png';
+import { object, string } from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import api from 'app/api/tiddix';
+import { chkToaster } from '../common/Toaster';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import useAuth from 'app/hooks/useAuth';
+
+type LoginInputT = {
+  email: string;
+  password: string;
+};
+
+const schema = object().shape({
+  email: string().email().required('Email is Required'),
+  password: string().min(8).max(32).required(),
+});
 
 const LoginForm = () => {
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const authContext = useAuth();
+
+  // get where the user wanted to go before they got redirected to the login page
+  const from = location.state?.from.pathname || '/';
+
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm<LoginInputT>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  const onSubmitHandler = (data: LoginInputT) => {
+    setLoading(true);
+    const { email, password } = data;
+
+    api
+      .post('/login', { email, password })
+      .then(({ data }) => {
+        const { access_token } = data;
+        authContext?.setAuth({ email, access_token });
+
+        setLoading(false);
+        reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        chkToaster.error({
+          title: error.response.data.message || 'Unable to login',
+        });
+
+        setLoading(false);
+      });
+  };
+
   return (
     <Flex w="full">
       <Flex w="40%" flexDir="column" align="center" p="5.1rem 3rem 16rem">
@@ -69,7 +134,7 @@ const LoginForm = () => {
             </Text>
           </NavLink>
         </HStack>
-        <form>
+        <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
           <VStack spacing="2rem" maxW="39rem">
             <Box mb="3.6rem">
               <Heading as="h4" fontSize="2.4rem" textAlign="center" mb="9px">
@@ -80,34 +145,33 @@ const LoginForm = () => {
               </Text>
             </Box>
             <Box w="39rem">
-              <Input
-                width="100%"
-                h="6.3rem"
-                placeholder="Email Address"
-                _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
-                fontSize="14px"
-                borderRadius="20px"
-                // padding={'20px 15px'}
-                _hover={{ border: '2px solid #FF8CDF' }}
-                focusBorderColor="#FF8CDF"
-                border="1px solid #94A3B8"
-                transition="0.7 ease-in-out"
-              />
+              <FormControl isRequired isInvalid={!!errors.email}>
+                <Input
+                  size="lg"
+                  placeholder="Email Address"
+                  {...register('email')}
+                />
+                {errors.email && (
+                  <Text color="#C21E56" fontSize="1.5rem">
+                    {errors.email.message}
+                  </Text>
+                )}
+              </FormControl>
             </Box>
             <Box w="39rem">
-              <Input
-                w="100%"
-                h="6.3rem"
-                placeholder="Password"
-                _placeholder={{ color: '#99A1AA', fontSize: '16px' }}
-                fontSize="14px"
-                borderRadius="20px"
-                // padding={'20px 15px'}
-                _hover={{ border: '2px solid #FF8CDF' }}
-                focusBorderColor="#FF8CDF"
-                border="1px solid #94A3B8"
-                transition="0.7 ease-in-out"
-              />
+              <FormControl isRequired isInvalid={!!errors.password}>
+                <Input
+                  size="lg"
+                  type="password"
+                  placeholder="Password"
+                  {...register('password')}
+                />
+                {errors.password && (
+                  <Text color="#C21E56" fontSize="1.5rem">
+                    {errors.password.message}
+                  </Text>
+                )}
+              </FormControl>
               <Text
                 mt="2rem"
                 textAlign="right"
@@ -118,8 +182,14 @@ const LoginForm = () => {
               </Text>
             </Box>
 
-            <Button variant="multicolor" size="md" w="100%">
-              Create Account
+            <Button
+              variant="multicolor"
+              size="md"
+              w="100%"
+              type="submit"
+              isLoading={loading}
+            >
+              Login
             </Button>
 
             <Flex

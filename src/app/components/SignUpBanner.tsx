@@ -18,7 +18,7 @@ const SignUpBanner = () => {
           color="#fff"
           fontWeight="700"
         >
-          Join the world’s largest digital
+          Join the world's largest digital
           <br /> platform and start getting funds.
         </Text>
         <Button

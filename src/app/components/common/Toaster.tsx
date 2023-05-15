@@ -90,18 +90,13 @@ const Toast = ({
             <Text
               fontSize={{ base: '1.0rem', sm: '1.4rem', md: '1.6rem' }}
               color="black"
-              fontWeight="medium"
             >
               {title}
             </Text>
             {description && (
               <>
                 <Spacer />
-                <Text
-                  color="gray.500"
-                  fontSize={{ base: 'xs', sm: 'sm' }}
-                  fontWeight="normal"
-                >
+                <Text fontSize={{ base: '1.0rem', sm: '1.4rem', md: '1.6rem' }}>
                   {description}
                 </Text>
               </>
