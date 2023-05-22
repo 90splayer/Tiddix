@@ -87,6 +87,19 @@ const TopNav = () => {
                 Investors
               </Text>
             </NavLink>
+            <NavLink to="/creative">
+              <Text
+                size="body2"
+                display={{ base: 'none', md: 'flex', lg: 'flex' }}
+                transition="0.2s ease-in-out"
+                _hover={{
+                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                  bgClip: 'text',
+                }}
+              >
+                Creatives
+              </Text>
+            </NavLink>
           </HStack>
 
           <Input

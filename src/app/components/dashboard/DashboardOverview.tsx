@@ -17,6 +17,7 @@ import {
 import { UserData } from 'app/components/data/dashboard/UserData';
 import NoTransaction from './NoTransaction';
 import { Link } from 'react-router-dom';
+import FundingChart from './FundingChart';
 
 const DashboardOverview: FC = () => {
   return (
@@ -74,7 +75,8 @@ const DashboardOverview: FC = () => {
             </Flex>
           </GridItem>
           <GridItem w="100%">
-            <Flex
+            <FundingChart />
+            {/* <Flex
               bg="#232629"
               flexDir="column"
               justify="space-between"
@@ -92,7 +94,7 @@ const DashboardOverview: FC = () => {
                   view projects
                 </Text>
               </Link>
-            </Flex>
+            </Flex> */}
           </GridItem>
           <GridItem w="100%">
             <Flex
