@@ -58,7 +58,7 @@ export const Footer: FC = () => {
                 <InputGroup
                   borderRadius="10rem"
                   border="1px solid #99A1AA"
-                  w="30.6rem"
+                  maxW="30.6rem"
                   h="5.6rem"
                 >
                   <Input
@@ -67,8 +67,8 @@ export const Footer: FC = () => {
                     px="2rem"
                     borderRadius="10rem"
                     border="1px solid #99A1AA"
-                    w="30.6rem"
-                    h="5.6rem"
+                    maxW="30.6rem"
+                    // h="5.6rem"
                     _placeholder={{
                       fontSize: '1.6rem',
                       color: '#99A1AA',
@@ -81,8 +81,8 @@ export const Footer: FC = () => {
                     pos="absolute"
                     bgGradient="linear(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)"
                     borderRadius="50px"
-                    w="3.6rem"
-                    h="3.6rem"
+                    maxW="3.6rem"
+                    maxH="3.6rem"
                     fontSize="2.4rem"
                     children={<TiArrowRight color="#000" />}
                   />

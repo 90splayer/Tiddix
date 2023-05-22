@@ -68,7 +68,7 @@ export const headingStyles = {
           lineHeight: { base: '1.8rem', sm: '2.0rem', md: '2.2rem' },
         },
         h5: {
-          fontSize: { base: '1.0rem', sm: '1.75rem', md: '1.6rem' },
+          fontSize: { base: '1.0rem', sm: '1.4rem', md: '1.6rem' },
           lineHeight: { base: '1.4rem', sm: '1.6rem', md: '1.9rem' },
         },
       },

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { MoneyBagIcon } from 'app/assets/icons';
 import { Box } from '@chakra-ui/react';
 import Intro from 'app/components/landing-page/Intro';
@@ -9,8 +9,12 @@ import TrendingProject from 'app/components/landing-page/TrendingProject';
 import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
 import Header from 'app/layout/Header';
 import { Footer } from 'app/layout/Footer';
+import useAuth from 'app/hooks/useAuth';
+import { isAuthenticated } from 'app/utils/helpers';
 
 const Home: FC = () => {
+  const auth = useAuth();
+
   return (
     <Box>
       <Header />

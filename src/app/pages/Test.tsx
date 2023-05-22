@@ -4,6 +4,7 @@ import CustomTab from 'app/components/common/CustomTab';
 import { PaletteIcon } from 'app/assets/icons';
 import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
 import { chkToaster } from 'app/components/common/Toaster';
+import CustomMenuButton from 'app/components/common/CustomMenuButton';
 
 const CustomComponent = ({ name }: any) => {
   return <p>{name} COMPONENT!</p>;
