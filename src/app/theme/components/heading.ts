@@ -36,8 +36,13 @@ export const headingStyles = {
       // font size and line height set for md. base and sm assumed till mobile is ready. Default heading is display2
       sizes: {
         display1: {
-          fontSize: { base: '3rem', sm: '4.8rem', md: '6.4rem' },
-          lineHeight: { base: '4rem', sm: '4.75rem', md: '7.8rem' },
+          fontSize: { base: '4.2rem', sm: '4.8rem', md: '6.4rem' },
+          lineHeight: {
+            base: '5.2rem',
+            sm: '5.75rem',
+            md: '6.4rem',
+            lg: '7.3rem',
+          },
         },
         display2: {
           fontSize: { base: '3rem', sm: '3.2rem', md: '4.8rem' },

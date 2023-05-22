@@ -36,7 +36,7 @@ const {
 
 const UserInfo = () => {
   return (
-    <Flex gap="2rem" align="center">
+    <Flex gap="2rem" align="center" zIndex={5}>
       <Avatar boxSize="40px" name="Segun Adebayo" src={avartar} />
       <Stack>
         <Heading size="h5">
@@ -106,7 +106,7 @@ export default function AccountState() {
             ]}
           />
 
-          <NavLink to="/login">
+          <NavLink to="/dashboard">
             <Button size="sm">Create</Button>
           </NavLink>
         </HStack>
