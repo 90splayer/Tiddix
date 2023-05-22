@@ -33,6 +33,7 @@ const CustomMenuButton = <T extends MenuButtonProps>({
         {title}
       </MenuButton>
       <MenuList
+        zIndex={3}
         border="1px solid blackShade.3"
         overflow="hidden"
         boxShadow="base"
