@@ -1,9 +1,7 @@
-import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
-// import creativeBox from '../../assets/images/home/growing-creativeBg.png';
-// import Marquee from 'react-fast-marquee';
+import { Box, Flex, Grid, GridItem, Heading, Stack } from '@chakra-ui/react';
 import React, { FC } from 'react';
-// import MarqueBtn from './MarqueBtn';
-// import { CategoryData } from '../data/Category';
+import MarqueBtn from './MarqueBtn';
+import { CategoryData } from '../data/Category';
 
 const CreativeCommunity: FC = () => {
   return (
@@ -19,31 +17,13 @@ const CreativeCommunity: FC = () => {
           Our growing creative community
         </Heading>
 
-        {/* <Stack spacing="30px">
-          <Marquee pauseOnHover speed={10} autoFill={true}>
-            {CategoryData.slice(0, 10).map((item, index) => (
-              <Box key={index} m="0 2.5rem">
-                <MarqueBtn title={item} />
-              </Box>
-            ))}
-          </Marquee>
-          <Marquee pauseOnHover speed={10} autoFill={true}>
-            {CategoryData.slice(10, 20).map((item, index) => (
-              <Box key={index} m="0 2.5rem">
-                <MarqueBtn title={item} />
-              </Box>
-            ))}
-          </Marquee>
-
-          <Marquee pauseOnHover speed={10} autoFill={true}>
-            {CategoryData.slice(20).map((item, index) => (
-              <Box key={index} m="0 2.5rem">
-                <MarqueBtn title={item} />
-              </Box>
-            ))}
-          </Marquee>
-        </Stack> */}
-        {/* <Box bgImg={creativeBox} w="full" h="279px"></Box> */}
+        <Grid templateColumns="repeat(5, 1fr)" gap="20px">
+          {CategoryData.slice(0, 15).map((item, index) => (
+            <GridItem w="100%" key={index}>
+              <MarqueBtn title={item} />
+            </GridItem>
+          ))}
+        </Grid>
       </Flex>
     </Box>
   );
