@@ -34,6 +34,7 @@ const CreativeCommunity: FC = () => {
               </Box>
             ))}
           </Marquee>
+
           <Marquee pauseOnHover speed={10} autoFill={true}>
             {CategoryData.slice(20).map((item, index) => (
               <Box key={index} m="0 2.5rem">
