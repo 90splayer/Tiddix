@@ -8,9 +8,15 @@ const MarqueBtn: FC<Props> = ({ title }) => {
     <Flex
       align="center"
       justify="center"
-      background="transparent"
-      border="2px solid pink"
-      borderRadius="100px"
+      sx={{
+        borderRadius: '100px',
+        border: '2px solid transparent',
+        background:
+          'linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box',
+
+        // borderImage:
+        //   'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) 1',
+      }}
       p="20px 50px"
     >
       <Heading as="h2">{title}</Heading>
