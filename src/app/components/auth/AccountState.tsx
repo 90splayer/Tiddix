@@ -106,7 +106,7 @@ export default function AccountState() {
             ]}
           />
 
-          <NavLink to="/dashboard">
+          <NavLink to="/dashboard/create-project">
             <Button size="sm">Create</Button>
           </NavLink>
         </HStack>
