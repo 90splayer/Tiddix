@@ -20,21 +20,21 @@ const CreativeCommunity: FC = () => {
         </Heading>
 
         <Stack spacing="30px">
-          <Marquee speed={20}>
+          <Marquee speed={15} direction="left">
             {CategoryData.slice(0, 6).map((item, index) => (
               <Box key={index} m="0 2.5rem">
                 <MarqueBtn title={item} />
               </Box>
             ))}
           </Marquee>
-          <Marquee speed={10}>
+          <Marquee speed={10} direction="right">
             {CategoryData.slice(6, 13).map((item, index) => (
               <Box key={index} m="0 2.5rem">
                 <MarqueBtn title={item} />
               </Box>
             ))}
           </Marquee>
-          <Marquee speed={15}>
+          <Marquee speed={20} direction="left">
             {CategoryData.slice(13, 20).map((item, index) => (
               <Box key={index} m="0 2.5rem">
                 <MarqueBtn title={item} />
