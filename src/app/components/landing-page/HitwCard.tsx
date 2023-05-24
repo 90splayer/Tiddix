@@ -19,6 +19,8 @@ const HowItWorkCard: FC<Props> = ({ icon, title, desc }) => {
       transition="0.3s ease"
       _hover={{
         boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.15)',
+        // boxShadow: '0px 92px 40px -59px rgba(108, 76, 223, 0.15)',
+        transform: 'scale(1.03)',
       }}
     >
       <Flex

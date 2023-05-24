@@ -35,12 +35,9 @@ const BecomeInvestor: FC = () => {
             >
               Become an investor
             </Heading>
-            <Text
-              color="#99A1AA"
-              fontSize={{ base: '1.6rem', sm: '2rem' }}
-              maxW="395px"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <Text size="body1" maxW="395px">
+              Be the catalyst and spark to ignite the flame in the journey of a
+              creative. You just might be funding the next big thing!
             </Text>
             <Flex gap="24px">
               <Button
@@ -48,11 +45,15 @@ const BecomeInvestor: FC = () => {
                 borderRadius="10rem"
                 w="20.5rem"
                 h="59px"
+                outline="none"
+                border="none"
+                color="#000"
                 fontSize="1.6rem"
                 transition="0.5s ease"
                 boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
                 _hover={{
                   opacity: 0.8,
+                  transform: 'scale(1.02)',
                 }}
               >
                 Become an investor
@@ -67,6 +68,7 @@ const BecomeInvestor: FC = () => {
                 boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
                 _hover={{
                   opacity: 0.8,
+                  transform: 'scale(1.02)',
                 }}
                 bg="transparent"
                 color="#fff"
