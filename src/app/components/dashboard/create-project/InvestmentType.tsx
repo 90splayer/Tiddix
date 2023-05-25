@@ -9,6 +9,7 @@ import {
   IconButton,
   Input,
   Progress,
+  Select,
   Stack,
   Text,
   VStack,
@@ -16,6 +17,8 @@ import {
 import React, { FC } from 'react';
 import { IoCloudUploadSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { InvestmentIcon, PaletteIcon } from 'app/assets/icons';
+import InvestTypeCard from './InvestmentTypeCard';
 
 const InvestmentType: FC = () => {
   return (
@@ -46,19 +49,59 @@ const InvestmentType: FC = () => {
               Investment type
             </Heading>
 
-            <Stack w="100%" spacing="30px" mb="43px">
-              <Flex></Flex>{' '}
-              <Input
-                type="text"
-                size="lg"
-                minH="96px"
-                placeholder="Project Description"
+            <Flex w="100%" gap="2rem" mb="43px">
+              <InvestTypeCard
+                title="Debt"
+                icon={PaletteIcon}
+                desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
               />
-            </Stack>
-            <Stack spacing="22px">
-              <Text color="white" size="body2">
-                Upload Pitch Video
-              </Text>
+              <InvestTypeCard
+                title={'Equity'}
+                icon={InvestmentIcon}
+                desc={
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
+                }
+              />
+            </Flex>
+            <Stack spacing="22px" w="100%">
+              <Flex gap="1.8rem">
+                <Input type="text" size="lg" placeholder="Enter Amount" />
+                <Select
+                  placeholder="Enter Duration"
+                  h="5.6rem"
+                  fontSize="1.6rem"
+                  border="1px solid #99A1AA"
+                  borderRadius="2rem"
+                >
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </Select>
+              </Flex>{' '}
+              <Flex gap="1.8rem">
+                <Select
+                  placeholder="Select Payment Frequency"
+                  h="5.6rem"
+                  fontSize="1.6rem"
+                  border="1px solid #99A1AA"
+                  borderRadius="2rem"
+                >
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </Select>
+                <Select
+                  placeholder="Moratorium Period"
+                  h="5.6rem"
+                  fontSize="1.6rem"
+                  border="1px solid #99A1AA"
+                  borderRadius="2rem"
+                >
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </Select>
+              </Flex>{' '}
               <VStack
                 borderRadius="20px"
                 padding="4rem 2rem"
