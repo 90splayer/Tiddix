@@ -15,8 +15,10 @@ import {
 import React, { FC } from 'react';
 import { IoCloudUploadSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { useMultiStepForm } from './useMultistepForm';
 
 const CreateProject: FC = () => {
+  const { steps, currentStepIndex } = useMultiStepForm([]);
   return (
     <Box borderTop="1px solid grey" mt="2rem">
       <Container
