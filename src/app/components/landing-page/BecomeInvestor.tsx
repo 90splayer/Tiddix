@@ -10,6 +10,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import graphImg from '../../assets/images/home/graph.png';
+import { Link } from 'react-router-dom';
 
 const BecomeInvestor: FC = () => {
   return (
@@ -40,41 +41,45 @@ const BecomeInvestor: FC = () => {
               creative. You just might be funding the next big thing!
             </Text>
             <Flex gap="24px">
-              <Button
-                bg="#fff"
-                borderRadius="10rem"
-                w="20.5rem"
-                h="59px"
-                outline="none"
-                border="none"
-                color="#000"
-                fontSize="1.6rem"
-                transition="0.5s ease"
-                boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
-                _hover={{
-                  opacity: 0.8,
-                  transform: 'scale(1.02)',
-                }}
-              >
-                Become an investor
-              </Button>
-              <Button
-                border="1px solid #fff"
-                borderRadius="10rem"
-                w="14.7rem"
-                h="59px"
-                fontSize="1.6rem"
-                transition="0.5s ease"
-                boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
-                _hover={{
-                  opacity: 0.8,
-                  transform: 'scale(1.02)',
-                }}
-                bg="transparent"
-                color="#fff"
-              >
-                Learn More
-              </Button>
+              <Link to="/dashboard">
+                <Button
+                  bg="#fff"
+                  borderRadius="10rem"
+                  w="20.5rem"
+                  h="59px"
+                  outline="none"
+                  border="none"
+                  color="#000"
+                  fontSize="1.6rem"
+                  transition="0.5s ease"
+                  boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
+                  _hover={{
+                    opacity: 0.8,
+                    transform: 'scale(1.02)',
+                  }}
+                >
+                  Become an investor
+                </Button>
+              </Link>{' '}
+              <Link to="/invest">
+                <Button
+                  border="1px solid #fff"
+                  borderRadius="10rem"
+                  w="14.7rem"
+                  h="59px"
+                  fontSize="1.6rem"
+                  transition="0.5s ease"
+                  boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
+                  _hover={{
+                    opacity: 0.8,
+                    transform: 'scale(1.02)',
+                  }}
+                  bg="transparent"
+                  color="#fff"
+                >
+                  Learn More
+                </Button>
+              </Link>
             </Flex>
           </Stack>
 

@@ -1,7 +1,16 @@
-import { Box, Container, Flex, Heading, Text, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Container,
+  Flex,
+  HStack,
+  Heading,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import React, { FC } from 'react';
 import AudienceCard from './AudienceCard';
 import AudienceImg from '../../assets/images/about/audience.png';
+import InvestorImg from '../../assets/images/about/investor-icons.png';
 
 const Audiences: FC = () => {
   return (
@@ -23,9 +32,9 @@ const Audiences: FC = () => {
             (views, engagements, followers, rankings etc) can be used to
             properly determine a creator’s value and prospects for investments.
           </Text>
-          <Flex justify="space-between" gap="3.1rem">
+          <Flex justify="cente" gap="3.1rem">
             <AudienceCard
-              title={'Creatives'}
+              title={'Creator'}
               image={AudienceImg}
               desc={
                 'We invite investors to the creative space where creator metrics (views, engagements, followers, rankings etc) can be used to properly determine a creator’s value and prospects for investments.'
@@ -34,9 +43,9 @@ const Audiences: FC = () => {
 
             <AudienceCard
               title={'Investor'}
-              image={AudienceImg}
+              image={InvestorImg}
               desc={
-                'We invite investors to the creative space where creator metrics (views, engagements, followers, rankings etc) can be used to properly determine a creator’s value and prospects for investments.'
+                'Be the catalyst and spark to ignite the flame in the journey of a creative. You just might be funding the next big thing!'
               }
             />
           </Flex>
