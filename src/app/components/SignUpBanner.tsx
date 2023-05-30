@@ -1,5 +1,6 @@
 import { Text, VStack, Container, Button } from '@chakra-ui/react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SignUpBanner = () => {
   return (
@@ -21,21 +22,23 @@ const SignUpBanner = () => {
           Join the world's largest digital
           <br /> platform and start getting funds.
         </Text>
-        <Button
-          borderRadius="10rem"
-          w="14.9rem"
-          h="59px"
-          bg="#fff"
-          color="#000"
-          fontSize="1.6rem"
-          transition="0.5s ease"
-          boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
-          _hover={{
-            opacity: 0.8,
-          }}
-        >
-          Sign up
-        </Button>
+        <Link to="/signup">
+          <Button
+            borderRadius="10rem"
+            w="14.9rem"
+            h="59px"
+            bg="#fff"
+            color="#000"
+            fontSize="1.6rem"
+            transition="0.5s ease"
+            boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
+            _hover={{
+              opacity: 0.8,
+            }}
+          >
+            Sign up
+          </Button>
+        </Link>
       </VStack>
     </Container>
   );

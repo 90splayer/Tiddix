@@ -9,6 +9,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import ProjectCard from '../ProjectCard';
+import { Link } from 'react-router-dom';
 
 const TrendingProject = () => {
   return (
@@ -42,22 +43,24 @@ const TrendingProject = () => {
             <ProjectCard />
           </GridItem>
         </Grid>
-        <Button
-          border="1px solid #fff"
-          borderRadius="10rem"
-          w="22rem"
-          h="59px"
-          fontSize="1.6rem"
-          transition="0.5s ease"
-          boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
-          _hover={{
-            opacity: 0.8,
-          }}
-          bg="transparent"
-          color="#fff"
-        >
-          Explore More Project
-        </Button>
+        <Link to="/explore">
+          <Button
+            border="1px solid #fff"
+            borderRadius="10rem"
+            w="22rem"
+            h="59px"
+            fontSize="1.6rem"
+            transition="0.5s ease"
+            boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
+            _hover={{
+              opacity: 0.8,
+            }}
+            bg="transparent"
+            color="#fff"
+          >
+            Explore More Project
+          </Button>
+        </Link>
       </Flex>
     </Container>
   );

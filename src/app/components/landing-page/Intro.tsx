@@ -54,10 +54,14 @@ const Intro: FC = () => {
               hassle-free, quick debt and equity funding.
             </Text>
             <Flex gap="24px">
-              <Button variant="multicolor" size="lg">
-                Get Started
-              </Button>
-              <Button size="lg">Learn More</Button>
+              <Link to="/signup">
+                <Button variant="multicolor" size="lg">
+                  Get Started
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button size="lg">Learn More</Button>
+              </Link>
             </Flex>
           </Stack>
 
