@@ -19,6 +19,7 @@ export const globalStyles = {
       },
     }),
   },
+  breakpoints: { sm: '608px', md: '1000px', lg: '1200px', xl: '1400px' },
 
   colors: {
     transparent: 'transparent',
