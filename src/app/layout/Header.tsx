@@ -34,92 +34,100 @@ const TopNav = () => {
         zIndex={3}
         p={{
           base: '3.5rem 2rem',
-          sm: '3.6rem 5rem 3rem',
+          sm: '3.6rem 3rem 3rem',
           md: '3.6rem 5.2rem 3rem',
           lg: '3.6rem 7.2rem 3rem',
         }}
       >
         <Flex align="center" justify="space-between">
-          <HStack
-            spacing={{ base: '15px', lg: '48px' }}
-            fontSize={{ md: '1.4rem', lg: '1.6rem' }}
-            color="#99A1AA"
-          >
+          <Flex gap="50px">
             <NavLink to="/">
-              <Image src={tiddix} alt="tiddix logo" w="120px" />
+              <Image src={tiddix} alt="tiddix logo" maxW="120px" />
             </NavLink>
-            <NavLink to="/explore">
-              <Text
-                size="body2"
-                display={{ base: 'none', md: 'flex', lg: 'flex' }}
-                transition="0.2s ease-in-out"
-                _hover={{
-                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
-                  bgClip: 'text',
-                }}
-              >
-                Explore
-              </Text>
-            </NavLink>
-            <NavLink to="/about">
-              <Text
-                size="body2"
-                display={{ base: 'none', md: 'flex', lg: 'flex' }}
-                transition="0.2s ease-in-out"
-                _hover={{
-                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
-                  bgClip: 'text',
-                }}
-              >
-                About Us
-              </Text>
-            </NavLink>
-            <NavLink to="/invest">
-              <Text
-                size="body2"
-                display={{ base: 'none', md: 'flex', lg: 'flex' }}
-                transition="0.2s ease-in-out"
-                _hover={{
-                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
-                  bgClip: 'text',
-                }}
-              >
-                Investors
-              </Text>
-            </NavLink>
-            <NavLink to="/creative">
-              <Text
-                size="body2"
-                display={{ base: 'none', md: 'flex', lg: 'flex' }}
-                transition="0.2s ease-in-out"
-                _hover={{
-                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
-                  bgClip: 'text',
-                }}
-              >
-                Creatives
-              </Text>
-            </NavLink>
-          </HStack>
+            <HStack
+              display={{ base: 'none', lg: 'flex' }}
+              spacing={{ base: '15px', md: '30px', xl: '40px' }}
+              fontSize={{ md: '1.4rem', lg: '1.6rem' }}
+              color="#99A1AA"
+            >
+              <NavLink to="/explore">
+                <Text
+                  size="body2"
+                  display={{ base: 'none', md: 'flex', lg: 'flex' }}
+                  transition="0.2s ease-in-out"
+                  _hover={{
+                    bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                    bgClip: 'text',
+                  }}
+                >
+                  Explore
+                </Text>
+              </NavLink>
+              <NavLink to="/about">
+                <Text
+                  size="body2"
+                  whiteSpace="nowrap"
+                  display={{ base: 'none', md: 'flex', lg: 'flex' }}
+                  transition="0.2s ease-in-out"
+                  _hover={{
+                    bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                    bgClip: 'text',
+                  }}
+                >
+                  About Us
+                </Text>
+              </NavLink>
+              <NavLink to="/invest">
+                <Text
+                  size="body2"
+                  display={{ base: 'none', md: 'flex', lg: 'flex' }}
+                  transition="0.2s ease-in-out"
+                  _hover={{
+                    bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                    bgClip: 'text',
+                  }}
+                >
+                  Investors
+                </Text>
+              </NavLink>
+              <NavLink to="/creative">
+                <Text
+                  size="body2"
+                  display={{ base: 'none', md: 'flex', lg: 'flex' }}
+                  transition="0.2s ease-in-out"
+                  _hover={{
+                    bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                    bgClip: 'text',
+                  }}
+                >
+                  Creatives
+                </Text>
+              </NavLink>
+            </HStack>
+          </Flex>
 
-          <Input
-            pos="relative"
-            placeholder="Search projects and creatives"
-            px="2rem"
-            borderRadius="10rem"
-            border="1px solid #99A1AA"
-            w="30.6rem"
-            h="5.6rem"
-            _placeholder={{
-              fontSize: '1.6rem',
-              color: '#99A1AA',
-              fontWeight: '700',
-            }}
-          />
+          <Box px="2rem" maxW="30.6rem" display={{ base: 'none', sm: 'block' }}>
+            <Input
+              pos="relative"
+              placeholder="Search projects and creatives"
+              px="2rem"
+              borderRadius="10rem"
+              border="1px solid #99A1AA"
+              w={{ base: '30.6rem', lg: '100%', xl: '30rem' }}
+              h="5.6rem"
+              _placeholder={{
+                fontSize: '1.6rem',
+                color: '#99A1AA',
+                fontWeight: '700',
+              }}
+            />
+          </Box>
 
-          <AccountState />
+          <Box display={{ base: 'none', lg: 'flex' }}>
+            <AccountState />
+          </Box>
 
-          <Box display={{ base: 'block', md: 'none', lg: 'none' }}>
+          <Box display={{ base: 'block', lg: 'none' }}>
             <IconButton
               _hover={{ bgColor: '#f4f4f4', color: '#0A0A0A' }}
               onClick={() => setIsMobile('flex')}
