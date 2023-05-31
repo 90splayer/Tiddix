@@ -61,7 +61,7 @@ const BecomeInvestor: FC = () => {
                   Become an investor
                 </Button>
               </Link>{' '}
-              <Link to="/invest">
+              <Link to="/about">
                 <Button
                   border="1px solid #fff"
                   borderRadius="10rem"

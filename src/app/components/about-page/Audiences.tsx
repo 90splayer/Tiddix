@@ -37,7 +37,7 @@ const Audiences: FC = () => {
               title={'Creator'}
               image={AudienceImg}
               desc={
-                'We invite investors to the creative space where creator metrics (views, engagements, followers, rankings etc) can be used to properly determine a creator’s value and prospects for investments.'
+                'Are you a creative in need of some investment to kick-start a project? share your creativity with the world, get funded and build your audience'
               }
             />
 
