@@ -31,7 +31,6 @@ function App() {
           {/* PROTECTED ROUTES */}
           {/* <Route element={<PersistLogin />}> */}
           <Route element={<RequireAuth />}>
-            <Route path="/invest" element={<Investor />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route
               path="/dashboard/create-project"
