@@ -7,20 +7,21 @@ import {
   IconButton,
   Text,
   Image,
-  Button,
   Input,
-  Avatar,
-  Stack,
-  Icon,
 } from '@chakra-ui/react';
 // import { FaSun, FaMoon } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import tiddix from '../assets/images/tiddix.png';
 import { NavLink } from 'react-router-dom';
 import AccountState from 'app/components/auth/AccountState';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { DashboardIcon, LogoutIcon } from 'app/assets/icons';
+import CustomMenuButton from 'app/components/common/CustomMenuButton';
+import { useNavigate } from 'react-router-dom';
 
 const TopNav = () => {
   const [isMobile, setIsMobile] = useState('none');
+  const navigate = useNavigate();
 
   const closeMenu = () => setIsMobile('none');
   return (
@@ -64,7 +65,7 @@ const TopNav = () => {
                 </Text>
               </NavLink>
               <NavLink to="/about">
-                <Text
+                {/* <Text
                   size="body2"
                   whiteSpace="nowrap"
                   display={{ base: 'none', md: 'flex', lg: 'flex' }}
@@ -75,7 +76,49 @@ const TopNav = () => {
                   }}
                 >
                   About Us
-                </Text>
+                </Text> */}
+                <CustomMenuButton
+                  title={
+                    <Flex gap="1.4rem" align="center">
+                      <Text
+                        size="body2"
+                        whiteSpace="nowrap"
+                        display={{ base: 'none', md: 'flex', lg: 'flex' }}
+                        transition="0.2s ease-in-out"
+                        _hover={{
+                          bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                          bgClip: 'text',
+                        }}
+                      >
+                        About Us
+                      </Text>
+                      <ChevronDownIcon style={{ marginLeft: '.1rem' }} />
+                    </Flex>
+                  }
+                  options={[
+                    {
+                      label: 'Corporate Profile',
+                      value: 'corporate profile',
+                      onSelect() {
+                        return;
+                      },
+                    },
+                    {
+                      label: 'Our Team',
+                      value: 'our team',
+                      onSelect() {
+                        return;
+                      },
+                    },
+                    {
+                      label: 'Code of Conduct',
+                      value: 'code of conduct',
+                      onSelect() {
+                        return;
+                      },
+                    },
+                  ]}
+                />
               </NavLink>
               <NavLink to="/invest">
                 <Text
