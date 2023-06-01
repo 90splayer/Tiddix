@@ -8,16 +8,20 @@ import {
   Text,
   Image,
   Input,
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Icon,
 } from '@chakra-ui/react';
-// import { FaSun, FaMoon } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import tiddix from '../assets/images/tiddix.png';
 import { NavLink } from 'react-router-dom';
 import AccountState from 'app/components/auth/AccountState';
-import { ChevronDownIcon } from '@chakra-ui/icons';
-import { DashboardIcon, LogoutIcon } from 'app/assets/icons';
-import CustomMenuButton from 'app/components/common/CustomMenuButton';
+import { RiArrowDropDownLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const TopNav = () => {
   const [isMobile, setIsMobile] = useState('none');
@@ -41,7 +45,7 @@ const TopNav = () => {
         }}
       >
         <Flex align="center" justify="space-between">
-          <Flex gap="50px">
+          <Flex gap="50px" align="center">
             <NavLink to="/">
               <Image src={tiddix} alt="tiddix logo" maxW="120px" />
             </NavLink>
@@ -64,62 +68,64 @@ const TopNav = () => {
                   Explore
                 </Text>
               </NavLink>
-              <NavLink to="/about">
-                {/* <Text
-                  size="body2"
+
+              <Menu isLazy>
+                <MenuButton
+                  px={0}
+                  py={0}
+                  transition="all 0.2s"
+                  borderRadius="md"
                   whiteSpace="nowrap"
-                  display={{ base: 'none', md: 'flex', lg: 'flex' }}
-                  transition="0.2s ease-in-out"
-                  _hover={{
-                    bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
-                    bgClip: 'text',
-                  }}
                 >
-                  About Us
-                </Text> */}
-                <CustomMenuButton
-                  title={
-                    <Flex gap="1.4rem" align="center">
-                      <Text
-                        size="body2"
-                        whiteSpace="nowrap"
-                        display={{ base: 'none', md: 'flex', lg: 'flex' }}
-                        transition="0.2s ease-in-out"
-                        _hover={{
-                          bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
-                          bgClip: 'text',
-                        }}
-                      >
-                        About Us
-                      </Text>
-                      <ChevronDownIcon style={{ marginLeft: '.1rem' }} />
-                    </Flex>
-                  }
-                  options={[
-                    {
-                      label: 'Corporate Profile',
-                      value: 'corporate profile',
-                      onSelect() {
-                        return;
-                      },
-                    },
-                    {
-                      label: 'Our Team',
-                      value: 'our team',
-                      onSelect() {
-                        return;
-                      },
-                    },
-                    {
-                      label: 'Code of Conduct',
-                      value: 'code of conduct',
-                      onSelect() {
-                        return;
-                      },
-                    },
-                  ]}
-                />
-              </NavLink>
+                  About Us <ChevronDownIcon />
+                </MenuButton>
+                <MenuList
+                  overflow="hidden"
+                  boxShadow="base"
+                  padding="0px"
+                  minW="20rem"
+                  borderRadius="2rem"
+                  border="1px solid grey"
+                >
+                  <MenuItem
+                    as="a"
+                    href="/about"
+                    gap="5px"
+                    padding="1.4rem"
+                    bg="blackShade.2"
+                    _hover={{
+                      bg: 'blackShade.1',
+                    }}
+                  >
+                    Corporate Profile
+                  </MenuItem>
+                  <MenuItem
+                    as="a"
+                    href="#"
+                    gap="5px"
+                    padding="1rem"
+                    bg="blackShade.2"
+                    _hover={{
+                      bg: 'blackShade.1',
+                    }}
+                  >
+                    Our Team
+                  </MenuItem>
+                  <MenuItem
+                    as="a"
+                    href="#"
+                    gap="5px"
+                    padding="1.4rem"
+                    bg="blackShade.2"
+                    _hover={{
+                      bg: 'blackShade.1',
+                    }}
+                    fontSize={{ base: '1.0rem', sm: '1.4rem', xl: '1.6rem' }}
+                  >
+                    Code of Conduct
+                  </MenuItem>
+                </MenuList>
+              </Menu>
               <NavLink to="/invest">
                 <Text
                   size="body2"
