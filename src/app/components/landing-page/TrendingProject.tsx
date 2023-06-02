@@ -54,6 +54,7 @@ const TrendingProject = () => {
             boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
             _hover={{
               opacity: 0.8,
+              transform: 'scale(1.02)',
             }}
             bg="transparent"
             color="#fff"

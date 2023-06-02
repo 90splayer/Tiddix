@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Flex, Heading } from '@chakra-ui/react';
 import { plus, setUp, funds } from '../../assets/svgs/home';
 import HowItWorkCard from './HitwCard';
+import { Link } from 'react-router-dom';
 
 const HowItWork = () => {
   return (
@@ -22,21 +23,27 @@ const HowItWork = () => {
         flexWrap={{ base: 'wrap', lg: 'nowrap' }}
         gap={{ base: '2%', lg: '3%' }}
       >
-        <HowItWorkCard
-          icon={plus}
-          title={'Sign up & create your account'}
-          desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-        />
-        <HowItWorkCard
-          icon={setUp}
-          title={'Setup & create your project'}
-          desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-        />
-        <HowItWorkCard
-          icon={funds}
-          title={'Start getting funds'}
-          desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-        />
+        <Link to="/signup">
+          <HowItWorkCard
+            icon={plus}
+            title={'Sign up '}
+            desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+          />
+        </Link>
+        <Link to="/dashboard/create-project">
+          <HowItWorkCard
+            icon={setUp}
+            title={'Create a project'}
+            desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+          />
+        </Link>
+        <Link to="dashboard/invest">
+          <HowItWorkCard
+            icon={funds}
+            title={'Fund a project'}
+            desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+          />
+        </Link>
       </Flex>
     </Container>
   );

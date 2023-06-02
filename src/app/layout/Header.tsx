@@ -162,7 +162,7 @@ const TopNav = () => {
               px="2rem"
               borderRadius="10rem"
               border="1px solid #99A1AA"
-              w={{ base: '30.6rem', lg: '100%', xl: '30rem' }}
+              w={{ base: '30.6rem', lg: '100%', xl: '26.9rem' }}
               h="5.6rem"
               _placeholder={{
                 fontSize: '1.6rem',
