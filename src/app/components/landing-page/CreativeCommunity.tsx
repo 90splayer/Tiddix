@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
+import { Box, Flex, Grid, GridItem, Heading, Stack } from '@chakra-ui/react';
 // import creativeBox from '../../assets/images/home/growing-creativeBg.png';
 import Marquee from 'react-fast-marquee';
 import React, { FC } from 'react';
@@ -19,7 +19,7 @@ const CreativeCommunity: FC = () => {
           Our growing creative community
         </Heading>
 
-        <Stack spacing="30px">
+        {/* <Stack spacing="30px">
           <Marquee speed={15} direction="left">
             {CategoryData.slice(0, 6).map((item, index) => (
               <Box key={index} m="0 2.5rem">
@@ -41,7 +41,14 @@ const CreativeCommunity: FC = () => {
               </Box>
             ))}
           </Marquee>
-        </Stack>
+        </Stack> */}
+        <Grid templateColumns="repeat(5, 1fr)" gap={10}>
+          {CategoryData.slice(0, 15).map((item, index) => (
+            <GridItem key={index}>
+              <MarqueBtn title={item} />
+            </GridItem>
+          ))}
+        </Grid>
       </Flex>
     </Box>
   );
