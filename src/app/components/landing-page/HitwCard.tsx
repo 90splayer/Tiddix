@@ -47,7 +47,7 @@ const HowItWorkCard: FC<Props> = ({ icon, title, desc }) => {
       >
         {title}
       </Heading>
-      <Text lineHeight="27.3px" maxW="26rem" fontSize="2rem" color="#99A1AA">
+      <Text size="body1" textAlign="center" lineHeight="27.3px" maxW="30rem">
         {desc}
       </Text>
     </VStack>
