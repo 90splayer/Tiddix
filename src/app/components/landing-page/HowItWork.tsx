@@ -27,21 +27,25 @@ const HowItWork = () => {
           <HowItWorkCard
             icon={plus}
             title={'Sign up '}
-            desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+            desc={'Sign up as a creative or an investor to optimize project.'}
           />
         </Link>
         <Link to="/dashboard/create-project">
           <HowItWorkCard
             icon={setUp}
             title={'Create a project'}
-            desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+            desc={
+              'Share your creative ideas and attract funding from investors. '
+            }
           />
         </Link>
         <Link to="dashboard/invest">
           <HowItWorkCard
             icon={funds}
             title={'Fund a project'}
-            desc={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+            desc={
+              'Become an investor in any project and make returns over time.'
+            }
           />
         </Link>
       </Flex>
