@@ -126,7 +126,7 @@ const TopNav = () => {
                   </MenuItem>
                 </MenuList>
               </Menu>
-              <NavLink to="/invest">
+              <NavLink to="/investors">
                 <Text
                   size="body2"
                   display={{ base: 'none', md: 'flex', lg: 'flex' }}
