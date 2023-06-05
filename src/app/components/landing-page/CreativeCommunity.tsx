@@ -42,13 +42,20 @@ const CreativeCommunity: FC = () => {
             ))}
           </Marquee>
         </Stack> */}
-        <Grid templateColumns="repeat(5, 1fr)" gap={10}>
+        {/* <Grid templateColumns="repeat(5, 1fr)" gap={10}>
           {CategoryData.slice(0, 15).map((item, index) => (
             <GridItem key={index}>
               <MarqueBtn title={item} />
             </GridItem>
           ))}
-        </Grid>
+        </Grid> */}
+        <Flex gap={10} wrap="wrap" justify="center">
+          {CategoryData.slice(0, 15).map((item, index) => (
+            <GridItem key={index}>
+              <MarqueBtn title={item} />
+            </GridItem>
+          ))}
+        </Flex>
       </Flex>
     </Box>
   );
