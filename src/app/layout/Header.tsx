@@ -91,7 +91,7 @@ const TopNav = () => {
                     as="a"
                     href="/about"
                     gap="5px"
-                    padding="1.4rem"
+                    padding="1.2rem"
                     bg="blackShade.2"
                     _hover={{
                       bg: 'blackShade.1',
@@ -103,7 +103,7 @@ const TopNav = () => {
                     as="a"
                     href="#"
                     gap="5px"
-                    padding="1rem"
+                    padding="1.2rem"
                     bg="blackShade.2"
                     _hover={{
                       bg: 'blackShade.1',
@@ -115,12 +115,12 @@ const TopNav = () => {
                     as="a"
                     href="#"
                     gap="5px"
-                    padding="1.4rem"
+                    padding="1.2rem"
                     bg="blackShade.2"
                     _hover={{
                       bg: 'blackShade.1',
                     }}
-                    fontSize={{ base: '1.0rem', sm: '1.4rem', xl: '1.6rem' }}
+                    // fontSize={{ base: '1.0rem', sm: '1.4rem', xl: '1.6rem' }}
                   >
                     Code of Conduct
                   </MenuItem>
