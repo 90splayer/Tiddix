@@ -9,7 +9,14 @@ type Props = {
 
 const InvestTypeCard: FC<Props> = ({ title, icon, desc, ...rest }) => {
   return (
-    <Flex bg="#232629" p="3rem 4rem" h="164px" gap="2rem" borderRadius="30px">
+    <Flex
+      bg="#232629"
+      p="3rem 4rem"
+      h="164px"
+      gap="2rem"
+      borderRadius="30px"
+      cursor="pointer"
+    >
       <Flex
         bg="#000"
         align="center"

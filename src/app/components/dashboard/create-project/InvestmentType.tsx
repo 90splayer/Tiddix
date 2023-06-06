@@ -48,19 +48,23 @@ const InvestmentType: FC = () => {
             </Heading>
 
             <Flex w="100%" gap="2rem" mb="43px">
-              <InvestTypeCard
-                title="Debt"
-                icon={PaletteIcon}
-                desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
-                onClick={() => setDisplay(false)}
-              />
-              <InvestTypeCard
-                title={'Equity'}
-                icon={InvestmentIcon}
-                desc={
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
-                }
-              />
+              <Box onClick={() => setDisplay(false)}>
+                <InvestTypeCard
+                  title="Debt"
+                  icon={PaletteIcon}
+                  desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+                />
+              </Box>
+
+              <Box onClick={() => setDisplay(true)}>
+                <InvestTypeCard
+                  title={'Equity'}
+                  icon={InvestmentIcon}
+                  desc={
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
+                  }
+                />
+              </Box>
             </Flex>
             <Stack
               spacing="22px"
@@ -153,7 +157,7 @@ const InvestmentType: FC = () => {
                   <option value="option3">Option 3</option>
                 </Select>
               </Flex>{' '}
-              <Flex w="49%">
+              <Flex>
                 <Select
                   placeholder="Repayment date"
                   h="5.6rem"
