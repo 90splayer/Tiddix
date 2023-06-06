@@ -16,6 +16,7 @@ import React, { FC } from 'react';
 import { IoCloudUploadSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { useMultiStepForm } from './useMultistepForm';
+import CreateProjHeader from './CreateProjHeader';
 
 const CreateProject: FC = () => {
   const { steps, currentStepIndex } = useMultiStepForm([]);
@@ -30,17 +31,7 @@ const CreateProject: FC = () => {
           lg: '3rem 7.2rem 5rem',
         }}
       >
-        <Flex align="center" justify="space-between" pb="6rem">
-          <Flex gap="50px" align="center">
-            <Link to="/dashboard">
-              <Button variant="borderless">Back</Button>
-            </Link>
-            <Text color="white" size="body1">
-              Create a Project
-            </Text>
-          </Flex>
-          <Button variant="borderless">Save for later</Button>
-        </Flex>
+        <CreateProjHeader />
         <Flex justify="space-between" gap={6}>
           <Flex flexDir="column" w="70%">
             <Heading as="h2" mb="2.3rem ">
