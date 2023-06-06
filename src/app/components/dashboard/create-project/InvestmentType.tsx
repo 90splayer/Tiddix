@@ -1,26 +1,24 @@
 import {
   Box,
   Button,
-  Center,
   Checkbox,
   Container,
   Flex,
   Heading,
-  IconButton,
   Input,
   Progress,
   Select,
   Stack,
   Text,
-  VStack,
 } from '@chakra-ui/react';
-import React, { FC } from 'react';
-import { IoCloudUploadSharp } from 'react-icons/io5';
+import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { InvestmentIcon, PaletteIcon } from 'app/assets/icons';
 import InvestTypeCard from './InvestmentTypeCard';
 
 const InvestmentType: FC = () => {
+  const [display, setDisplay] = useState(false);
+
   return (
     <Box borderTop="1px solid grey" mt="2rem">
       <Container
@@ -54,6 +52,7 @@ const InvestmentType: FC = () => {
                 title="Debt"
                 icon={PaletteIcon}
                 desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+                onClick={() => setDisplay(false)}
               />
               <InvestTypeCard
                 title={'Equity'}
@@ -63,7 +62,12 @@ const InvestmentType: FC = () => {
                 }
               />
             </Flex>
-            <Stack spacing="22px" w="100%">
+            <Stack
+              spacing="22px"
+              w="100%"
+              className="debt"
+              display={display ? 'none' : 'unset'}
+            >
               <Flex gap="1.8rem">
                 <Input type="text" size="lg" placeholder="Enter Amount" />
                 <Select
@@ -77,7 +81,7 @@ const InvestmentType: FC = () => {
                   <option value="option2">Option 2</option>
                   <option value="option3">Option 3</option>
                 </Select>
-              </Flex>{' '}
+              </Flex>
               <Flex gap="1.8rem">
                 <Select
                   placeholder="Select Payment Frequency"
@@ -102,25 +106,66 @@ const InvestmentType: FC = () => {
                   <option value="option3">Option 3</option>
                 </Select>
               </Flex>{' '}
-              <VStack
-                borderRadius="20px"
-                padding="4rem 2rem"
-                w="100%"
-                spacing="18.5px"
-                border="1px dashed #99A1AA"
-              >
-                <Text maxW="265px" textAlign="center" size="body2">
-                  Video is expected to not exceeded 5mb and a max of 2 minutes.
-                </Text>
-                <IconButton
-                  aria-label="Download video"
-                  fontSize="3.6rem"
-                  variant="unstyled"
-                  border="0px"
-                  icon={<IoCloudUploadSharp />}
-                />
-                <Text size="body2">Upload, Drag and Drop MP4 file</Text>
-              </VStack>
+            </Stack>
+
+            <Stack
+              spacing="22px"
+              w="100%"
+              className="equity"
+              display={display ? 'unset' : 'none'}
+            >
+              <Flex gap="1.8rem">
+                <Select
+                  placeholder="Moratorium Period"
+                  h="5.6rem"
+                  fontSize="1.6rem"
+                  border="1px solid #99A1AA"
+                  borderRadius="2rem"
+                >
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </Select>
+
+                <Input type="text" size="lg" placeholder="Amount" />
+              </Flex>{' '}
+              <Flex gap="1.8rem">
+                <Select
+                  placeholder="Equity amount offered"
+                  h="5.6rem"
+                  fontSize="1.6rem"
+                  border="1px solid #99A1AA"
+                  borderRadius="2rem"
+                >
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </Select>
+                <Select
+                  placeholder="Repayment date"
+                  h="5.6rem"
+                  fontSize="1.6rem"
+                  border="1px solid #99A1AA"
+                  borderRadius="2rem"
+                >
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </Select>
+              </Flex>{' '}
+              <Flex w="49%">
+                <Select
+                  placeholder="Repayment date"
+                  h="5.6rem"
+                  fontSize="1.6rem"
+                  border="1px solid #99A1AA"
+                  borderRadius="2rem"
+                >
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </Select>
+              </Flex>
             </Stack>
           </Flex>
           <Flex flexDir="column" w="25%">
