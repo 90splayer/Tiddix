@@ -20,7 +20,7 @@ export const headingStyles = {
         },
         body3: {
           fontSize: { base: '1.0rem', sm: '1.3rem', md: '1.5rem' },
-          lineHeight: { base: '1.25rem', sm: '1.6rem', md: '1.9rem' },
+          lineHeight: { base: '1rem', md: '1.2rem' },
         },
       },
     },

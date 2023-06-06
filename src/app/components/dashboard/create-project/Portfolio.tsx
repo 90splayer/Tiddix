@@ -54,7 +54,7 @@ const Portfolio = () => {
                     bg="#232629"
                     border={0}
                     leftIcon={<BiPlus />}
-                    size="md"
+                    size="lg"
                   >
                     Add another link
                   </Button>
