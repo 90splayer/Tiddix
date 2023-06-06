@@ -11,8 +11,8 @@ const CreateProjectPage: FC = () => {
     <Box>
       <Header />
       {/* <CreateProject /> */}
-      {/* <InvestmentType /> */}
-      <Success />
+      <InvestmentType />
+      {/* <Success /> */}
       <Footer />
     </Box>
   );

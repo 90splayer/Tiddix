@@ -4,3 +4,6 @@ html {
 body {
   background-color: #15181d;
 }
+.hero {
+  height: calc(100vh - 100px);
+}

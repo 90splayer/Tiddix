@@ -1,24 +1,22 @@
-import {
-  Box,
-  Heading,
-  Stack,
-  Text,
-  Container,
-  Image,
-  Flex,
-  Icon,
-} from '@chakra-ui/react';
+import { Stack, Text, ButtonProps, Flex, Icon } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
 type Props = {
   title: string;
   icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   desc: string;
-};
+} & ButtonProps;
 
-const InvestTypeCard: FC<Props> = ({ title, icon, desc }) => {
+const InvestTypeCard: FC<Props> = ({ title, icon, desc, ...rest }) => {
   return (
-    <Flex bg="#232629" p="3rem 4rem" h="164px" gap="2rem" borderRadius="30px">
+    <Flex
+      bg="#232629"
+      p="3rem 4rem"
+      h="164px"
+      gap="2rem"
+      borderRadius="30px"
+      cursor="pointer"
+    >
       <Flex
         bg="#000"
         align="center"
