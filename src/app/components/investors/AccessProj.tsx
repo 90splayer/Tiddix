@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { verify } from 'app/assets/svgs/home';
 import React, { useEffect, useRef } from 'react';
+import project from '../../assets/images/investor/project.jpg';
 
 const AccessProj = () => {
   const boxRefs = [
@@ -76,9 +77,9 @@ const AccessProj = () => {
     {
       id: 0,
       name: 'Oluwani Kolawole',
-      avartar: 'https://bit.ly/tioluwani-kolawole',
+      avartar: 'https://bit.ly/kent-c-dodds',
       total_funding: '$4,000',
-      img: ' "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+      img: project,
       title: 'The Plant Picazzo',
       category: 'Art',
       progress: 60,
@@ -88,7 +89,7 @@ const AccessProj = () => {
       name: 'Segun Abiodun',
       avartar: 'https://bit.ly/sage-adebayo',
       total_funding: '$7,000',
-      img: ' "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+      img: project,
       title: 'The Plant Picazzo',
       category: 'Art',
       progress: 80,
@@ -98,7 +99,7 @@ const AccessProj = () => {
       name: 'Prosper ayo',
       avartar: 'https://bit.ly/prosper-baba',
       total_funding: '$2,000',
-      img: ' "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+      img: project,
       title: 'The Plant Picazzo',
       category: 'Art',
       progress: 40,
@@ -145,12 +146,12 @@ const AccessProj = () => {
                 sx={{
                   '&.active': {
                     transform: 'scale(1.2)',
-                    maxW: '59.9rem',
+                    w: '51.9rem',
                   },
                 }}
-                justify="center"
+                justify="space-between"
                 align="center"
-                maxW="59rem"
+                w="59rem"
                 borderRadius="15px"
                 bg="#232629"
               >
