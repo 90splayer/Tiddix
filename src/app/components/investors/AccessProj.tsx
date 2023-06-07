@@ -110,7 +110,10 @@ const AccessProj = () => {
       <Container maxW="144rem" p="12.5rem 12rem 7.5rem 7.2rem">
         <Flex
           align="center"
-          flexDir={{ base: 'column', md: 'row' }}
+          flexDir={{
+            base: 'column',
+            lg: 'row',
+          }}
           justify="space-between"
           gap={17}
         >
@@ -170,7 +173,6 @@ const AccessProj = () => {
                     <HStack>
                       <Avatar
                         boxSize="19px"
-                        ml="8px"
                         name={singleData?.name}
                         src={singleData?.avartar}
                       />
@@ -179,21 +181,22 @@ const AccessProj = () => {
                       </Text>
                       <Box>{verify}</Box>
                     </HStack>
-                    <Heading as="h5">{singleData?.title}</Heading>
+                    <Heading fontSize="1.5rem">{singleData?.title}</Heading>
                     <Text fontSize="1rem">{singleData?.category}</Text>
                   </Stack>
                 </HStack>
                 <HStack spacing="2.3rem">
-                  <Text>{singleData?.total_funding}</Text>
-                  <Box>
-                    <Progress
-                      value={singleData?.progress}
-                      size="md"
-                      colorScheme="transparent"
-                      borderRadius="20px"
-                      background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
-                    />
-                  </Box>
+                  <Text fontSize="12px" color="#fff">
+                    {singleData?.total_funding}
+                  </Text>
+
+                  <Progress
+                    borderRadius="20px"
+                    background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
+                    size="md"
+                    w="82px"
+                    value={singleData?.progress}
+                  />
                 </HStack>
               </Flex>
             ))}
