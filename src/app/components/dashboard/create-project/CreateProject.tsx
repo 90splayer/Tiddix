@@ -19,7 +19,7 @@ import { useMultiStepForm } from './useMultistepForm';
 import CreateProjHeader from './CreateProjHeader';
 
 const CreateProject: FC = () => {
-  const { steps, currentStepIndex } = useMultiStepForm([]);
+  // const { steps, currentStepIndex } = useMultiStepForm([]);
   return (
     <Box borderTop="1px solid grey" mt="2rem">
       <Container
