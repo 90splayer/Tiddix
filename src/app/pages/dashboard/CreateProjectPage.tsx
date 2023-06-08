@@ -13,6 +13,7 @@ import {
   Text,
   VStack,
   Select,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import Header from 'app/layout/Header';
 import { Footer } from 'app/layout/Footer';
@@ -186,6 +187,7 @@ const CreateProjectPage: FC = () => {
                             title="Debt"
                             icon={PaletteIcon}
                             desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+                            paintBorder={investType === 'debt'}
                           />
                         </Box>
 
@@ -196,110 +198,103 @@ const CreateProjectPage: FC = () => {
                             desc={
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
                             }
+                            paintBorder={investType === 'equity'}
                           />
                         </Box>
                       </Flex>
                       {investType === 'debt' && (
-                        <Stack spacing="22px" w="100%" className="debt">
-                          <Flex gap="1.8rem">
-                            <Input
-                              type="text"
-                              size="lg"
-                              placeholder="Enter Amount"
-                            />
-                            <Select
-                              placeholder="Enter Duration"
-                              h="5.6rem"
-                              fontSize="1.6rem"
-                              border="1px solid #99A1AA"
-                              borderRadius="2rem"
-                            >
-                              <option value="option1">Option 1</option>
-                              <option value="option2">Option 2</option>
-                              <option value="option3">Option 3</option>
-                            </Select>
-                          </Flex>
-                          <Flex gap="1.8rem">
-                            <Select
-                              placeholder="Select Payment Frequency"
-                              h="5.6rem"
-                              fontSize="1.6rem"
-                              border="1px solid #99A1AA"
-                              borderRadius="2rem"
-                            >
-                              <option value="option1">Option 1</option>
-                              <option value="option2">Option 2</option>
-                              <option value="option3">Option 3</option>
-                            </Select>
-                            <Select
-                              placeholder="Moratorium Period"
-                              h="5.6rem"
-                              fontSize="1.6rem"
-                              border="1px solid #99A1AA"
-                              borderRadius="2rem"
-                            >
-                              <option value="option1">Option 1</option>
-                              <option value="option2">Option 2</option>
-                              <option value="option3">Option 3</option>
-                            </Select>
-                          </Flex>{' '}
-                        </Stack>
+                        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
+                          <Input
+                            type="text"
+                            size="lg"
+                            placeholder="Enter Amount"
+                          />
+                          <Select
+                            placeholder="Enter Duration"
+                            h="5.6rem"
+                            fontSize="1.6rem"
+                            border="1px solid #99A1AA"
+                            borderRadius="2rem"
+                          >
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                          </Select>
+
+                          <Select
+                            placeholder="Select Payment Frequency"
+                            h="5.6rem"
+                            fontSize="1.6rem"
+                            border="1px solid #99A1AA"
+                            borderRadius="2rem"
+                          >
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                          </Select>
+                          <Select
+                            placeholder="Moratorium Period"
+                            h="5.6rem"
+                            fontSize="1.6rem"
+                            border="1px solid #99A1AA"
+                            borderRadius="2rem"
+                          >
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                          </Select>
+                        </SimpleGrid>
                       )}
                       {investType === 'equity' && (
-                        <Stack spacing="22px" w="100%" className="equity">
-                          <Flex gap="1.8rem">
-                            <Select
-                              placeholder="Moratorium Period"
-                              h="5.6rem"
-                              fontSize="1.6rem"
-                              border="1px solid #99A1AA"
-                              borderRadius="2rem"
-                            >
-                              <option value="option1">Option 1</option>
-                              <option value="option2">Option 2</option>
-                              <option value="option3">Option 3</option>
-                            </Select>
+                        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
+                          <Select
+                            placeholder="Moratorium Period"
+                            h="5.6rem"
+                            fontSize="1.6rem"
+                            border="1px solid #99A1AA"
+                            borderRadius="2rem"
+                          >
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                          </Select>
+                          <Input type="text" size="lg" placeholder="Amount" />
 
-                            <Input type="text" size="lg" placeholder="Amount" />
-                          </Flex>{' '}
-                          <Flex gap="1.8rem">
-                            <Select
-                              placeholder="Equity amount offered"
-                              h="5.6rem"
-                              fontSize="1.6rem"
-                              border="1px solid #99A1AA"
-                              borderRadius="2rem"
-                            >
-                              <option value="option1">Option 1</option>
-                              <option value="option2">Option 2</option>
-                              <option value="option3">Option 3</option>
-                            </Select>
-                            <Select
-                              placeholder="Repayment date"
-                              h="5.6rem"
-                              fontSize="1.6rem"
-                              border="1px solid #99A1AA"
-                              borderRadius="2rem"
-                            >
-                              <option value="option1">Option 1</option>
-                              <option value="option2">Option 2</option>
-                              <option value="option3">Option 3</option>
-                            </Select>
-                          </Flex>{' '}
-                          <Flex>
-                            <Select
-                              placeholder="Duration"
-                              h="5.6rem"
-                              fontSize="1.6rem"
-                              border="1px solid #99A1AA"
-                              borderRadius="2rem"
-                            >
-                              <option value="option1">Option 1</option>
-                              <option value="option2">Option 2</option>
-                              <option value="option3">Option 3</option>
-                            </Select>
-                          </Flex>
-                        </Stack>
+                          <Select
+                            placeholder="Equity amount offered"
+                            h="5.6rem"
+                            fontSize="1.6rem"
+                            border="1px solid #99A1AA"
+                            borderRadius="2rem"
+                          >
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                          </Select>
+                          <Select
+                            placeholder="Repayment date"
+                            h="5.6rem"
+                            fontSize="1.6rem"
+                            border="1px solid #99A1AA"
+                            borderRadius="2rem"
+                          >
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                          </Select>
+
+                          <Select
+                            placeholder="Duration"
+                            h="5.6rem"
+                            fontSize="1.6rem"
+                            border="1px solid #99A1AA"
+                            borderRadius="2rem"
+                          >
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                          </Select>
+                        </SimpleGrid>
                       )}
                     </>
                   )}
