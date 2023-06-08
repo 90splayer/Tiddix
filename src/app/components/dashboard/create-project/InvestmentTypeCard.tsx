@@ -1,5 +1,5 @@
 import { Stack, Text, ButtonProps, Flex, Icon, Box } from '@chakra-ui/react';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 
 type Props = {
@@ -16,12 +16,22 @@ const InvestTypeCard: FC<Props> = ({
   paintBorder,
   ...rest
 }) => {
+  const [onHover, setOnHover] = useState(false);
+  const over = () => {
+    setOnHover(true);
+  };
+  const out = () => {
+    setOnHover(false);
+  };
+
   return (
     <Styling>
       <Box
         borderRadius="3.0rem"
         padding="2px"
-        className={paintBorder ? 'gradient-border' : ''}
+        className={paintBorder || onHover ? 'gradient-border' : ''}
+        onMouseOver={over}
+        onMouseOut={out}
       >
         <Flex
           bg="#232629"

@@ -14,6 +14,7 @@ import {
   VStack,
   Select,
   SimpleGrid,
+  Icon,
 } from '@chakra-ui/react';
 import Header from 'app/layout/Header';
 import { Footer } from 'app/layout/Footer';
@@ -29,14 +30,20 @@ import InvestTypeCard from 'app/components/dashboard/create-project/InvestmentTy
 import { BiPlus } from 'react-icons/bi';
 import { PaletteIcon } from 'app/assets/icons';
 import { InvestmentIcon } from 'app/assets/icons';
+import styled from 'styled-components';
+import {
+  CheckMarkActive,
+  CheckMarkInactive,
+  CheckMarkDone,
+} from 'app/assets/icons';
 
 const CreateProjectPage: FC = () => {
   const [investType, setInvestType] = useState<string | undefined>(undefined);
   const { currentStepIndex, isFirstStep, isLastStep, stepsLength, goTo, next } =
-    useMultiStepForm(3);
+    useMultiStepForm(4);
 
   return (
-    <Box>
+    <Styling>
       <Header />
       <Box borderTop="1px solid #20262e" mt="2rem">
         <Container
@@ -175,7 +182,7 @@ const CreateProjectPage: FC = () => {
                   )}
 
                   {/* ==== INVESTMENT TYPE ===== */}
-                  {isLastStep && (
+                  {currentStepIndex === 2 && (
                     <>
                       {' '}
                       <Heading as="h2" mb="4.2rem">
@@ -305,9 +312,9 @@ const CreateProjectPage: FC = () => {
                   <Text size="body2" color="white">
                     Progress Status
                   </Text>
-                  <Text size="body2" fontWeight="700">
+                  {/* <Text size="body2" fontWeight="700">
                     100%
-                  </Text>
+                  </Text> */}
                 </Flex>
                 <Box mb="3rem">
                   <Progress
@@ -332,27 +339,100 @@ const CreateProjectPage: FC = () => {
                   bg="#232629"
                   border="1px solid #485155"
                 >
-                  <Checkbox variant="circular">
-                    <Text
-                      size="body2"
-                      bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
-                      bgClip="text"
-                    >
-                      Project Description
-                    </Text>
-                  </Checkbox>
-                  <Checkbox variant="circular">
-                    <Text size="body2">Portfolio Upload</Text>
-                  </Checkbox>
-                  <Checkbox variant="circular">
-                    <Text size="body2">Connect social Media</Text>
-                  </Checkbox>
-                  <Checkbox variant="circular">
-                    <Text size="body2">Project Type</Text>
-                  </Checkbox>
-                  <Checkbox variant="circular">
-                    <Text size="body2">Finish</Text>
-                  </Checkbox>
+                  <Text
+                    size="body2"
+                    bgGradient={
+                      isFirstStep
+                        ? 'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)'
+                        : 'linear-gradient(235.92deg, #99A1AA -14.27%, #99A1AA 50.09%, #99A1AA 114.81%)'
+                    }
+                    bgClip="text"
+                    onClick={() => goTo(0)}
+                    className="step-indicator"
+                    _hover={{
+                      bgGradient:
+                        'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)',
+                    }}
+                  >
+                    <Icon
+                      as={isFirstStep ? CheckMarkActive : CheckMarkInactive}
+                      boxSize="2.8rem"
+                    />
+                    Project Description
+                  </Text>
+
+                  <Text
+                    size="body2"
+                    bgGradient={
+                      currentStepIndex === 1
+                        ? 'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)'
+                        : 'linear-gradient(235.92deg, #99A1AA -14.27%, #99A1AA 50.09%, #99A1AA 114.81%)'
+                    }
+                    bgClip="text"
+                    onClick={() => goTo(1)}
+                    className="step-indicator"
+                    _hover={{
+                      bgGradient:
+                        'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)',
+                    }}
+                  >
+                    <Icon
+                      as={
+                        currentStepIndex === 1
+                          ? CheckMarkActive
+                          : CheckMarkInactive
+                      }
+                      boxSize="2.8rem"
+                    />
+                    Portfolio Upload
+                  </Text>
+
+                  <Text
+                    size="body2"
+                    bgGradient={
+                      currentStepIndex === 2
+                        ? 'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)'
+                        : 'linear-gradient(235.92deg, #99A1AA -14.27%, #99A1AA 50.09%, #99A1AA 114.81%)'
+                    }
+                    bgClip="text"
+                    onClick={() => goTo(2)}
+                    className="step-indicator"
+                    _hover={{
+                      bgGradient:
+                        'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)',
+                    }}
+                  >
+                    <Icon
+                      as={
+                        currentStepIndex === 2
+                          ? CheckMarkActive
+                          : CheckMarkInactive
+                      }
+                      boxSize="2.8rem"
+                    />{' '}
+                    Project Type
+                  </Text>
+
+                  <Text
+                    size="body2"
+                    bgGradient={
+                      isLastStep
+                        ? 'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)'
+                        : 'linear-gradient(235.92deg, #99A1AA -14.27%, #99A1AA 50.09%, #99A1AA 114.81%)'
+                    }
+                    bgClip="text"
+                    className="step-indicator"
+                    _hover={{
+                      bgGradient:
+                        'linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)',
+                    }}
+                  >
+                    <Icon
+                      as={isLastStep ? CheckMarkActive : CheckMarkInactive}
+                      boxSize="2.8rem"
+                    />
+                    Finish
+                  </Text>
                 </Stack>
                 <Box>
                   <Button
@@ -360,7 +440,6 @@ const CreateProjectPage: FC = () => {
                     size="md"
                     w="100%"
                     onClick={() => {
-                      console.log('CURRENT INDEX', currentStepIndex);
                       next();
                     }}
                   >
@@ -373,8 +452,17 @@ const CreateProjectPage: FC = () => {
         </Container>
       </Box>
       <Footer />
-    </Box>
+    </Styling>
   );
 };
+
+const Styling = styled.div`
+  .step-indicator {
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+`;
 
 export default CreateProjectPage;
