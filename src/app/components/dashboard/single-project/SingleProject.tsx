@@ -9,10 +9,10 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { FC } from 'react';
 import SingleProjHeader from './SingleProjHeader';
 
-const SingleProject = () => {
+const SingleProject: FC = () => {
   return (
     <Box>
       <Container

@@ -62,31 +62,49 @@ const SingleProjHeader = () => {
         </Box>
         <Flex
           bg="#232629"
+          border="2px solid #99A1AA"
           align="center"
           justify="center"
           borderRadius="100%"
           w="50px"
           h="50px"
+          transition="0.5 ease"
+          _hover={{
+            cursor: 'pointer',
+            transform: 'scale(1.03)',
+          }}
         >
           <Icon as={MdEdit} fontSize="2rem" color="#fff" />
         </Flex>
         <Flex
           bg="#232629"
           align="center"
+          border="2px solid #99A1AA"
           justify="center"
           borderRadius="100%"
           w="50px"
           h="50px"
+          transition="0.5 ease"
+          _hover={{
+            cursor: 'pointer',
+            transform: 'scale(1.03)',
+          }}
         >
           <Icon as={AiTwotoneHeart} fontSize="2rem" color="#fff" />
         </Flex>
         <Flex
           bg="#232629"
+          border="2px solid #99A1AA"
           align="center"
           justify="center"
           borderRadius="100%"
           w="50px"
           h="50px"
+          transition="0.5 ease"
+          _hover={{
+            cursor: 'pointer',
+            transform: 'scale(1.03)',
+          }}
         >
           <Icon as={IoShareSocialSharp} fontSize="2rem" color="#fff" />
         </Flex>
