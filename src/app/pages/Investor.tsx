@@ -1,5 +1,8 @@
 import { Box } from '@chakra-ui/react';
+import SignUpBanner from 'app/components/SignUpBanner';
+import AccessProj from 'app/components/investors/AccessProj';
 import HeroBanner from 'app/components/investors/HeroBanner';
+import MonitorInvestment from 'app/components/investors/MonitorInvestment';
 import HowItWork from 'app/components/landing-page/HowItWork';
 import { Footer } from 'app/layout/Footer';
 import Header from 'app/layout/Header';
@@ -13,6 +16,9 @@ const Investor = () => {
       <Box mt="20rem">
         <HowItWork />
       </Box>
+      <AccessProj />
+      <MonitorInvestment />
+      <SignUpBanner />
       <Footer />
     </Box>
   );

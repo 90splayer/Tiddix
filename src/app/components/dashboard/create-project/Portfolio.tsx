@@ -1,25 +1,23 @@
 import {
+  Container,
   Box,
   Button,
   Checkbox,
-  Container,
   Flex,
   Heading,
   IconButton,
   Input,
   Progress,
-  Stack,
   Text,
+  Stack,
   VStack,
 } from '@chakra-ui/react';
-import React, { FC } from 'react';
-import { IoCloudUploadSharp } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
-import { useMultiStepForm } from './useMultistepForm';
+import React from 'react';
 import CreateProjHeader from './CreateProjHeader';
+import { IoCloudUploadSharp } from 'react-icons/io5';
+import { BiPlus } from 'react-icons/bi';
 
-const CreateProject: FC = () => {
-  const { steps, currentStepIndex } = useMultiStepForm([]);
+const Portfolio = () => {
   return (
     <Box borderTop="1px solid grey" mt="2rem">
       <Container
@@ -35,24 +33,43 @@ const CreateProject: FC = () => {
         <Flex justify="space-between" gap={6}>
           <Flex flexDir="column" w="70%">
             <Heading as="h2" mb="2.3rem ">
-              Project Description
+              Porfolio Upload
             </Heading>
             <Text size="body1" mb="5.4rem">
               Here you would upload a few details on the project as requested
               below.
             </Text>
-            <Stack w="100%" spacing="30px" mb="43px">
-              <Input type="text" size="lg" placeholder="Project Name" />
-              <Input
-                type="text"
-                size="lg"
-                minH="96px"
-                placeholder="Project Description"
-              />
+            <Stack w="100%" spacing="19px" mb="53px">
+              <Flex gap="10px">
+                <Box w="80%">
+                  <Input
+                    type="text"
+                    size="lg"
+                    placeholder="Kindly Upload Portfolio Link"
+                  />
+                </Box>
+                <Box>
+                  <Button
+                    borderRadius="100px"
+                    bg="#232629"
+                    border={0}
+                    leftIcon={<BiPlus />}
+                    size="lg"
+                  >
+                    Add another link
+                  </Button>
+                </Box>
+              </Flex>
+              <Box w="100%">
+                <Input type="text" size="lg" borderRadius="30px" />
+              </Box>
+              <Box w="100%">
+                <Input type="text" size="lg" borderRadius="30px" />
+              </Box>
             </Stack>
             <Stack spacing="22px">
               <Text color="white" size="body2">
-                Upload Pitch Video
+                Upload Photo
               </Text>
               <VStack
                 borderRadius="20px"
@@ -136,4 +153,4 @@ const CreateProject: FC = () => {
   );
 };
 
-export default CreateProject;
+export default Portfolio;

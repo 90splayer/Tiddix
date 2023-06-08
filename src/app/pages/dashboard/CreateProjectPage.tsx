@@ -5,14 +5,16 @@ import React, { FC } from 'react';
 import CreateProject from 'app/components/dashboard/create-project/CreateProject';
 import InvestmentType from 'app/components/dashboard/create-project/InvestmentType';
 import Success from 'app/components/dashboard/create-project/Success';
+import Portfolio from 'app/components/dashboard/create-project/Portfolio';
 
 const CreateProjectPage: FC = () => {
   return (
     <Box>
       <Header />
       {/* <CreateProject /> */}
-      <InvestmentType />
+      {/* <InvestmentType /> */}
       {/* <Success /> */}
+      <Portfolio />
       <Footer />
     </Box>
   );

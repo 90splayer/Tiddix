@@ -13,6 +13,7 @@ import {
 import { CheckIcon } from 'app/assets/icons';
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import CreateProjHeader from './CreateProjHeader';
 
 const Success: FC = () => {
   return (
@@ -26,17 +27,7 @@ const Success: FC = () => {
           lg: '3rem 7.2rem 5rem',
         }}
       >
-        <Flex align="center" justify="space-between" pb="6rem">
-          <Flex gap="50px" align="center">
-            <Link to="/dashboard">
-              <Button variant="borderless">Back</Button>
-            </Link>
-            <Text color="white" size="body1">
-              Create a Project
-            </Text>
-          </Flex>
-          <Button variant="borderless">Save for later</Button>
-        </Flex>
+        <CreateProjHeader />
         <Flex justify="space-between" gap={6}>
           <VStack w="70%" spacing="4rem">
             <Flex

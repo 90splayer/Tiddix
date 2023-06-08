@@ -15,6 +15,7 @@ import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { InvestmentIcon, PaletteIcon } from 'app/assets/icons';
 import InvestTypeCard from './InvestmentTypeCard';
+import CreateProjHeader from './CreateProjHeader';
 
 const InvestmentType: FC = () => {
   const [display, setDisplay] = useState(false);
@@ -30,17 +31,7 @@ const InvestmentType: FC = () => {
           lg: '3rem 7.2rem 5rem',
         }}
       >
-        <Flex align="center" justify="space-between" pb="6rem">
-          <Flex gap="50px" align="center">
-            <Link to="/dashboard">
-              <Button variant="borderless">Back</Button>
-            </Link>
-            <Text color="white" size="body1">
-              Create a Project
-            </Text>
-          </Flex>
-          <Button variant="borderless">Save for later</Button>
-        </Flex>
+        <CreateProjHeader />
         <Flex justify="space-between" gap={6}>
           <Flex flexDir="column" w="70%">
             <Heading as="h2" mb="4.2rem">

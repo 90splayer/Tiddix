@@ -36,7 +36,7 @@ const TopNav = () => {
     >
       <Container
         maxW="144rem"
-        zIndex={3}
+        zIndex={5}
         p={{
           base: '3.5rem 2rem',
           sm: '3.6rem 3rem 3rem',
@@ -54,6 +54,7 @@ const TopNav = () => {
               spacing={{ base: '15px', md: '30px', xl: '40px' }}
               fontSize={{ md: '1.4rem', lg: '1.6rem' }}
               color="#99A1AA"
+              zIndex={5}
             >
               <NavLink to="/explore">
                 <Text
@@ -155,7 +156,12 @@ const TopNav = () => {
             </HStack>
           </Flex>
 
-          <Box px="2rem" maxW="30.6rem" display={{ base: 'none', sm: 'block' }}>
+          <Box
+            px="2rem"
+            maxW="30.6rem"
+            zIndex={5}
+            display={{ base: 'none', sm: 'block' }}
+          >
             <Input
               pos="relative"
               placeholder="Search projects and creatives"
@@ -172,7 +178,7 @@ const TopNav = () => {
             />
           </Box>
 
-          <Box display={{ base: 'none', lg: 'flex' }}>
+          <Box display={{ base: 'none', lg: 'flex' }} zIndex={5}>
             <AccountState />
           </Box>
 
