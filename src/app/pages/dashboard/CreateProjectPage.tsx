@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -36,11 +36,141 @@ import {
   CheckMarkInactive,
   CheckMarkDone,
 } from 'app/assets/icons';
+import { chkToaster } from 'app/components/common/Toaster';
+import { CustomInput } from 'app/components/common/CustomInput';
+import { CalendarIcon } from '@chakra-ui/icons';
+import { apiPrivate } from 'app/api/tiddix';
+
+// left out images, pitchVideo, and portfolioLinks, investmentType, repaymentDate
+type portfolioT = {
+  category: string;
+  description: string;
+  amount: number;
+  duration: string;
+  repaymentFrequency: string;
+  moratoriumPeriod: string;
+  equityAmountOffered: string;
+  projectName: string;
+  portfolioLinks: string;
+  // images: any;
+  // pitchVideo: any;
+  investmentType: string;
+  repaymentDate: string;
+};
 
 const CreateProjectPage: FC = () => {
   const [investType, setInvestType] = useState<string | undefined>(undefined);
+  const [formValues, setFormValues] = useState<portfolioT>({
+    category: '',
+    description: '',
+    amount: 0,
+    duration: '',
+    repaymentFrequency: '',
+    moratoriumPeriod: '',
+    equityAmountOffered: '',
+    projectName: '',
+    portfolioLinks: '',
+    // images: null,
+    // pitchVideo: null,
+    investmentType: '',
+    repaymentDate: '',
+  });
+
+  useEffect(() => {
+    console.log('FORM VALUES', formValues);
+  });
+
   const { currentStepIndex, isFirstStep, isLastStep, stepsLength, goTo, next } =
     useMultiStepForm(4);
+
+  type VideoInfoT = {
+    file: File;
+    fileName: string;
+  };
+  type ImagesInfoT = {
+    files: File[];
+    filesCount: number;
+  };
+  const [videoInfo, setVideoInfo] = useState<VideoInfoT>();
+  const [imagesInfo, setImagesInfo] = useState<ImagesInfoT>();
+  const [isDraggedOver, setIsDraggedOver] = useState(false);
+  const videoInput = useRef<HTMLInputElement>(null);
+  const imagesInput = useRef<HTMLInputElement>(null);
+
+  const handleDragOver = (e: any) => {
+    e.preventDefault();
+    setIsDraggedOver(true);
+  };
+
+  const updateSelectedFile = async (files: any, type: string) => {
+    if (files) {
+      const file = files[0];
+      if (type === 'video' && file.type === 'video/mp4') {
+        console.log('FILE', file);
+        setVideoInfo({
+          file,
+          fileName: file.name,
+        });
+      } else if (type === 'images') {
+        setImagesInfo({
+          files: files,
+          filesCount: files.length,
+        });
+      } else {
+        chkToaster.error({ title: 'Invalid file type.' });
+      }
+    }
+  };
+
+  const handleDrop = (e: any, type: string) => {
+    e.preventDefault();
+    setIsDraggedOver(false);
+    if (e.dataTransfer.files.length) {
+      updateSelectedFile(e.dataTransfer.files, type);
+    }
+  };
+
+  const selectVideoInput = () => {
+    if (videoInput.current?.value) {
+      videoInput.current.value = '';
+    }
+    if (videoInput.current) {
+      videoInput.current.click();
+    }
+  };
+
+  const selectImagesInput = () => {
+    if (imagesInput.current?.value) {
+      imagesInput.current.value = '';
+    }
+    if (imagesInput.current) {
+      imagesInput.current.click();
+    }
+  };
+
+  const handleChange = (e: any) => {
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    const formData = new FormData();
+
+    formData.append('projectName', formValues.projectName);
+    formData.append('investmentType', formValues.investmentType);
+
+    apiPrivate.post('/projects', formData).then(() => {
+      chkToaster.success({ title: 'portfolio submitted successfully' });
+    });
+  };
+
+  const getISODate = (date: Date) => {
+    return new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000,
+    ).toISOString();
+  };
 
   return (
     <Styling>
@@ -55,7 +185,7 @@ const CreateProjectPage: FC = () => {
             lg: '3rem 7.2rem 5rem',
           }}
         >
-          <form>
+          <Box>
             <CreateProjHeader />
             <Flex justify="space-between" gap={6}>
               <Flex flexDir="column" w="70%">
@@ -75,40 +205,70 @@ const CreateProjectPage: FC = () => {
                           type="text"
                           size="lg"
                           placeholder="Project Name"
+                          name="projectName"
+                          onChange={handleChange}
                         />
                         <Input
                           type="text"
                           size="lg"
                           minH="96px"
                           placeholder="Project Description"
+                          name="description"
+                          onChange={handleChange}
                         />
                       </Stack>
                       <Stack spacing="22px">
                         <Text color="white" size="body2">
                           Upload Pitch Video
                         </Text>
-                        <VStack
-                          borderRadius="20px"
-                          padding="4rem 2rem"
-                          w="100%"
-                          spacing="18.5px"
-                          border="1px dashed #99A1AA"
+                        <form
+                          className="upload-section"
+                          onDragOver={handleDragOver}
+                          onDragEnd={() => setIsDraggedOver(false)}
+                          onDragLeave={() => setIsDraggedOver(false)}
+                          onDrop={(e) => handleDrop(e, 'video')}
+                          role="presentation"
+                          onClick={() => selectVideoInput()}
+                          onChange={() =>
+                            updateSelectedFile(
+                              videoInput.current?.files,
+                              'video',
+                            )
+                          }
                         >
-                          <Text maxW="265px" textAlign="center" size="body2">
-                            Video is expected to not exceeded 5mb and a max of 2
-                            minutes.
-                          </Text>
-                          <IconButton
-                            aria-label="Download video"
-                            fontSize="3.6rem"
-                            variant="unstyled"
-                            border="0px"
-                            icon={<IoCloudUploadSharp />}
-                          />
-                          <Text size="body2">
-                            Upload, Drag and Drop MP4 file
-                          </Text>
-                        </VStack>
+                          <VStack
+                            borderRadius="20px"
+                            padding="4rem 2rem"
+                            w="100%"
+                            spacing="18.5px"
+                            border="1px dashed #99A1AA"
+                          >
+                            <Text maxW="265px" textAlign="center" size="body2">
+                              Video is expected to not exceeded 5mb and a max of
+                              2 minutes.
+                            </Text>
+                            <IconButton
+                              aria-label="Download video"
+                              fontSize="3.6rem"
+                              variant="unstyled"
+                              border="0px"
+                              icon={<IoCloudUploadSharp />}
+                            />
+                            <small>
+                              {videoInfo?.fileName && videoInfo.fileName}
+                            </small>
+                            <Text size="body2">
+                              Upload, Drag and Drop MP4 file
+                            </Text>
+                            <input
+                              type="file"
+                              id="upload-file"
+                              ref={videoInput}
+                              hidden
+                              accept=".mp4"
+                            />
+                          </VStack>
+                        </form>
                       </Stack>
                     </>
                   )}
@@ -129,7 +289,9 @@ const CreateProjectPage: FC = () => {
                             <Input
                               type="text"
                               size="lg"
-                              placeholder="Kindly Upload Portfolio Link"
+                              placeholder="Kindly Input a Portfolio Link"
+                              name="portfolioLinks"
+                              onChange={handleChange}
                             />
                           </Box>
                           <Box>
@@ -144,39 +306,68 @@ const CreateProjectPage: FC = () => {
                             </Button>
                           </Box>
                         </Flex>
-                        <Box w="100%">
+                        {/* <Box w="100%">
                           <Input type="text" size="lg" borderRadius="30px" />
                         </Box>
                         <Box w="100%">
                           <Input type="text" size="lg" borderRadius="30px" />
-                        </Box>
+                        </Box> */}
                       </Stack>
                       <Stack spacing="22px">
                         <Text color="white" size="body2">
                           Upload Photo
                         </Text>
-                        <VStack
-                          borderRadius="20px"
-                          padding="4rem 2rem"
-                          w="100%"
-                          spacing="18.5px"
-                          border="1px dashed #99A1AA"
+                        <form
+                          className="upload-section"
+                          onDragOver={handleDragOver}
+                          onDragEnd={() => setIsDraggedOver(false)}
+                          onDragLeave={() => setIsDraggedOver(false)}
+                          onDrop={(e) => handleDrop(e, 'images')}
+                          role="presentation"
+                          onClick={() => selectImagesInput()}
+                          onChange={() =>
+                            updateSelectedFile(
+                              imagesInput.current?.files,
+                              'images',
+                            )
+                          }
                         >
-                          <Text maxW="265px" textAlign="center" size="body2">
-                            Video is expected to not exceeded 5mb and a max of 2
-                            minutes.
-                          </Text>
-                          <IconButton
-                            aria-label="Download video"
-                            fontSize="3.6rem"
-                            variant="unstyled"
-                            border="0px"
-                            icon={<IoCloudUploadSharp />}
-                          />
-                          <Text size="body2">
-                            Upload, Drag and Drop MP4 file
-                          </Text>
-                        </VStack>
+                          <VStack
+                            borderRadius="20px"
+                            padding="4rem 2rem"
+                            w="100%"
+                            spacing="18.5px"
+                            border="1px dashed #99A1AA"
+                          >
+                            <Text maxW="265px" textAlign="center" size="body2">
+                              You can upload a min of 2 images and a max of 12
+                              images.
+                            </Text>
+                            <IconButton
+                              aria-label="Download video"
+                              fontSize="3.6rem"
+                              variant="unstyled"
+                              border="0px"
+                              icon={<IoCloudUploadSharp />}
+                            />
+                            <small>
+                              {imagesInfo?.filesCount
+                                ? `${imagesInfo?.filesCount} images selected`
+                                : ''}
+                            </small>
+                            <Text size="body2">
+                              Upload, Drag and Drop JPG, JPEG, or PNG files
+                            </Text>
+                            <input
+                              type="file"
+                              id="upload-file"
+                              ref={imagesInput}
+                              hidden
+                              accept=".jpg, .jpeg, .png"
+                              multiple
+                            />
+                          </VStack>
+                        </form>
                       </Stack>
                     </>
                   )}
@@ -215,6 +406,8 @@ const CreateProjectPage: FC = () => {
                             type="text"
                             size="lg"
                             placeholder="Enter Amount"
+                            name="amount"
+                            onChange={handleChange}
                           />
                           <Select
                             placeholder="Enter Duration"
@@ -222,6 +415,8 @@ const CreateProjectPage: FC = () => {
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
+                            name="duration"
+                            onChange={handleChange}
                           >
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
@@ -234,6 +429,8 @@ const CreateProjectPage: FC = () => {
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
+                            name="repaymentFrequency"
+                            onChange={handleChange}
                           >
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
@@ -245,6 +442,8 @@ const CreateProjectPage: FC = () => {
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
+                            name="moratoriumPeriod"
+                            onChange={handleChange}
                           >
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
@@ -267,28 +466,29 @@ const CreateProjectPage: FC = () => {
                           </Select>
                           <Input type="text" size="lg" placeholder="Amount" />
 
-                          <Select
+                          <Input
+                            size="lg"
                             placeholder="Equity amount offered"
-                            h="5.6rem"
-                            fontSize="1.6rem"
-                            border="1px solid #99A1AA"
-                            borderRadius="2rem"
-                          >
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                          </Select>
-                          <Select
+                          />
+
+                          <CustomInput.Date
                             placeholder="Repayment date"
-                            h="5.6rem"
+                            // h="5.6rem"
+                            label="Repayment date"
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
-                          >
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                          </Select>
+                            type="date"
+                            format="d/M/yyyy"
+                            calendarIcon={<CalendarIcon />}
+                            clearIcon={null}
+                            onChange={(e: any) => {
+                              console.log(
+                                'DATE CHANGING',
+                                getISODate(e.target.value),
+                              );
+                            }}
+                          />
 
                           <Select
                             placeholder="Duration"
@@ -436,6 +636,7 @@ const CreateProjectPage: FC = () => {
                 </Stack>
                 <Box>
                   <Button
+                    type="submit"
                     variant="multicolor"
                     size="md"
                     w="100%"
@@ -448,7 +649,7 @@ const CreateProjectPage: FC = () => {
                 </Box>
               </Flex>
             </Flex>
-          </form>
+          </Box>
         </Container>
       </Box>
       <Footer />
@@ -462,6 +663,10 @@ const Styling = styled.div`
     display: flex;
     gap: 1rem;
     align-items: center;
+  }
+
+  .upload-section {
+    cursor: pointer;
   }
 `;
 
