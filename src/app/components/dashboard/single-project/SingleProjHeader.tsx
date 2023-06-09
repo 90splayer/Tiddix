@@ -21,16 +21,20 @@ const SingleProjHeader = () => {
     <Flex mb="4.3rem" justify="space-between">
       <Stack spacing="24px">
         <HStack spacing="2.7rem">
-          <Heading size="display2"></Heading>
-          <Text fontSize="14px"></Text>
+          <Heading size="display2">The Plant Picazzo</Heading>
+          <Text fontSize="14px">Art</Text>
         </HStack>
         <HStack spacing="10px">
-          <Avatar boxSize="25px" name="" src="" />
-          <Box>
-            <Text color="#fff"></Text>
+          <Avatar
+            boxSize="25px"
+            name="Segun Adebayo"
+            src="https://bit.ly/sage-adebayo"
+          />
+          <HStack>
+            <Text color="#fff">John Doe</Text>
             {''}
             <Box>{verify}</Box>
-          </Box>
+          </HStack>
         </HStack>
       </Stack>
       <HStack spacing="15px">
