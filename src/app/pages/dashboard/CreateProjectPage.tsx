@@ -158,12 +158,15 @@ const CreateProjectPage: FC = () => {
   const handleSubmit = () => {
     const formData = new FormData();
 
-    formData.append('projectName', formValues.projectName);
-    formData.append('investmentType', formValues.investmentType);
-
-    apiPrivate.post('/projects', formData).then(() => {
-      chkToaster.success({ title: 'portfolio submitted successfully' });
-    });
+    if (currentStepIndex === 2) {
+      formData.append('projectName', formValues.projectName);
+      formData.append('investmentType', formValues.investmentType);
+      apiPrivate.post('/projects', formData).then(() => {
+        chkToaster.success({ title: 'portfolio submitted successfully' });
+      });
+    } else {
+      next();
+    }
   };
 
   const getISODate = (date: Date) => {
@@ -640,9 +643,7 @@ const CreateProjectPage: FC = () => {
                     variant="multicolor"
                     size="md"
                     w="100%"
-                    onClick={() => {
-                      next();
-                    }}
+                    onClick={handleSubmit}
                   >
                     Next
                   </Button>
