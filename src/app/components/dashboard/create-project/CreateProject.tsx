@@ -81,7 +81,7 @@ const CreateProject: FC = () => {
                 Progress Status
               </Text>
               <Text size="body2" fontWeight="700">
-                100%
+                80%
               </Text>
             </Flex>
             <Box mb="3rem">
