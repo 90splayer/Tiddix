@@ -160,10 +160,16 @@ const CreateProjectPage: FC = () => {
 
     if (currentStepIndex === 2) {
       formData.append('projectName', formValues.projectName);
-      formData.append('investmentType', formValues.investmentType);
-      apiPrivate.post('/projects', formData).then(() => {
-        chkToaster.success({ title: 'portfolio submitted successfully' });
-      });
+      formData.append('investmentType', investType || 'debt');
+      apiPrivate
+        .post('/projects', formData)
+        .then(() => {
+          chkToaster.success({ title: 'portfolio submitted successfully' });
+        })
+        .catch((err) => {
+          console.log(console.log('ERROR', err.message));
+          chkToaster.error({ title: err.message });
+        });
     } else {
       next();
     }
