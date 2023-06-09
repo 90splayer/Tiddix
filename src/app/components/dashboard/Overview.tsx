@@ -24,6 +24,7 @@ import {
 import CustomTab from '../common/CustomTab';
 import BecomeInvestor from '../landing-page/BecomeInvestor';
 import DashboardOverview from './DashboardOverview';
+import ProjectOverview from './project/ProjectOverview';
 
 const Overview: FC = () => {
   return (
@@ -136,7 +137,7 @@ const Overview: FC = () => {
             },
             {
               label: 'Project',
-              body: <BecomeInvestor />,
+              body: <ProjectOverview />,
               icon: PaletteIcon,
             },
             {

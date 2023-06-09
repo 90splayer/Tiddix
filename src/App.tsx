@@ -13,6 +13,7 @@ import Dashboard from 'app/pages/dashboard/Dashboard';
 import PersistLogin from 'app/components/auth/PersistLogin';
 import RequireAuth from 'app/components/auth/RequireAuth';
 import CreateProject from './app/pages/dashboard/CreateProjectPage';
+import SingleProjectPage from 'app/pages/dashboard/SingleProjectPage';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               path="/dashboard/create-project"
               element={<CreateProject />}
             />
+            <Route path="/dashboard/project" element={<SingleProjectPage />} />
           </Route>
         </Route>
       </Routes>

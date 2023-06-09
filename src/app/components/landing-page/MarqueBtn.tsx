@@ -58,7 +58,7 @@ const Styling = styled.div`
     display: flex;
     justify-content: center;
     height: 100%;
-    transition: 0.5 ease-in-out,
+    transition: 0.5 ease-in-out;
     width: 100%;
     cursor: pointer;
   }

@@ -19,7 +19,7 @@ import { useMultiStepForm } from './useMultistepForm';
 import CreateProjHeader from './CreateProjHeader';
 
 const CreateProject: FC = () => {
-  const { steps, currentStepIndex } = useMultiStepForm([]);
+  // const { steps, currentStepIndex } = useMultiStepForm([]);
   return (
     <Box borderTop="1px solid grey" mt="2rem">
       <Container
@@ -81,7 +81,7 @@ const CreateProject: FC = () => {
                 Progress Status
               </Text>
               <Text size="body2" fontWeight="700">
-                100%
+                80%
               </Text>
             </Flex>
             <Box mb="3rem">

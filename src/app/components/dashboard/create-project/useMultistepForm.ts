@@ -1,28 +1,34 @@
 import { ReactElement, useState } from 'react';
 
-export function useMultiStepForm(steps: ReactElement[]) {
+export function useMultiStepForm(stepsLength: number) {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
-  const next = () => {
+
+  function next() {
     setCurrentStepIndex((i) => {
-      if (i >= steps.length - 1) return i;
+      if (i >= stepsLength - 1) return i;
       return i + 1;
     });
-  };
-  const back = () => {
+  }
+
+  function back() {
     setCurrentStepIndex((i) => {
       if (i <= 0) return i;
       return i - 1;
     });
-  };
-  const goto = (index: number) => {
+  }
+
+  function goTo(index: number) {
     setCurrentStepIndex(index);
-  };
+  }
+
   return {
     currentStepIndex,
-    step: steps[currentStepIndex],
-    steps,
-    goto,
+    // step: steps[currentStepIndex],
+    stepsLength,
+    goTo,
     next,
     back,
+    isFirstStep: currentStepIndex === 0,
+    isLastStep: currentStepIndex === stepsLength - 1,
   };
 }

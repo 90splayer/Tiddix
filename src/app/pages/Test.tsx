@@ -1,16 +1,27 @@
 import React, { FC } from 'react';
-import { Button, Text, Heading, Box, Input, Flex } from '@chakra-ui/react';
+import {
+  Button,
+  Text,
+  Heading,
+  Box,
+  Input,
+  Flex,
+  useDisclosure,
+} from '@chakra-ui/react';
 import CustomTab from 'app/components/common/CustomTab';
 import { PaletteIcon } from 'app/assets/icons';
 import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
 import { chkToaster } from 'app/components/common/Toaster';
 import CustomMenuButton from 'app/components/common/CustomMenuButton';
+import CustomModal from 'app/components/common/CustomModal';
 
 const CustomComponent = ({ name }: any) => {
   return <p>{name} COMPONENT!</p>;
 };
 
 const Test: FC = () => {
+  const { isOpen: open2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure();
+
   return (
     <>
       <Box mb="20">
@@ -136,6 +147,34 @@ const Test: FC = () => {
         <Input type="text" size="md" placeholder="placeholder" />
         <Input type="text" size="lg" placeholder="placeholder" />
       </Flex>
+
+      <Button onClick={onOpen2}>Trigger modal 2</Button>
+      {/* <CustomModal modalTitle="Test title 2" isOpen={open2} onClose={onClose2}>
+        <CustomModal.Body padding="0px" bg="white">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </CustomModal.Body>
+        <CustomModal.Footer>
+          <Button size="md" onClick={onClose2}>
+            Close
+          </Button>
+        </CustomModal.Footer>
+      </CustomModal> */}
+
+      <CustomModal isOpen={open2} onClose={onClose2}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat.
+      </CustomModal>
     </>
   );
 };

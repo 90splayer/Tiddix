@@ -9,4 +9,7 @@ export { ReactComponent as TestimonialIcon } from './testimonial.svg';
 export { ReactComponent as WalletIcon } from './wallet.svg';
 export { ReactComponent as ChevronDownIcon } from './chevron-down.svg';
 export { ReactComponent as LogoutIcon } from './logout.svg';
-export { ReactComponent as CheckIcon } from '../svgs/dashboard/check.svg';
+export { ReactComponent as CheckIcon } from './check.svg';
+export { ReactComponent as CheckMarkActive } from './checkmark-active.svg';
+export { ReactComponent as CheckMarkDone } from './checkmark-done.svg';
+export { ReactComponent as CheckMarkInactive } from './checkmark-inactive.svg';

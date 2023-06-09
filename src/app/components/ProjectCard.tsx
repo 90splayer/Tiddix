@@ -7,7 +7,10 @@ import {
   Flex,
   Image,
   Progress,
+  Heading,
+  HStack,
 } from '@chakra-ui/react';
+import { debt } from 'app/assets/svgs/dashboard/dashboard';
 import { verify } from 'app/assets/svgs/home';
 import React from 'react';
 
@@ -50,12 +53,12 @@ const ProjectCard = () => {
       </Box>
       <Flex justify="space-between" align="center" color="#fff">
         <Box>
-          <Text mb="15px" fontSize="1.6rem" fontWeight={700} color="#fff">
-            Equity
-          </Text>
-          <Text fontSize="2.4rem" fontWeight={700} color="#fff">
-            $ 2,000
-          </Text>
+          <HStack mb="15px">
+            <Box>{debt}</Box>
+            <Heading fontSize="1.6rem">Equity</Heading>
+          </HStack>
+
+          <Heading fontSize="2.4rem">$ 2,000</Heading>
         </Box>
         <Box>
           <Text mb="15px" fontSize="1.6rem" textAlign="right" color="#99A1AA">
