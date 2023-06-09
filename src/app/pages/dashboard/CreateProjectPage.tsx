@@ -91,8 +91,8 @@ const CreateProjectPage: FC = () => {
     files: File[];
     filesCount: number;
   };
-  const [videoInfo, setVideoInfo] = useState<VideoInfoT>();
-  const [imagesInfo, setImagesInfo] = useState<ImagesInfoT>();
+  const [videoInfo, setVideoInfo] = useState<any>();
+  const [imagesInfo, setImagesInfo] = useState<any>();
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const videoInput = useRef<HTMLInputElement>(null);
   const imagesInput = useRef<HTMLInputElement>(null);
@@ -161,6 +161,11 @@ const CreateProjectPage: FC = () => {
     if (currentStepIndex === 2) {
       formData.append('projectName', formValues.projectName);
       formData.append('investmentType', investType || 'debt');
+      formData.append('description', formValues.description);
+      formData.append('images', imagesInfo);
+      formData.append('pitchVideo', videoInfo);
+      // formData.append('amount', formValues.amount);
+
       apiPrivate
         .post('/projects', formData)
         .then(() => {
