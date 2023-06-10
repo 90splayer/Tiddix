@@ -5,7 +5,6 @@ const api = axios.create({
   baseURL: `${import.meta.env.VITE_APP_TIDDIX_BASE_URL}`,
   headers: {
     'Content-Type': 'application/json',
-    'ngrok-skip-browser-warning': true,
   },
   withCredentials: true,
 });
@@ -14,7 +13,6 @@ export const apiPrivate = axios.create({
   baseURL: `${import.meta.env.VITE_APP_TIDDIX_BASE_URL}`,
   headers: {
     'Content-Type': 'application/json',
-    'ngrok-skip-browser-warning': true,
   },
   withCredentials: true,
 });
