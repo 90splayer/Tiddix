@@ -65,13 +65,12 @@ const ProjectCard = () => {
             25%
           </Text>
           <Progress
-            borderRadius="10px"
-            bgColor="#485155"
-            colorScheme="navy"
-            // bgGradient="linear(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)"
-            w="8.8rem"
-            size="md"
             value={25}
+            size="md"
+            colorScheme="transparent"
+            borderRadius="20px"
+            background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
+            w="8.8rem"
           />
         </Box>
       </Flex>

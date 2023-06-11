@@ -9,6 +9,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
+import TrendingTable from './TrendingTable';
 
 const TopTrending: FC = () => {
   return (
@@ -28,7 +29,7 @@ const TopTrending: FC = () => {
             <Button size="md">Pricing</Button>
           </Flex>
         </Flex>
-        <Flex justify="space-between"></Flex>
+        <TrendingTable />
       </Container>
     </Box>
   );
