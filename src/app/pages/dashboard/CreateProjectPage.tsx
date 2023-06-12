@@ -28,74 +28,145 @@ import { useMultiStepForm } from 'app/components/dashboard/create-project/useMul
 import CreateProjHeader from 'app/components/dashboard/create-project/CreateProjHeader';
 import InvestTypeCard from 'app/components/dashboard/create-project/InvestmentTypeCard';
 import { BiPlus } from 'react-icons/bi';
-import { PaletteIcon } from 'app/assets/icons';
-import { InvestmentIcon } from 'app/assets/icons';
 import styled from 'styled-components';
 import {
+  PaletteIcon,
+  InvestmentIcon,
   CheckMarkActive,
   CheckMarkInactive,
   CheckMarkDone,
+  CheckIcon,
+  CloseIcon,
 } from 'app/assets/icons';
 import { chkToaster } from 'app/components/common/Toaster';
 import { CustomInput } from 'app/components/common/CustomInput';
 import { CalendarIcon } from '@chakra-ui/icons';
 import { apiPrivate } from 'app/api/tiddix';
+import CustomSelectField from 'app/components/common/CustomSelect';
 
-// left out images, pitchVideo, and portfolioLinks, investmentType, repaymentDate
+// left out images, pitchVideo, and portfolioLinks,
 type portfolioT = {
   category: string;
   description: string;
-  amount: number;
+  amount: number | null;
   duration: string;
   repaymentFrequency: string;
   moratoriumPeriod: string;
-  equityAmountOffered: string;
+  equityAmountOffered: number | null;
   projectName: string;
-  portfolioLinks: string;
-  // images: any;
-  // pitchVideo: any;
-  investmentType: string;
-  repaymentDate: string;
+  investmentType: string | undefined;
+  repaymentDate: Date | null;
 };
 
 const CreateProjectPage: FC = () => {
-  const [investType, setInvestType] = useState<string | undefined>(undefined);
+  const [investmentType, setInvestmentType] = useState<string | undefined>(
+    undefined,
+  );
   const [formValues, setFormValues] = useState<portfolioT>({
     category: '',
     description: '',
-    amount: 0,
+    amount: null,
     duration: '',
     repaymentFrequency: '',
     moratoriumPeriod: '',
-    equityAmountOffered: '',
+    equityAmountOffered: null,
     projectName: '',
-    portfolioLinks: '',
-    // images: null,
-    // pitchVideo: null,
-    investmentType: '',
-    repaymentDate: '',
+    investmentType: undefined,
+    repaymentDate: null,
   });
 
+  // useEffect(() => {
+  //   console.log('FORM VALUES', formValues);
+  // });
+
+  // Reset Investment info when Investment type is changed.
   useEffect(() => {
-    console.log('FORM VALUES', formValues);
-  });
+    setFormValues((prev) => ({
+      ...prev,
+      amount: null,
+      duration: '',
+      repaymentFrequency: '',
+      moratoriumPeriod: '',
+      equityAmountOffered: null,
+      repaymentDate: null,
+    }));
+  }, [formValues.investmentType]);
 
   const { currentStepIndex, isFirstStep, isLastStep, stepsLength, goTo, next } =
     useMultiStepForm(4);
 
-  type VideoInfoT = {
-    file: File;
-    fileName: string;
-  };
-  type ImagesInfoT = {
-    files: File[];
-    filesCount: number;
-  };
-  const [videoInfo, setVideoInfo] = useState<any>();
-  const [imagesInfo, setImagesInfo] = useState<any>();
+  // type VideoInfoT = {
+  //   file: File;
+  //   fileName: string;
+  // };
+  // type ImagesInfoT = {
+  //   files: File[];
+  //   filesCount: number;
+  // };
+  const [videoInfo, setVideoInfo] = useState<any>(null);
+  const [imagesInfo, setImagesInfo] = useState<any>(null);
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const videoInput = useRef<HTMLInputElement>(null);
   const imagesInput = useRef<HTMLInputElement>(null);
+
+  const [portfolioLink, setPortfolioLink] = useState('');
+  const [portfolioLinks, setPortfolioLinks] = useState<string[]>([]);
+  // const [portfolioLinkError, setPortfolioLinkError] = useState('');
+  const [formErrors, setFormErrors] = useState({
+    portfolioLink: '',
+    projectName: '',
+  });
+
+  const stepOneDone = () => {
+    if (formValues.projectName && formValues.category) return true;
+    return false;
+  };
+  const stepTwoDone = () => {
+    if ((portfolioLink || portfolioLinks.length) && imagesInfo) return true;
+    return false;
+  };
+  const stepThreeDone = () => {
+    if (
+      formValues.investmentType &&
+      formValues.amount &&
+      formValues.duration &&
+      formValues.moratoriumPeriod
+    ) {
+      if (formValues.investmentType === 'debt') {
+        if (formValues.repaymentFrequency) return true;
+      }
+      if (formValues.investmentType === 'equity') {
+        if (formValues.equityAmountOffered && formValues.repaymentDate)
+          return true;
+      }
+    }
+    return false;
+  };
+
+  const doneSteps = [stepOneDone(), stepTwoDone(), stepThreeDone()].filter(
+    Boolean,
+  ).length;
+
+  const setError = (name: string, error: string) => {
+    setFormErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  const validUrl = new RegExp(
+    /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
+  );
+  const addPortfolioLink = () => {
+    if (!portfolioLink) return;
+    if (!validUrl.test(portfolioLink)) {
+      setError('portfolioLink', 'Invalid URL');
+      return;
+    }
+    setPortfolioLinks((prev) => [portfolioLink, ...prev]);
+    setPortfolioLink('');
+  };
+
+  const removePortfolioLink = (link: string) => {
+    setPortfolioLinks(portfolioLinks.filter((item) => item !== link));
+  };
 
   const handleDragOver = (e: any) => {
     e.preventDefault();
@@ -106,12 +177,17 @@ const CreateProjectPage: FC = () => {
     if (files) {
       const file = files[0];
       if (type === 'video' && file.type === 'video/mp4') {
-        console.log('FILE', file);
         setVideoInfo({
           file,
           fileName: file.name,
         });
       } else if (type === 'images') {
+        if (files.length < 2 || files.length > 12) {
+          chkToaster.error({
+            title:
+              'You can only upload a minimum of 2 images and a maximum of 12 images.',
+          });
+        }
         setImagesInfo({
           files: files,
           filesCount: files.length,
@@ -156,26 +232,35 @@ const CreateProjectPage: FC = () => {
   };
 
   const handleSubmit = () => {
-    const formData = new FormData();
+    if (doneSteps === 3 && currentStepIndex === 2) {
+      const formData = new FormData();
 
-    if (currentStepIndex === 2) {
-      formData.append('projectName', formValues.projectName);
-      formData.append('investmentType', investType || 'debt');
-      formData.append('description', formValues.description);
+      const sendObj = {
+        ...formValues,
+        portfolioLinks: portfolioLinks.join(),
+      };
+
+      const json = JSON.stringify(sendObj);
+      const blob = new Blob([json], { type: 'application/json' });
+
+      formData.append('projectData', blob);
       formData.append('images', imagesInfo);
       formData.append('pitchVideo', videoInfo);
-      // formData.append('amount', formValues.amount);
 
       apiPrivate
         .post('/projects', formData)
         .then(() => {
           chkToaster.success({ title: 'portfolio submitted successfully' });
+          next();
         })
         .catch((err) => {
-          console.log(console.log('ERROR', err.message));
           chkToaster.error({ title: err.message });
         });
     } else {
+      if (currentStepIndex === 2 && doneSteps !== 3) {
+        chkToaster.error({ title: 'Please fill all required fields' });
+        return;
+      }
       next();
     }
   };
@@ -215,20 +300,53 @@ const CreateProjectPage: FC = () => {
                         requested below.
                       </Text>
                       <Stack w="100%" spacing="30px" mb="43px">
+                        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
+                          <CustomInput
+                            type="text"
+                            size="lg"
+                            placeholder="Project Name*"
+                            value={formValues.projectName}
+                            name="projectName"
+                            onChange={handleChange}
+                          />
+                          <CustomSelectField
+                            placeholder="Category*"
+                            label="Category"
+                            name="category"
+                            value={formValues.category}
+                            onChange={(e) =>
+                              handleChange({
+                                target: {
+                                  value: e.target.value,
+                                  name: 'category',
+                                },
+                              })
+                            }
+                            options={[
+                              {
+                                label: 'Art',
+                                value: 'art',
+                              },
+                              {
+                                label: 'Music',
+                                value: 'music',
+                              },
+                              {
+                                label: 'Fashion',
+                                value: 'fashion',
+                              },
+                            ]}
+                          />
+                        </SimpleGrid>
+                      </Stack>
+                      <Stack w="100%" spacing="30px" mb="43px">
                         <Input
                           type="text"
                           size="lg"
-                          placeholder="Project Name"
-                          name="projectName"
-                          onChange={handleChange}
-                        />
-                        <Input
-                          type="text"
-                          size="lg"
-                          minH="96px"
                           placeholder="Project Description"
                           name="description"
                           onChange={handleChange}
+                          value={formValues.description}
                         />
                       </Stack>
                       <Stack spacing="22px">
@@ -300,36 +418,56 @@ const CreateProjectPage: FC = () => {
                       <Stack w="100%" spacing="19px" mb="53px">
                         <Flex gap="10px">
                           <Box w="80%">
-                            <Input
+                            <CustomInput
                               type="text"
                               size="lg"
-                              placeholder="Kindly Input a Portfolio Link"
-                              name="portfolioLinks"
-                              onChange={handleChange}
+                              placeholder="Kindly Input a Portfolio Link*"
+                              name="portfolioLink"
+                              value={portfolioLink}
+                              onChange={(e) => {
+                                setError('portfolioLink', '');
+                                setPortfolioLink(e.target.value);
+                              }}
+                              error={formErrors.portfolioLink}
                             />
                           </Box>
                           <Box>
                             <Button
-                              borderRadius="100px"
-                              bg="#232629"
-                              border={0}
+                              variant="secondary"
                               leftIcon={<BiPlus />}
-                              size="lg"
+                              fontSize="1.6rem"
+                              fontWeight="400"
+                              onClick={addPortfolioLink}
                             >
                               Add another link
                             </Button>
                           </Box>
                         </Flex>
-                        {/* <Box w="100%">
-                          <Input type="text" size="lg" borderRadius="30px" />
-                        </Box>
-                        <Box w="100%">
-                          <Input type="text" size="lg" borderRadius="30px" />
-                        </Box> */}
+                        <Stack spacing="2rem">
+                          {portfolioLinks.map((link, i) => (
+                            <Flex
+                              key={i}
+                              padding="2rem"
+                              bg="blackShade.2"
+                              borderRadius="3rem"
+                              height="6rem"
+                              justify="space-between"
+                              align="center"
+                            >
+                              <Text size="body2" color="white">
+                                {link}
+                              </Text>
+                              <CloseIcon
+                                cursor="pointer"
+                                onClick={() => removePortfolioLink(link)}
+                              />
+                            </Flex>
+                          ))}
+                        </Stack>
                       </Stack>
                       <Stack spacing="22px">
                         <Text color="white" size="body2">
-                          Upload Photo
+                          Upload Photo*
                         </Text>
                         <form
                           className="upload-section"
@@ -389,106 +527,213 @@ const CreateProjectPage: FC = () => {
                   {/* ==== INVESTMENT TYPE ===== */}
                   {currentStepIndex === 2 && (
                     <>
-                      {' '}
                       <Heading as="h2" mb="4.2rem">
                         Investment type
                       </Heading>
                       <Flex w="100%" gap="2rem" mb="43px">
-                        <Box onClick={() => setInvestType('debt')}>
+                        <Box
+                          onClick={() => {
+                            handleChange({
+                              target: {
+                                name: 'investmentType',
+                                value: 'debt',
+                              },
+                            });
+                          }}
+                        >
                           <InvestTypeCard
                             title="Debt"
                             icon={PaletteIcon}
                             desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
-                            paintBorder={investType === 'debt'}
+                            paintBorder={formValues.investmentType === 'debt'}
                           />
                         </Box>
 
-                        <Box onClick={() => setInvestType('equity')}>
+                        <Box
+                          onClick={() => {
+                            handleChange({
+                              target: {
+                                name: 'investmentType',
+                                value: 'equity',
+                              },
+                            });
+                          }}
+                        >
                           <InvestTypeCard
                             title={'Equity'}
                             icon={InvestmentIcon}
                             desc={
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
                             }
-                            paintBorder={investType === 'equity'}
+                            paintBorder={formValues.investmentType === 'equity'}
                           />
                         </Box>
                       </Flex>
-                      {investType === 'debt' && (
+                      {formValues.investmentType === 'debt' && (
                         <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
                           <Input
-                            type="text"
+                            type="number"
                             size="lg"
-                            placeholder="Enter Amount"
+                            placeholder="Enter Amount*"
                             name="amount"
+                            value={formValues.amount ?? ''}
                             onChange={handleChange}
                           />
-                          <Select
-                            placeholder="Enter Duration"
+                          <CustomSelectField
+                            placeholder="Enter Duration*"
+                            label="Enter Duration"
                             h="5.6rem"
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
                             name="duration"
-                            onChange={handleChange}
-                          >
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                          </Select>
+                            value={formValues.duration}
+                            onChange={(e) => {
+                              handleChange({
+                                target: {
+                                  name: 'duration',
+                                  value: e.target.value,
+                                },
+                              });
+                            }}
+                            options={[
+                              {
+                                label: '1 year',
+                                value: 'one-year',
+                              },
+                              {
+                                label: '2 Years',
+                                value: 'two-years',
+                              },
+                              {
+                                label: '5 Years',
+                                value: 'five-years',
+                              },
+                            ]}
+                          />
 
-                          <Select
-                            placeholder="Select Payment Frequency"
+                          <CustomSelectField
+                            placeholder="Select Payment Frequency*"
+                            label="Select Payment Frequency"
                             h="5.6rem"
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
                             name="repaymentFrequency"
-                            onChange={handleChange}
-                          >
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                          </Select>
-                          <Select
-                            placeholder="Moratorium Period"
-                            h="5.6rem"
+                            value={formValues.repaymentFrequency}
+                            onChange={(e) => {
+                              handleChange({
+                                target: {
+                                  name: 'repaymentFrequency',
+                                  value: e.target.value,
+                                },
+                              });
+                            }}
+                            options={[
+                              {
+                                label: 'Weekly',
+                                value: 'weekly',
+                              },
+                              {
+                                label: 'Monthly',
+                                value: 'monthly',
+                              },
+                              {
+                                label: 'Quarterly',
+                                value: 'quarterly',
+                              },
+                            ]}
+                          />
+
+                          <CustomSelectField
+                            placeholder="Moratorium Period*"
+                            label="Moratorium Period"
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
                             name="moratoriumPeriod"
-                            onChange={handleChange}
-                          >
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                          </Select>
+                            value={formValues.moratoriumPeriod}
+                            onChange={(e) => {
+                              handleChange({
+                                target: {
+                                  name: 'moratoriumPeriod',
+                                  value: e.target.value,
+                                },
+                              });
+                            }}
+                            options={[
+                              {
+                                label: '1 year',
+                                value: 'one-year',
+                              },
+                              {
+                                label: '2 Years',
+                                value: 'two-years',
+                              },
+                              {
+                                label: '5 Years',
+                                value: 'five-years',
+                              },
+                            ]}
+                          />
                         </SimpleGrid>
                       )}
-                      {investType === 'equity' && (
+                      {formValues.investmentType === 'equity' && (
                         <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
-                          <Select
-                            placeholder="Moratorium Period"
-                            h="5.6rem"
+                          <CustomSelectField
+                            placeholder="Moratorium Period*"
+                            label="Moratorium Period"
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
-                          >
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                          </Select>
-                          <Input type="text" size="lg" placeholder="Amount" />
+                            name="moratoriumPeriod"
+                            value={formValues.moratoriumPeriod}
+                            onChange={(e) => {
+                              handleChange({
+                                target: {
+                                  name: 'moratoriumPeriod',
+                                  value: e.target.value,
+                                },
+                              });
+                            }}
+                            options={[
+                              {
+                                label: '1 year',
+                                value: 'one-year',
+                              },
+                              {
+                                label: '2 Years',
+                                value: 'two-years',
+                              },
+                              {
+                                label: '5 Years',
+                                value: 'five-years',
+                              },
+                            ]}
+                          />
+
+                          <Input
+                            type="number"
+                            size="lg"
+                            placeholder="Amount*"
+                            name="amount"
+                            value={formValues.amount ?? ''}
+                            onChange={handleChange}
+                          />
 
                           <Input
                             size="lg"
-                            placeholder="Equity amount offered"
+                            placeholder="Equity amount offered*"
+                            type="number"
+                            name="equityAmountOffered"
+                            value={formValues.equityAmountOffered ?? ''}
+                            onChange={handleChange}
                           />
 
                           <CustomInput.Date
                             placeholder="Repayment date"
                             // h="5.6rem"
-                            label="Repayment date"
+                            label="Repayment date*"
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
                             borderRadius="2rem"
@@ -496,27 +741,88 @@ const CreateProjectPage: FC = () => {
                             format="d/M/yyyy"
                             calendarIcon={<CalendarIcon />}
                             clearIcon={null}
+                            name="repaymentDate"
+                            value={formValues.repaymentDate as any}
                             onChange={(e: any) => {
-                              console.log(
-                                'DATE CHANGING',
-                                getISODate(e.target.value),
-                              );
+                              handleChange({
+                                target: {
+                                  name: e.target.name,
+                                  // value: getISODate(e.target.value),
+                                  value: e.target.value,
+                                },
+                              });
                             }}
                           />
 
-                          <Select
-                            placeholder="Duration"
-                            h="5.6rem"
+                          <CustomSelectField
+                            placeholder="Duration*"
+                            label="Duration"
                             fontSize="1.6rem"
                             border="1px solid #99A1AA"
-                            borderRadius="2rem"
-                          >
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                          </Select>
+                            name="duration"
+                            value={formValues.duration}
+                            onChange={(e) => {
+                              handleChange({
+                                target: {
+                                  name: 'duration',
+                                  value: e.target.value,
+                                },
+                              });
+                            }}
+                            options={[
+                              {
+                                label: '1 year',
+                                value: 'one-year',
+                              },
+                              {
+                                label: '2 Years',
+                                value: 'two-years',
+                              },
+                              {
+                                label: '5 Years',
+                                value: 'five-years',
+                              },
+                            ]}
+                          />
                         </SimpleGrid>
                       )}
+                    </>
+                  )}
+
+                  {/* ==== FINISH ===== */}
+                  {currentStepIndex === 3 && (
+                    <>
+                      <Flex
+                        bg="#232629"
+                        align="center"
+                        justify="center"
+                        borderRadius="full"
+                        w="125px"
+                        h="125px"
+                      >
+                        <CheckIcon />
+                      </Flex>
+                      <Stack spacing="9px">
+                        <Heading as="h2">
+                          Your Project Has Been Submitted
+                        </Heading>
+                        <Text
+                          textAlign="center"
+                          size="body2"
+                          mb="1.4rem"
+                          maxW="321px"
+                        >
+                          Your project has been uploaded and you can access it
+                          from your dashboard.
+                        </Text>
+                      </Stack>
+                      <Box maxW="39rem">
+                        <Link to="/dashboard">
+                          <Button variant="multicolor" size="md" w="100%">
+                            Go to my dashboard
+                          </Button>
+                        </Link>
+                      </Box>
                     </>
                   )}
                 </>
@@ -527,15 +833,15 @@ const CreateProjectPage: FC = () => {
                     Progress Status
                   </Text>
                   {/* <Text size="body2" fontWeight="700">
-                    100%
+                    {(doneSteps / 3) * 100}%
                   </Text> */}
                 </Flex>
                 <Box mb="3rem">
                   <Progress
                     // hasStripe
-                    value={80}
+                    value={(doneSteps / 3) * 100}
                     borderRadius="20px"
-                    isAnimated
+                    // isAnimated
                     background="blackShade.3"
                     sx={{
                       '& > div': {
@@ -569,7 +875,13 @@ const CreateProjectPage: FC = () => {
                     }}
                   >
                     <Icon
-                      as={isFirstStep ? CheckMarkActive : CheckMarkInactive}
+                      as={
+                        stepOneDone()
+                          ? CheckMarkDone
+                          : isFirstStep
+                          ? CheckMarkActive
+                          : CheckMarkInactive
+                      }
                       boxSize="2.8rem"
                     />
                     Project Description
@@ -592,7 +904,9 @@ const CreateProjectPage: FC = () => {
                   >
                     <Icon
                       as={
-                        currentStepIndex === 1
+                        stepTwoDone()
+                          ? CheckMarkDone
+                          : currentStepIndex === 1
                           ? CheckMarkActive
                           : CheckMarkInactive
                       }
@@ -618,7 +932,9 @@ const CreateProjectPage: FC = () => {
                   >
                     <Icon
                       as={
-                        currentStepIndex === 2
+                        stepThreeDone()
+                          ? CheckMarkDone
+                          : currentStepIndex === 2
                           ? CheckMarkActive
                           : CheckMarkInactive
                       }
@@ -656,7 +972,9 @@ const CreateProjectPage: FC = () => {
                     w="100%"
                     onClick={handleSubmit}
                   >
-                    Next
+                    {doneSteps === 3 && currentStepIndex === 2
+                      ? 'Submit'
+                      : 'Next'}
                   </Button>
                 </Box>
               </Flex>

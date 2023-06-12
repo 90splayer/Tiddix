@@ -100,14 +100,14 @@ export const CustomInput: InputComponent = (props) => {
           id={id ?? name}
           name={name}
           size="lg"
-          bg="white"
+          // bg="white"
           value={value}
           {...rest}
         />
         {endIcon && <InputRightElement>{endIcon}</InputRightElement>}
       </InputGroup>
       {error && (
-        <FormErrorMessage mt="1.5" color="error.600" fontSize="sm">
+        <FormErrorMessage mt="1.5" color="red.500" fontSize="1.2rem">
           {error}
         </FormErrorMessage>
       )}
