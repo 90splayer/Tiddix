@@ -22,9 +22,10 @@ const AuthContext = createContext<AuthContextT>({} as AuthContextT);
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [auth, setAuth] = useState<AuthUserT | null>(null);
 
-  const [persist, setPersist] = useState<string>(
-    localStorage.getItem('persist') || 'false',
-  );
+  // const [persist, setPersist] = useState<string>(
+  //   localStorage.getItem('persist') || 'false',
+  // );
+  const [persist, setPersist] = useState<string>('true');
 
   return (
     <AuthContext.Provider value={{ auth, setAuth, persist, setPersist }}>
