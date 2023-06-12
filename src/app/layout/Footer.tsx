@@ -122,8 +122,8 @@ export const Footer: FC = () => {
                   Office
                 </Text>
                 <Text color="#99A1AA" maxW="235px" lineHeight="32px">
-                  1(b) Ridgeway, Papworth Everard, Cambridge, Cambridgeshire.
-                  CB23 3RW UK
+                  Pippins, Cherry Drive, Forty Green, Beaconsfield,
+                  Buckinghamshire HP9 1XP
                 </Text>
                 <HStack spacing="16px" fontSize="24px" color="#99A1AA">
                   <Link to="#" target="_blank">
