@@ -187,6 +187,7 @@ const CreateProjectPage: FC = () => {
             title:
               'You can only upload a minimum of 2 images and a maximum of 12 images.',
           });
+          return;
         }
         setImagesInfo({
           files: files,
