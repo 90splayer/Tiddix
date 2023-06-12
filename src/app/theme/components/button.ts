@@ -1,3 +1,5 @@
+import { UnorderedList } from '@chakra-ui/react';
+
 export const buttonStyles = {
   // white bg - whitebg (use to be default)
   // primary - transaparent bg - transparent-bg (now default)
@@ -9,7 +11,7 @@ export const buttonStyles = {
     Button: {
       baseStyle: {
         borderRadius: '100px',
-        bg: 'white',
+        bg: 'transparent',
         background: 'transparent',
         color: 'white',
         border: '2px solid',
@@ -22,11 +24,11 @@ export const buttonStyles = {
         _hover: {
           opacity: '0.8',
           cursor: 'pointer',
-          transform: 'scale(1.03)',
+          // transform: 'scale(1.03)',
           // _after: {},
 
           // _disabled: {
-          //   background: 'blackShade.4',
+          // background: 'blackShade.4',
           //   color: 'blackShade.1',
           //   opacity: 1,
           // },
@@ -41,6 +43,25 @@ export const buttonStyles = {
       },
 
       variants: {
+        default: {
+          border: '2px solid',
+          borderColor: 'blackShade.4',
+          color: 'white',
+          background: 'transparent',
+
+          // color: 'white',
+          // border: '2px solid',
+          // borderColor: 'blackShade.4',
+
+          _hover: {
+            opacity: '0.8',
+            cursor: 'pointer',
+            _disabled: {},
+          },
+          // _disabled: {},
+          // _active: {},
+          // _focus: {},
+        },
         whitebg: {
           border: '1px solid',
           borderColor: 'transparent',
@@ -80,7 +101,7 @@ export const buttonStyles = {
           _hover: {
             cursor: 'pointer',
             boxShadow: '0px 92px 40px -59px rgba(108, 76, 223, 0.15)',
-            transform: 'scale(1.03)',
+            // transform: 'scale(1.03)',
           },
         },
         multiradial: {
@@ -92,7 +113,7 @@ export const buttonStyles = {
           _hover: {
             cursor: 'pointer',
             boxShadow: '0px 92px 40px -59px rgba(108, 76, 223, 0.15)',
-            transform: 'scale(1.03)',
+            // transform: 'scale(1.03)',
           },
         },
         borderless: {

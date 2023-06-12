@@ -26,7 +26,7 @@ const Test: FC = () => {
     <>
       <Box mb="20">
         <Heading mb="10">Button Variants</Heading>
-        <Button>default button</Button>
+        <Button variant="default">default button</Button>
         <Button variant="primary">primary Button</Button>
         <Button variant="secondary">secondary Button</Button>
         <Button variant="whitebg">whitebg Button</Button>

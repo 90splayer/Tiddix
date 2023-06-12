@@ -13,3 +13,4 @@ export { ReactComponent as CheckIcon } from './check.svg';
 export { ReactComponent as CheckMarkActive } from './checkmark-active.svg';
 export { ReactComponent as CheckMarkDone } from './checkmark-done.svg';
 export { ReactComponent as CheckMarkInactive } from './checkmark-inactive.svg';
+export { ReactComponent as CloseIcon } from './close.svg';
