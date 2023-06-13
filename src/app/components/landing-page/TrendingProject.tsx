@@ -10,8 +10,18 @@ import {
 } from '@chakra-ui/react';
 import ProjectCard from '../ProjectCard';
 import { Link } from 'react-router-dom';
+import '~slick-carousel/slick/slick.css';
+import '~slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 
 const TrendingProject = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+  };
   return (
     <Container maxW="144rem" p="7.5rem 7.2rem">
       <Heading
@@ -29,20 +39,18 @@ const TrendingProject = () => {
         Check out our weekly updated trending Projects
       </Text>
       <Flex justify="center" align="center" flexDir="column">
-        <Grid templateColumns="repeat(4, 1fr)" gap="2rem" mb="15rem">
-          <GridItem w="100%">
-            <ProjectCard />
-          </GridItem>
-          <GridItem w="100%">
-            <ProjectCard />
-          </GridItem>
-          <GridItem w="100%">
-            <ProjectCard />
-          </GridItem>
-          <GridItem w="100%">
-            <ProjectCard />
-          </GridItem>
-        </Grid>
+        <Slider {...settings}>
+          <ProjectCard
+            full_name={''}
+            investment_type={''}
+            avatar={''}
+            progress={0}
+            img={''}
+            category={''}
+            title={''}
+            amount={''}
+          />
+        </Slider>
         <Link to="/explore">
           <Button
             border="1px solid #fff"
