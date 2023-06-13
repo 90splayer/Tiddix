@@ -73,7 +73,7 @@ const ProjectCard: FC<Props> = ({
         </Box>
         <Box>
           <Text mb="15px" fontSize="1.6rem" textAlign="right" color="#99A1AA">
-            {progress}
+            {progress}%
           </Text>
           <Progress
             value={progress}

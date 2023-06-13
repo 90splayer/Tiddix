@@ -1,18 +1,11 @@
 import React from 'react';
-import {
-  Button,
-  Container,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Text,
-} from '@chakra-ui/react';
+import { Button, Box, Container, Flex, Heading, Text } from '@chakra-ui/react';
 import ProjectCard from '../ProjectCard';
 import { Link } from 'react-router-dom';
-import '~slick-carousel/slick/slick.css';
-import '~slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import { projectData } from '../data/ProjectData';
 
 const TrendingProject = () => {
   const settings = {
@@ -40,16 +33,20 @@ const TrendingProject = () => {
       </Text>
       <Flex justify="center" align="center" flexDir="column">
         <Slider {...settings}>
-          <ProjectCard
-            full_name={''}
-            investment_type={''}
-            avatar={''}
-            progress={0}
-            img={''}
-            category={''}
-            title={''}
-            amount={''}
-          />
+          {projectData.map((item, index) => (
+            <Box key={index}>
+              <ProjectCard
+                full_name={item.name}
+                investment_type={item.investment_type}
+                avatar={item.avartar}
+                progress={item.progress}
+                img={item.img}
+                category={item.category}
+                title={item.category}
+                amount={item.total_funding}
+              />
+            </Box>
+          ))}
         </Slider>
         <Link to="/explore">
           <Button
