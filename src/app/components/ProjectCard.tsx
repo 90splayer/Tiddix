@@ -52,7 +52,13 @@ const ProjectCard: FC<Props> = ({
         </Flex>
       </CardHeader>
       <Box borderRadius="20px" my="20px" pos="relative">
-        <Image borderRadius="20px" objectFit="cover" src={img} alt={title} />
+        <Image
+          borderRadius="20px"
+          h="268px"
+          objectFit="cover"
+          src={img}
+          alt={title}
+        />
         <Box pos="absolute" bottom={15} left={15}>
           <Text fontWeight={700} fontSize="2rem" color="#fff">
             {title}
