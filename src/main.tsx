@@ -6,6 +6,8 @@ import './index.css';
 import theme from 'app/theme/theme';
 import Fonts from 'app/theme/font';
 import { AuthProvider } from 'app/context/AuthProvider';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
