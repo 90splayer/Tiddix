@@ -102,7 +102,7 @@ const TopNav = () => {
                   </MenuItem>
                   <MenuItem
                     as="a"
-                    href="#"
+                    href="/teams"
                     gap="5px"
                     padding="1.2rem"
                     bg="blackShade.2"
