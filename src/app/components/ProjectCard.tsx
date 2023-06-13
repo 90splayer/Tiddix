@@ -53,8 +53,8 @@ const ProjectCard: FC<Props> = ({
       </CardHeader>
       <Box borderRadius="20px" my="20px" pos="relative">
         <Image
-          borderRadius="20px"
           h="268px"
+          borderRadius="20px"
           objectFit="cover"
           src={img}
           alt={title}
