@@ -41,8 +41,9 @@ import {
 import { chkToaster } from 'app/components/common/Toaster';
 import { CustomInput } from 'app/components/common/CustomInput';
 import { CalendarIcon } from '@chakra-ui/icons';
-import { apiPrivate } from 'app/api/tiddix';
+// import { apiPrivate } from 'app/api/tiddix';
 import CustomSelectField from 'app/components/common/CustomSelect';
+import useApiPrivate from 'app/hooks/useApiPrivate';
 
 // left out images, pitchVideo, and portfolioLinks,
 type portfolioT = {
@@ -59,6 +60,7 @@ type portfolioT = {
 };
 
 const CreateProjectPage: FC = () => {
+  const apiPrivate = useApiPrivate();
   const [investmentType, setInvestmentType] = useState<string | undefined>(
     undefined,
   );
