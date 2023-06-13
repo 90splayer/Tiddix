@@ -251,7 +251,11 @@ const CreateProjectPage: FC = () => {
       formData.append('pitchVideo', videoInfo);
 
       apiPrivate
-        .post('/projects', formData)
+        .post('/projects', formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
         .then(() => {
           chkToaster.success({ title: 'portfolio submitted successfully' });
           next();

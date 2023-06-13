@@ -11,8 +11,12 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import heroImg from '../../assets/images/home/heroImg.png';
+import useAuth from 'app/hooks/useAuth';
 
 const Intro: FC = () => {
+  const authContext = useAuth();
+  console.log('AUTH', authContext);
+
   return (
     <Box pos="relative">
       <Container
