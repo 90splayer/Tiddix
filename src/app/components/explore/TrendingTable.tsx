@@ -82,13 +82,13 @@ const TrendingTable: FC = () => {
             <Thead fontSize="1.6rem">
               <Tr>
                 <Th>
-                  <Text size="body3">Project</Text>
+                  <Text size="body2">Project</Text>
                 </Th>
                 <Th>
-                  <Text size="body3">Target</Text>
+                  <Text size="body2">Target</Text>
                 </Th>
                 <Th>
-                  <Text size="body3">Progress</Text>
+                  <Text size="body2">Progress</Text>
                 </Th>
               </Tr>
             </Thead>
@@ -124,15 +124,15 @@ const TrendingTable: FC = () => {
                       </Stack>
                     </HStack>
                   </Td>
-                  <Td>$ 4,000</Td>
+                  <Td>{singleData.total_funding}</Td>
                   <Td>
                     {' '}
                     <Progress
+                      value={singleData.progress}
+                      size="md"
+                      colorScheme="transparent"
                       borderRadius="20px"
                       background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
-                      size="md"
-                      maxW="82px"
-                      value={60}
                     />
                   </Td>
                 </Tr>
@@ -146,13 +146,13 @@ const TrendingTable: FC = () => {
             <Thead>
               <Tr>
                 <Th>
-                  <Text size="body3">Project</Text>
+                  <Text size="body2">Project</Text>
                 </Th>
                 <Th>
-                  <Text size="body3">Target</Text>
+                  <Text size="body2">Target</Text>
                 </Th>
                 <Th>
-                  <Text size="body3">Progress</Text>
+                  <Text size="body2">Progress</Text>
                 </Th>
               </Tr>
             </Thead>
@@ -188,15 +188,15 @@ const TrendingTable: FC = () => {
                       </Stack>
                     </HStack>
                   </Td>
-                  <Td>$ 4,000</Td>
+                  <Td>{singleData.total_funding}</Td>
                   <Td>
                     {' '}
                     <Progress
+                      value={singleData.progress}
+                      size="md"
+                      colorScheme="transparent"
                       borderRadius="20px"
                       background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
-                      size="md"
-                      maxW="82px"
-                      value={60}
                     />
                   </Td>
                 </Tr>

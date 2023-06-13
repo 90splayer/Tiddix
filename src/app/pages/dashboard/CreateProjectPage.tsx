@@ -238,7 +238,7 @@ const CreateProjectPage: FC = () => {
 
       const sendObj = {
         ...formValues,
-        portfolioLinks: portfolioLinks.join(),
+        portfolioLinks: portfolioLink + portfolioLinks.join(),
       };
 
       const json = JSON.stringify(sendObj);

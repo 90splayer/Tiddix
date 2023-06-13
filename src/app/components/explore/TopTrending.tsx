@@ -7,6 +7,7 @@ import {
   Heading,
   Stack,
   Text,
+  Select,
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import TrendingTable from './TrendingTable';
@@ -24,9 +25,45 @@ const TopTrending: FC = () => {
             </Text>
           </Stack>
           <Flex gap="2.3rem">
-            <Button size="md">Last 24 Hours</Button>
-            <Button size="md">All</Button>
-            <Button size="md">Pricing</Button>
+            <Select
+              placeholder="Last 24 Hours"
+              h="4.9rem"
+              color="#fff"
+              fontWeight="700"
+              fontSize="1.6rem"
+              border="2px solid #99A1AA"
+              borderRadius="10rem"
+            >
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </Select>
+            <Select
+              placeholder="Last 7 Days"
+              h="4.9rem"
+              fontWeight="700"
+              color="#fff"
+              fontSize="1.6rem"
+              border="2px solid #99A1AA"
+              borderRadius="10rem"
+            >
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </Select>
+            <Select
+              placeholder="All"
+              h="4.9rem"
+              fontWeight="700"
+              color="#fff"
+              fontSize="1.6rem"
+              border="2px solid #99A1AA"
+              borderRadius="10rem"
+            >
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </Select>
           </Flex>
         </Flex>
         <TrendingTable />
