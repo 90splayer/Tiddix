@@ -23,9 +23,9 @@ import { verify } from 'app/assets/svgs/home';
 const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
   return (
     <Box>
-      <Flex justify="space-between" gap={20}>
-        <TableContainer w="50%">
-          <Table variant="unstyled" size="lg">
+      <Flex justify="space-between" gap={50}>
+        <TableContainer maxW="58rem">
+          <Table variant="unstyled" size="md">
             <Thead fontSize="1.6rem">
               <Tr>
                 <Th>
@@ -59,9 +59,10 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                         <HStack spacing="19px">
                           <Box>
                             <Image
-                              borderRadius="16px"
-                              w="100px"
+                              maxW="100px"
                               h="100px"
+                              borderRadius="16px"
+                              objectFit="cover"
                               src={images}
                               alt={projectName}
                             />
@@ -103,8 +104,8 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
           </Table>
         </TableContainer>
 
-        <TableContainer w="50%">
-          <Table variant="unstyled" size="lg">
+        <TableContainer maxW="58rem">
+          <Table variant="unstyled" size="md">
             <Thead>
               <Tr>
                 <Th>
@@ -136,10 +137,11 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                       <Td>
                         {' '}
                         <HStack spacing="19px">
-                          <Box>
+                          <Box w="100%">
                             <Image
                               borderRadius="16px"
-                              w="100px"
+                              objectFit="cover"
+                              maxW="100px"
                               h="100px"
                               src={images}
                               alt={projectName}
