@@ -15,13 +15,13 @@ export default function useRefreshToken() {
 
     // authContext?.setAuth((prev: any) => {
     //   console.log('PREV AUTH DATA', prev);
-    //   return { ...prev, access_token: response.data.access_token };
+    //   return { ...prev, accessToken: response.data.accessToken};
     // });
 
-    const { access_token, firstName, lastName } = response.data;
-    authContext?.setAuth({ access_token, firstName, lastName });
+    const { accessToken, firstName, lastName } = response.data;
+    authContext?.setAuth({ accessToken, firstName, lastName });
 
-    return access_token;
+    return accessToken;
   };
 
   return refresh;

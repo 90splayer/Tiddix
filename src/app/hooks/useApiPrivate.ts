@@ -13,7 +13,7 @@ const useApiPrivate = () => {
         if (!config.headers!['Authorization']) {
           config.headers![
             'Authorization'
-          ] = `Bearer ${authContext?.auth?.access_token}`;
+          ] = `Bearer ${authContext?.auth?.accessToken}`;
 
           console.log('HEADER IN REQUEST INTERCEPT', config);
         }

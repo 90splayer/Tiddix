@@ -26,8 +26,8 @@ const Category: FC = () => {
             </Button>
           </Flex>
           <Flex justify="space-between" gap="2rem">
-            <CategoryCard />
-            <CategoryCard />
+            {/* <CategoryCard />
+            <CategoryCard /> */}
           </Flex>
         </Stack>
       </Container>
