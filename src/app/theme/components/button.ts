@@ -27,11 +27,11 @@ export const buttonStyles = {
           // transform: 'scale(1.03)',
           // _after: {},
 
-          // _disabled: {
-          // background: 'blackShade.4',
-          //   color: 'blackShade.1',
-          //   opacity: 1,
-          // },
+          _disabled: {
+            background: 'blackShade.4',
+            color: 'blackShade.1',
+            opacity: 1,
+          },
         },
         // _focus: {},
         // _active: {},

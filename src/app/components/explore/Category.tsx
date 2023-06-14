@@ -9,11 +9,21 @@ const Category: FC = () => {
         <Stack spacing="3.4rem">
           <Heading size="display3">Browse by Category</Heading>
           <Flex gap="2rem">
-            <Button size="md">All</Button>
-            <Button size="md">Photograhy</Button>
-            <Button size="md">3d Modeling</Button>
-            <Button size="md">Travel</Button>
-            <Button size="md">Music</Button>
+            <Button size="md" variant="default">
+              All
+            </Button>
+            <Button size="md" variant="default">
+              Art
+            </Button>
+            <Button size="md" variant="default">
+              Music
+            </Button>
+            <Button size="md" variant="default">
+              Fashion
+            </Button>
+            <Button size="md" variant="default">
+              Photography
+            </Button>
           </Flex>
           <Flex justify="space-between" gap="2rem">
             <CategoryCard />

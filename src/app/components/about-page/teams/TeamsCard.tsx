@@ -1,18 +1,34 @@
-import { Box } from '@chakra-ui/react'
-import React, { FC } from 'react'
+import { Box, Stack, Text, Heading, Image } from '@chakra-ui/react';
+import React, { FC } from 'react';
 
-type Props ={
-    image: any;
-    name: string;
-    title: string;
-}
+type Props = {
+  image: any;
+  name: string;
+  title: string;
+};
 
-const TeamsCard: FC<Props> = ({ image, name, title}) => {
+const TeamsCard: FC<Props> = ({ image, name, title }) => {
   return (
-    <Box>
+    <Stack
+      alignItems="center"
+      bg="#232629"
+      borderRadius="30px"
+      maxW="29.6rem"
+      h="41.4rem"
+      pt="5.8rem"
+      px="2rem"
+    >
+      <Box pb="3.7rem">
+        <Image src={image} alt="team member" w="15.7rem" />
+      </Box>
+      <Heading as="h2" textAlign="center" mb="1.6rem" color="#fff">
+        {name}
+      </Heading>
+      <Text color="#99A1AA" size="body2" textAlign="center">
+        {title}
+      </Text>
+    </Stack>
+  );
+};
 
-    </Box>
-  )
-}
-
-export default TeamsCard
+export default TeamsCard;
