@@ -34,7 +34,8 @@ const CustomMenuButton = <T extends MenuButtonProps>({
       </MenuButton>
       <MenuList
         zIndex={3}
-        border="1px solid blackShade.3"
+        border="1px solid"
+        borderColor="blackShade.3"
         overflow="hidden"
         boxShadow="base"
         padding="0px"

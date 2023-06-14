@@ -97,34 +97,36 @@ const TrendingTable: FC = () => {
                 <Tr>
                   <Td>
                     {' '}
-                    <HStack spacing="20px">
+                    <HStack spacing="19px">
                       <Box>
                         <Image
                           borderRadius="16px"
-                          w="76px"
-                          h="76px"
+                          w="100px"
+                          h="100px"
                           src={singleData?.img}
                           alt={singleData?.name}
                         />
                       </Box>
-                      <Stack spacing="8.5px">
+                      <Stack spacing="11px">
                         <HStack>
                           <Avatar
-                            boxSize="19px"
+                            boxSize="25px"
                             name={singleData?.name}
                             src={singleData?.avartar}
                           />
-                          <Text size="body3" color="#fff">
+                          <Text size="body2" color="#fff">
                             {singleData?.name}
                           </Text>
                           <Box>{verify}</Box>
                         </HStack>
-                        <Heading fontSize="1.5rem">{singleData?.title}</Heading>
-                        <Text fontSize="1rem">{singleData?.category}</Text>
+                        <Heading fontSize="2rem">{singleData?.title}</Heading>
+                        <Text fontSize="1.4rem">{singleData?.category}</Text>
                       </Stack>
                     </HStack>
                   </Td>
-                  <Td>{singleData.total_funding}</Td>
+                  <Td>
+                    <Text color="#fff">{singleData.total_funding}</Text>
+                  </Td>
                   <Td>
                     {' '}
                     <Progress
@@ -160,35 +162,36 @@ const TrendingTable: FC = () => {
               <Tbody key={id}>
                 <Tr>
                   <Td>
-                    {' '}
-                    <HStack spacing="20px">
+                    <HStack spacing="19px">
                       <Box>
                         <Image
                           borderRadius="16px"
-                          w="76px"
-                          h="76px"
+                          w="100px"
+                          h="100px"
                           src={singleData?.img}
                           alt={singleData?.name}
                         />
                       </Box>
-                      <Stack spacing="8.5px">
+                      <Stack spacing="11px">
                         <HStack>
                           <Avatar
-                            boxSize="19px"
+                            boxSize="25px"
                             name={singleData?.name}
                             src={singleData?.avartar}
                           />
-                          <Text size="body3" color="#fff">
+                          <Text size="body2" color="#fff">
                             {singleData?.name}
                           </Text>
                           <Box>{verify}</Box>
                         </HStack>
-                        <Heading fontSize="1.5rem">{singleData?.title}</Heading>
-                        <Text fontSize="1rem">{singleData?.category}</Text>
+                        <Heading fontSize="2rem">{singleData?.title}</Heading>
+                        <Text fontSize="1.4rem">{singleData?.category}</Text>
                       </Stack>
                     </HStack>
                   </Td>
-                  <Td>{singleData.total_funding}</Td>
+                  <Td>
+                    <Text color="#fff">{singleData.total_funding}</Text>
+                  </Td>
                   <Td>
                     {' '}
                     <Progress

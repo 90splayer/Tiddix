@@ -25,6 +25,7 @@ import { chkToaster } from '../common/Toaster';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import useAuth from 'app/hooks/useAuth';
+import { AuthUserT } from 'app/context/AuthProvider';
 
 type LoginInputT = {
   email: string;
@@ -64,10 +65,10 @@ const LoginForm = () => {
     const { email, password } = data;
 
     api
-      .post('/login', { email, password })
+      .post<AuthUserT>('/login', { email, password })
       .then(({ data }) => {
-        const { access_token } = data;
-        authContext?.setAuth({ email, access_token });
+        const { access_token, firstName, lastName } = data;
+        authContext?.setAuth({ access_token, firstName, lastName });
 
         setLoading(false);
         reset();
