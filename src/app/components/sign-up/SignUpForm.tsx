@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Box,
   Button,
@@ -88,6 +89,10 @@ const SignUpForm = () => {
         });
       });
   };
+
+  useEffect(() => {
+    console.log('API', `${import.meta.env.VITE_APP_TIDDIX_BASE_URL}`);
+  });
 
   return (
     <Flex w="full">
@@ -244,7 +249,11 @@ const SignUpForm = () => {
                 transform: 'scale(1.03)',
               }}
             >
-              <Link to="#">
+              <Link
+                to={`${
+                  import.meta.env.VITE_APP_TIDDIX_BASE_URL
+                }auth/google?intent=signup`}
+              >
                 <HStack justify="center" spacing="10px">
                   <Box>
                     <Image src={google} alt="google" />
@@ -270,7 +279,11 @@ const SignUpForm = () => {
                 transform: 'scale(1.03)',
               }}
             >
-              <Link to="#">
+              <Link
+                to={`${
+                  import.meta.env.VITE_APP_TIDDIX_BASE_URL
+                }auth/google?intent=signup`}
+              >
                 <HStack justify="center" spacing="10px">
                   <Box>
                     <Image src={facebook} alt="facebook" />

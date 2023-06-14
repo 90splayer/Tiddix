@@ -13,11 +13,15 @@ export default function useRefreshToken() {
       },
     );
 
-    authContext?.setAuth((prev: any) => {
-      return { ...prev, access_token: response.data.access_token };
-    });
+    // authContext?.setAuth((prev: any) => {
+    //   console.log('PREV AUTH DATA', prev);
+    //   return { ...prev, access_token: response.data.access_token };
+    // });
 
-    return response.data.access_token;
+    const { access_token, firstName, lastName } = response.data;
+    authContext?.setAuth({ access_token, firstName, lastName });
+
+    return access_token;
   };
 
   return refresh;

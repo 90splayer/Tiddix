@@ -13,7 +13,7 @@ import {
 import { FaHeart } from 'react-icons/fa';
 import { IoWallet } from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
-import { UserData } from '../data/dashboard/UserData';
+// import { UserData } from '../data/dashboard/UserData';
 import { isAuthenticated } from 'app/utils/helpers';
 import CustomMenuButton from '../common/CustomMenuButton';
 import {
@@ -26,27 +26,13 @@ import { useNavigate } from 'react-router-dom';
 import { apiPrivate } from 'app/api/tiddix';
 import useAuth from 'app/hooks/useAuth';
 
-const {
-  likes,
-  avartar,
-  first_name: firstName,
-  last_name: lastName,
-  wallet_bal: bal,
-} = UserData[0];
-
-const UserInfo = () => {
-  return (
-    <Flex gap="2rem" align="center" zIndex={5}>
-      <Avatar boxSize="40px" name="Segun Adebayo" src={avartar} />
-      <Stack>
-        <Heading size="h5">
-          {firstName} {lastName}
-        </Heading>
-        <Text size="body2">Creative & Investor</Text>
-      </Stack>
-    </Flex>
-  );
-};
+// const {
+//   likes,
+//   avartar,
+//   first_name: firstName,
+//   last_name: lastName,
+//   wallet_bal: bal,
+// } = UserData[0];
 
 export default function AccountState() {
   const authContext = useAuth();
@@ -57,23 +43,46 @@ export default function AccountState() {
     apiPrivate.post('/logout');
   };
 
+  const firstName = authContext?.auth?.firstName;
+  const lastName = authContext?.auth?.lastName;
+
+  const UserInfo = () => {
+    return (
+      <Flex gap="2rem" align="center" zIndex={5}>
+        <Avatar
+          boxSize="40px"
+          name={`${firstName} ${lastName}`}
+          src={undefined}
+        />
+        <Stack>
+          <Heading size="h5">{`${firstName} ${lastName}`}</Heading>
+          <Text size="body2">Creative & Investor</Text>
+        </Stack>
+      </Flex>
+    );
+  };
+
   return (
     <>
       {isAuthenticated() ? (
         <HStack spacing={{ base: '15px', md: '2.8rem' }}>
           <Flex gap="5px">
             <Icon as={FaHeart} color="pink" />
-            <Text size="body2">{likes}</Text>
+            <Text size="body2">{4}</Text>
           </Flex>
           <CustomMenuButton
             title={
               <Flex gap="1.4rem" align="center">
-                <Avatar boxSize="40px" name="Segun Adebayo" src={avartar} />
+                <Avatar
+                  boxSize="40px"
+                  name={`${firstName} ${lastName}`}
+                  src={undefined}
+                />
                 <Stack>
                   <Text size="body2">Hello, {firstName}</Text>
                   <Flex align="center" gap=".5rem">
                     <WalletIcon />
-                    <Text size="body2">{bal}</Text>
+                    <Text size="body2">{'$0.00'}</Text>
                   </Flex>
                 </Stack>
                 <ChevronDownIcon style={{ marginLeft: '.3rem' }} />

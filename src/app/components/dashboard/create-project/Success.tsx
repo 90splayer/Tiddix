@@ -40,7 +40,7 @@ const Success: FC = () => {
             >
               <CheckIcon />
             </Flex>
-            <Stack spacing="9px">
+            <Stack spacing="1rem">
               <Heading as="h2">Your Project Has Been Submitted</Heading>
               <Text textAlign="center" size="body2" mb="1.4rem" maxW="321px">
                 Your project has been uploaded and you can access it from your

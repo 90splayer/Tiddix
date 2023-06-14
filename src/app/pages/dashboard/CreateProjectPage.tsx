@@ -41,8 +41,9 @@ import {
 import { chkToaster } from 'app/components/common/Toaster';
 import { CustomInput } from 'app/components/common/CustomInput';
 import { CalendarIcon } from '@chakra-ui/icons';
-import { apiPrivate } from 'app/api/tiddix';
+// import { apiPrivate } from 'app/api/tiddix';
 import CustomSelectField from 'app/components/common/CustomSelect';
+import useApiPrivate from 'app/hooks/useApiPrivate';
 
 // left out images, pitchVideo, and portfolioLinks,
 type portfolioT = {
@@ -59,9 +60,7 @@ type portfolioT = {
 };
 
 const CreateProjectPage: FC = () => {
-  const [investmentType, setInvestmentType] = useState<string | undefined>(
-    undefined,
-  );
+  const apiPrivate = useApiPrivate();
   const [formValues, setFormValues] = useState<portfolioT>({
     category: '',
     description: '',
@@ -105,6 +104,7 @@ const CreateProjectPage: FC = () => {
   // };
   const [videoInfo, setVideoInfo] = useState<any>(null);
   const [imagesInfo, setImagesInfo] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const videoInput = useRef<HTMLInputElement>(null);
   const imagesInput = useRef<HTMLInputElement>(null);
@@ -117,12 +117,14 @@ const CreateProjectPage: FC = () => {
     projectName: '',
   });
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const stepOneDone = () => {
     if (formValues.projectName && formValues.category) return true;
     return false;
   };
   const stepTwoDone = () => {
-    if ((portfolioLink || portfolioLinks.length) && imagesInfo) return true;
+    if (imagesInfo) return true;
     return false;
   };
   const stepThreeDone = () => {
@@ -234,28 +236,39 @@ const CreateProjectPage: FC = () => {
 
   const handleSubmit = () => {
     if (doneSteps === 3 && currentStepIndex === 2) {
+      setLoading(true);
       const formData = new FormData();
 
       const sendObj = {
         ...formValues,
         portfolioLinks: portfolioLink + portfolioLinks.join(),
+        repaymentDate: getISODate(formValues.repaymentDate!),
       };
 
       const json = JSON.stringify(sendObj);
       const blob = new Blob([json], { type: 'application/json' });
 
       formData.append('projectData', blob);
-      formData.append('images', imagesInfo);
-      formData.append('pitchVideo', videoInfo);
+      if (videoInfo) formData.append('pitchVideo', videoInfo.file!);
+
+      for (let i = 0; i < imagesInfo.files.length; i++) {
+        formData.append('images', imagesInfo.files[i]);
+      }
 
       apiPrivate
-        .post('/projects', formData)
+        .post('/projects', formData, {
+          headers: {
+            'Content-type': 'multipart/form-data',
+          },
+        })
         .then(() => {
-          chkToaster.success({ title: 'portfolio submitted successfully' });
+          setLoading(false);
           next();
+          setFormSubmitted(true);
         })
         .catch((err) => {
           chkToaster.error({ title: err.message });
+          setLoading(false);
         });
     } else {
       if (currentStepIndex === 2 && doneSteps !== 3) {
@@ -270,6 +283,11 @@ const CreateProjectPage: FC = () => {
     return new Date(
       date.getTime() - date.getTimezoneOffset() * 60000,
     ).toISOString();
+  };
+
+  const handleGoto = (index: number) => {
+    if (formSubmitted) return;
+    goTo(index);
   };
 
   return (
@@ -329,8 +347,16 @@ const CreateProjectPage: FC = () => {
                                 value: 'art',
                               },
                               {
+                                label: 'Photograph',
+                                value: 'photography',
+                              },
+                              {
                                 label: 'Music',
                                 value: 'music',
+                              },
+                              {
+                                label: 'Fashion',
+                                value: 'fashion',
                               },
                               {
                                 label: 'Fashion',
@@ -422,7 +448,7 @@ const CreateProjectPage: FC = () => {
                             <CustomInput
                               type="text"
                               size="lg"
-                              placeholder="Kindly Input a Portfolio Link*"
+                              placeholder="Kindly Input a Portfolio Link"
                               name="portfolioLink"
                               value={portfolioLink}
                               onChange={(e) => {
@@ -600,15 +626,15 @@ const CreateProjectPage: FC = () => {
                             options={[
                               {
                                 label: '1 year',
-                                value: 'one-year',
+                                value: 'oneYear',
                               },
                               {
                                 label: '2 Years',
-                                value: 'two-years',
+                                value: 'twoYears',
                               },
                               {
                                 label: '5 Years',
-                                value: 'five-years',
+                                value: 'fiveYears',
                               },
                             ]}
                           />
@@ -665,15 +691,15 @@ const CreateProjectPage: FC = () => {
                             options={[
                               {
                                 label: '1 year',
-                                value: 'one-year',
+                                value: 'oneYear',
                               },
                               {
                                 label: '2 Years',
-                                value: 'two-years',
+                                value: 'twoYears',
                               },
                               {
                                 label: '5 Years',
-                                value: 'five-years',
+                                value: 'fiveYears',
                               },
                             ]}
                           />
@@ -792,7 +818,12 @@ const CreateProjectPage: FC = () => {
 
                   {/* ==== FINISH ===== */}
                   {currentStepIndex === 3 && (
-                    <>
+                    <Flex
+                      direction="column"
+                      gap="4rem"
+                      alignItems="center"
+                      justify="center"
+                    >
                       <Flex
                         bg="#232629"
                         align="center"
@@ -803,7 +834,7 @@ const CreateProjectPage: FC = () => {
                       >
                         <CheckIcon />
                       </Flex>
-                      <Stack spacing="9px">
+                      <Stack spacing="1rem">
                         <Heading as="h2">
                           Your Project Has Been Submitted
                         </Heading>
@@ -824,7 +855,7 @@ const CreateProjectPage: FC = () => {
                           </Button>
                         </Link>
                       </Box>
-                    </>
+                    </Flex>
                   )}
                 </>
               </Flex>
@@ -868,7 +899,7 @@ const CreateProjectPage: FC = () => {
                         : 'linear-gradient(235.92deg, #99A1AA -14.27%, #99A1AA 50.09%, #99A1AA 114.81%)'
                     }
                     bgClip="text"
-                    onClick={() => goTo(0)}
+                    onClick={() => handleGoto(0)}
                     className="step-indicator"
                     _hover={{
                       bgGradient:
@@ -896,7 +927,7 @@ const CreateProjectPage: FC = () => {
                         : 'linear-gradient(235.92deg, #99A1AA -14.27%, #99A1AA 50.09%, #99A1AA 114.81%)'
                     }
                     bgClip="text"
-                    onClick={() => goTo(1)}
+                    onClick={() => handleGoto(1)}
                     className="step-indicator"
                     _hover={{
                       bgGradient:
@@ -924,7 +955,7 @@ const CreateProjectPage: FC = () => {
                         : 'linear-gradient(235.92deg, #99A1AA -14.27%, #99A1AA 50.09%, #99A1AA 114.81%)'
                     }
                     bgClip="text"
-                    onClick={() => goTo(2)}
+                    onClick={() => handleGoto(2)}
                     className="step-indicator"
                     _hover={{
                       bgGradient:
@@ -965,19 +996,22 @@ const CreateProjectPage: FC = () => {
                     Finish
                   </Text>
                 </Stack>
-                <Box>
-                  <Button
-                    type="submit"
-                    variant="multicolor"
-                    size="md"
-                    w="100%"
-                    onClick={handleSubmit}
-                  >
-                    {doneSteps === 3 && currentStepIndex === 2
-                      ? 'Submit'
-                      : 'Next'}
-                  </Button>
-                </Box>
+                {!formSubmitted && (
+                  <Box>
+                    <Button
+                      type="submit"
+                      variant="multicolor"
+                      size="md"
+                      w="100%"
+                      onClick={handleSubmit}
+                      isLoading={loading}
+                    >
+                      {doneSteps === 3 && currentStepIndex === 2
+                        ? 'Submit'
+                        : 'Next'}
+                    </Button>
+                  </Box>
+                )}
               </Flex>
             </Flex>
           </Box>
