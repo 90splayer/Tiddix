@@ -10,7 +10,7 @@ export const projectData = [
     title: 'The Plant Picazzo',
     investment_type: 'debt',
     category: 'Art',
-    progress: 60,
+    interest: 60,
   },
   {
     id: 1,

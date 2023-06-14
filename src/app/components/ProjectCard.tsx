@@ -18,7 +18,7 @@ type Props = {
   full_name: string;
   investment_type: string;
   avatar: string;
-  progress: number;
+  progress: any;
   img: string;
   category: string;
   // icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
