@@ -45,7 +45,6 @@ export default function AccountState() {
 
   const firstName = authContext?.auth?.firstName;
   const lastName = authContext?.auth?.lastName;
-  console.log('AUUTTHTTH CONTEXT', authContext?.auth);
 
   const UserInfo = () => {
     return (
