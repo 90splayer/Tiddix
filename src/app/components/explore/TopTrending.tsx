@@ -66,7 +66,7 @@ const TopTrending: FC = () => {
             </Select>
           </Flex>
         </Flex>
-        <TrendingTable />
+        {/* <TrendingTable /> */}
       </Container>
     </Box>
   );
