@@ -1,9 +1,9 @@
 import { createContext, useState } from 'react';
 
 export type AuthUserT = {
-  email: string;
-  // password: string;
   access_token: string;
+  firstName: string;
+  lastName: string;
 };
 
 type AuthContextT = {

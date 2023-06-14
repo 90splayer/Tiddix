@@ -247,8 +247,12 @@ const CreateProjectPage: FC = () => {
       const blob = new Blob([json], { type: 'application/json' });
 
       formData.append('projectData', blob);
-      formData.append('images', imagesInfo);
-      formData.append('pitchVideo', videoInfo);
+      // formData.append('images', imagesInfo.files);
+      formData.append('pitchVideo', videoInfo.file!);
+
+      for (let i = 0; i < imagesInfo.files.length; i++) {
+        formData.append('images', imagesInfo.files[i]);
+      }
 
       apiPrivate
         .post('/projects', formData, {

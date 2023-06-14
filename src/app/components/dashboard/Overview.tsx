@@ -25,8 +25,13 @@ import CustomTab from '../common/CustomTab';
 import BecomeInvestor from '../landing-page/BecomeInvestor';
 import DashboardOverview from './DashboardOverview';
 import ProjectOverview from './project/ProjectOverview';
+import useAuth from 'app/hooks/useAuth';
 
 const Overview: FC = () => {
+  const authContext = useAuth();
+  const firstName = authContext?.auth?.firstName;
+  const lastName = authContext?.auth?.lastName;
+
   return (
     <Box>
       <Container
@@ -45,14 +50,14 @@ const Overview: FC = () => {
               <Avatar
                 border="2px solid pink"
                 boxSize="159px"
-                name="Segun Adebayo"
-                src="https://bit.ly/sage-adebayo"
+                name={`${firstName} ${lastName}`}
+                src={undefined}
               />
             </Box>
             <Stack spacing="15px" maxW="403px">
               <HStack spacing="12px">
                 <Text fontWeight="700" color="#fff">
-                  Segun Adebayo
+                  {`${firstName} ${lastName}`}
                 </Text>
                 <Box>{verify}</Box>
               </HStack>
