@@ -67,8 +67,8 @@ const LoginForm = () => {
     api
       .post<AuthUserT>('/login', { email, password })
       .then(({ data }) => {
-        const { access_token, firstName, lastName } = data;
-        authContext?.setAuth({ access_token, firstName, lastName });
+        const { accessToken, firstName, lastName } = data;
+        authContext?.setAuth({ accessToken, firstName, lastName });
 
         setLoading(false);
         reset();

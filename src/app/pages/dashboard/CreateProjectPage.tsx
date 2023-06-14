@@ -242,7 +242,9 @@ const CreateProjectPage: FC = () => {
       const sendObj = {
         ...formValues,
         portfolioLinks: portfolioLink + portfolioLinks.join(),
-        repaymentDate: getISODate(formValues.repaymentDate!),
+        repaymentDate: formValues.repaymentDate
+          ? getISODate(formValues.repaymentDate)
+          : null,
       };
 
       const json = JSON.stringify(sendObj);
@@ -355,8 +357,8 @@ const CreateProjectPage: FC = () => {
                                 value: 'music',
                               },
                               {
-                                label: 'Fashion',
-                                value: 'fashion',
+                                label: 'Food',
+                                value: 'food',
                               },
                               {
                                 label: 'Fashion',

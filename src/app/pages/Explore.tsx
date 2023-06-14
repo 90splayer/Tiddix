@@ -24,7 +24,7 @@ const Explore: FC = () => {
   const [timeOption, setTimeOption] = useState('allTime');
   const [categoryOption, setCategoryOption] = useState('');
   // const [priceOption, setPriceOption] = useState('');
-  const [project, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<any[]>([]);
 
   useEffect(() => {
     let url = `/projects?date=${timeOption}`;
@@ -35,6 +35,7 @@ const Explore: FC = () => {
       .get(url)
       .then(({ data }) => {
         console.log('PORTFOLIO RESPONSE', data.projects);
+        setProjects(data.projects);
       })
       .catch(() => {
         alert('Something went wrong');
@@ -67,8 +68,9 @@ const Explore: FC = () => {
               </Button>
             </Flex>
             <Flex justify="space-between" gap="2rem">
-              <CategoryCard />
-              <CategoryCard />
+              {projects.slice(0, 2).map((project) => (
+                <CategoryCard project={project} key={project.id} />
+              ))}
             </Flex>
           </Stack>
         </Container>
@@ -127,7 +129,7 @@ const Explore: FC = () => {
               </Select>
             </Flex>
           </Flex>
-          <TrendingTable />
+          <TrendingTable projects={projects} />
         </Container>
       </Box>
       <Footer />

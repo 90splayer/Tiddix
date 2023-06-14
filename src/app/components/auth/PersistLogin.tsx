@@ -20,7 +20,7 @@ export default function PersistLogin() {
       }
     };
 
-    !authContext!.auth?.access_token
+    !authContext!.auth?.accessToken
       ? verifyRefreshToken()
       : setIsLoading(false);
     return () => {

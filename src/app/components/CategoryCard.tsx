@@ -11,8 +11,24 @@ import {
 } from '@chakra-ui/react';
 import { verify } from 'app/assets/svgs/home';
 import React, { FC } from 'react';
+import { thousandsSeparators } from 'app/utils/helpers';
 
-const CategoryCard: FC = () => {
+const CategoryCard: FC<{ project: any }> = ({ project }) => {
+  const {
+    creativeName,
+    amount,
+    projectName,
+    progress,
+    category,
+    images,
+    creativePicture,
+  } = project;
+
+  console.log(
+    'PROJECT INFO',
+
+    images,
+  );
   return (
     <Card
       maxW="63.6rem"
@@ -26,21 +42,17 @@ const CategoryCard: FC = () => {
           h="26.8rem"
           borderRadius="20px"
           objectFit="cover"
-          src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          src={images}
           alt="image"
         />
       </Box>
       <Stack spacing="1.1rem">
         <Flex justify="space-between" align="center">
           <HStack spacing="1rem">
-            <Avatar
-              boxSize="25px"
-              name="Segun Adebayo"
-              src="https://bit.ly/sage-adebayo"
-            />
+            <Avatar boxSize="25px" name={creativeName} src={creativePicture} />
             <Flex gap="3px" align="center">
               <Text fontSize="1.6rem" color="#fff">
-                Segun Adebayo
+                {creativeName}
               </Text>
               <Box w="16.58px" h="16.58px">
                 {verify}
@@ -54,13 +66,13 @@ const CategoryCard: FC = () => {
               bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
               bgClip="text"
             >
-              $4,000
+              ${thousandsSeparators(amount)}
             </Text>
           </Text>
         </Flex>
         <Flex justify="space-between" align="center">
           <Text fontSize="2rem" color="#fff" fontWeight="700">
-            The Plant Picazzo
+            {projectName}
           </Text>
           <Progress
             borderRadius="10px"
@@ -73,8 +85,8 @@ const CategoryCard: FC = () => {
           />
         </Flex>
         <Flex justify="space-between" align="center">
-          <Text fontSize="1.4rem">Art</Text>
-          <Text>45%</Text>
+          <Text fontSize="1.4rem">{category}</Text>
+          <Text>{progress}%</Text>
         </Flex>
       </Stack>
     </Card>
