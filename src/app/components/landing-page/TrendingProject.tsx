@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Box, Container, Flex, Heading, Text } from '@chakra-ui/react';
 import ProjectCard from '../ProjectCard';
 import { Link } from 'react-router-dom';
-
 import Slider from 'react-slick';
-import { projectData } from '../data/ProjectData';
+// import { projectData } from '../data/ProjectData';
+import api from 'app/api/tiddix';
 
 const TrendingProject = () => {
   var settings = {
@@ -41,6 +41,22 @@ const TrendingProject = () => {
       },
     ],
   };
+
+  const [projects, setProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    let url = `/projects`;
+    api
+      .get(url)
+      .then(({ data }) => {
+        console.log('PORTFOLIO RESPONSE', data.projects);
+        setProjects(data.projects);
+      })
+      .catch(() => {
+        console.log('SOMETHING WENT WRONG');
+      });
+  }, []);
+
   return (
     <Container maxW="144rem" p="7.5rem 7.2rem">
       <Heading
@@ -58,17 +74,17 @@ const TrendingProject = () => {
         Check out our weekly updated trending Projects
       </Text>
       <Slider {...settings}>
-        {projectData.map((item, index) => (
+        {projects.map((item, index) => (
           <Box key={index}>
             <ProjectCard
-              full_name={item.name}
-              investment_type={item.investment_type}
-              avatar={item.avartar}
+              creativeName={item.creativeName}
+              investmentType={item.investmentType}
+              images={item.images}
               progress={item.progress}
-              img={item.img}
+              creativePicture={item.creativePicture}
               category={item.category}
-              title={item.category}
-              amount={item.total_funding}
+              projectName={item.projectName}
+              amount={item.amount}
             />
           </Box>
         ))}

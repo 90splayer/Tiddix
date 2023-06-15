@@ -235,7 +235,7 @@ const SignUpForm = () => {
               Create Account
             </Button>
 
-            <Flex
+            {/* <Flex
               align="center"
               justify="center"
               w="100%"
@@ -263,9 +263,9 @@ const SignUpForm = () => {
                   </Text>
                 </HStack>
               </Link>
-            </Flex>
+            </Flex> */}
 
-            <Flex
+            {/* <Flex
               align="center"
               justify="center"
               w="100%"
@@ -293,7 +293,7 @@ const SignUpForm = () => {
                   </Text>
                 </HStack>
               </Link>
-            </Flex>
+            </Flex> */}
 
             <Box>
               <Text fontWeight="700">
