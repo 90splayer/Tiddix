@@ -349,7 +349,7 @@ const CreateProjectPage: FC = () => {
                                 value: 'art',
                               },
                               {
-                                label: 'Photograph',
+                                label: 'Photography',
                                 value: 'photography',
                               },
                               {
@@ -573,7 +573,7 @@ const CreateProjectPage: FC = () => {
                           <InvestTypeCard
                             title="Debt"
                             icon={PaletteIcon}
-                            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+                            desc="The funding comes with no creative strings attached and no limits on creators except that which has been agreed with the investor"
                             paintBorder={formValues.investmentType === 'debt'}
                           />
                         </Box>
@@ -592,7 +592,7 @@ const CreateProjectPage: FC = () => {
                             title={'Equity'}
                             icon={InvestmentIcon}
                             desc={
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
+                              'This method allows investors to support and financially benefit from investing in upcoming talent.'
                             }
                             paintBorder={formValues.investmentType === 'equity'}
                           />
