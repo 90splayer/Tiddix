@@ -9,7 +9,7 @@ const MainProject: FC = () => {
       <Grid templateColumns="repeat(3, 1fr)" gap="2rem">
         {projectData.map((item, index) => (
           <GridItem w="100%" key={index}>
-            <ProjectCard
+            {/* <ProjectCard
               full_name={item.name}
               investment_type={item.investment_type}
               avatar={item.avartar}
@@ -18,7 +18,7 @@ const MainProject: FC = () => {
               category={item.category}
               title={item.category}
               amount={item.total_funding}
-            />
+            /> */}
           </GridItem>
         ))}
       </Grid>

@@ -874,7 +874,7 @@ const CreateProjectPage: FC = () => {
                   <Progress
                     // hasStripe
                     value={(doneSteps / 3) * 100}
-                    borderRadius="20px"
+                    borderRadius="2rem"
                     // isAnimated
                     background="blackShade.3"
                     sx={{
@@ -882,7 +882,7 @@ const CreateProjectPage: FC = () => {
                         background: 'gradientStyle.1',
                       },
                     }}
-                  ></Progress>
+                  />
                 </Box>
                 <Stack
                   mb="5.4rem"
