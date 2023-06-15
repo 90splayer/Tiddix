@@ -19,168 +19,155 @@ import {
 import React, { FC } from 'react';
 import project from '../../assets/images/investor/project.jpg';
 import { verify } from 'app/assets/svgs/home';
+import { numberMetricFormatter } from 'app/utils/helpers';
 
 const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
   return (
     <Box>
-      <Flex justify="space-between" gap={20}>
-        <TableContainer w="50%">
-          <Table variant="unstyled" size="lg">
-            <Thead fontSize="1.6rem">
-              <Tr>
-                <Th>
-                  <Text size="body2">Project</Text>
-                </Th>
-                <Th>
-                  <Text size="body2">Target</Text>
-                </Th>
-                <Th>
-                  <Text size="body2">Progress</Text>
-                </Th>
-              </Tr>
-            </Thead>
-            {projects
-              ?.slice(0, 5)
-              .map(
-                ({
-                  creativeName,
-                  amount,
-                  projectName,
-                  progress,
-                  category,
-                  images,
-                  creativePicture,
-                  id,
-                }: any) => (
-                  <Tbody key={id}>
-                    <Tr>
-                      <Td>
-                        {' '}
-                        <HStack spacing="19px">
-                          <Box>
-                            <Image
-                              borderRadius="16px"
-                              w="100px"
-                              h="100px"
-                              src={images}
-                              alt={projectName}
-                            />
-                          </Box>
-                          <Stack spacing="11px">
-                            <HStack>
-                              <Avatar
-                                boxSize="25px"
-                                name={creativeName}
-                                src={creativePicture}
-                              />
-                              <Text size="body2" color="#fff">
-                                {creativeName}
-                              </Text>
-                              <Box>{verify}</Box>
-                            </HStack>
-                            <Heading fontSize="2rem">{projectName}</Heading>
-                            <Text fontSize="1.4rem">{category}</Text>
-                          </Stack>
-                        </HStack>
-                      </Td>
-                      <Td>
-                        <Text color="#fff">${amount}</Text>
-                      </Td>
-                      <Td>
-                        {' '}
-                        <Progress
-                          value={progress}
-                          size="md"
-                          colorScheme="transparent"
-                          borderRadius="20px"
-                          background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
+      <Flex justify="space-between" gap="14rem">
+        <Stack flex="1" spacing="3rem">
+          <Flex gap="3rem" mb="1rem">
+            <Text size="body2" flex="5">
+              Project
+            </Text>
+            <Text size="body2" flex="1">
+              Target
+            </Text>
+            <Text size="body2" flex="2" textAlign="right">
+              Progress
+            </Text>
+          </Flex>
+          {projects
+            ?.slice(0, 5)
+            .map(
+              ({
+                creativeName,
+                amount,
+                projectName,
+                progress,
+                category,
+                images,
+                creativePicture,
+                id,
+              }: any) => (
+                <Flex key={id} gap="3rem">
+                  <HStack spacing="19px" flex="5">
+                    <Box boxSize="10rem">
+                      <Image
+                        w="100%"
+                        h="10rem"
+                        borderRadius="1.6rem"
+                        objectFit="cover"
+                        src={images}
+                        alt={projectName}
+                      />
+                    </Box>
+                    <Stack spacing="11px">
+                      <HStack>
+                        <Avatar
+                          boxSize="25px"
+                          name={creativeName}
+                          src={creativePicture}
                         />
-                      </Td>
-                    </Tr>
-                  </Tbody>
-                ),
-              )}
-          </Table>
-        </TableContainer>
+                        <Text size="body2" color="#fff">
+                          {creativeName}
+                        </Text>
+                        <Box>{verify}</Box>
+                      </HStack>
+                      <Heading size="h3">{projectName}</Heading>
+                      <Text fontSize="1.4rem">{category}</Text>
+                    </Stack>
+                  </HStack>
+                  <Text size="body2" color="#fff" flex="1">
+                    ${numberMetricFormatter(amount, 2)}
+                  </Text>
+                  <Progress
+                    value={progress}
+                    borderRadius="2rem"
+                    background="blackShade.3"
+                    sx={{
+                      '& > div': {
+                        background: 'gradientStyle.1',
+                      },
+                    }}
+                    flex="2"
+                  />
+                </Flex>
+              ),
+            )}
+        </Stack>
 
-        <TableContainer w="50%">
-          <Table variant="unstyled" size="lg">
-            <Thead>
-              <Tr>
-                <Th>
-                  <Text size="body2">Project</Text>
-                </Th>
-                <Th>
-                  <Text size="body2">Target</Text>
-                </Th>
-                <Th>
-                  <Text size="body2">Progress</Text>
-                </Th>
-              </Tr>
-            </Thead>
-            {projects
-              ?.slice(5, 10)
-              .map(
-                ({
-                  creativeName,
-                  amount,
-                  projectName,
-                  progress,
-                  category,
-                  images,
-                  creativePicture,
-                  id,
-                }: any) => (
-                  <Tbody key={id}>
-                    <Tr>
-                      <Td>
-                        {' '}
-                        <HStack spacing="19px">
-                          <Box>
-                            <Image
-                              borderRadius="16px"
-                              w="100px"
-                              h="100px"
-                              src={images}
-                              alt={projectName}
-                            />
-                          </Box>
-                          <Stack spacing="11px">
-                            <HStack>
-                              <Avatar
-                                boxSize="25px"
-                                name={creativeName}
-                                src={creativePicture}
-                              />
-                              <Text size="body2" color="#fff">
-                                {creativeName}
-                              </Text>
-                              <Box>{verify}</Box>
-                            </HStack>
-                            <Heading fontSize="2rem">{projectName}</Heading>
-                            <Text fontSize="1.4rem">{category}</Text>
-                          </Stack>
-                        </HStack>
-                      </Td>
-                      <Td>
-                        <Text color="#fff">${amount}</Text>
-                      </Td>
-                      <Td>
-                        {' '}
-                        <Progress
-                          value={progress}
-                          size="md"
-                          colorScheme="transparent"
-                          borderRadius="20px"
-                          background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
+        <Stack flex="1" spacing="3rem">
+          <Flex gap="3rem" mb="1rem">
+            <Text size="body2" flex="5">
+              Project
+            </Text>
+            <Text size="body2" flex="1">
+              Target
+            </Text>
+            <Text size="body2" flex="2" textAlign="right">
+              Progress
+            </Text>
+          </Flex>
+          {projects
+            ?.slice(5, 10)
+            .map(
+              ({
+                creativeName,
+                amount,
+                projectName,
+                progress,
+                category,
+                images,
+                creativePicture,
+                id,
+              }: any) => (
+                <Flex key={id} gap="3rem">
+                  <HStack spacing="19px" flex="5">
+                    <Box boxSize="10rem">
+                      <Image
+                        w="100%"
+                        h="10rem"
+                        borderRadius="1.6rem"
+                        objectFit="cover"
+                        src={images}
+                        alt={projectName}
+                      />
+                    </Box>
+                    <Stack spacing="11px">
+                      <HStack>
+                        <Avatar
+                          boxSize="25px"
+                          name={creativeName}
+                          src={creativePicture}
                         />
-                      </Td>
-                    </Tr>
-                  </Tbody>
-                ),
-              )}
-          </Table>
-        </TableContainer>
+                        <Text size="body2" color="#fff">
+                          {creativeName}
+                        </Text>
+                        <Box>{verify}</Box>
+                      </HStack>
+                      <Heading size="h3">{projectName}</Heading>
+                      <Text fontSize="1.4rem">{category}</Text>
+                    </Stack>
+                  </HStack>
+                  <Text size="body2" color="#fff" flex="1">
+                    ${numberMetricFormatter(amount, 2)}
+                  </Text>
+                  <Progress
+                    value={progress}
+                    borderRadius="2rem"
+                    background="blackShade.3"
+                    sx={{
+                      '& > div': {
+                        background: 'gradientStyle.1',
+                      },
+                    }}
+                    flex="2"
+                  />
+                </Flex>
+              ),
+            )}
+        </Stack>
       </Flex>
     </Box>
   );
