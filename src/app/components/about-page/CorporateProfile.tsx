@@ -75,6 +75,45 @@ const CorporateProfile = () => {
               investors that might be interested in funding for financial
               return.
             </Text>
+            <Heading as="h2">The disruption</Heading>
+            <Text>
+              Tiddix aims to take advantage of the shift towards
+              decentralisation in finance to invite investors to the creative
+              space where creator metrics (views, engagements, followers,
+              rankings etc) can be used to properly determine a creator’s value
+              and prospects for investments.
+              <br />
+              <br />
+              We hope that this new pipeline to funding will provide creators
+              with the freedom to put out their best work while also giving
+              investors an early stage entrance into both projects and the
+              associated creators. A single smartphone in itself is now a
+              powerful enough tool to launch a career in creativity. (this is
+              very easy, why is funding still so difficult?) we are building xxx
+              (state all the technology). With the advancement of blockchain
+              technology and other forms of cross-border payments and trustless
+              systems with programable smart-contracts, we believe the world is
+              finally ready for this frontier of creativity.
+            </Text>
+
+            <Text mb="5rem" fontWeight="700" size="body1" color="#fff">
+              Come Join Us
+            </Text>
+
+            <Text>
+              The trend already exists in the emergence of many successful
+              independent artists across the creative field, but with investor
+              backing, we believe the next producer would not be needing an
+              established production studio to go to market. After all, with the
+              democratisation of technology, most of the creativity we
+              experience today are developed by a network of creators building
+              magic from the comfort of their homes.
+              <br />
+              <br />
+              What are you waiting for? Come join the movement! See you at the
+              top, with all the other great creators.
+            </Text>
+            <br />
           </Stack>
         </Flex>
       </Container>
