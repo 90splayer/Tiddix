@@ -1,37 +1,38 @@
 import {
-  Avatar,
+  Image,
   Box,
   Card,
   CardHeader,
   Text,
   Flex,
-  Image,
   Progress,
   Heading,
   HStack,
+  Avatar,
 } from '@chakra-ui/react';
 import { debt } from 'app/assets/svgs/dashboard/dashboard';
 import { verify } from 'app/assets/svgs/home';
 import React, { FC } from 'react';
+import { thousandsSeparators } from 'app/utils/helpers';
 
 type Props = {
-  full_name: string;
-  investment_type: string;
-  avatar: string;
+  creativeName: string;
+  investmentType: string;
+  images: string;
   progress: any;
-  img: string;
+  creativePicture: string;
   category: string;
   // icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-  title: string;
+  projectName: string;
   amount: string;
 };
 const ProjectCard: FC<Props> = ({
-  avatar,
-  img,
-  investment_type,
+  images,
+  creativePicture,
+  investmentType,
   category,
-  title,
-  full_name,
+  projectName,
+  creativeName,
   progress,
   amount,
 }) => {
@@ -39,11 +40,11 @@ const ProjectCard: FC<Props> = ({
     <Card maxW="30rem" bgColor="#232629" borderRadius="30px" p="16px 14px 37px">
       <CardHeader p="0">
         <Flex gap="1rem" alignItems="center">
-          <Avatar boxSize="25px" name={full_name} src={avatar} />
+          <Avatar boxSize="25px" name={creativeName} src={images} />
 
           <Flex gap="3px" align="center">
             <Text fontSize="1.6rem" color="#fff">
-              {full_name}
+              {creativeName}
             </Text>
             <Box w="16.58px" h="16.58px">
               {verify}
@@ -54,14 +55,15 @@ const ProjectCard: FC<Props> = ({
       <Box borderRadius="20px" my="20px" pos="relative">
         <Image
           h="268px"
+          w="100%"
           borderRadius="20px"
           objectFit="cover"
-          src={img}
-          alt={title}
+          src={images}
+          alt={projectName}
         />
         <Box pos="absolute" bottom={15} left={15}>
-          <Text fontWeight={700} fontSize="2rem" color="#fff">
-            {title}
+          <Text fontWeight={700} fontSize="2rem" color="#fff" opacity="0.8">
+            {projectName}
           </Text>
           <Text color="#99A1AA" fontSize="1.4rem">
             {category}
@@ -72,10 +74,10 @@ const ProjectCard: FC<Props> = ({
         <Box>
           <HStack mb="15px">
             <Box>{debt}</Box>
-            <Heading fontSize="1.6rem">{investment_type}</Heading>
+            <Heading fontSize="1.6rem">{investmentType}</Heading>
           </HStack>
 
-          <Heading fontSize="2.4rem">{amount}</Heading>
+          <Heading fontSize="2.4rem">$ {thousandsSeparators(amount)}</Heading>
         </Box>
         <Box>
           <Text mb="15px" fontSize="1.6rem" textAlign="right" color="#99A1AA">
