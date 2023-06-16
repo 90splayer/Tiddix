@@ -90,7 +90,7 @@ const TopNav = () => {
                 >
                   <MenuItem
                     as="a"
-                    href="/about"
+                    href="/corporate-profile"
                     gap="5px"
                     padding="1.2rem"
                     bg="blackShade.2"
@@ -114,7 +114,7 @@ const TopNav = () => {
                   </MenuItem>
                   <MenuItem
                     as="a"
-                    href="/coc"
+                    href="/code-of-conduct"
                     gap="5px"
                     padding="1.2rem"
                     bg="blackShade.2"

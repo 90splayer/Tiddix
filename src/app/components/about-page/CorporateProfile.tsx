@@ -44,8 +44,8 @@ const CorporateProfile = () => {
             objectFit="cover"
           />
         </Box>
-        <Flex flexDir="column" px="7.2rem">
-          <Text mb="5rem">
+        <Flex flexDir="column" px="10.2rem">
+          <Text mb="5rem" textAlign="justify">
             We are established in the United Kingdom in 2022, Tiddix is 100%
             British owned and operated and our head office is in London.
             <br />
@@ -58,7 +58,7 @@ const CorporateProfile = () => {
           </Text>
           <Stack spacing="3rem">
             <Heading as="h2">Status quo</Heading>
-            <Text>
+            <Text textAlign="justify">
               In the creative economy today, the nature of centralised markets
               means that creatives can only raise funds for production through
               corporations like record labels and publishers often wrapping the
@@ -76,7 +76,7 @@ const CorporateProfile = () => {
               return.
             </Text>
             <Heading as="h2">The disruption</Heading>
-            <Text>
+            <Text textAlign="justify">
               Tiddix aims to take advantage of the shift towards
               decentralisation in finance to invite investors to the creative
               space where creator metrics (views, engagements, followers,
@@ -100,7 +100,7 @@ const CorporateProfile = () => {
               Come Join Us
             </Text>
 
-            <Text>
+            <Text textAlign="justify">
               The trend already exists in the emergence of many successful
               independent artists across the creative field, but with investor
               backing, we believe the next producer would not be needing an
