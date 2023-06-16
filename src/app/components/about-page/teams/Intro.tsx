@@ -35,7 +35,7 @@ const Teams: FC = () => {
             properly determine a creator’s value and prospects for investments.
           </Text>
         </VStack>
-        <Grid templateColumns="repeat(4, 1fr)" pb="3.6rem" gap="3.7rem">
+        <Grid templateColumns="repeat(4, 1fr)" pb="3.6rem" gap="3rem">
           {TeamsData.map((item) => (
             <GridItem w="100%" key={item.id}>
               <TeamsCard
