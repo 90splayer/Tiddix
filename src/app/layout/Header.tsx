@@ -171,7 +171,7 @@ const TopNav = () => {
               w={{ base: '30.6rem', lg: '100%', xl: '26.9rem' }}
               h="5.6rem"
               _placeholder={{
-                fontSize: '1.6rem',
+                fontSize: '1.4rem',
                 color: '#99A1AA',
                 fontWeight: '700',
               }}
