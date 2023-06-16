@@ -24,9 +24,9 @@ function App() {
       <Routes>
         <Route element={<PersistLogin />}>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/corporate-profile" element={<About />} />
           <Route path="/teams" element={<Teams />} />
-          <Route path="/coc" element={<CodeOfConduct />} />
+          <Route path="/code-of-conduct" element={<CodeOfConduct />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/investors" element={<Investor />} />
           <Route path="/login" element={<LoginForm />} />
