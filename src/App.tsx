@@ -15,6 +15,7 @@ import RequireAuth from 'app/components/auth/RequireAuth';
 import CreateProject from './app/pages/dashboard/CreateProjectPage';
 import SingleProjectPage from 'app/pages/dashboard/SingleProjectPage';
 import Teams from 'app/pages/Teams';
+import CodeOfConduct from 'app/pages/CodeOfConduct';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/teams" element={<Teams />} />
+          <Route path="/coc" element={<CodeOfConduct />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/investors" element={<Investor />} />
           <Route path="/login" element={<LoginForm />} />
