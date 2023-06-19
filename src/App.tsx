@@ -16,6 +16,7 @@ import CreateProject from './app/pages/dashboard/CreateProjectPage';
 import SingleProjectPage from 'app/pages/dashboard/SingleProjectPage';
 import Teams from 'app/pages/Teams';
 import CodeOfConduct from 'app/pages/CodeOfConduct';
+import ProfileEdit from 'app/pages/dashboard/Editproject';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               path="/dashboard/create-project"
               element={<CreateProject />}
             />
+            <Route path="/dashboard/edit-profile" element={<ProfileEdit />} />
             <Route path="/dashboard/project" element={<SingleProjectPage />} />
           </Route>
         </Route>

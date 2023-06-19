@@ -26,6 +26,7 @@ import BecomeInvestor from '../landing-page/BecomeInvestor';
 import DashboardOverview from './DashboardOverview';
 import ProjectOverview from './project/ProjectOverview';
 import useAuth from 'app/hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const Overview: FC = () => {
   const authContext = useAuth();
@@ -65,10 +66,11 @@ const Overview: FC = () => {
                 Brand / Graphic Design, UI / Visual Design, Product Design
               </Text>
               <Flex gap="12px" align="center">
-                <Button variant="secondary" size="sm">
-                  Edit Profile
-                </Button>
-
+                <Link to="/dashboard/edit-profile">
+                  <Button variant="secondary" size="sm">
+                    Edit Profile
+                  </Button>
+                </Link>
                 <Flex
                   bg="#232629"
                   align="center"
