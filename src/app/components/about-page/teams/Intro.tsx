@@ -21,19 +21,26 @@ const Teams: FC = () => {
             textAlign="center"
             bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
             bgClip="text"
+            fontSize="2.6rem"
           >
             TEAM
           </Text>
 
-          <Heading size="display2" textAlign="center" color="#fff">
-            Meet our team
+          <Heading
+            size="display4"
+            maxW="64.9rem"
+            textAlign="center"
+            color="#fff"
+          >
+            Meet the team of professionals that ensure the magic happens
           </Heading>
 
-          <Text size="body1" textAlign="center" maxW="72.9rem" color="#99A1AA">
-            We invite investors to the creative space where creator metrics
-            (views, engagements, followers, rankings etc) can be used to
-            properly determine a creator’s value and prospects for investments.
-          </Text>
+          {/* <Text
+            size="body1"
+            textAlign="center"
+           
+            color="#99A1AA"
+          ></Text> */}
         </VStack>
         <Grid templateColumns="repeat(4, 1fr)" pb="3.6rem" gap="3rem">
           {TeamsData.map((item) => (

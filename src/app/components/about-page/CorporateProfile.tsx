@@ -21,12 +21,13 @@ const CorporateProfile = () => {
             size="body2"
             bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
             bgClip="text"
+            fontSize="2.6rem"
           >
             CORPORATE PROFILE
           </Text>
 
           <Heading
-            size="display2"
+            size="display4"
             textAlign="center"
             maxW="70.4rem"
             pb="3.5rem"
@@ -54,7 +55,7 @@ const CorporateProfile = () => {
             financial power of young creative minds stand. Since our
             establishment, we have made over 100 dreams come though and we are
             proud to report that we provided the launching pad to over a dozen
-            very successful creatives careers thus far
+            very successful creatives careers thus far.
           </Text>
           <Stack spacing="3rem">
             <Heading as="h2">Status quo</Heading>
