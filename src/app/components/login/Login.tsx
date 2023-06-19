@@ -193,7 +193,7 @@ const LoginForm = () => {
               Login
             </Button>
 
-            {/* <Flex
+            <Flex
               align="center"
               justify="center"
               w="100%"
@@ -217,9 +217,9 @@ const LoginForm = () => {
                   </Text>
                 </HStack>
               </Link>
-            </Flex> */}
+            </Flex>
 
-            {/* <Flex
+            <Flex
               align="center"
               justify="center"
               w="100%"
@@ -243,7 +243,7 @@ const LoginForm = () => {
                   </Text>
                 </HStack>
               </Link>
-            </Flex> */}
+            </Flex>
 
             <Box>
               <Text fontWeight="700">
