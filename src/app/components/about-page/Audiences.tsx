@@ -18,7 +18,7 @@ const Audiences: FC = () => {
       <Container maxW="144rem" p="10.8rem 18.2rem 18.8rem ">
         <VStack>
           <Heading size="display2" textAlign="center" pb="5.1rem">
-            Our Audiences
+            Our Audience
           </Heading>
 
           <Text
