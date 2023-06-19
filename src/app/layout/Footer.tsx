@@ -98,16 +98,16 @@ export const Footer: FC = () => {
                 <Text fontWeight={700} color="#fff">
                   Quick links
                 </Text>
-                <Text color="#99A1AA">Home</Text>
-                <Text color="#99A1AA">Explore</Text>
-                <Text color="#99A1AA">Investors</Text>
+                <a href="/" color="#99A1AA">Home</a>
+                <a href="/explore" color="#99A1AA">Explore</a>
+                <a href="/investors" color="#99A1AA">Investors</a>
               </Stack>
               <Stack spacing="4rem">
                 <Text fontWeight={700} color="#fff">
                   Company
                 </Text>
-                <Text color="#99A1AA">About Us</Text>
-                <Text color="#99A1AA">The Team</Text>
+                <a href="/corporate-profile" color="#99A1AA">About Us</a>
+                <a href="/teams" color="#99A1AA">The Team</a>
                 <Text color="#99A1AA">Contact Us</Text>
               </Stack>
               <Stack spacing="4rem">
@@ -163,7 +163,7 @@ export const Footer: FC = () => {
             // flexWrap={{ base: "wrap", md: "nowrap" }}
             flexDir={{ base: 'column', md: 'row' }}
           >
-            <Text>© 2020 tixxix.All right reserved</Text>
+            <Text>2023 tiddix ©  All right reserved.</Text>
 
             <Flex
               flexDir={{ base: 'column', sm: 'row' }}
