@@ -17,6 +17,8 @@ import TrendingTable from 'app/components/explore/TrendingTable';
 // import useApiPrivate from 'app/hooks/useApiPrivate';
 import api from 'app/api/tiddix';
 import CustomSelectField from 'app/components/common/CustomSelect';
+import { chkToaster } from 'app/components/common/Toaster';
+import styled from 'styled-components';
 
 const Explore: FC = () => {
   // const apiPrivate = useApiPrivate();
@@ -25,6 +27,8 @@ const Explore: FC = () => {
   const [categoryOption, setCategoryOption] = useState('');
   // const [priceOption, setPriceOption] = useState('');
   const [projects, setProjects] = useState<any[]>([]);
+  const [headerCategoryOption, setHeaderCategoryOption] = useState('');
+  const [headerProjects, setHeaderProjects] = useState<any[]>([]);
 
   useEffect(() => {
     let url = `/projects?date=${timeOption}`;
@@ -38,12 +42,27 @@ const Explore: FC = () => {
         setProjects(data.projects);
       })
       .catch(() => {
-        console.log('SOMETHING WENT WRONG');
+        chkToaster.error({ title: 'Something went wrong' });
       });
   }, [timeOption, categoryOption]);
 
+  useEffect(() => {
+    let url = `/projects?`;
+    if (headerCategoryOption) url += `category=${headerCategoryOption}`;
+
+    api
+      .get(url)
+      .then(({ data }) => {
+        console.log('PORTFOLIO RESPONSE', data.projects);
+        setHeaderProjects(data.projects);
+      })
+      .catch(() => {
+        chkToaster.error({ title: 'Something went wrong' });
+      });
+  }, [headerCategoryOption]);
+
   return (
-    <Box>
+    <Styling>
       <Header />
       {/* <Category /> */}
       <Box>
@@ -54,41 +73,48 @@ const Explore: FC = () => {
               <Button
                 size="md"
                 variant="default"
-                onClick={(e) => setCategoryOption('')}
+                onClick={(e) => setHeaderCategoryOption('')}
+                className={headerCategoryOption === '' ? 'active' : ''}
               >
                 All
               </Button>
               <Button
                 size="md"
                 variant="default"
-                onClick={(e) => setCategoryOption('art')}
+                onClick={(e) => setHeaderCategoryOption('art')}
+                className={headerCategoryOption === 'art' ? 'active' : ''}
               >
                 Art
               </Button>
               <Button
                 size="md"
                 variant="default"
-                onClick={(e) => setCategoryOption('music')}
+                onClick={(e) => setHeaderCategoryOption('music')}
+                className={headerCategoryOption === 'music' ? 'active' : ''}
               >
                 Music
               </Button>
               <Button
                 size="md"
                 variant="default"
-                onClick={(e) => setCategoryOption('fashion')}
+                onClick={(e) => setHeaderCategoryOption('fashion')}
+                className={headerCategoryOption === 'fashion' ? 'active' : ''}
               >
                 Fashion
               </Button>
               <Button
                 size="md"
                 variant="default"
-                onClick={(e) => setCategoryOption('photography')}
+                onClick={(e) => setHeaderCategoryOption('photography')}
+                className={
+                  headerCategoryOption === 'photography' ? 'active' : ''
+                }
               >
                 Photography
               </Button>
             </Flex>
             <Flex justify="space-between" gap="2rem">
-              {projects.slice(0, 2).map((project) => (
+              {headerProjects.slice(0, 2).map((project) => (
                 <CategoryCard project={project} key={project.id} />
               ))}
             </Flex>
@@ -119,7 +145,7 @@ const Explore: FC = () => {
                 onChange={(e) => setTimeOption(e.target.value)}
                 options={[
                   {
-                    label: 'All',
+                    label: 'All Time',
                     value: 'allTime',
                   },
                   {
@@ -192,8 +218,14 @@ const Explore: FC = () => {
         </Container>
       </Box>
       <Footer />
-    </Box>
+    </Styling>
   );
 };
+
+const Styling = styled.div`
+  .active {
+    border-color: #ff8cdf;
+  }
+`;
 
 export default Explore;
