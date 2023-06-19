@@ -49,7 +49,7 @@ const CoC = () => {
               Creatives are expected to act in a ethical manner at all times.
               You are expected to provide accurate information and description
               of your project and your profile. You are expected to comply with
-              the terms and conditions of the investment relationship
+              the terms and conditions of the investment relationship.
             </Text>
           </Stack>
           <Stack spacing="2rem">

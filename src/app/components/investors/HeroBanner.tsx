@@ -28,13 +28,13 @@ const HeroBanner = () => {
       <Container maxW="144rem" pos="relative">
         <VStack spacing="48px">
           <Text
-            size="body2"
+            fontSize="2.6rem"
             bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
             bgClip="text"
           >
             INVESTORS
           </Text>
-          <Heading size="display2" textAlign="center" maxW="65rem">
+          <Heading size="display4" textAlign="center" maxW="52rem">
             This should have an investor tag line for this page
           </Heading>
           <Text maxW="70rem" size="body1" mt="5px" textAlign="center">
