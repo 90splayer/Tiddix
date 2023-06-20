@@ -3,12 +3,16 @@ import { Box } from '@chakra-ui/react';
 import Header from 'app/layout/Header';
 import { Footer } from 'app/layout/Footer';
 import General from 'app/components/dashboard/edit profile/General';
+import EditProfile from 'app/components/dashboard/edit profile/EditProfile';
+import ProfilePassword from 'app/components/dashboard/edit profile/ProfilePassword';
 
 const ProfileEdit = () => {
   return (
     <Box>
       <Header />
       <General />
+      {/* <EditProfile /> */}
+      {/* <ProfilePassword /> */}
       <Footer />
     </Box>
   );

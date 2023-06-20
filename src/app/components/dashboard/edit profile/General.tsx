@@ -31,7 +31,7 @@ const General: FC = () => {
   ];
   return (
     <Box>
-      <Container maxW="144rem" p="8.4rem 18.2rem">
+      <Container maxW="144rem" p="6.4rem 18.2rem">
         <Flex gap="2rem" align="center" mb="7.2rem">
           <Box>
             <Avatar

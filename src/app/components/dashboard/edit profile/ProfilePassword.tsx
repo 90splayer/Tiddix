@@ -10,14 +10,13 @@ import {
   Stack,
   Input,
 } from '@chakra-ui/react';
-import { verify } from 'app/assets/svgs/home';
 import useAuth from 'app/hooks/useAuth';
 import React, { FC } from 'react';
 
 import { CustomInput } from '../../common/CustomInput';
 import { Link } from 'react-router-dom';
 
-const EditProfile: FC = () => {
+const ProfilePassword: FC = () => {
   const authContext = useAuth();
   const firstName = authContext?.auth?.firstName;
   const lastName = authContext?.auth?.lastName;
@@ -48,10 +47,10 @@ const EditProfile: FC = () => {
               </Text>
               <Text fontSize="2.4rem">/</Text>
               <Text fontWeight="700" fontSize="2.4rem" color="#fff">
-                Edit Profile
+                Password
               </Text>
             </HStack>
-            <Text size="body2">Set up your profile preference</Text>
+            <Text size="body2">Manage you password</Text>
           </Stack>
         </Flex>
         <Flex gap="13rem">
@@ -72,68 +71,21 @@ const EditProfile: FC = () => {
               </Link>
             ))}
           </Stack>
-          <Stack spacing="2rem" w="70%">
-            <HStack spacing="2.2rem" mb="1.7rem">
-              <Box>
-                <Avatar
-                  border="2px solid pink"
-                  boxSize="64px"
-                  name={`${firstName} ${lastName}`}
-                  src={undefined}
-                />
-              </Box>
-
-              <Button
-                type="submit"
-                fontSize="1.6rem"
-                variant="multicolor"
-                size="md"
-              >
-                Upload new picture
-              </Button>
-
-              <Button variant="secondary" fontSize="1.6rem" size="sm">
-                Delete
-              </Button>
-            </HStack>
+          <Stack spacing="1.9rem" w="70%">
             <Box w="100%">
               <CustomInput
                 type="text"
                 size="lg"
-                placeholder="Full Name"
-                name="full name"
+                placeholder="Old Password"
+                name="Old Password"
               />
             </Box>
             <Box w="100%">
               <CustomInput
                 type="text"
                 size="lg"
-                placeholder="Email Address"
-                name="email address"
-              />
-            </Box>
-            <Box w="100%">
-              <CustomInput
-                type="text"
-                size="lg"
-                placeholder="Location"
-                name="location"
-              />
-            </Box>
-            <Box w="100%">
-              <CustomInput
-                type="text"
-                size="lg"
-                placeholder="Enter Bio here"
-                name="bio"
-              />
-            </Box>
-            <Box w="100%">
-              <CustomInput
-                type="text"
-                size="lg"
-                placeholder="Enter Portfolio URL"
-                name="portfolio url"
+                placeholder="New Password"
+                name="NewPassword"
               />
             </Box>
 
@@ -144,7 +96,7 @@ const EditProfile: FC = () => {
                 variant="multicolor"
                 size="md"
               >
-                Save Profile
+                Change
               </Button>
             </Flex>
           </Stack>
@@ -154,4 +106,4 @@ const EditProfile: FC = () => {
   );
 };
 
-export default EditProfile;
+export default ProfilePassword;
