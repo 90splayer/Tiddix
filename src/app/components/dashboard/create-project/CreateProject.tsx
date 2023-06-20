@@ -10,6 +10,7 @@ import {
   Progress,
   Stack,
   Text,
+  Textarea,
   VStack,
 } from '@chakra-ui/react';
 import React, { FC } from 'react';
@@ -43,8 +44,7 @@ const CreateProject: FC = () => {
             </Text>
             <Stack w="100%" spacing="30px" mb="43px">
               <Input type="text" size="lg" placeholder="Project Name" />
-              <Input
-                type="text"
+              <Textarea
                 size="lg"
                 minH="96px"
                 placeholder="Project Description"
