@@ -47,8 +47,8 @@ const CorporateProfile = () => {
         </Box>
         <Flex flexDir="column" px="10.2rem">
           <Text mb="5rem" textAlign="justify">
-            We are established in the United Kingdom in 2022, Tiddix is 100%
-            British owned and operated and our head office is in London.
+            We established in the United Kingdom in 2023, Tiddix is 100% British
+            owned and operated and our head office is in London.
             <br />
             <br />
             We are proud to be the bridge upon which the recognition of the
@@ -89,12 +89,11 @@ const CorporateProfile = () => {
               with the freedom to put out their best work while also giving
               investors an early stage entrance into both projects and the
               associated creators. A single smartphone in itself is now a
-              powerful enough tool to launch a career in creativity. (this is
-              very easy, why is funding still so difficult?) we are building xxx
-              (state all the technology). With the advancement of blockchain
-              technology and other forms of cross-border payments and trustless
-              systems with programable smart-contracts, we believe the world is
-              finally ready for this frontier of creativity.
+              powerful enough tool to launch a career in creativity. We are
+              building xxx (state all the technology). With the advancement of
+              blockchain technology and other forms of cross-border payments and
+              trustless systems with programable smart-contracts, we believe the
+              world is finally ready for this frontier of creativity.
             </Text>
 
             <Text mb="5rem" fontWeight="700" size="body1" color="#fff">

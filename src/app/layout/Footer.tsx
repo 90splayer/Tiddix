@@ -98,17 +98,29 @@ export const Footer: FC = () => {
                 <Text fontWeight={700} color="#fff">
                   Quick links
                 </Text>
-                <a href="/" color="#99A1AA">Home</a>
-                <a href="/explore" color="#99A1AA">Explore</a>
-                <a href="/investors" color="#99A1AA">Investors</a>
+                <Link to="/">
+                  <Text color="#99A1AA">Home</Text>
+                </Link>
+                <Link to="/explore">
+                  <Text color="#99A1AA">Explore</Text>
+                </Link>
+                <Link to="/investors">
+                  <Text color="#99A1AA">Investors</Text>
+                </Link>
               </Stack>
               <Stack spacing="4rem">
                 <Text fontWeight={700} color="#fff">
                   Company
                 </Text>
-                <a href="/corporate-profile" color="#99A1AA">About Us</a>
-                <a href="/teams" color="#99A1AA">The Team</a>
-                <Text color="#99A1AA">Contact Us</Text>
+                <Link to="/corporate-profile">
+                  <Text color="#99A1AA">About Us</Text>
+                </Link>
+                <Link to="/teams">
+                  <Text color="#99A1AA">The Team</Text>
+                </Link>
+                <Link to="/">
+                  <Text color="#99A1AA">Contact Us</Text>
+                </Link>
               </Stack>
               <Stack spacing="4rem">
                 <Text fontWeight={700} color="#fff">
