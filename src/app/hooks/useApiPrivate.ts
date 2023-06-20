@@ -14,8 +14,6 @@ const useApiPrivate = () => {
           config.headers![
             'Authorization'
           ] = `Bearer ${authContext?.auth?.accessToken}`;
-
-          console.log('HEADER IN REQUEST INTERCEPT', config);
         }
         return config;
       },
@@ -30,7 +28,6 @@ const useApiPrivate = () => {
           prevRequest.sent = true;
           const newAccessToken = await refresh();
           prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-          console.log('HEADER IN RESPONSE INTERCEPT', prevRequest);
 
           return apiPrivate(prevRequest);
         }

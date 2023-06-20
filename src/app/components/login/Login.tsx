@@ -45,7 +45,7 @@ const LoginForm = () => {
   const authContext = useAuth();
 
   // get where the user wanted to go before they got redirected to the login page
-  const from = location.state?.from.pathname || '/';
+  const from = location.state?.from.pathname || '/dashboard';
 
   const {
     handleSubmit,
@@ -67,8 +67,14 @@ const LoginForm = () => {
     api
       .post<AuthUserT>('/login', { email, password })
       .then(({ data }) => {
-        const { accessToken, firstName, lastName } = data;
-        authContext?.setAuth({ accessToken, firstName, lastName });
+        const { accessToken, firstName, lastName, profilePicture, bio } = data;
+        authContext?.setAuth({
+          accessToken,
+          firstName,
+          lastName,
+          profilePicture,
+          bio,
+        });
 
         setLoading(false);
         reset();
