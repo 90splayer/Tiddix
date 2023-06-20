@@ -18,10 +18,8 @@ import {
 } from '@chakra-ui/react';
 import Header from 'app/layout/Header';
 import { Footer } from 'app/layout/Footer';
-import CreateProject from 'app/components/dashboard/create-project/CreateProject';
 import InvestmentType from 'app/components/dashboard/create-project/InvestmentType';
 import Success from 'app/components/dashboard/create-project/Success';
-import Portfolio from 'app/components/dashboard/create-project/Portfolio';
 import { IoCloudUploadSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { useMultiStepForm } from 'app/components/dashboard/create-project/useMultistepForm';
@@ -74,9 +72,9 @@ const CreateProjectPage: FC = () => {
     repaymentDate: null,
   });
 
-  // useEffect(() => {
-  //   console.log('FORM VALUES', formValues);
-  // });
+  useEffect(() => {
+    console.log('FORM VALUES', currentStepIndex);
+  });
 
   // Reset Investment info when Investment type is changed.
   useEffect(() => {
@@ -103,11 +101,13 @@ const CreateProjectPage: FC = () => {
   //   filesCount: number;
   // };
   const [videoInfo, setVideoInfo] = useState<any>(null);
-  const [imagesInfo, setImagesInfo] = useState<any>(null);
+  const [imageInfo, setImageInfo] = useState<any>(null);
+  const [documentInfo, setDocumentInfo] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [isDraggedOver, setIsDraggedOver] = useState(false);
   const videoInput = useRef<HTMLInputElement>(null);
-  const imagesInput = useRef<HTMLInputElement>(null);
+  const imageInput = useRef<HTMLInputElement>(null);
+  const pitchDeckInput = useRef<HTMLInputElement>(null);
 
   const [portfolioLink, setPortfolioLink] = useState('');
   const [portfolioLinks, setPortfolioLinks] = useState<string[]>([]);
@@ -115,6 +115,7 @@ const CreateProjectPage: FC = () => {
   const [formErrors, setFormErrors] = useState({
     portfolioLink: '',
     projectName: '',
+    description: '',
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -124,10 +125,6 @@ const CreateProjectPage: FC = () => {
     return false;
   };
   const stepTwoDone = () => {
-    if (imagesInfo) return true;
-    return false;
-  };
-  const stepThreeDone = () => {
     if (
       formValues.investmentType &&
       formValues.amount &&
@@ -142,6 +139,10 @@ const CreateProjectPage: FC = () => {
           return true;
       }
     }
+    return false;
+  };
+  const stepThreeDone = () => {
+    if (imageInfo) return true;
     return false;
   };
 
@@ -183,17 +184,15 @@ const CreateProjectPage: FC = () => {
           file,
           fileName: file.name,
         });
-      } else if (type === 'images') {
-        if (files.length < 2 || files.length > 12) {
-          chkToaster.error({
-            title:
-              'You can only upload a minimum of 2 images and a maximum of 12 images.',
-          });
-          return;
-        }
-        setImagesInfo({
-          files: files,
-          filesCount: files.length,
+      } else if (type === 'image') {
+        setImageInfo({
+          file: file,
+          fileName: file.name,
+        });
+      } else if (type === 'document') {
+        setDocumentInfo({
+          file: file,
+          fileName: file.name,
         });
       } else {
         chkToaster.error({ title: 'Invalid file type.' });
@@ -218,12 +217,21 @@ const CreateProjectPage: FC = () => {
     }
   };
 
-  const selectImagesInput = () => {
-    if (imagesInput.current?.value) {
-      imagesInput.current.value = '';
+  const selectImageInput = () => {
+    if (imageInput.current?.value) {
+      imageInput.current.value = '';
     }
-    if (imagesInput.current) {
-      imagesInput.current.click();
+    if (imageInput.current) {
+      imageInput.current.click();
+    }
+  };
+
+  const selectDocumentInput = () => {
+    if (pitchDeckInput.current?.value) {
+      pitchDeckInput.current.value = '';
+    }
+    if (pitchDeckInput.current) {
+      pitchDeckInput.current.click();
     }
   };
 
@@ -252,10 +260,8 @@ const CreateProjectPage: FC = () => {
 
       formData.append('projectData', blob);
       if (videoInfo) formData.append('pitchVideo', videoInfo.file!);
-
-      for (let i = 0; i < imagesInfo.files.length; i++) {
-        formData.append('images', imagesInfo.files[i]);
-      }
+      formData.append('image', imageInfo.file);
+      formData.append('pitchDeck', documentInfo);
 
       apiPrivate
         .post('/projects', formData, {
@@ -369,88 +375,42 @@ const CreateProjectPage: FC = () => {
                         </SimpleGrid>
                       </Stack>
                       <Stack w="100%" spacing="30px" mb="43px">
-                        <Input
-                          type="text"
+                        <CustomInput.TextArea
+                          // type="text"
                           size="lg"
                           placeholder="Project Description"
                           name="description"
-                          onChange={handleChange}
+                          onChange={(e) => {
+                            setError('description', '');
+                            handleChange(e);
+                          }}
                           value={formValues.description}
+                          error={formErrors.description}
+                          onBlur={() => {
+                            if (
+                              formValues.description.length &&
+                              formValues.description.length < 100
+                            ) {
+                              setError(
+                                'description',
+                                'Description must be at least 100 characters',
+                              );
+                            }
+                          }}
                         />
                       </Stack>
-                      <Stack spacing="22px">
-                        <Text color="white" size="body2">
-                          Upload Pitch Video
-                        </Text>
-                        <form
-                          className="upload-section"
-                          onDragOver={handleDragOver}
-                          onDragEnd={() => setIsDraggedOver(false)}
-                          onDragLeave={() => setIsDraggedOver(false)}
-                          onDrop={(e) => handleDrop(e, 'video')}
-                          role="presentation"
-                          onClick={() => selectVideoInput()}
-                          onChange={() =>
-                            updateSelectedFile(
-                              videoInput.current?.files,
-                              'video',
-                            )
-                          }
-                        >
-                          <VStack
-                            borderRadius="20px"
-                            padding="4rem 2rem"
-                            w="100%"
-                            spacing="18.5px"
-                            border="1px dashed #99A1AA"
-                          >
-                            <Text maxW="265px" textAlign="center" size="body2">
-                              Video is expected to not exceeded 5mb and a max of
-                              2 minutes.
-                            </Text>
-                            <IconButton
-                              aria-label="Download video"
-                              fontSize="3.6rem"
-                              variant="unstyled"
-                              border="0px"
-                              icon={<IoCloudUploadSharp />}
-                            />
-                            <small>
-                              {videoInfo?.fileName && videoInfo.fileName}
-                            </small>
-                            <Text size="body2">
-                              Upload, Drag and Drop MP4 file
-                            </Text>
-                            <input
-                              type="file"
-                              id="upload-file"
-                              ref={videoInput}
-                              hidden
-                              accept=".mp4"
-                            />
-                          </VStack>
-                        </form>
-                      </Stack>
-                    </>
-                  )}
 
-                  {/* ==== PORTFOLIO UPLOAD ===== */}
-                  {currentStepIndex === 1 && (
-                    <>
-                      <Heading as="h2" mb="2.3rem ">
-                        Porfolio Upload
-                      </Heading>
-                      <Text size="body1" mb="5.4rem">
-                        Here you would upload a few details on the project as
-                        requested below.
-                      </Text>
                       <Stack w="100%" spacing="19px" mb="53px">
                         <Flex gap="10px">
                           <Box w="80%">
                             <CustomInput
                               type="text"
                               size="lg"
-                              placeholder="Kindly Input a Portfolio Link"
+                              placeholder="Portfolio Link(s)"
+                              _placeholder={{
+                                fontSize: '1.5rem',
+                                color: 'blackShade.4',
+                              }}
                               name="portfolioLink"
                               value={portfolioLink}
                               onChange={(e) => {
@@ -459,6 +419,10 @@ const CreateProjectPage: FC = () => {
                               }}
                               error={formErrors.portfolioLink}
                             />
+                            <Text size="body2" mt="4">
+                              Kindly Input a link to your portfolio and/or any
+                              document online that is relevant to this project.
+                            </Text>
                           </Box>
                           <Box>
                             <Button
@@ -494,71 +458,19 @@ const CreateProjectPage: FC = () => {
                           ))}
                         </Stack>
                       </Stack>
-                      <Stack spacing="22px">
-                        <Text color="white" size="body2">
-                          Upload Photo*
-                        </Text>
-                        <form
-                          className="upload-section"
-                          onDragOver={handleDragOver}
-                          onDragEnd={() => setIsDraggedOver(false)}
-                          onDragLeave={() => setIsDraggedOver(false)}
-                          onDrop={(e) => handleDrop(e, 'images')}
-                          role="presentation"
-                          onClick={() => selectImagesInput()}
-                          onChange={() =>
-                            updateSelectedFile(
-                              imagesInput.current?.files,
-                              'images',
-                            )
-                          }
-                        >
-                          <VStack
-                            borderRadius="20px"
-                            padding="4rem 2rem"
-                            w="100%"
-                            spacing="18.5px"
-                            border="1px dashed #99A1AA"
-                          >
-                            <Text maxW="265px" textAlign="center" size="body2">
-                              You can upload a min of 2 images and a max of 12
-                              images.
-                            </Text>
-                            <IconButton
-                              aria-label="Download video"
-                              fontSize="3.6rem"
-                              variant="unstyled"
-                              border="0px"
-                              icon={<IoCloudUploadSharp />}
-                            />
-                            <small>
-                              {imagesInfo?.filesCount
-                                ? `${imagesInfo?.filesCount} images selected`
-                                : ''}
-                            </small>
-                            <Text size="body2">
-                              Upload, Drag and Drop JPG, JPEG, or PNG files
-                            </Text>
-                            <input
-                              type="file"
-                              id="upload-file"
-                              ref={imagesInput}
-                              hidden
-                              accept=".jpg, .jpeg, .png"
-                              multiple
-                            />
-                          </VStack>
-                        </form>
-                      </Stack>
                     </>
                   )}
 
                   {/* ==== INVESTMENT TYPE ===== */}
-                  {currentStepIndex === 2 && (
+                  {currentStepIndex === 1 && (
                     <>
                       <Heading as="h2" mb="4.2rem">
-                        Funding type
+                        Funding Type*
+                        <Text size="body2" mt="4">
+                          Select preffered funding type
+                        </Text>
                       </Heading>
+
                       <Flex w="100%" gap="2rem" mb="43px">
                         <Box
                           onClick={() => {
@@ -627,20 +539,16 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 month',
-                                value: 'oneMonth',
+                                label: '1 year',
+                                value: 'oneYear',
                               },
                               {
-                                label: '4 month',
-                                value: 'fourMonth',
+                                label: '2 Years',
+                                value: 'twoYears',
                               },
                               {
-                                label: '8 Month',
-                                value: 'eightMonth',
-                              },
-                              {
-                                label: '12 Month',
-                                value: 'twelveMonth',
+                                label: '5 Years',
+                                value: 'fiveYears',
                               },
                             ]}
                           />
@@ -696,20 +604,16 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 week',
-                                value: 'oneWeek',
+                                label: '1 year',
+                                value: 'oneYear',
                               },
                               {
-                                label: '2 week',
-                                value: 'twoWeek',
+                                label: '2 Years',
+                                value: 'twoYears',
                               },
                               {
-                                label: '3 week',
-                                value: 'threeWeek',
-                              },
-                              {
-                                label: '4 week',
-                                value: 'fourWeek',
+                                label: '5 Years',
+                                value: 'fiveYears',
                               },
                             ]}
                           />
@@ -735,20 +639,16 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 week',
-                                value: 'oneWeek',
+                                label: '1 year',
+                                value: 'one-year',
                               },
                               {
-                                label: '2 week',
-                                value: 'twoWeek',
+                                label: '2 Years',
+                                value: 'two-years',
                               },
                               {
-                                label: '3 week',
-                                value: 'threeWeek',
-                              },
-                              {
-                                label: '4 week',
-                                value: 'fourWeek',
+                                label: '5 Years',
+                                value: 'five-years',
                               },
                             ]}
                           />
@@ -812,25 +712,206 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 month',
-                                value: 'oneMonth',
+                                label: '1 year',
+                                value: 'one-year',
                               },
                               {
-                                label: '4 month',
-                                value: 'fourMonth',
+                                label: '2 Years',
+                                value: 'two-years',
                               },
                               {
-                                label: '8 Month',
-                                value: 'eightMonth',
-                              },
-                              {
-                                label: '12 Month',
-                                value: 'twelveMonth',
+                                label: '5 Years',
+                                value: 'five-years',
                               },
                             ]}
                           />
                         </SimpleGrid>
                       )}
+                    </>
+                  )}
+
+                  {/* ==== UPLOADS ===== */}
+                  {currentStepIndex === 2 && (
+                    <>
+                      <Heading as="h2" mb="2.3rem ">
+                        Porfolio Upload
+                      </Heading>
+                      <Text size="body1" mb="5.4rem">
+                        Upload a cover photo for your project, and optional
+                        pitch video and/or pitch deck.
+                      </Text>
+                      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
+                        <Stack spacing="22px">
+                          <Text color="white" size="body2">
+                            Cover Art*
+                          </Text>
+                          <form
+                            className="upload-section"
+                            onDragOver={handleDragOver}
+                            onDragEnd={() => setIsDraggedOver(false)}
+                            onDragLeave={() => setIsDraggedOver(false)}
+                            onDrop={(e) => handleDrop(e, 'image')}
+                            role="presentation"
+                            onClick={() => selectImageInput()}
+                            onChange={() =>
+                              updateSelectedFile(
+                                imageInput.current?.files,
+                                'image',
+                              )
+                            }
+                          >
+                            <VStack
+                              borderRadius="20px"
+                              padding="2rem"
+                              w="100%"
+                              spacing=".5rem"
+                              border="1px dashed #99A1AA"
+                            >
+                              <Text
+                                maxW="265px"
+                                textAlign="center"
+                                size="body2"
+                              >
+                                Please upload a square image for better display
+                              </Text>
+                              <IconButton
+                                aria-label="Download video"
+                                fontSize="3.6rem"
+                                variant="unstyled"
+                                border="0px"
+                                icon={<IoCloudUploadSharp />}
+                              />
+                              <small>{imageInfo?.fileName}</small>
+                              <Text size="body2">
+                                Upload, Drag and Drop jpg, jpeg, or png files
+                              </Text>
+                              <input
+                                type="file"
+                                id="upload-file"
+                                ref={imageInput}
+                                hidden
+                                accept=".jpg, .jpeg, .png"
+                                multiple
+                              />
+                            </VStack>
+                          </form>
+                        </Stack>
+                        <Stack spacing="22px">
+                          <Text color="white" size="body2">
+                            Pitch Video
+                          </Text>
+                          <form
+                            className="upload-section"
+                            onDragOver={handleDragOver}
+                            onDragEnd={() => setIsDraggedOver(false)}
+                            onDragLeave={() => setIsDraggedOver(false)}
+                            onDrop={(e) => handleDrop(e, 'video')}
+                            role="presentation"
+                            onClick={() => selectVideoInput()}
+                            onChange={() =>
+                              updateSelectedFile(
+                                videoInput.current?.files,
+                                'video',
+                              )
+                            }
+                          >
+                            <VStack
+                              borderRadius="20px"
+                              padding="2rem"
+                              w="100%"
+                              spacing=".5rem"
+                              border="1px dashed #99A1AA"
+                            >
+                              <Text
+                                maxW="265px"
+                                textAlign="center"
+                                size="body2"
+                              >
+                                Video is expected to not exceeded 200mb and a
+                                max of 2 minutes.
+                              </Text>
+                              <IconButton
+                                aria-label="Download video"
+                                fontSize="3.6rem"
+                                variant="unstyled"
+                                border="0px"
+                                icon={<IoCloudUploadSharp />}
+                              />
+                              <small>
+                                {videoInfo?.fileName && videoInfo.fileName}
+                              </small>
+                              <Text size="body2">
+                                Upload, Drag and Drop mp4 file
+                              </Text>
+                              <input
+                                type="file"
+                                id="upload-file"
+                                ref={videoInput}
+                                hidden
+                                accept=".mp4"
+                              />
+                            </VStack>
+                          </form>
+                        </Stack>
+
+                        <Stack spacing="22px" mt="10">
+                          <Text color="white" size="body2">
+                            Pitch Deck
+                          </Text>
+                          <form
+                            className="upload-section"
+                            onDragOver={handleDragOver}
+                            onDragEnd={() => setIsDraggedOver(false)}
+                            onDragLeave={() => setIsDraggedOver(false)}
+                            onDrop={(e) => handleDrop(e, 'document')}
+                            role="presentation"
+                            onClick={() => selectDocumentInput()}
+                            onChange={() =>
+                              updateSelectedFile(
+                                pitchDeckInput.current?.files,
+                                'document',
+                              )
+                            }
+                          >
+                            <VStack
+                              borderRadius="20px"
+                              padding="2rem"
+                              w="100%"
+                              spacing=".5rem"
+                              border="1px dashed #99A1AA"
+                            >
+                              <Text
+                                maxW="265px"
+                                textAlign="center"
+                                size="body2"
+                              >
+                                Pitch document is expected to not exceed 50mb
+                              </Text>
+                              <IconButton
+                                aria-label="Download video"
+                                fontSize="3.6rem"
+                                variant="unstyled"
+                                border="0px"
+                                icon={<IoCloudUploadSharp />}
+                              />
+                              <small>
+                                {videoInfo?.fileName && videoInfo.fileName}
+                              </small>
+                              <Text size="body2">
+                                Upload, Drag and Drop ppt, pptx, doc, or docx
+                                files
+                              </Text>
+                              <input
+                                type="file"
+                                id="upload-file"
+                                ref={pitchDeckInput}
+                                hidden
+                                accept=".ppt, .pptx, .doc, .docx"
+                              />
+                            </VStack>
+                          </form>
+                        </Stack>
+                      </SimpleGrid>
                     </>
                   )}
 
@@ -954,15 +1035,15 @@ const CreateProjectPage: FC = () => {
                   >
                     <Icon
                       as={
-                        stepTwoDone()
+                        stepThreeDone()
                           ? CheckMarkDone
                           : currentStepIndex === 1
                           ? CheckMarkActive
                           : CheckMarkInactive
                       }
                       boxSize="2.8rem"
-                    />
-                    Portfolio Upload
+                    />{' '}
+                    Project Type
                   </Text>
 
                   <Text
@@ -982,15 +1063,15 @@ const CreateProjectPage: FC = () => {
                   >
                     <Icon
                       as={
-                        stepThreeDone()
+                        stepTwoDone()
                           ? CheckMarkDone
                           : currentStepIndex === 2
                           ? CheckMarkActive
                           : CheckMarkInactive
                       }
                       boxSize="2.8rem"
-                    />{' '}
-                    Project Type
+                    />
+                    Uploads
                   </Text>
 
                   <Text

@@ -4,6 +4,8 @@ export type AuthUserT = {
   accessToken: string;
   firstName: string;
   lastName: string;
+  profilePicture: null | string;
+  bio: null | string;
 };
 
 type AuthContextT = {

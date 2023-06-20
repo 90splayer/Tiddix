@@ -100,14 +100,14 @@ export const CustomInput: InputComponent = (props) => {
           id={id ?? name}
           name={name}
           size="lg"
-          // bg="white"
+          color="white"
           value={value}
           {...rest}
         />
         {endIcon && <InputRightElement>{endIcon}</InputRightElement>}
       </InputGroup>
       {error && (
-        <FormErrorMessage mt="1.5" color="red.500" fontSize="1.2rem">
+        <FormErrorMessage mt="1.5" color="red.500" fontSize="1.4rem">
           {error}
         </FormErrorMessage>
       )}
@@ -273,7 +273,7 @@ const ChkTextarea: TextAreaComponent = (props) => {
       {label && (
         <FormLabel
           mb="1.5"
-          color="gray.500"
+          color="blackShade.4"
           fontWeight="normal"
           fontSize="sm"
           htmlFor={name ?? id}
@@ -285,14 +285,22 @@ const ChkTextarea: TextAreaComponent = (props) => {
         <Textarea
           id={id ?? name}
           name={name}
-          bg="white"
-          size="lg"
+          bg="blackShade.1"
+          fontSize={'1.6rem'}
+          borderRadius="2rem"
+          borderColor="blackShade.4"
+          minH="10rem"
+          padding="2rem 1.5rem"
+          color="white"
+          _placeholder={{ color: 'blackShade.4' }}
+          _hover={{ border: '2px solid #FF8CDF' }}
+          _focusVisible={{ border: '2px solid #FF8CDF' }}
           value={value}
           {...rest}
         />
       </InputGroup>
       {error && (
-        <FormErrorMessage mt="1.5" color="error.600" fontSize="sm">
+        <FormErrorMessage mt="1.5" color="red.500" fontSize="1.4rem">
           {error}
         </FormErrorMessage>
       )}
@@ -550,6 +558,9 @@ const DateWrapper = styled.span<InputBaseProps>`
     background: #15181d;
     padding: 0 1rem;
     color: #99a1aa;
+    &:hover {
+      border: 2px solid #ff8cdf;
+    }
     ${({ error }) =>
       error &&
       css`
