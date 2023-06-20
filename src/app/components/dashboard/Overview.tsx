@@ -138,7 +138,7 @@ const Overview: FC = () => {
           // largerHeading
           tabs={[
             {
-              label: 'Dasboard',
+              label: 'Dashboard',
               body: <DashboardOverview />,
               icon: DashboardIcon,
             },

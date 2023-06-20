@@ -35,7 +35,7 @@ const InvestmentType: FC = () => {
         <Flex justify="space-between" gap={6}>
           <Flex flexDir="column" w="70%">
             <Heading as="h2" mb="4.2rem">
-              Investment type
+              Funding type
             </Heading>
 
             <Flex w="100%" gap="2rem" mb="43px">
