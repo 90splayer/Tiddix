@@ -6,6 +6,7 @@ import General from 'app/components/dashboard/edit profile/General';
 import EditProfile from 'app/components/dashboard/edit profile/EditProfile';
 import ProfilePassword from 'app/components/dashboard/edit profile/ProfilePassword';
 import SocialMedia from 'app/components/dashboard/edit profile/SocialMedia';
+import Notification from 'app/components/dashboard/edit profile/Notification';
 
 const ProfileEdit = () => {
   return (
@@ -14,7 +15,8 @@ const ProfileEdit = () => {
       {/* <General /> */}
       {/* <EditProfile /> */}
       {/* <ProfilePassword /> */}
-      <SocialMedia />
+      {/* <SocialMedia /> */}
+      <Notification />
       <Footer />
     </Box>
   );
