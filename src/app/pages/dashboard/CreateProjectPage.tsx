@@ -627,16 +627,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'oneYear',
+                                label: '1 month',
+                                value: 'oneMonth',
                               },
                               {
-                                label: '2 Years',
-                                value: 'twoYears',
+                                label: '4 month',
+                                value: 'fourMonth',
                               },
                               {
-                                label: '5 Years',
-                                value: 'fiveYears',
+                                label: '8 Month',
+                                value: 'eightMonth',
+                              },
+                              {
+                                label: '12 Month',
+                                value: 'twelveMonth',
                               },
                             ]}
                           />
@@ -692,16 +696,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'oneYear',
+                                label: '1 week',
+                                value: 'oneWeek',
                               },
                               {
-                                label: '2 Years',
-                                value: 'twoYears',
+                                label: '2 week',
+                                value: 'twoWeek',
                               },
                               {
-                                label: '5 Years',
-                                value: 'fiveYears',
+                                label: '3 week',
+                                value: 'threeWeek',
+                              },
+                              {
+                                label: '4 week',
+                                value: 'fourWeek',
                               },
                             ]}
                           />
@@ -727,16 +735,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'one-year',
+                                label: '1 week',
+                                value: 'oneWeek',
                               },
                               {
-                                label: '2 Years',
-                                value: 'two-years',
+                                label: '2 week',
+                                value: 'twoWeek',
                               },
                               {
-                                label: '5 Years',
-                                value: 'five-years',
+                                label: '3 week',
+                                value: 'threeWeek',
+                              },
+                              {
+                                label: '4 week',
+                                value: 'fourWeek',
                               },
                             ]}
                           />
@@ -800,16 +812,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'one-year',
+                                label: '1 month',
+                                value: 'oneMonth',
                               },
                               {
-                                label: '2 Years',
-                                value: 'two-years',
+                                label: '4 month',
+                                value: 'fourMonth',
                               },
                               {
-                                label: '5 Years',
-                                value: 'five-years',
+                                label: '8 Month',
+                                value: 'eightMonth',
+                              },
+                              {
+                                label: '12 Month',
+                                value: 'twelveMonth',
                               },
                             ]}
                           />
