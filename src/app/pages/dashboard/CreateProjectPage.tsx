@@ -485,7 +485,7 @@ const CreateProjectPage: FC = () => {
                           <InvestTypeCard
                             title="Debt"
                             icon={PaletteIcon}
-                            desc="The funding comes with no creative strings attached and no limits on creators except that which has been agreed with the investor"
+                            desc="The funding comes with no creative strings attached and no limits on creators"
                             paintBorder={formValues.investmentType === 'debt'}
                           />
                         </Box>

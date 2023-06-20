@@ -35,7 +35,7 @@ const InvestTypeCard: FC<Props> = ({
       >
         <Flex
           bg="#232629"
-          p="3rem 4rem"
+          p="3rem 2.5rem"
           h="164px"
           gap="2rem"
           borderRadius="30px"
@@ -49,13 +49,11 @@ const InvestTypeCard: FC<Props> = ({
             align="center"
             justify="center"
             borderRadius="100%"
-            // w="72px"
-            // h="72px"
-            boxSize="7.2rem"
+            padding="1.7rem"
           >
             <Icon
               as={icon}
-              fontSize="3.4rem"
+              fontSize="3rem"
               sx={{
                 path: {
                   fill: 'white',
