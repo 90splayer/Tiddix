@@ -261,7 +261,7 @@ const CreateProjectPage: FC = () => {
       formData.append('projectData', blob);
       if (videoInfo) formData.append('pitchVideo', videoInfo.file!);
       formData.append('image', imageInfo.file);
-      formData.append('pitchDeck', documentInfo);
+      if (documentInfo) formData.append('pitchDeck', documentInfo.file);
 
       apiPrivate
         .post('/projects', formData, {
@@ -539,16 +539,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'oneYear',
+                                label: '1 Month',
+                                value: 'oneMonth',
                               },
                               {
-                                label: '2 Years',
-                                value: 'twoYears',
+                                label: '4 Months',
+                                value: 'twoMonths',
                               },
                               {
-                                label: '5 Years',
-                                value: 'fiveYears',
+                                label: '8 Months',
+                                value: 'eightMonths',
+                              },
+                              {
+                                label: '12 Months',
+                                value: 'twelveMonths',
                               },
                             ]}
                           />
@@ -604,16 +608,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'oneYear',
+                                label: '1 Week',
+                                value: 'oneWeek',
                               },
                               {
-                                label: '2 Years',
-                                value: 'twoYears',
+                                label: '2 Weeks',
+                                value: 'twoWeeks',
                               },
                               {
-                                label: '5 Years',
-                                value: 'fiveYears',
+                                label: '3 Weeks',
+                                value: 'threeWeeks',
+                              },
+                              {
+                                label: '4 Weeks',
+                                value: 'fourWeeks',
                               },
                             ]}
                           />
@@ -639,16 +647,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'one-year',
+                                label: '1 Week',
+                                value: 'oneWeek',
                               },
                               {
-                                label: '2 Years',
-                                value: 'two-years',
+                                label: '2 Weeks',
+                                value: 'twoWeeks',
                               },
                               {
-                                label: '5 Years',
-                                value: 'five-years',
+                                label: '3 Weeks',
+                                value: 'threeWeeks',
+                              },
+                              {
+                                label: '4 Weeks',
+                                value: 'fourWeeks',
                               },
                             ]}
                           />
@@ -712,16 +724,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'one-year',
+                                label: '1 Month',
+                                value: 'oneMonth',
                               },
                               {
-                                label: '2 Years',
-                                value: 'two-years',
+                                label: '4 Months',
+                                value: 'twoMonths',
                               },
                               {
-                                label: '5 Years',
-                                value: 'five-years',
+                                label: '8 Months',
+                                value: 'eightMonths',
+                              },
+                              {
+                                label: '12 Months',
+                                value: 'twelveMonths',
                               },
                             ]}
                           />
@@ -1035,7 +1051,7 @@ const CreateProjectPage: FC = () => {
                   >
                     <Icon
                       as={
-                        stepThreeDone()
+                        stepTwoDone()
                           ? CheckMarkDone
                           : currentStepIndex === 1
                           ? CheckMarkActive
@@ -1063,7 +1079,7 @@ const CreateProjectPage: FC = () => {
                   >
                     <Icon
                       as={
-                        stepTwoDone()
+                        stepThreeDone()
                           ? CheckMarkDone
                           : currentStepIndex === 2
                           ? CheckMarkActive
