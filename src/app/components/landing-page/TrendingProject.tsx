@@ -106,7 +106,7 @@ const TrendingProject = () => {
             bg="transparent"
             color="#fff"
           >
-            Explore More Project
+            Explore More Projects
           </Button>
         </Link>
       </Flex>

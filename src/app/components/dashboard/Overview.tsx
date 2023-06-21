@@ -32,6 +32,8 @@ const Overview: FC = () => {
   const authContext = useAuth();
   const firstName = authContext?.auth?.firstName;
   const lastName = authContext?.auth?.lastName;
+  const bio = authContext?.auth?.bio;
+  const profilePicture = authContext?.auth?.profilePicture;
 
   return (
     <Box>
@@ -52,7 +54,7 @@ const Overview: FC = () => {
                 border="2px solid pink"
                 boxSize="159px"
                 name={`${firstName} ${lastName}`}
-                src={undefined}
+                src={profilePicture ?? undefined}
               />
             </Box>
             <Stack spacing="15px" maxW="403px">
@@ -62,9 +64,7 @@ const Overview: FC = () => {
                 </Text>
                 <Box>{verify}</Box>
               </HStack>
-              <Text size="body2">
-                Brand / Graphic Design, UI / Visual Design, Product Design
-              </Text>
+              <Text size="body1">{bio}</Text>
               <Flex gap="12px" align="center">
                 <Link to="/dashboard/edit-profile">
                   <Button variant="secondary" size="sm">
