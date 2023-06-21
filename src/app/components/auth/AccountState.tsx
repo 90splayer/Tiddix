@@ -77,7 +77,7 @@ export default function AccountState() {
                 <Avatar
                   boxSize="40px"
                   name={`${firstName} ${lastName}`}
-                  src={undefined}
+                  src={profilePicture ?? undefined}
                 />
                 <Stack>
                   <Text size="body2">Hello, {firstName}</Text>
