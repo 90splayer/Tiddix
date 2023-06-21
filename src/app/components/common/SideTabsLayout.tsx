@@ -100,6 +100,9 @@ export const SideTabsLayout: React.FC<MenuInterface> = ({
                     : 'linear-gradient(235.92deg, #99A1AA -14.27%, #99A1AA 50.09%, #99A1AA 114.81%)'
                 }
                 bgClip="text"
+                _hover={{
+                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                }}
                 fontWeight={i === state.viewing ? 'medium' : 'normal'}
               >
                 {title}

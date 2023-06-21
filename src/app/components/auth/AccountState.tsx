@@ -45,6 +45,7 @@ export default function AccountState() {
 
   const firstName = authContext?.auth?.firstName;
   const lastName = authContext?.auth?.lastName;
+  const profilePicture = authContext?.auth?.profilePicture;
 
   const UserInfo = () => {
     return (
@@ -52,7 +53,7 @@ export default function AccountState() {
         <Avatar
           boxSize="40px"
           name={`${firstName} ${lastName}`}
-          src={undefined}
+          src={profilePicture ?? undefined}
         />
         <Stack>
           <Heading size="h5">{`${firstName} ${lastName}`}</Heading>
