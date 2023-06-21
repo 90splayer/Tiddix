@@ -467,7 +467,7 @@ const CreateProjectPage: FC = () => {
                       <Heading as="h2" mb="4.2rem">
                         Funding Type*
                         <Text size="body2" mt="4">
-                          Select preffered funding type
+                          Select prefered funding type
                         </Text>
                       </Heading>
 
