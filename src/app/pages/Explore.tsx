@@ -139,6 +139,7 @@ const Explore: FC = () => {
                 defaultValue="allTime"
                 fontSize="2rem"
                 fontWeight="700"
+                _placeholder={{ color: 'black' }}
                 color="white"
                 label="Filter with Time"
                 name="timeOption"
