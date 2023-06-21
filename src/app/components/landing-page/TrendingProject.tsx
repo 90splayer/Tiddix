@@ -71,7 +71,7 @@ const TrendingProject = () => {
         Trending Projects
       </Heading>
       <Text fontSize="2rem" textAlign="center" color="#99A1AA" pb="11rem">
-        Check out our weekly updated trending Projects
+        Check out our weekly updated trending projects
       </Text>
       <Slider {...settings}>
         {projects.map((item, index) => (
@@ -79,7 +79,7 @@ const TrendingProject = () => {
             <ProjectCard
               creativeName={item.creativeName}
               investmentType={item.investmentType}
-              images={item.images}
+              images={item.image}
               progress={item.progress}
               creativePicture={item.creativePicture}
               category={item.category}

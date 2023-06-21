@@ -27,7 +27,7 @@ const HowItWork = () => {
           <HowItWorkCard
             icon={plus}
             title={'Sign up '}
-            desc={'Sign up as a creative or an investor to optimize project.'}
+            desc={'Sign up as a creative or an investor to optimize projects.'}
           />
         </Link>
         <Link to="/dashboard/create-project">
