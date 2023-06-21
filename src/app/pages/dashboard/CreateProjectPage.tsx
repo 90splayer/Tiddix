@@ -911,7 +911,8 @@ const CreateProjectPage: FC = () => {
                                 icon={<IoCloudUploadSharp />}
                               />
                               <small>
-                                {videoInfo?.fileName && videoInfo.fileName}
+                                {documentInfo?.fileName &&
+                                  documentInfo.fileName}
                               </small>
                               <Text size="body2">
                                 Upload, Drag and Drop ppt, pptx, doc, or docx

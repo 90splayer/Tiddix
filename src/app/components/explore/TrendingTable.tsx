@@ -46,7 +46,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                 projectName,
                 progress,
                 category,
-                images,
+                image,
                 creativePicture,
                 id,
               }: any) => (
@@ -58,7 +58,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                         h="10rem"
                         borderRadius="1.6rem"
                         objectFit="cover"
-                        src={images}
+                        src={image}
                         alt={projectName}
                       />
                     </Box>
@@ -118,7 +118,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                 projectName,
                 progress,
                 category,
-                images,
+                image,
                 creativePicture,
                 id,
               }: any) => (
@@ -130,7 +130,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                         h="10rem"
                         borderRadius="1.6rem"
                         objectFit="cover"
-                        src={images}
+                        src={image}
                         alt={projectName}
                       />
                     </Box>
