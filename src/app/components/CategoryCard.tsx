@@ -20,15 +20,10 @@ const CategoryCard: FC<{ project: any }> = ({ project }) => {
     projectName,
     progress,
     category,
-    images,
+    image,
     creativePicture,
   } = project;
 
-  console.log(
-    'PROJECT INFO',
-
-    images,
-  );
   return (
     <Card
       maxW="63.6rem"
@@ -42,7 +37,7 @@ const CategoryCard: FC<{ project: any }> = ({ project }) => {
           h="26.8rem"
           borderRadius="20px"
           objectFit="cover"
-          src={images}
+          src={image}
           alt="image"
         />
       </Box>

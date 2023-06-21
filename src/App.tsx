@@ -17,6 +17,7 @@ import SingleProjectPage from 'app/pages/dashboard/SingleProjectPage';
 import Teams from 'app/pages/Teams';
 import CodeOfConduct from 'app/pages/CodeOfConduct';
 import ProfileEdit from 'app/pages/dashboard/Editproject';
+import AllSet from 'app/pages/dashboard/AllSet';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
               element={<CreateProject />}
             />
             <Route path="/dashboard/edit-profile" element={<ProfileEdit />} />
+            <Route path="/success" element={<AllSet />} />
             <Route path="/dashboard/project" element={<SingleProjectPage />} />
           </Route>
         </Route>

@@ -14,6 +14,7 @@ import BecomeInvestor from 'app/components/landing-page/BecomeInvestor';
 import { chkToaster } from 'app/components/common/Toaster';
 import CustomMenuButton from 'app/components/common/CustomMenuButton';
 import CustomModal from 'app/components/common/CustomModal';
+import { SideTabsLayout } from 'app/components/common/SideTabsLayout';
 
 const CustomComponent = ({ name }: any) => {
   return <p>{name} COMPONENT!</p>;
@@ -148,7 +149,9 @@ const Test: FC = () => {
         <Input type="text" size="lg" placeholder="placeholder" />
       </Flex>
 
-      <Button onClick={onOpen2}>Trigger modal 2</Button>
+      <Button onClick={onOpen2} mb="200">
+        Trigger modal 2
+      </Button>
       {/* <CustomModal modalTitle="Test title 2" isOpen={open2} onClose={onClose2}>
         <CustomModal.Body padding="0px" bg="white">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -175,6 +178,33 @@ const Test: FC = () => {
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
         ut aliquip ex ea commodo consequat.
       </CustomModal>
+
+      <SideTabsLayout
+        components={[
+          { title: 'General', component: <CustomComponent name="FIRST" /> },
+          { title: 'Edit Profile', component: <BecomeInvestor /> },
+          { title: 'Password', component: <BecomeInvestor /> },
+          { title: 'Social media account', component: <BecomeInvestor /> },
+          { title: 'Email Notification', component: <BecomeInvestor /> },
+          { title: 'Delete Account', component: <BecomeInvestor /> },
+        ]}
+      />
+
+      <Heading my="10rem">SideTab layout 2</Heading>
+
+      <SideTabsLayout
+        components={[
+          {
+            title: 'All Projects',
+            component: <CustomComponent name="FIRST" />,
+          },
+          { title: 'Equity Projects', component: <BecomeInvestor /> },
+          { title: 'Debt Projects', component: <BecomeInvestor /> },
+          { title: 'Draft', component: <BecomeInvestor /> },
+        ]}
+        useLayout2
+        sideBarExtraContent={<Button variant="default">Extra Content</Button>}
+      />
     </>
   );
 };

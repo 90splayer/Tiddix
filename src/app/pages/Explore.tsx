@@ -135,7 +135,8 @@ const Explore: FC = () => {
             </Stack>
             <Flex gap="2.3rem">
               <CustomSelectField
-                placeholder="Time"
+                // placeholder="Recent Projects"
+                defaultValue="allTime"
                 fontSize="2rem"
                 fontWeight="700"
                 color="white"
@@ -145,7 +146,7 @@ const Explore: FC = () => {
                 onChange={(e) => setTimeOption(e.target.value)}
                 options={[
                   {
-                    label: 'All Time',
+                    label: 'Recent Projects',
                     value: 'allTime',
                   },
                   {

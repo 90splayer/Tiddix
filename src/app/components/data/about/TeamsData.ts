@@ -1,17 +1,19 @@
 import Team1 from 'app/assets/images/about/team/team1.png';
 import Team2 from 'app/assets/images/about/team/team2.png';
+import Founder from 'app/assets/images/about/team/Ifeoma.jpeg';
+import CTO from 'app/assets/images/about/team/Mark.jpeg'
 
 export const TeamsData = [
   {
     id: '1',
     full_name: 'Ifeoma Adeoye',
-    image: Team2,
+    image: Founder,
     job_title: 'Founder, CEO',
   },
   {
     id: '2',
     full_name: 'Mark Gray',
-    image: Team1,
+    image: CTO,
     job_title: 'Managing Director',
   },
   {

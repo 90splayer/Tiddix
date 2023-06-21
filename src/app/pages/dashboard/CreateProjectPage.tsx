@@ -261,7 +261,7 @@ const CreateProjectPage: FC = () => {
       formData.append('projectData', blob);
       if (videoInfo) formData.append('pitchVideo', videoInfo.file!);
       formData.append('image', imageInfo.file);
-      formData.append('pitchDeck', documentInfo);
+      if (documentInfo) formData.append('pitchDeck', documentInfo.file);
 
       apiPrivate
         .post('/projects', formData, {
@@ -467,7 +467,7 @@ const CreateProjectPage: FC = () => {
                       <Heading as="h2" mb="4.2rem">
                         Funding Type*
                         <Text size="body2" mt="4">
-                          Select preffered funding type
+                          Select prefered funding type
                         </Text>
                       </Heading>
 
@@ -485,7 +485,7 @@ const CreateProjectPage: FC = () => {
                           <InvestTypeCard
                             title="Debt"
                             icon={PaletteIcon}
-                            desc="The funding comes with no creative strings attached and no limits on creators except that which has been agreed with the investor"
+                            desc="The funding comes with no creative strings attached and no limits on creators"
                             paintBorder={formValues.investmentType === 'debt'}
                           />
                         </Box>
@@ -539,16 +539,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'oneYear',
+                                label: '1 Month',
+                                value: 'oneMonth',
                               },
                               {
-                                label: '2 Years',
-                                value: 'twoYears',
+                                label: '4 Months',
+                                value: 'twoMonths',
                               },
                               {
-                                label: '5 Years',
-                                value: 'fiveYears',
+                                label: '8 Months',
+                                value: 'eightMonths',
+                              },
+                              {
+                                label: '12 Months',
+                                value: 'twelveMonths',
                               },
                             ]}
                           />
@@ -604,16 +608,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'oneYear',
+                                label: '1 Week',
+                                value: 'oneWeek',
                               },
                               {
-                                label: '2 Years',
-                                value: 'twoYears',
+                                label: '2 Weeks',
+                                value: 'twoWeeks',
                               },
                               {
-                                label: '5 Years',
-                                value: 'fiveYears',
+                                label: '3 Weeks',
+                                value: 'threeWeeks',
+                              },
+                              {
+                                label: '4 Weeks',
+                                value: 'fourWeeks',
                               },
                             ]}
                           />
@@ -639,16 +647,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'one-year',
+                                label: '1 Week',
+                                value: 'oneWeek',
                               },
                               {
-                                label: '2 Years',
-                                value: 'two-years',
+                                label: '2 Weeks',
+                                value: 'twoWeeks',
                               },
                               {
-                                label: '5 Years',
-                                value: 'five-years',
+                                label: '3 Weeks',
+                                value: 'threeWeeks',
+                              },
+                              {
+                                label: '4 Weeks',
+                                value: 'fourWeeks',
                               },
                             ]}
                           />
@@ -712,16 +724,20 @@ const CreateProjectPage: FC = () => {
                             }}
                             options={[
                               {
-                                label: '1 year',
-                                value: 'one-year',
+                                label: '1 Month',
+                                value: 'oneMonth',
                               },
                               {
-                                label: '2 Years',
-                                value: 'two-years',
+                                label: '4 Months',
+                                value: 'twoMonths',
                               },
                               {
-                                label: '5 Years',
-                                value: 'five-years',
+                                label: '8 Months',
+                                value: 'eightMonths',
+                              },
+                              {
+                                label: '12 Months',
+                                value: 'twelveMonths',
                               },
                             ]}
                           />
@@ -895,7 +911,8 @@ const CreateProjectPage: FC = () => {
                                 icon={<IoCloudUploadSharp />}
                               />
                               <small>
-                                {videoInfo?.fileName && videoInfo.fileName}
+                                {documentInfo?.fileName &&
+                                  documentInfo.fileName}
                               </small>
                               <Text size="body2">
                                 Upload, Drag and Drop ppt, pptx, doc, or docx
@@ -1035,7 +1052,7 @@ const CreateProjectPage: FC = () => {
                   >
                     <Icon
                       as={
-                        stepThreeDone()
+                        stepTwoDone()
                           ? CheckMarkDone
                           : currentStepIndex === 1
                           ? CheckMarkActive
@@ -1063,7 +1080,7 @@ const CreateProjectPage: FC = () => {
                   >
                     <Icon
                       as={
-                        stepTwoDone()
+                        stepThreeDone()
                           ? CheckMarkDone
                           : currentStepIndex === 2
                           ? CheckMarkActive
