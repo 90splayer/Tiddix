@@ -19,8 +19,8 @@ const TeamsCard: FC<Props> = ({ image, name, title }) => {
       pt="5.8rem"
       px="2rem"
     >
-      <Box pb="3.7rem" borderRadius="3rem">
-        <Image src={image} alt="team member" w="15.7rem" />
+      <Box pb="3.7rem" >
+        <Image src={image} alt="team member" w="15.7rem" h="15.7rem" borderRadius="50rem" />
       </Box>
       <Heading as="h2" textAlign="center" mb="1.6rem" color="#fff">
         {name}
