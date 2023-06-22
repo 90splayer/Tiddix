@@ -184,7 +184,7 @@ const Explore: FC = () => {
                     value: 'art',
                   },
                   {
-                    label: 'Photograph',
+                    label: 'Photography',
                     value: 'photography',
                   },
                   {
