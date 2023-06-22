@@ -116,6 +116,14 @@ const CreateProjectPage: FC = () => {
     portfolioLink: '',
     projectName: '',
     description: '',
+    category: '',
+    investmentType: '',
+    amount: '',
+    duration: '',
+    repaymentFrequency: '',
+    moratoriumPeriod: '',
+    equityAmountOffered: '',
+    repaymentDate: '',
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -146,9 +154,50 @@ const CreateProjectPage: FC = () => {
     return false;
   };
 
-  const doneSteps = [stepOneDone(), stepTwoDone(), stepThreeDone()].filter(
-    Boolean,
-  ).length;
+  // const stepTwoDone = () => {
+  //   if (
+  //     formValues.investmentType &&
+  //     formValues.amount &&
+  //     formValues.duration &&
+  //     formValues.moratoriumPeriod
+  //   ) {
+  //     if (formValues.investmentType === 'debt') {
+  //       if (formValues.repaymentFrequency) return true;
+  //     }
+  //     if (formValues.investmentType === 'equity') {
+  //       if (formValues.equityAmountOffered && formValues.repaymentDate)
+  //         return true;
+  //     }
+  //   }
+  //   return false;
+  // };
+
+  const validateForm = () => {
+    if (!formValues.projectName)
+      setError('projectName', 'Project name is empty');
+    if (!formValues.category)
+      setError('category', 'Project category is not selected');
+
+    if (!formValues.investmentType)
+      setError('investmentType', 'Investment type is not selected');
+    if (!formValues.amount) return setError('amount', 'Project name is empty');
+    if (!formValues.duration) setError('duration', 'Duration is not selected');
+    if (!formValues.moratoriumPeriod)
+      setError('moratoriumPeriod', 'Moratorium period is not selected');
+
+    if (formValues.investmentType === 'debt') {
+      if (!formValues.repaymentFrequency)
+        setError('repaymentFrequency', 'Repayment frequency is not selected');
+    }
+    if (formValues.investmentType === 'equity') {
+      if (!formValues.equityAmountOffered)
+        setError('equityAmountOffered', 'Equity AmountOffered is empty');
+      if (!formValues.repaymentDate)
+        return setError('repaymentDate', 'Repayment Date is not selected');
+    }
+  };
+
+  const doneSteps = [stepOneDone(), stepTwoDone()].filter(Boolean).length;
 
   const setError = (name: string, error: string) => {
     setFormErrors((prev) => ({ ...prev, [name]: error }));
@@ -243,7 +292,14 @@ const CreateProjectPage: FC = () => {
   };
 
   const handleSubmit = () => {
-    if (doneSteps === 3 && currentStepIndex === 2) {
+    // validateForm();
+    if (doneSteps === 2 && currentStepIndex === 2) {
+      // if (!Object.values(formErrors).every(Boolean)) {
+      //   const errors = Object.values(formErrors).filter(Boolean);
+      //   errors.forEach((item) => chkToaster.error({ title: item }));
+      //   return;
+      // }
+
       setLoading(true);
       const formData = new FormData();
 
@@ -279,7 +335,12 @@ const CreateProjectPage: FC = () => {
           setLoading(false);
         });
     } else {
-      if (currentStepIndex === 2 && doneSteps !== 3) {
+      if (currentStepIndex === 2 && doneSteps !== 2) {
+        // if (!Object.values(formErrors).every(Boolean)) {
+        //   const errors = Object.values(formErrors).filter(Boolean);
+        //   errors.forEach((item) => chkToaster.error({ title: item }));
+        //   return;
+        // }
         chkToaster.error({ title: 'Please fill all required fields' });
         return;
       }
@@ -416,6 +477,14 @@ const CreateProjectPage: FC = () => {
                               onChange={(e) => {
                                 setError('portfolioLink', '');
                                 setPortfolioLink(e.target.value);
+                              }}
+                              onBlur={(e) => {
+                                if (
+                                  e.target.value &&
+                                  !validUrl.test(e.target.value)
+                                ) {
+                                  setError('portfolioLink', 'Invalid URL');
+                                }
                               }}
                               error={formErrors.portfolioLink}
                             />
@@ -759,7 +828,7 @@ const CreateProjectPage: FC = () => {
                       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
                         <Stack spacing="22px">
                           <Text color="white" size="body2">
-                            Cover Art*
+                            Cover Art
                           </Text>
                           <form
                             className="upload-section"
@@ -1122,7 +1191,7 @@ const CreateProjectPage: FC = () => {
                       onClick={handleSubmit}
                       isLoading={loading}
                     >
-                      {doneSteps === 3 && currentStepIndex === 2
+                      {doneSteps === 2 && currentStepIndex === 2
                         ? 'Submit'
                         : 'Next'}
                     </Button>
