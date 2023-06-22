@@ -4,7 +4,7 @@ import {
   Container,
   Flex,
   HStack,
-  Heading,
+  Image,
   Icon,
   Input,
   InputGroup,
@@ -17,6 +17,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoLogoTwitter, IoLogoInstagram, IoLogoLinkedin } from 'react-icons/io';
 import { MdOutlineFacebook } from 'react-icons/md';
 import { TiArrowRight } from 'react-icons/ti';
+import tiddix from '../assets/images/tiddix.png';
 
 export const Footer: FC = () => {
   const { colorMode } = useColorMode();
@@ -39,15 +40,7 @@ export const Footer: FC = () => {
               w={{ base: '100%', lg: '40%' }}
             >
               <NavLink to="/">
-                <Heading
-                  transition="0.2s ease-in-out"
-                  fontSize="3.6rem"
-                  bgGradient="linear(#FFC227, #FF8CDF,#4EFCF9)"
-                  bgClip="text"
-                  fontWeight="700"
-                >
-                  tiddix
-                </Heading>
+                <Image src={tiddix} alt="tiddix logo" maxW="120px" />
               </NavLink>
 
               <Box>
@@ -138,7 +131,7 @@ export const Footer: FC = () => {
                   Buckinghamshire HP9 1XP
                 </Text>
                 <HStack spacing="16px" fontSize="24px" color="#99A1AA">
-                  <Link to="#" target="_blank">
+                  <Link to="https://web.facebook.com/profile.php?id=100093786846340" target="_blank">
                     <Icon
                       as={MdOutlineFacebook}
                       transition="0.5s ease"
@@ -152,14 +145,14 @@ export const Footer: FC = () => {
                       _hover={{ cursor: 'pointer', transform: 'scale(1.2)' }}
                     />
                   </Link>
-                  <Link to="#" target="_blank">
+                  <Link to="https://www.instagram.com/tiddixcreative/" target="_blank">
                     <Icon
                       as={IoLogoInstagram}
                       transition="0.5s ease"
                       _hover={{ cursor: 'pointer', transform: 'scale(1.2)' }}
                     />
                   </Link>
-                  <Link to="#" target="_blank">
+                  <Link to="https://www.linkedin.com/in/tiddix-creatives-429a77258/" target="_blank">
                     <Icon
                       as={IoLogoLinkedin}
                       transition="0.5s ease"
@@ -175,7 +168,7 @@ export const Footer: FC = () => {
             // flexWrap={{ base: "wrap", md: "nowrap" }}
             flexDir={{ base: 'column', md: 'row' }}
           >
-            <Text>2023 tiddix ©  All right reserved.</Text>
+            <Text>Tiddix © 2023, All right reserved.</Text>
 
             <Flex
               flexDir={{ base: 'column', sm: 'row' }}
