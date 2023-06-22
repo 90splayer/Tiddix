@@ -6,6 +6,7 @@ export type AuthUserT = {
   lastName: string;
   profilePicture: null | string;
   bio: null | string;
+  walletBalance: string;
 };
 
 type AuthContextT = {

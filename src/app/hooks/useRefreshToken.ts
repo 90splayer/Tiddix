@@ -18,14 +18,21 @@ export default function useRefreshToken() {
     //   return { ...prev, accessToken: response.data.accessToken};
     // });
 
-    const { accessToken, firstName, lastName, profilePicture, bio } =
-      response.data;
+    const {
+      accessToken,
+      firstName,
+      lastName,
+      profilePicture,
+      bio,
+      walletBalance,
+    } = response.data;
     authContext?.setAuth({
       accessToken,
       firstName,
       lastName,
       profilePicture,
       bio,
+      walletBalance,
     });
 
     return accessToken;

@@ -46,6 +46,7 @@ export default function AccountState() {
   const firstName = authContext?.auth?.firstName;
   const lastName = authContext?.auth?.lastName;
   const profilePicture = authContext?.auth?.profilePicture;
+  const walletBalance = authContext?.auth?.walletBalance;
 
   const UserInfo = () => {
     return (
@@ -83,7 +84,7 @@ export default function AccountState() {
                   <Text size="body2">Hello, {firstName}</Text>
                   <Flex align="center" gap=".5rem">
                     <WalletIcon />
-                    <Text size="body2">{'$0.00'}</Text>
+                    <Text size="body2">${walletBalance}</Text>
                   </Flex>
                 </Stack>
                 <ChevronDownIcon style={{ marginLeft: '.3rem' }} />
