@@ -29,6 +29,7 @@ const ProfileEdit = () => {
   const authContext = useAuth();
   const firstName = authContext?.auth?.firstName;
   const lastName = authContext?.auth?.lastName;
+  const profilePicture = authContext?.auth?.profilePicture;
 
   return (
     <Box>
@@ -40,7 +41,7 @@ const ProfileEdit = () => {
               border="2px solid pink"
               boxSize="64px"
               name={`${firstName} ${lastName}`}
-              src={undefined}
+              src={profilePicture ?? undefined}
             />
           </Box>
           <Stack spacing="15px" maxW="485px">
