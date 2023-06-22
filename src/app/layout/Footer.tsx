@@ -4,7 +4,7 @@ import {
   Container,
   Flex,
   HStack,
-  Heading,
+  Image,
   Icon,
   Input,
   InputGroup,
@@ -17,6 +17,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoLogoTwitter, IoLogoInstagram, IoLogoLinkedin } from 'react-icons/io';
 import { MdOutlineFacebook } from 'react-icons/md';
 import { TiArrowRight } from 'react-icons/ti';
+import tiddix from '../assets/images/tiddix.png';
 
 export const Footer: FC = () => {
   const { colorMode } = useColorMode();
@@ -39,15 +40,7 @@ export const Footer: FC = () => {
               w={{ base: '100%', lg: '40%' }}
             >
               <NavLink to="/">
-                <Heading
-                  transition="0.2s ease-in-out"
-                  fontSize="3.6rem"
-                  bgGradient="linear(#FFC227, #FF8CDF,#4EFCF9)"
-                  bgClip="text"
-                  fontWeight="700"
-                >
-                  tiddix
-                </Heading>
+                <Image src={tiddix} alt="tiddix logo" maxW="120px" />
               </NavLink>
 
               <Box>
@@ -175,7 +168,7 @@ export const Footer: FC = () => {
             // flexWrap={{ base: "wrap", md: "nowrap" }}
             flexDir={{ base: 'column', md: 'row' }}
           >
-            <Text>2023 tiddix ©  All right reserved.</Text>
+            <Text>Tiddix © 2023, All right reserved.</Text>
 
             <Flex
               flexDir={{ base: 'column', sm: 'row' }}
