@@ -15,7 +15,6 @@ import useAuth from 'app/hooks/useAuth';
 
 const Intro: FC = () => {
   const authContext = useAuth();
-  console.log('AUTH', authContext);
 
   return (
     <Box pos="relative">

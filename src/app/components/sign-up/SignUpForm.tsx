@@ -90,10 +90,6 @@ const SignUpForm = () => {
       });
   };
 
-  useEffect(() => {
-    console.log('API', `${import.meta.env.VITE_APP_TIDDIX_BASE_URL}`);
-  });
-
   return (
     <Flex w="full">
       <Flex w="40%" flexDir="column" align="center" p="5.1rem 3rem 16rem">
