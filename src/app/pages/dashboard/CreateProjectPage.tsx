@@ -155,6 +155,13 @@ const CreateProjectPage: FC = () => {
     videoInfo: '',
   });
 
+  const [doToggle, setDoToggle] = useState(true);
+
+  useEffect(() => {
+    const errors = Object.values(formErrors).filter(Boolean);
+    errors.forEach((item) => chkToaster.error({ title: item }));
+  }, [Object.values(formErrors).some(Boolean), doToggle]);
+
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const stepOneDone = () => {
@@ -250,7 +257,7 @@ const CreateProjectPage: FC = () => {
   const addPortfolioLink = () => {
     if (!portfolioLink) return;
     if (!validUrl.test(portfolioLink)) {
-      setError('portfolioLink', 'Invalid URL');
+      setError('portfolioLink', 'Invalid Portfolio URL');
       return;
     }
     setPortfolioLinks((prev) => [portfolioLink, ...prev]);
@@ -344,21 +351,14 @@ const CreateProjectPage: FC = () => {
   };
 
   const handleSubmit = () => {
-    validateForm();
-    console.log(
-      'DONE STEPS',
-      doneSteps,
-      currentStepIndex,
-      doneSteps === 3 && currentStepIndex === 2,
-    );
-
     if (doneSteps === 3 && currentStepIndex === 2) {
+      validateForm();
+
       // Check if there's any error recorded in formErrors object
 
-      if (Object.values(formErrors).some(Boolean)) {
+      if (Object.values(formErrors).some(Boolean) || formErrors.portfolioLink) {
+        setDoToggle(!doToggle);
         console.log('FORM ERRORS IN IF', formErrors);
-        const errors = Object.values(formErrors).filter(Boolean);
-        errors.forEach((item) => chkToaster.error({ title: item }));
         return;
       }
 
@@ -398,12 +398,11 @@ const CreateProjectPage: FC = () => {
         });
     } else {
       if (currentStepIndex === 2 && doneSteps !== 3) {
-        if (Object.values(formErrors).some(Boolean)) {
-          console.log('FORM ERRORS IN ELSE', formErrors);
-          const errors = Object.values(formErrors).filter(Boolean);
-          errors.forEach((item) => chkToaster.error({ title: item }));
-          return;
-        }
+        validateForm();
+
+        if (Object.values(formErrors).some(Boolean)) setDoToggle(!doToggle);
+        console.log('FORM ERRORS IN ELSE', formErrors);
+
         // chkToaster.error({ title: 'Please fill all required fields' });
         return;
       }
@@ -553,7 +552,10 @@ const CreateProjectPage: FC = () => {
                                   e.target.value &&
                                   !validUrl.test(e.target.value)
                                 ) {
-                                  setError('portfolioLink', 'Invalid URL');
+                                  setError(
+                                    'portfolioLink',
+                                    'Invalid Portfolio URL',
+                                  );
                                 }
                               }}
                               error={formErrors.portfolioLink}
@@ -651,13 +653,14 @@ const CreateProjectPage: FC = () => {
                       </Flex>
                       {formValues.investmentType === 'debt' && (
                         <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
-                          <Input
+                          <CustomInput
                             type="number"
                             size="lg"
                             placeholder="Enter Amount*"
                             name="amount"
                             value={formValues.amount ?? ''}
                             onChange={handleChange}
+                            error={formErrors.amount}
                           />
                           <CustomSelectField
                             placeholder="Enter Duration*"
@@ -668,6 +671,7 @@ const CreateProjectPage: FC = () => {
                             borderRadius="2rem"
                             name="duration"
                             value={formValues.duration}
+                            error={formErrors.duration}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -713,6 +717,7 @@ const CreateProjectPage: FC = () => {
                             borderRadius="2rem"
                             name="repaymentFrequency"
                             value={formValues.repaymentFrequency}
+                            error={formErrors.repaymentFrequency}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -745,6 +750,7 @@ const CreateProjectPage: FC = () => {
                             borderRadius="2rem"
                             name="moratoriumPeriod"
                             value={formValues.moratoriumPeriod}
+                            error={formErrors.moratoriumPeriod}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -788,6 +794,7 @@ const CreateProjectPage: FC = () => {
                             borderRadius="2rem"
                             name="moratoriumPeriod"
                             value={formValues.moratoriumPeriod}
+                            error={formErrors.moratoriumPeriod}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -820,22 +827,24 @@ const CreateProjectPage: FC = () => {
                             ]}
                           />
 
-                          <Input
+                          <CustomInput
                             type="number"
                             size="lg"
                             placeholder="Amount*"
                             name="amount"
                             value={formValues.amount ?? ''}
                             onChange={handleChange}
+                            error={formErrors.amount}
                           />
 
-                          <Input
+                          <CustomInput
                             size="lg"
                             placeholder="Equity amount offered*"
                             type="number"
                             name="equityAmountOffered"
                             value={formValues.equityAmountOffered ?? ''}
                             onChange={handleChange}
+                            error={formErrors.equityAmountOffered}
                           />
 
                           <CustomInput.Date
@@ -851,6 +860,7 @@ const CreateProjectPage: FC = () => {
                             clearIcon={null}
                             name="repaymentDate"
                             value={formValues.repaymentDate as any}
+                            error={formErrors.repaymentDate}
                             onChange={(e: any) => {
                               handleChange({
                                 target: {
@@ -869,6 +879,7 @@ const CreateProjectPage: FC = () => {
                             border="1px solid #99A1AA"
                             name="duration"
                             value={formValues.duration}
+                            error={formErrors.duration}
                             onChange={(e) => {
                               handleChange({
                                 target: {
