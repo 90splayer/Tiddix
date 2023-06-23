@@ -30,7 +30,7 @@ const Faqs: FC = () => {
         maxW="144rem"
       >
         <Flex flexDir="column" fontFamily="bold" align="center" w="full">
-          <VStack mb="8.7rem">
+          <VStack mb="15.7rem">
             <Text
               mb="5rem"
               size="body2"
@@ -41,12 +41,7 @@ const Faqs: FC = () => {
               FAQs
             </Text>
 
-            <Heading
-              size="display4"
-              textAlign="center"
-              maxW="40.6rem"
-              pb="3.5rem"
-            >
+            <Heading size="display2" textAlign="center" maxW="45.6rem">
               Frequently Asked Questions
             </Heading>
           </VStack>
