@@ -38,7 +38,6 @@ const Explore: FC = () => {
     api
       .get(url)
       .then(({ data }) => {
-        console.log('PORTFOLIO RESPONSE', data.projects);
         setProjects(data.projects);
       })
       .catch(() => {
@@ -53,7 +52,6 @@ const Explore: FC = () => {
     api
       .get(url)
       .then(({ data }) => {
-        console.log('PORTFOLIO RESPONSE', data.projects);
         setHeaderProjects(data.projects);
       })
       .catch(() => {

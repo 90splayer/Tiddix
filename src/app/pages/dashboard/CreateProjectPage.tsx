@@ -72,10 +72,6 @@ const CreateProjectPage: FC = () => {
     repaymentDate: null,
   });
 
-  useEffect(() => {
-    console.log('FORM VALUES', currentStepIndex);
-  });
-
   // Reset Investment info when Investment type is changed.
   useEffect(() => {
     setFormValues((prev) => ({
@@ -358,7 +354,6 @@ const CreateProjectPage: FC = () => {
 
       if (Object.values(formErrors).some(Boolean) || formErrors.portfolioLink) {
         setDoToggle(!doToggle);
-        console.log('FORM ERRORS IN IF', formErrors);
         return;
       }
 
@@ -401,7 +396,6 @@ const CreateProjectPage: FC = () => {
         validateForm();
 
         if (Object.values(formErrors).some(Boolean)) setDoToggle(!doToggle);
-        console.log('FORM ERRORS IN ELSE', formErrors);
 
         // chkToaster.error({ title: 'Please fill all required fields' });
         return;

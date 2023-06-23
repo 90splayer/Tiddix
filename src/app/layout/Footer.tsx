@@ -119,7 +119,9 @@ export const Footer: FC = () => {
                 <Text fontWeight={700} color="#fff">
                   Resources
                 </Text>
-                <Text color="#99A1AA">FAQs</Text>
+                <Link to="/faqs">
+                  <Text color="#99A1AA">FAQs</Text>
+                </Link>
                 <Text color="#99A1AA">Blog</Text>
               </Stack>
               <Stack spacing="4rem">
@@ -131,7 +133,10 @@ export const Footer: FC = () => {
                   Buckinghamshire HP9 1XP
                 </Text>
                 <HStack spacing="16px" fontSize="24px" color="#99A1AA">
-                  <Link to="https://web.facebook.com/profile.php?id=100093786846340" target="_blank">
+                  <Link
+                    to="https://web.facebook.com/profile.php?id=100093786846340"
+                    target="_blank"
+                  >
                     <Icon
                       as={MdOutlineFacebook}
                       transition="0.5s ease"
@@ -145,14 +150,20 @@ export const Footer: FC = () => {
                       _hover={{ cursor: 'pointer', transform: 'scale(1.2)' }}
                     />
                   </Link>
-                  <Link to="https://www.instagram.com/tiddixcreative/" target="_blank">
+                  <Link
+                    to="https://www.instagram.com/tiddixcreative/"
+                    target="_blank"
+                  >
                     <Icon
                       as={IoLogoInstagram}
                       transition="0.5s ease"
                       _hover={{ cursor: 'pointer', transform: 'scale(1.2)' }}
                     />
                   </Link>
-                  <Link to="https://www.linkedin.com/in/tiddix-creatives-429a77258/" target="_blank">
+                  <Link
+                    to="https://www.linkedin.com/in/tiddix-creatives-429a77258/"
+                    target="_blank"
+                  >
                     <Icon
                       as={IoLogoLinkedin}
                       transition="0.5s ease"

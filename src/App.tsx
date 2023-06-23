@@ -18,6 +18,7 @@ import Teams from 'app/pages/Teams';
 import CodeOfConduct from 'app/pages/CodeOfConduct';
 import ProfileEdit from 'app/pages/dashboard/Editproject';
 import AllSet from 'app/pages/dashboard/AllSet';
+import Faqs from 'app/pages/Faqs';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/code-of-conduct" element={<CodeOfConduct />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/investors" element={<Investor />} />
+          <Route path="/faqs" element={<Faqs />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/test" element={<Test />} />
