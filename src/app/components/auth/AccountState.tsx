@@ -55,6 +55,7 @@ export default function AccountState() {
           boxSize="40px"
           name={`${firstName} ${lastName}`}
           src={profilePicture ?? undefined}
+          loading="lazy"
         />
         <Stack>
           <Heading size="h5">{`${firstName} ${lastName}`}</Heading>
@@ -79,6 +80,7 @@ export default function AccountState() {
                   boxSize="40px"
                   name={`${firstName} ${lastName}`}
                   src={profilePicture ?? undefined}
+                  loading="lazy"
                 />
                 <Stack>
                   <Text size="body2">Hello, {firstName}</Text>

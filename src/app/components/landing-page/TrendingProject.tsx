@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 // import { projectData } from '../data/ProjectData';
 import api from 'app/api/tiddix';
+import { chkToaster } from '../common/Toaster';
 
 const TrendingProject = () => {
   var settings = {
@@ -49,11 +50,10 @@ const TrendingProject = () => {
     api
       .get(url)
       .then(({ data }) => {
-        console.log('PORTFOLIO RESPONSE', data.projects);
         setProjects(data.projects);
       })
       .catch(() => {
-        console.log('SOMETHING WENT WRONG');
+        chkToaster.error({ title: 'Something went wrong' });
       });
   }, []);
 

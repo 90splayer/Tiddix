@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import {
   Container,
   Box,
@@ -17,6 +17,7 @@ import { CustomInput } from '../../common/CustomInput';
 import { Link } from 'react-router-dom';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from 'app/components/common/Toaster';
+import { AuthUserT } from 'app/context/AuthProvider';
 
 const EditProfile: FC = () => {
   const apiPrivate = useApiPrivate();
@@ -31,6 +32,7 @@ const EditProfile: FC = () => {
   const [userBio, setUserBio] = useState(bio ?? '');
   const [image, setImage] = useState(profilePicture);
   const [loading, setLoading] = useState(false);
+  const [newPictureUpload, setNewPictureUpload] = useState('');
 
   const selectImageInput = () => {
     if (imageInput.current?.value) {
@@ -45,6 +47,7 @@ const EditProfile: FC = () => {
     if (files) {
       const file = files[0];
       if (file.type === 'image/jpeg' || file.type === 'image/png') {
+        setNewPictureUpload(URL.createObjectURL(file));
         setImage(file);
       } else {
         chkToaster.error({ title: 'Invalid file type.' });
@@ -64,7 +67,13 @@ const EditProfile: FC = () => {
           'Content-type': 'multipart/form-data',
         },
       })
-      .then(() => {
+      .then(({ data }) => {
+        authContext?.setAuth({
+          ...authContext?.auth,
+          bio: data.bio,
+          profilePicture: data.profilePicture,
+        } as AuthUserT);
+
         chkToaster.success({ title: 'Profile updated successfully' });
         setLoading(false);
       })
@@ -83,7 +92,8 @@ const EditProfile: FC = () => {
               border="2px solid pink"
               boxSize="64px"
               name={`${firstName} ${lastName}`}
-              src={profilePicture ?? undefined}
+              src={newPictureUpload || profilePicture || undefined}
+              loading="lazy"
             />
           </Box>
           <form
