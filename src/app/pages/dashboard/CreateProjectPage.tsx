@@ -87,6 +87,16 @@ const CreateProjectPage: FC = () => {
       equityAmountOffered: null,
       repaymentDate: null,
     }));
+
+    setFormErrors((prev: any) => ({
+      ...prev,
+      amount: null,
+      duration: '',
+      repaymentFrequency: '',
+      moratoriumPeriod: '',
+      equityAmountOffered: null,
+      repaymentDate: null,
+    }));
   }, [formValues.investmentType]);
 
   const { currentStepIndex, isFirstStep, isLastStep, stepsLength, goTo, next } =
@@ -111,6 +121,23 @@ const CreateProjectPage: FC = () => {
 
   const [portfolioLink, setPortfolioLink] = useState('');
   const [portfolioLinks, setPortfolioLinks] = useState<string[]>([]);
+
+  // type formErrorT = {
+  //   portfolioLink: string;
+  //   projectName: string;
+  //   description: string;
+  //   category: string;
+  //   investmentType: string;
+  //   amount: string;
+  //   duration: string;
+  //   repaymentFrequency: string;
+  //   moratoriumPeriod: string;
+  //   equityAmountOffered: string;
+  //   repaymentDate: string;
+  //   imageInfo: string;
+  //   videoInfo: string;
+  // };
+
   // const [portfolioLinkError, setPortfolioLinkError] = useState('');
   const [formErrors, setFormErrors] = useState({
     portfolioLink: '',
@@ -124,12 +151,26 @@ const CreateProjectPage: FC = () => {
     moratoriumPeriod: '',
     equityAmountOffered: '',
     repaymentDate: '',
+    imageInfo: '',
+    videoInfo: '',
   });
+
+  const [doToggle, setDoToggle] = useState(true);
+
+  useEffect(() => {
+    const errors = Object.values(formErrors).filter(Boolean);
+    errors.forEach((item) => chkToaster.error({ title: item }));
+  }, [Object.values(formErrors).some(Boolean), doToggle]);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const stepOneDone = () => {
-    if (formValues.projectName && formValues.category) return true;
+    if (
+      formValues.projectName &&
+      formValues.category &&
+      formValues.description.length >= 100
+    )
+      return true;
     return false;
   };
   const stepTwoDone = () => {
@@ -150,7 +191,7 @@ const CreateProjectPage: FC = () => {
     return false;
   };
   const stepThreeDone = () => {
-    if (imageInfo) return true;
+    if (imageInfo && videoInfo) return true;
     return false;
   };
 
@@ -177,10 +218,12 @@ const CreateProjectPage: FC = () => {
       setError('projectName', 'Project name is empty');
     if (!formValues.category)
       setError('category', 'Project category is not selected');
+    if (!formValues.description)
+      setError('description', 'Project description is empty');
 
     if (!formValues.investmentType)
       setError('investmentType', 'Investment type is not selected');
-    if (!formValues.amount) return setError('amount', 'Project name is empty');
+    if (!formValues.amount) setError('amount', 'Amount is empty');
     if (!formValues.duration) setError('duration', 'Duration is not selected');
     if (!formValues.moratoriumPeriod)
       setError('moratoriumPeriod', 'Moratorium period is not selected');
@@ -195,9 +238,14 @@ const CreateProjectPage: FC = () => {
       if (!formValues.repaymentDate)
         return setError('repaymentDate', 'Repayment Date is not selected');
     }
+
+    if (!imageInfo) setError('imageInfo', 'Cover Art not uploaded');
+    if (!videoInfo) setError('videoInfo', 'Pitch Video not uploaded');
   };
 
-  const doneSteps = [stepOneDone(), stepTwoDone()].filter(Boolean).length;
+  const doneSteps = [stepOneDone(), stepTwoDone(), stepThreeDone()].filter(
+    Boolean,
+  ).length;
 
   const setError = (name: string, error: string) => {
     setFormErrors((prev) => ({ ...prev, [name]: error }));
@@ -209,7 +257,7 @@ const CreateProjectPage: FC = () => {
   const addPortfolioLink = () => {
     if (!portfolioLink) return;
     if (!validUrl.test(portfolioLink)) {
-      setError('portfolioLink', 'Invalid URL');
+      setError('portfolioLink', 'Invalid Portfolio URL');
       return;
     }
     setPortfolioLinks((prev) => [portfolioLink, ...prev]);
@@ -229,16 +277,26 @@ const CreateProjectPage: FC = () => {
     if (files) {
       const file = files[0];
       if (type === 'video' && file.type === 'video/mp4') {
+        if (file.size > 200000000) {
+          return chkToaster.error({ title: 'Video larger than 200mb' });
+        }
+        setError('videoInfo', '');
         setVideoInfo({
           file,
           fileName: file.name,
         });
       } else if (type === 'image') {
+        if (file.size > 2000000) {
+          return chkToaster.error({ title: 'Image larger than 2mb' });
+        }
+        setError('imageInfo', '');
         setImageInfo({
           file: file,
           fileName: file.name,
         });
       } else if (type === 'document') {
+        if (file.size > 50000000)
+          return chkToaster.error({ title: 'Document larger than 50mb' });
         setDocumentInfo({
           file: file,
           fileName: file.name,
@@ -289,16 +347,20 @@ const CreateProjectPage: FC = () => {
       ...prevValues,
       [e.target.name]: e.target.value,
     }));
+    setError(e.target.name, '');
   };
 
   const handleSubmit = () => {
-    // validateForm();
-    if (doneSteps === 2 && currentStepIndex === 2) {
-      // if (!Object.values(formErrors).every(Boolean)) {
-      //   const errors = Object.values(formErrors).filter(Boolean);
-      //   errors.forEach((item) => chkToaster.error({ title: item }));
-      //   return;
-      // }
+    if (doneSteps === 3 && currentStepIndex === 2) {
+      validateForm();
+
+      // Check if there's any error recorded in formErrors object
+
+      if (Object.values(formErrors).some(Boolean) || formErrors.portfolioLink) {
+        setDoToggle(!doToggle);
+        console.log('FORM ERRORS IN IF', formErrors);
+        return;
+      }
 
       setLoading(true);
       const formData = new FormData();
@@ -316,7 +378,7 @@ const CreateProjectPage: FC = () => {
 
       formData.append('projectData', blob);
       if (videoInfo) formData.append('pitchVideo', videoInfo.file!);
-      formData.append('image', imageInfo.file);
+      if (imageInfo.file) formData.append('image', imageInfo.file);
       if (documentInfo) formData.append('pitchDeck', documentInfo.file);
 
       apiPrivate
@@ -335,13 +397,13 @@ const CreateProjectPage: FC = () => {
           setLoading(false);
         });
     } else {
-      if (currentStepIndex === 2 && doneSteps !== 2) {
-        // if (!Object.values(formErrors).every(Boolean)) {
-        //   const errors = Object.values(formErrors).filter(Boolean);
-        //   errors.forEach((item) => chkToaster.error({ title: item }));
-        //   return;
-        // }
-        chkToaster.error({ title: 'Please fill all required fields' });
+      if (currentStepIndex === 2 && doneSteps !== 3) {
+        validateForm();
+
+        if (Object.values(formErrors).some(Boolean)) setDoToggle(!doToggle);
+        console.log('FORM ERRORS IN ELSE', formErrors);
+
+        // chkToaster.error({ title: 'Please fill all required fields' });
         return;
       }
       next();
@@ -391,17 +453,19 @@ const CreateProjectPage: FC = () => {
                         <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
                           <CustomInput
                             type="text"
-                            size="lg"
+                            // size="lg"
                             placeholder="Project Name*"
                             value={formValues.projectName}
                             name="projectName"
                             onChange={handleChange}
+                            error={formErrors.projectName}
                           />
                           <CustomSelectField
                             placeholder="Category*"
                             label="Category"
                             name="category"
                             value={formValues.category}
+                            error={formErrors.category}
                             onChange={(e) =>
                               handleChange({
                                 target: {
@@ -435,16 +499,13 @@ const CreateProjectPage: FC = () => {
                           />
                         </SimpleGrid>
                       </Stack>
-                      <Stack w="100%" spacing="30px" mb="43px">
+                      <Stack w="100%" mb="43px" position="relative">
                         <CustomInput.TextArea
                           // type="text"
                           size="lg"
-                          placeholder="Project Description"
+                          placeholder="Project Description* (at least 100 characters)"
                           name="description"
-                          onChange={(e) => {
-                            setError('description', '');
-                            handleChange(e);
-                          }}
+                          onChange={handleChange}
                           value={formValues.description}
                           error={formErrors.description}
                           onBlur={() => {
@@ -459,6 +520,14 @@ const CreateProjectPage: FC = () => {
                             }
                           }}
                         />
+                        <Text
+                          fontSize="1.2rem"
+                          position="absolute"
+                          right="1.2rem"
+                        >
+                          {formValues.description &&
+                            formValues.description.length}
+                        </Text>
                       </Stack>
 
                       <Stack w="100%" spacing="19px" mb="53px">
@@ -483,7 +552,10 @@ const CreateProjectPage: FC = () => {
                                   e.target.value &&
                                   !validUrl.test(e.target.value)
                                 ) {
-                                  setError('portfolioLink', 'Invalid URL');
+                                  setError(
+                                    'portfolioLink',
+                                    'Invalid Portfolio URL',
+                                  );
                                 }
                               }}
                               error={formErrors.portfolioLink}
@@ -581,13 +653,14 @@ const CreateProjectPage: FC = () => {
                       </Flex>
                       {formValues.investmentType === 'debt' && (
                         <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
-                          <Input
+                          <CustomInput
                             type="number"
                             size="lg"
                             placeholder="Enter Amount*"
                             name="amount"
                             value={formValues.amount ?? ''}
                             onChange={handleChange}
+                            error={formErrors.amount}
                           />
                           <CustomSelectField
                             placeholder="Enter Duration*"
@@ -598,6 +671,7 @@ const CreateProjectPage: FC = () => {
                             borderRadius="2rem"
                             name="duration"
                             value={formValues.duration}
+                            error={formErrors.duration}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -612,16 +686,24 @@ const CreateProjectPage: FC = () => {
                                 value: 'oneMonth',
                               },
                               {
-                                label: '4 Months',
-                                value: 'twoMonths',
+                                label: '3 Months',
+                                value: 'threeMonths',
                               },
                               {
-                                label: '8 Months',
-                                value: 'eightMonths',
+                                label: '6 Months',
+                                value: 'sixMonths',
+                              },
+                              {
+                                label: '9 Months',
+                                value: 'nineMonths',
                               },
                               {
                                 label: '12 Months',
                                 value: 'twelveMonths',
+                              },
+                              {
+                                label: 'Above 12 Months',
+                                value: 'aboveTwelveMonths',
                               },
                             ]}
                           />
@@ -635,6 +717,7 @@ const CreateProjectPage: FC = () => {
                             borderRadius="2rem"
                             name="repaymentFrequency"
                             value={formValues.repaymentFrequency}
+                            error={formErrors.repaymentFrequency}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -667,6 +750,7 @@ const CreateProjectPage: FC = () => {
                             borderRadius="2rem"
                             name="moratoriumPeriod"
                             value={formValues.moratoriumPeriod}
+                            error={formErrors.moratoriumPeriod}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -676,6 +760,10 @@ const CreateProjectPage: FC = () => {
                               });
                             }}
                             options={[
+                              {
+                                label: 'None',
+                                value: 'none',
+                              },
                               {
                                 label: '1 Week',
                                 value: 'oneWeek',
@@ -706,6 +794,7 @@ const CreateProjectPage: FC = () => {
                             borderRadius="2rem"
                             name="moratoriumPeriod"
                             value={formValues.moratoriumPeriod}
+                            error={formErrors.moratoriumPeriod}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -715,6 +804,10 @@ const CreateProjectPage: FC = () => {
                               });
                             }}
                             options={[
+                              {
+                                label: 'None',
+                                value: 'none',
+                              },
                               {
                                 label: '1 Week',
                                 value: 'oneWeek',
@@ -734,22 +827,24 @@ const CreateProjectPage: FC = () => {
                             ]}
                           />
 
-                          <Input
+                          <CustomInput
                             type="number"
                             size="lg"
                             placeholder="Amount*"
                             name="amount"
                             value={formValues.amount ?? ''}
                             onChange={handleChange}
+                            error={formErrors.amount}
                           />
 
-                          <Input
+                          <CustomInput
                             size="lg"
                             placeholder="Equity amount offered*"
                             type="number"
                             name="equityAmountOffered"
                             value={formValues.equityAmountOffered ?? ''}
                             onChange={handleChange}
+                            error={formErrors.equityAmountOffered}
                           />
 
                           <CustomInput.Date
@@ -765,6 +860,7 @@ const CreateProjectPage: FC = () => {
                             clearIcon={null}
                             name="repaymentDate"
                             value={formValues.repaymentDate as any}
+                            error={formErrors.repaymentDate}
                             onChange={(e: any) => {
                               handleChange({
                                 target: {
@@ -783,6 +879,7 @@ const CreateProjectPage: FC = () => {
                             border="1px solid #99A1AA"
                             name="duration"
                             value={formValues.duration}
+                            error={formErrors.duration}
                             onChange={(e) => {
                               handleChange({
                                 target: {
@@ -797,16 +894,24 @@ const CreateProjectPage: FC = () => {
                                 value: 'oneMonth',
                               },
                               {
-                                label: '4 Months',
-                                value: 'twoMonths',
+                                label: '3 Months',
+                                value: 'threeMonths',
                               },
                               {
-                                label: '8 Months',
-                                value: 'eightMonths',
+                                label: '6 Months',
+                                value: 'sixMonths',
+                              },
+                              {
+                                label: '9 Months',
+                                value: 'nineMonths',
                               },
                               {
                                 label: '12 Months',
                                 value: 'twelveMonths',
+                              },
+                              {
+                                label: 'Above 12 Months',
+                                value: 'aboveTwelveMonths',
                               },
                             ]}
                           />
@@ -828,7 +933,7 @@ const CreateProjectPage: FC = () => {
                       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
                         <Stack spacing="22px">
                           <Text color="white" size="body2">
-                            Cover Art
+                            Cover Art*
                           </Text>
                           <form
                             className="upload-section"
@@ -850,14 +955,17 @@ const CreateProjectPage: FC = () => {
                               padding="2rem"
                               w="100%"
                               spacing=".5rem"
-                              border="1px dashed #99A1AA"
+                              border={`1px dashed ${
+                                formErrors.imageInfo ? 'red' : '#99A1AA'
+                              }`}
                             >
                               <Text
                                 maxW="265px"
                                 textAlign="center"
                                 size="body2"
                               >
-                                Please upload a square image for better display
+                                Image is expected to not exceed 2mb. Please
+                                upload a square image for better display
                               </Text>
                               <IconButton
                                 aria-label="Download video"
@@ -883,7 +991,7 @@ const CreateProjectPage: FC = () => {
                         </Stack>
                         <Stack spacing="22px">
                           <Text color="white" size="body2">
-                            Pitch Video
+                            Pitch Video*
                           </Text>
                           <form
                             className="upload-section"
@@ -905,7 +1013,9 @@ const CreateProjectPage: FC = () => {
                               padding="2rem"
                               w="100%"
                               spacing=".5rem"
-                              border="1px dashed #99A1AA"
+                              border={`1px dashed ${
+                                formErrors.videoInfo ? 'red' : '#99A1AA'
+                              }`}
                             >
                               <Text
                                 maxW="265px"
@@ -1191,7 +1301,7 @@ const CreateProjectPage: FC = () => {
                       onClick={handleSubmit}
                       isLoading={loading}
                     >
-                      {doneSteps === 2 && currentStepIndex === 2
+                      {doneSteps === 3 && currentStepIndex === 2
                         ? 'Submit'
                         : 'Next'}
                     </Button>

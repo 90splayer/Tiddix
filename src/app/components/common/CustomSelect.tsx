@@ -26,7 +26,7 @@ function CustomSelectField({
 }: Props) {
   return (
     <Styling>
-      <FormControl>
+      <FormControl isInvalid={!!error}>
         <FormLabel
           display={'inline-block'}
           p="1px 3px"
@@ -45,13 +45,15 @@ function CustomSelectField({
           icon={<ChevronDownIcon />}
           fontSize="14px"
           borderRadius="2rem"
-          height="5.6rem"
+          height="5.9rem"
           _hover={{ border: '2px solid #FF8CDF' }}
           focusBorderColor="#FF8CDFF"
           border="1px solid #99A1AA"
           _focusVisible={{ border: '1px solid #99A1AA' }}
           transition="0.7 ease-in-out"
           placeholder={placeholder ? placeholder : 'Select an option'}
+          _placeholder={{ color: 'blackShade.4' }}
+          // color="white"
           {...rest}
         >
           {options.map((o: any) => (
@@ -62,7 +64,7 @@ function CustomSelectField({
         </Select>
 
         {error && (
-          <FormErrorMessage mt="1.5" color="red.600" fontSize="sm">
+          <FormErrorMessage mt="1.5" color="red.500" fontSize="1.4rem">
             {error}
           </FormErrorMessage>
         )}
