@@ -111,7 +111,7 @@ export const Footer: FC = () => {
                 <Link to="/teams">
                   <Text color="#99A1AA">The Team</Text>
                 </Link>
-                <Link to="/">
+                <Link to="/contact">
                   <Text color="#99A1AA">Contact Us</Text>
                 </Link>
               </Stack>
@@ -122,7 +122,9 @@ export const Footer: FC = () => {
                 <Link to="/faqs">
                   <Text color="#99A1AA">FAQs</Text>
                 </Link>
+                <Link to="*">
                 <Text color="#99A1AA">Blog</Text>
+                </Link>
               </Stack>
               <Stack spacing="4rem">
                 <Text fontWeight={700} color="#fff">
@@ -190,13 +192,21 @@ export const Footer: FC = () => {
               // visibility="hidden"
               textAlign="center"
             >
-              <Text>Legal Terms of Service</Text>
+              <Link to="*">
+                <Text  _hover={{ textDecoration: 'underline' }}>
+                Legal Terms of Service
+                </Text>
+              </Link>
               <Link to="/privacy-policy">
                 <Text _hover={{ textDecoration: 'underline' }}>
                   Terms & Conditions
                 </Text>
               </Link>
-              <Text>Privacy Policy</Text>
+              <Link to="/privacy-policy">
+                <Text _hover={{ textDecoration: 'underline' }}>
+                  Privacy Policy
+                </Text>
+              </Link>
             </Flex>
           </Flex>
         </Stack>
