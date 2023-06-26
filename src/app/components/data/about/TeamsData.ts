@@ -14,7 +14,7 @@ export const TeamsData = [
     id: '2',
     full_name: 'Mark Gray',
     image: CTO,
-    job_title: 'Managing Director',
+    job_title: 'CTO',
   },
   {
     id: '3',
