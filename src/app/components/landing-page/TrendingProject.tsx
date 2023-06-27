@@ -79,7 +79,7 @@ const TrendingProject = () => {
             <ProjectCard
               creativeName={item.creativeName}
               investmentType={item.investmentType}
-              images={item.image}
+              images={item.coverArt}
               progress={item.progress}
               creativePicture={item.creativePicture}
               category={item.category}

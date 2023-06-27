@@ -373,7 +373,7 @@ const CreateProjectPage: FC = () => {
 
       formData.append('projectData', blob);
       if (videoInfo) formData.append('pitchVideo', videoInfo.file!);
-      if (imageInfo.file) formData.append('image', imageInfo.file);
+      if (imageInfo.file) formData.append('coverArt', imageInfo.file);
       if (documentInfo) formData.append('pitchDeck', documentInfo.file);
 
       apiPrivate
@@ -497,7 +497,7 @@ const CreateProjectPage: FC = () => {
                         <CustomInput.TextArea
                           // type="text"
                           size="lg"
-                          placeholder="Project Description* (at least 100 characters)"
+                          placeholder="Project Description* (add subtext that provides relevant details about the project)"
                           name="description"
                           onChange={handleChange}
                           value={formValues.description}
@@ -1133,8 +1133,8 @@ const CreateProjectPage: FC = () => {
                           mb="1.4rem"
                           maxW="321px"
                         >
-                          Your project has been uploaded and you can access it
-                          from your dashboard.
+                          Your project has been uploaded successfully. You can
+                          now access it from your dashboard
                         </Text>
                       </Stack>
                       <Box maxW="39rem">
