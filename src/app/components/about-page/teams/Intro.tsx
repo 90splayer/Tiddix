@@ -34,13 +34,6 @@ const Teams: FC = () => {
           >
             Meet the team of professionals that ensure the magic happens
           </Heading>
-
-          {/* <Text
-            size="body1"
-            textAlign="center"
-           
-            color="#99A1AA"
-          ></Text> */}
         </VStack>
         <Grid templateColumns="repeat(4, 1fr)" pb="3.6rem" gap="3rem">
           {TeamsData.map((item) => (
@@ -49,6 +42,7 @@ const Teams: FC = () => {
                 image={item.image}
                 name={item.full_name}
                 title={item.job_title}
+                portfolio={item.portfolio}
               />
             </GridItem>
           ))}
