@@ -20,7 +20,7 @@ const CategoryCard: FC<{ project: any }> = ({ project }) => {
     projectName,
     progress,
     category,
-    image,
+    coverArt,
     creativePicture,
   } = project;
 
@@ -37,8 +37,8 @@ const CategoryCard: FC<{ project: any }> = ({ project }) => {
           h="26.8rem"
           borderRadius="20px"
           objectFit="cover"
-          src={image}
-          alt="image"
+          src={coverArt}
+          alt={projectName}
         />
       </Box>
       <Stack spacing="1.1rem">
