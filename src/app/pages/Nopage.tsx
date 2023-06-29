@@ -4,6 +4,7 @@ import { Box, Container, Flex, HStack, Icon, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import Header from 'app/layout/Header';
+import { Footer } from 'app/layout/Footer';
 
 const Nopage: FC = () => {
   // const { colorMode } = useColorMode();
@@ -55,6 +56,7 @@ const Nopage: FC = () => {
           </Link>
         </Flex>
       </Container>
+      <Footer />
     </Box>
   );
 };
