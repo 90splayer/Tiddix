@@ -22,6 +22,7 @@ import { IoWallet } from 'react-icons/io5';
 import React, { FC } from 'react';
 import { BiRefresh } from 'react-icons/bi';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { GoChevronDown } from 'react-icons/go';
 
 const WalletView: FC = () => {
   return (
@@ -89,11 +90,19 @@ const WalletView: FC = () => {
         <TableContainer borderRadius="30px" bg="#232629" pt="3rem" px="3.5rem">
           <Flex justify="space-between" align="center" pb="1.8rem">
             <Text color="#fff">Transaction</Text>
-            <Select placeholder="Filter" maxW="17.5rem" p="20px 15px">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </Select>{' '}
+            <Box>
+              <Button
+                borderRadius="100px"
+                bg="#232629"
+                border="1px solid #485155"
+                maxW="17.5rem"
+                color="#fff"
+                rightIcon={<GoChevronDown />}
+                size="md"
+              >
+                filter
+              </Button>
+            </Box>{' '}
           </Flex>
           <Table size="lg">
             <Thead>
