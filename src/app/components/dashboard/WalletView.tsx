@@ -156,16 +156,27 @@ const WalletView: FC = () => {
               </Tr>
             </Tbody>
             <Tfoot>
-              <Tr>
-                <HStack spacing="1.5rem">
-                  <Icon
-                    as={RiArrowLeftSLine}
-                    fontSize="2.4rem"
-                    color="#99A1AA"
-                  />
-                  <Icon as={RiArrowRightSLine} />
-                </HStack>
-              </Tr>
+              {/* <Tr> */}
+              <HStack spacing="1.5rem" pt="4.7rem" pb="7.1rem">
+                <Icon as={RiArrowLeftSLine} fontSize="3.4rem" color="#99A1AA" />
+                <Box
+                  bg="#fff"
+                  p="5px 10px"
+                  borderRadius="5px"
+                  fontSize="1.6rem"
+                >
+                  1
+                </Box>
+                <Box p="5px 10px" fontSize="1.6rem">
+                  2
+                </Box>
+                <Icon
+                  as={RiArrowRightSLine}
+                  fontSize="3.4rem"
+                  color="#99A1AA"
+                />
+              </HStack>
+              {/* </Tr> */}
             </Tfoot>
           </Table>
         </TableContainer>{' '}
