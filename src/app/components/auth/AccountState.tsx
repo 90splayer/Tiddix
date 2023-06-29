@@ -109,6 +109,14 @@ export default function AccountState() {
                 },
               },
               {
+                label: 'Wallet',
+                value: 'wallet',
+                icon: <WalletIcon />,
+                onSelect() {
+                  navigate('/dashboard/wallet', { replace: true });
+                },
+              },
+              {
                 label: 'Logout',
                 value: 'logout',
                 icon: <LogoutIcon />,
