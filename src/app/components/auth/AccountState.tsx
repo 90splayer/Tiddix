@@ -18,6 +18,7 @@ import { isAuthenticated } from 'app/utils/helpers';
 import CustomMenuButton from '../common/CustomMenuButton';
 import {
   WalletIcon,
+  WalletIconWhite,
   ChevronDownIcon,
   DashboardIcon,
   LogoutIcon,
@@ -111,7 +112,11 @@ export default function AccountState() {
               {
                 label: 'Wallet',
                 value: 'wallet',
-                icon: <WalletIcon />,
+                icon: (
+                  <WalletIconWhite
+                    style={{ height: '2.1rem', width: '2.1rem' }}
+                  />
+                ),
                 onSelect() {
                   navigate('/dashboard/wallet', { replace: true });
                 },
