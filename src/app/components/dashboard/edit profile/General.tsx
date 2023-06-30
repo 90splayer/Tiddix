@@ -24,6 +24,7 @@ const General: FC = () => {
     'Password',
     'Social media account',
     'Email Notification',
+    'Credit Score Check',
     'Delete Account',
   ];
   return (
