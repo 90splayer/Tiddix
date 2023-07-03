@@ -38,3 +38,11 @@ export const numberMetricFormatter = (num: number, digits: number) => {
     ? (num / item.value).toFixed(digits).replace(rx, '$1') + item.symbol
     : '0';
 };
+
+export const formikErrorHandler = (name: string, formikInstance: any) => {
+  return (
+    formikInstance.errors[name] &&
+    formikInstance.touched[name] &&
+    formikInstance.errors[name]
+  );
+};
