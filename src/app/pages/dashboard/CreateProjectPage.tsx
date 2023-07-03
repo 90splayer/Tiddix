@@ -497,7 +497,7 @@ const CreateProjectPage: FC = () => {
                         <CustomInput.TextArea
                           // type="text"
                           size="lg"
-                          placeholder="Project Description* (add subtext that provides relevant details about the project)"
+                          placeholder="Project Description* (Provide relevant details about the project)"
                           name="description"
                           onChange={handleChange}
                           value={formValues.description}
