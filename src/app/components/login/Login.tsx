@@ -261,7 +261,7 @@ const LoginForm = () => {
 
             <Box>
               <Text fontWeight="700">
-                Already Have an account?{' '}
+                Don't have an account?{' '}
                 <Link to="/signup">
                   <Text
                     _hover={{ textDecoration: 'underline', opacity: '0.7' }}

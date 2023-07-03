@@ -1,27 +1,85 @@
 import { Box, Button, Flex, Stack, VStack, Text,Input, Heading, FormControl, FormLabel } from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup';
+import api from 'app/api/tiddix';
 import { CustomInput } from 'app/components/common/CustomInput';
+import { chkToaster } from 'app/components/common/Toaster';
 import { useRef, useState } from 'react';
 import React, { FC } from 'react'
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { date, object, string } from 'yup';
 
-const CreditScore: FC = () => {
+type CreditScoreInputT = {
+    fullName: string;
+    address: string;
+    dateOfBirth: string;
+    
+  };
+  
+  const schema = object().shape({
+    fullName: string().required('Your Full Name is Required'),
+    address: string().required('Your Address is Required'),
+    dateOfBirth: date().required('Your Date of Birth is Required'),
+  });
+
+const CreditScore = () => {
     const steps = [
         'General',
         'Edit Profile',
         'Password',
         'Social media account',
         'Email Notification',
-        'Credit Score Check',
+        'Credit Score',
         'Delete Account',
       ];
+   
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+      
+    const {
+      handleSubmit,
+      register,
+      reset,
+     formState: { errors },
+       } = useForm<CreditScoreInputT>({
+          resolver: yupResolver(schema),
+          defaultValues: {
+            fullName: '',
+            address: '',
+            dateOfBirth: '',
+           
+          },
+        });
+      
+    const onSubmitHandler = (data: CreditScoreInputT) => {
+        setLoading(true);
+        const { fullName, address, dateOfBirth } = data;
+        api
+            .post('/credit-score', {
+              full_name: fullName,
+              address: address,
+              date_of_birth: dateOfBirth,
+            })
+            .then((response: any) => {
+              setLoading(false);
+              chkToaster.success({
+                title: 'Credit score submitted successfully',
+                description: 'Thank you',
+              });
+              
+            //   setTimeout(() => {
+            //     navigate('/credit score', { replace: true });
+            //   }, 3000);
+            })
+            .catch((error: any) => {
+              setLoading(false);
+              chkToaster.error({
+                title: error.response.data.message || 'Unable to Submit',
+              });
+            });
+            reset();
+    };
 
-    // const [input, setInput] = useState('');
-    
-
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     event.target.reset();
-        
-    // };
   return (
     <Box>
         <VStack>
@@ -32,34 +90,47 @@ const CreditScore: FC = () => {
                 because it can affect your ability to take out new forms of credit.
             </Text>
         </VStack>
-        <Stack spacing="1.9rem">
-            <FormControl isRequired>
-                <FormLabel fontSize="2xl">Full Name</FormLabel>
-                <Box w="100%" mb="2rem">
-                    <CustomInput
-                        type="text"
+        <form onSubmit={handleSubmit(onSubmitHandler)} noValidate>
+            <Stack spacing="1.9rem">
+                <FormControl isRequired isInvalid={!!errors.fullName}>
+                    <Input
                         size="lg"
-                        placeholder='Full Name'
-                        name="fullname"
-                />
-                </Box>
-                <FormLabel fontSize="2xl">Residential Address</FormLabel>
-                <Box w="100%" mb="2rem">
-                    <CustomInput
-                        type="text"
-                        size="lg"
-                        placeholder='Residential Address'
-                        name="address"
+                        placeholder="Full Name"
+                        {...register('fullName')}
                     />
-                </Box>
-                <FormLabel fontSize="2xl">Date of Birth</FormLabel>
-                <Box w="100%" mb="2rem">
-                    <CustomInput
-                        type="date"
+                    {errors.fullName && (
+                        <Text color="#C21E56" fontSize="1.5rem">
+                        {errors.fullName.message}
+                        </Text>
+                    )}
+                </FormControl>
+
+                <FormControl isRequired isInvalid={!!errors.address}>
+                    <Input
                         size="lg"
-                        name="date of birth"
-                />
-                </Box>
+                        placeholder="Residential Address"
+                        {...register('address')}
+                    />
+                    {errors.address && (
+                        <Text color="#C21E56" fontSize="1.5rem">
+                        {errors.address.message}
+                        </Text>
+                    )}
+                </FormControl>
+
+                <FormControl isRequired isInvalid={!!errors.dateOfBirth}>
+                    <Input
+                        size="lg"
+                        placeholder="Date of Birth"
+                        type="date"
+                        {...register('dateOfBirth')}
+                    />
+                    {errors.dateOfBirth && (
+                        <Text color="#C21E56" fontSize="1.5rem">
+                        {errors.dateOfBirth.message}
+                        </Text>
+                    )}
+                </FormControl>
 
                 <Flex flexDir="column" align="flex-end" mt="6px">
                     <Button
@@ -67,18 +138,13 @@ const CreditScore: FC = () => {
                         fontSize="1.6rem"
                         variant="multicolor"
                         size="md"
+                        isLoading={loading}
                     >
                         Submit
                     </Button>
                 </Flex>
-
-            </FormControl>
-        
-       
-       
-
-        
-      </Stack>
+        </Stack>
+      </form>
     </Box>
   )
 }

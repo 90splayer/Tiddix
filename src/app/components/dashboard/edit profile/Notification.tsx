@@ -35,7 +35,7 @@ const Notification: FC = () => {
     'Password',
     'Social media account',
     'Email Notification',
-    'Credit Score Check',
+    'Credit Score',
     'Delete Account',
   ];
   return (

@@ -67,7 +67,7 @@ const ProfileEdit = () => {
             { title: 'Password', component: <ProfilePassword /> },
             { title: 'Social media account', component: <SocialMedia /> },
             { title: 'Email Notification', component: <Notification /> },
-            { title: 'Check Credit Score', component: <CreditScore/> },
+            { title: 'Credit Score', component: <CreditScore/> },
             { title: 'Delete Account', component: <Delete /> },
           ]}
         />
