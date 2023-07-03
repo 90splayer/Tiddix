@@ -20,6 +20,7 @@ import SocialMedia from 'app/components/dashboard/edit profile/SocialMedia';
 import Notification from 'app/components/dashboard/edit profile/Notification';
 import { SideTabsLayout } from 'app/components/common/SideTabsLayout';
 import useAuth from 'app/hooks/useAuth';
+import CreditScore from 'app/components/dashboard/edit profile/CreditScore';
 
 const Delete = () => {
   return <Text>Needs Design</Text>;
@@ -66,6 +67,7 @@ const ProfileEdit = () => {
             { title: 'Password', component: <ProfilePassword /> },
             { title: 'Social media account', component: <SocialMedia /> },
             { title: 'Email Notification', component: <Notification /> },
+            { title: 'Credit Score', component: <CreditScore/> },
             { title: 'Delete Account', component: <Delete /> },
           ]}
         />

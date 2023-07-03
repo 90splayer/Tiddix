@@ -7,6 +7,7 @@ export { ReactComponent as InvestmentIcon } from './investment.svg';
 export { ReactComponent as InvestmentGradientIcon } from './investment-gradient.svg';
 export { ReactComponent as TestimonialIcon } from './testimonial.svg';
 export { ReactComponent as WalletIcon } from './wallet.svg';
+export { ReactComponent as WalletIconWhite } from './wallet-white.svg';
 export { ReactComponent as ChevronDownIcon } from './chevron-down.svg';
 export { ReactComponent as LogoutIcon } from './logout.svg';
 export { ReactComponent as CheckIcon } from './check.svg';

@@ -70,6 +70,7 @@ const TeamsCard: FC<Props> = ({ image, name, title, portfolio }) => {
         <Modal
           blockScrollOnMount={false}
           size="6xl"
+          isCentered
           isOpen={isOpen}
           onClose={onClose}
         >

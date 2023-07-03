@@ -497,7 +497,7 @@ const CreateProjectPage: FC = () => {
                         <CustomInput.TextArea
                           // type="text"
                           size="lg"
-                          placeholder="Project Description* (add subtext that provides relevant details about the project)"
+                          placeholder="Project Description* (Provide relevant details about the project)"
                           name="description"
                           onChange={handleChange}
                           value={formValues.description}
@@ -1088,15 +1088,15 @@ const CreateProjectPage: FC = () => {
                                   documentInfo.fileName}
                               </small>
                               <Text size="body2">
-                                Upload, Drag and Drop ppt, pptx, doc, or docx
-                                files
+                                Upload, Drag and Drop pdf, ppt, pptx, doc, or
+                                docx file
                               </Text>
                               <input
                                 type="file"
                                 id="upload-file"
                                 ref={pitchDeckInput}
                                 hidden
-                                accept=".ppt, .pptx, .doc, .docx"
+                                accept=".ppt, .pptx, .doc, .docx, .pdf"
                               />
                             </VStack>
                           </form>
