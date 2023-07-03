@@ -36,7 +36,16 @@ import { HiMinus, HiPlus } from 'react-icons/hi';
 import { GoChevronDown } from 'react-icons/go';
 
 const WalletView: FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isDepositOpen,
+    onOpen: onDepositOpen,
+    onClose: onDepositClose,
+  } = useDisclosure();
+  const {
+    isOpen: isWithdrawOpen,
+    onOpen: onWithdrawOpen,
+    onClose: onWithdrawClose,
+  } = useDisclosure();
 
   return (
     <Box>
@@ -93,7 +102,7 @@ const WalletView: FC = () => {
           <Flex gap="12px" align="center">
             <Button
               variant="secondary"
-              onClick={onOpen}
+              onClick={onDepositOpen}
               fontSize="1.6rem"
               size="md"
             >
@@ -102,7 +111,7 @@ const WalletView: FC = () => {
 
             <Button
               variant="secondary"
-              onClick={onOpen}
+              onClick={onWithdrawOpen}
               fontSize="1.6rem"
               size="md"
             >
@@ -111,7 +120,12 @@ const WalletView: FC = () => {
           </Flex>
         </Flex>
         {/* Modal COMPONENT */}
-        <Modal size="4xl" isOpen={isOpen} isCentered onClose={onClose}>
+        <Modal
+          size="4xl"
+          isOpen={isDepositOpen}
+          isCentered
+          onClose={onDepositClose}
+        >
           <ModalOverlay />
           <ModalContent borderRadius="20px" pt="8rem" bg="#232629" pb="11.2rem">
             <ModalHeader pb="4.5rem">
@@ -181,7 +195,12 @@ const WalletView: FC = () => {
           </ModalContent>
         </Modal>
         {/* Withdraw modal */}
-        <Modal size="4xl" isOpen={isOpen} isCentered onClose={onClose}>
+        <Modal
+          size="4xl"
+          isOpen={isWithdrawOpen}
+          isCentered
+          onClose={onWithdrawClose}
+        >
           <ModalOverlay />
           <ModalContent borderRadius="20px" pt="6rem" bg="#232629" pb="9.2rem">
             <ModalHeader pb="3.5rem">
