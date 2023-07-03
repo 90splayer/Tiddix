@@ -18,9 +18,7 @@ export const TeamsData = [
 </span><br/>
 She graduated with a First Class Honours degree, in Economics, from the University of Manchester and she holds a Master’s degree in Economics from the University of Warwick.
 <span>She has over 10 years of experience with starting, building and managing businesses to profitability. Having worked with KPMG, The Royal Bank of Scotland and FBNQuest Merchant Bank. She has acquired broad work experience within the Oil & Gas industry, financial services industry, aviation, consumer markets and public sector. She has extensive experience in advisory services covering financial advisory, business improvement, corporate strategy articulation, organizational diagnostics & transformation, market study and industry analysis. She has been involved in multiple corporate strategy execution projects, feasibility studies, business plan development, and organization transformation projects with notable track record in strategy articulation, project management, financial analysis, financial modeling and relationship management. 
-</span><br/><span>
-She has over 10 years of experience with starting, building and managing businesses to profitability. Having worked with KPMG, The Royal Bank of Scotland and FBNQuest Merchant Bank. She has acquired broad work experience within the Oil & Gas industry, financial services industry, aviation, consumer markets and public sector. She has extensive experience in advisory services covering financial advisory, business improvement, corporate strategy articulation, organizational diagnostics & transformation, market study and industry analysis. She has been involved in multiple corporate strategy execution projects, feasibility studies, business plan development, and organization transformation projects with notable track record in strategy articulation, project management, financial analysis, financial modeling and relationship management. 
-</span>`,
+</span><br/>`,
   },
   {
     id: '2',
