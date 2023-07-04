@@ -68,7 +68,7 @@ const CreditScore = () => {
       .post('/credit-score', data)
       .then((response: any) => {
         setLoading(false);
-        console.log(response);
+        // console.log(response);
         chkToaster.success({
           title: response.data.message,
         });
