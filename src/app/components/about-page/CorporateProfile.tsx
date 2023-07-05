@@ -61,7 +61,7 @@ const CorporateProfile = () => {
           <Stack spacing="3rem">
             <Heading as="h2">Status quo</Heading>
             <Text textAlign="justify">
-              In the creative economy today, the nature of centralized markets
+              In the creative economy today, the nature of centralised markets
               means that creatives can only raise funds for production through
               corporations like record labels and publishers, often wrapping the
               artist into long-term unfavorable deals that can derail both
@@ -80,7 +80,7 @@ const CorporateProfile = () => {
             <Heading as="h2">The disruption</Heading>
             <Text textAlign="justify">
               Tiddix aims to take advantage of the shift towards
-              decentralization in finance to invite investors to the creative
+              decentralisation in finance to invite investors to the creative
               space where creator metrics (views, engagements, followers,
               rankings, etc.) can be used to properly determine a creator’s
               value and prospects for investments.
@@ -105,7 +105,7 @@ const CorporateProfile = () => {
               independent artists across the creative field, but with investor
               backing, we believe the next producer would not need an
               established production studio to go to market. After all, with the
-              democratization of technology, most of the creativity we
+              democratisation of technology, most of the creativity we
               experience today is developed by a network of creators building
               magic from the comfort of their homes.
               <br />

@@ -52,7 +52,28 @@ const Faqs: FC = () => {
                 <Heading as="h2">
                   <AccordionButton py="25px" fontSize="2rem">
                     <Box as="span" flex="1" textAlign="left" fontWeight="700">
-                      How do i login to my account?
+                      How can I create an account as an Investor?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </Heading>
+                <AccordionPanel pb={4} fontSize="1.6rem">
+                  click the sign up button on the navbar and fill in the form to
+                  submit
+                  <br />
+                  After your signup is successful verify the link from your
+                  email then login
+                  <br />
+                  To be an investor you can view and invest in any project in
+                  categories from the explore page
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem borderTop="1px solid #485155">
+                <Heading as="h2">
+                  <AccordionButton py="25px" fontSize="2rem">
+                    <Box as="span" flex="1" textAlign="left" fontWeight="700">
+                      What is the minimum amount to invest in a project?
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
@@ -69,7 +90,7 @@ const Faqs: FC = () => {
                 <Heading as="h2">
                   <AccordionButton py="25px" fontSize="2rem">
                     <Box as="span" flex="1" textAlign="left" fontWeight="700">
-                      Why do i have to enter my phone number?
+                      At what point should I expect returns on investment?
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
@@ -86,7 +107,7 @@ const Faqs: FC = () => {
                 <Heading as="h2">
                   <AccordionButton py="25px" fontSize="2rem">
                     <Box as="span" flex="1" textAlign="left" fontWeight="700">
-                      I cant remeber my password what do i do next?
+                      Can I quit being an investor for a particular project?
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
@@ -103,7 +124,7 @@ const Faqs: FC = () => {
                 <Heading as="h2">
                   <AccordionButton py="25px" fontSize="2rem">
                     <Box as="span" flex="1" textAlign="left" fontWeight="700">
-                      Why do i have to enter my phone number?
+                      Can I change to another funding scheme?
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
@@ -115,21 +136,34 @@ const Faqs: FC = () => {
                   laboris nisi ut aliquip ex ea commodo consequat.
                 </AccordionPanel>
               </AccordionItem>
-
               <AccordionItem borderTop="1px solid #485155">
                 <Heading as="h2">
                   <AccordionButton py="25px" fontSize="2rem">
                     <Box as="span" flex="1" textAlign="left" fontWeight="700">
-                      I cant remember my password what do i do next?
+                      How do I know the details of a project I am investing in?
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  click the particular project of choice from the explore page
+                  to view details and get more information about the project
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem borderTop="1px solid #485155">
+                <Heading as="h2">
+                  <AccordionButton py="25px" fontSize="2rem">
+                    <Box as="span" flex="1" textAlign="left" fontWeight="700">
+                      How can I ascertain a creative's value for a proper
+                      investment?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </Heading>
+                <AccordionPanel pb={4} fontSize="1.6rem">
+                  You can access the creative’s project on the explore page,
+                  click the particular project of choice to view details and get
+                  more information about the project
                 </AccordionPanel>
               </AccordionItem>
 
@@ -137,16 +171,20 @@ const Faqs: FC = () => {
                 <Heading as="h2">
                   <AccordionButton py="25px" fontSize="2rem">
                     <Box as="span" flex="1" textAlign="left" fontWeight="700">
-                      I cant remember my password what do i do next?
+                      How do I sign up as a creative?
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  click the sign up button on the navbar and fill in the form to
+                  submit
+                  <br />
+                  After your signup is successful verify the link from your
+                  email then login
+                  <br />
+                  To be a creative you have access to create project, set budget
+                  and upload successfully
                 </AccordionPanel>
               </AccordionItem>
 
@@ -154,16 +192,14 @@ const Faqs: FC = () => {
                 <Heading as="h2">
                   <AccordionButton py="25px" fontSize="2rem">
                     <Box as="span" flex="1" textAlign="left" fontWeight="700">
-                      I cant remember my password what do i do next?
+                      What kind of project can I upload?
                     </Box>
                     <AccordionIcon />
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  Any project in the following Category: Fashion, Music, Film,
+                  Art, and Photography.
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>

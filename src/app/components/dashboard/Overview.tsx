@@ -27,6 +27,7 @@ import DashboardOverview from './DashboardOverview';
 import ProjectOverview from './project/ProjectOverview';
 import useAuth from 'app/hooks/useAuth';
 import { Link } from 'react-router-dom';
+import TestimonialView from './TestimonialView';
 
 const Overview: FC = () => {
   const authContext = useAuth();
@@ -154,7 +155,7 @@ const Overview: FC = () => {
             },
             {
               label: 'Testimonials',
-              body: 'lorem ipsum',
+              body: <TestimonialView />,
               icon: TestimonialIcon,
             },
           ]}
