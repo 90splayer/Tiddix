@@ -4,12 +4,15 @@ import {
   HStack,
   Heading,
   Image,
+  Input,
   Stack,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
+import { FaStar } from 'react-icons/fa';
+import React, { useState } from 'react';
 
 const TestimonialView = () => {
+  //   const { rating, setRating } = useState(null);
   return (
     <Box pt="4.8rem" px="7.2rem" w="full">
       <Heading fontSize="2rem" mb="2.2rem">
@@ -33,10 +36,35 @@ const TestimonialView = () => {
             <Text fontSize="1.5rem" color="#fff">
               John Doe
             </Text>
-            <HStack spacing="5px">
+            <HStack spacing="10px">
               <Text fontSize="1.3rem" color="#fff">
                 4.5 ratings
               </Text>
+              <HStack>
+                {[...Array(5)].map((star, index) => {
+                  const ratingValue = index + 1;
+                  return (
+                    <label>
+                      <Input
+                        type="radio"
+                        name="rating"
+                        size="sm"
+                        display="none"
+                        value={ratingValue}
+                        // onClick={() => setRating(ratingValue)}
+                      />
+                      <Box _hover={{ cursor: 'pointer', color: '#F9DF4A' }}>
+                        <FaStar
+                          //   color={
+                          //     ratingValue >= rating ? '#F9DF4A' : 'brand.main'
+                          //   }
+                          size={12}
+                        />
+                      </Box>
+                    </label>
+                  );
+                })}
+              </HStack>
             </HStack>
           </Stack>
         </Flex>
