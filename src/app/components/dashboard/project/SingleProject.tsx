@@ -24,8 +24,8 @@ import { debt } from 'app/assets/svgs/dashboard/dashboard';
 import { view } from 'app/assets/svgs/dashboard/dashboard';
 import CustomTab from 'app/components/common/CustomTab';
 import TrendingProject from 'app/components/landing-page/TrendingProject';
-import EquityProjectInfo from './EquityProjectInfo';
-import DebtProjectInfo from './DebtProjectInfo';
+import CreativePovEquityProjectInfo from './CreativePovEquityProjectInfo';
+import CreativePovDebtProjectInfo from './CreativePovDebtProjectInfo';
 
 type projectT = {
   amount: number;
@@ -161,8 +161,8 @@ const SingleProject: FC = () => {
                 </Stack>
               </Flex>
 
-              <DebtProjectInfo />
-              <EquityProjectInfo />
+              <CreativePovDebtProjectInfo />
+              <CreativePovEquityProjectInfo />
             </Box>
           </Flex>
         </Flex>
