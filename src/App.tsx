@@ -21,6 +21,7 @@ import AllSet from 'app/pages/dashboard/AllSet';
 import Faqs from 'app/pages/Faqs';
 import Contact from 'app/pages/Contact';
 import Wallet from 'app/pages/dashboard/Wallet';
+import GoogleSignUp from 'app/pages/oauth/GoogleSignUp';
 
 function App() {
   return (
@@ -38,7 +39,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/google/oauthcallback" element={<GoogleSignUp />} />
           <Route path="/test" element={<Test />} />
+
+          {/* {CATCH ALL ROUTE} */}
           <Route path="*" element={<Nopage />} />
 
           {/* PROTECTED ROUTES */}
