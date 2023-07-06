@@ -57,13 +57,7 @@ const TeamsCard: FC<Props> = ({ image, name, title, portfolio }) => {
         {title}
       </Text>
       <Box pt="2rem">
-        <Button
-          onClick={onOpen}
-          bg="rgba(255, 255, 255, 0.09)"
-          backdropFilter="blur(0.7px)"
-          boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
-          size="sm"
-        >
+        <Button variant="default" fontSize="1.6rem" onClick={onOpen} size="sm">
           View Profile
         </Button>
 
