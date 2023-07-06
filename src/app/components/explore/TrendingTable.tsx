@@ -20,6 +20,7 @@ import React, { FC } from 'react';
 import project from '../../assets/images/investor/project.jpg';
 import { verify } from 'app/assets/svgs/home';
 import { numberMetricFormatter } from 'app/utils/helpers';
+import { Link } from 'react-router-dom';
 
 const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
   return (
@@ -51,33 +52,35 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                 id,
               }: any) => (
                 <Flex key={id} gap="3rem">
-                  <HStack spacing="19px" flex="5">
-                    <Box boxSize="10rem">
-                      <Image
-                        w="100%"
-                        h="10rem"
-                        borderRadius="1.6rem"
-                        objectFit="cover"
-                        src={coverArt}
-                        alt={projectName}
-                      />
-                    </Box>
-                    <Stack spacing="11px">
-                      <HStack>
-                        <Avatar
-                          boxSize="25px"
-                          name={creativeName}
-                          src={creativePicture}
+                  <Link to={`/projects/${id}`}>
+                    <HStack spacing="19px" flex="5">
+                      <Box boxSize="10rem">
+                        <Image
+                          w="100%"
+                          h="10rem"
+                          borderRadius="1.6rem"
+                          objectFit="cover"
+                          src={coverArt}
+                          alt={projectName}
                         />
-                        <Text size="body2" color="#fff">
-                          {creativeName}
-                        </Text>
-                        <Box>{verify}</Box>
-                      </HStack>
-                      <Heading size="h3">{projectName}</Heading>
-                      <Text fontSize="1.4rem">{category}</Text>
-                    </Stack>
-                  </HStack>
+                      </Box>
+                      <Stack spacing="11px">
+                        <HStack>
+                          <Avatar
+                            boxSize="25px"
+                            name={creativeName}
+                            src={creativePicture}
+                          />
+                          <Text size="body2" color="#fff">
+                            {creativeName}
+                          </Text>
+                          <Box>{verify}</Box>
+                        </HStack>
+                        <Heading size="h3">{projectName}</Heading>
+                        <Text fontSize="1.4rem">{category}</Text>
+                      </Stack>
+                    </HStack>
+                  </Link>
                   <Text size="body2" color="#fff" flex="1">
                     ${numberMetricFormatter(amount, 2)}
                   </Text>
@@ -123,33 +126,35 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                 id,
               }: any) => (
                 <Flex key={id} gap="3rem">
-                  <HStack spacing="19px" flex="5">
-                    <Box boxSize="10rem">
-                      <Image
-                        w="100%"
-                        h="10rem"
-                        borderRadius="1.6rem"
-                        objectFit="cover"
-                        src={coverArt}
-                        alt={projectName}
-                      />
-                    </Box>
-                    <Stack spacing="11px">
-                      <HStack>
-                        <Avatar
-                          boxSize="25px"
-                          name={creativeName}
-                          src={creativePicture}
+                  <Link to={`/projects/${id}`}>
+                    <HStack spacing="19px" flex="5">
+                      <Box boxSize="10rem">
+                        <Image
+                          w="100%"
+                          h="10rem"
+                          borderRadius="1.6rem"
+                          objectFit="cover"
+                          src={coverArt}
+                          alt={projectName}
                         />
-                        <Text size="body2" color="#fff">
-                          {creativeName}
-                        </Text>
-                        <Box>{verify}</Box>
-                      </HStack>
-                      <Heading size="h3">{projectName}</Heading>
-                      <Text fontSize="1.4rem">{category}</Text>
-                    </Stack>
-                  </HStack>
+                      </Box>
+                      <Stack spacing="11px">
+                        <HStack>
+                          <Avatar
+                            boxSize="25px"
+                            name={creativeName}
+                            src={creativePicture}
+                          />
+                          <Text size="body2" color="#fff">
+                            {creativeName}
+                          </Text>
+                          <Box>{verify}</Box>
+                        </HStack>
+                        <Heading size="h3">{projectName}</Heading>
+                        <Text fontSize="1.4rem">{category}</Text>
+                      </Stack>
+                    </HStack>
+                  </Link>
                   <Text size="body2" color="#fff" flex="1">
                     ${numberMetricFormatter(amount, 2)}
                   </Text>

@@ -47,6 +47,7 @@ const SingleProjHeader = () => {
             color="#fff"
             leftIcon={<IoIosRocket />}
             size="md"
+            variant="default"
           >
             Boost Project
           </Button>
@@ -60,6 +61,7 @@ const SingleProjHeader = () => {
             color="#fff"
             leftIcon={<AiFillPlusCircle />}
             size="md"
+            variant="default"
           >
             Invite Investor
           </Button>

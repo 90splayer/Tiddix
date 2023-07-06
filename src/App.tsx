@@ -34,6 +34,7 @@ function App() {
           <Route path="/teams" element={<Teams />} />
           <Route path="/code-of-conduct" element={<CodeOfConduct />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/projects/:id" element={<SingleProjectPage />} />
           <Route path="/investors" element={<Investor />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />
@@ -56,7 +57,6 @@ function App() {
             <Route path="/dashboard/edit-profile" element={<ProfileEdit />} />
             <Route path="/dashboard/wallet" element={<Wallet />} />
             <Route path="/success" element={<AllSet />} />
-            <Route path="/dashboard/project" element={<SingleProjectPage />} />
           </Route>
         </Route>
       </Routes>
