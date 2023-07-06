@@ -81,7 +81,7 @@ const SingleProject: FC = () => {
             </Box>
 
             {/* debt */}
-            <Box w="55rem" display="none">
+            <Box w="55rem">
               <Flex
                 bg="#232629"
                 borderRadius="20px"
@@ -208,7 +208,7 @@ const SingleProject: FC = () => {
             </Box>
 
             {/* equity */}
-            <Box w="55rem">
+            <Box w="55rem" display="none">
               <Flex
                 bg="#232629"
                 borderRadius="20px"
