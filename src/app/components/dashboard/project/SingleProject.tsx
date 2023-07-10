@@ -164,9 +164,9 @@ const SingleProject: FC = () => {
               </Flex>
 
               {/* <CreativePovDebtProjectInfo /> */}
+              <CreativePovEquityProjectInfo />
               {/* <InvestorPovDebtProjectInfo /> */}
-              <InvestorPovEquityProjectInfo />
-              {/* <CreativePovEquityProjectInfo /> */}
+              {/* <InvestorPovEquityProjectInfo /> */}
             </Box>
           </Flex>
         </Flex>

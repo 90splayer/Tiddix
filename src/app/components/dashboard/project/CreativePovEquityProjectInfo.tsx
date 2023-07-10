@@ -7,7 +7,20 @@ import {
   Progress,
   Flex,
   Button,
+  HStack,
+  Icon,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Tfoot,
+  Th,
+  Thead,
+  Tr,
+  Avatar,
 } from '@chakra-ui/react';
+import { GoChevronDown } from 'react-icons/go';
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 
 export default function EquityProjectInfo() {
   return (
@@ -80,7 +93,13 @@ export default function EquityProjectInfo() {
         </Box>
       </Stack>
 
-      <Flex p="3rem" bg="#232629" flexDir="column" borderRadius="20px">
+      <Flex
+        p="3rem"
+        bg="#232629"
+        mb="2rem"
+        flexDir="column"
+        borderRadius="20px"
+      >
         <Text size="body2" pb="3rem">
           Fundraising ends 6 July 2023 at 5:30pm
         </Text>
@@ -103,6 +122,74 @@ export default function EquityProjectInfo() {
           </Stack>
         </Flex>
       </Flex>
+
+      {/* TABLE COMPONENT */}
+      <TableContainer borderRadius="30px" bg="#232629" p="3rem">
+        <Box pb="3rem">
+          <Text size="body2">Investors </Text>
+        </Box>
+        <Table size="md">
+          <Thead>
+            <Tr bg="#000">
+              <Th
+                py="1.5rem"
+                color="#fff"
+                textTransform="capitalize"
+                fontSize="1.6rem"
+              >
+                Date
+              </Th>
+              <Th
+                py="1.5rem"
+                color="#fff"
+                textTransform="capitalize"
+                fontSize="1.6rem"
+              >
+                Investor
+              </Th>
+              <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                %
+              </Th>
+              <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                Value
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td
+                py="2.5rem"
+                color="#fff"
+                textTransform="capitalize"
+                fontSize="1.6rem"
+              >
+                Dec 08, 2022
+              </Td>
+              <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                <HStack spacing="5px">
+                  <Avatar
+                    boxSize="30px"
+                    border="2px solid pink"
+                    name="Segun Adebayo"
+                    src="https://bit.ly/sage-adebayo"
+                  />
+
+                  <Text size="body2" color="#fff">
+                    John Doe
+                  </Text>
+                  {''}
+                </HStack>
+              </Td>
+              <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                5%
+              </Td>
+              <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                $20,000
+              </Td>
+            </Tr>
+          </Tbody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 }
