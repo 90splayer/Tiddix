@@ -21,6 +21,7 @@ import AllSet from 'app/pages/dashboard/AllSet';
 import Faqs from 'app/pages/Faqs';
 import Contact from 'app/pages/Contact';
 import Wallet from 'app/pages/dashboard/Wallet';
+import GoogleAuth from 'app/pages/oauth/GoogleAuth';
 
 function App() {
   return (
@@ -33,12 +34,16 @@ function App() {
           <Route path="/teams" element={<Teams />} />
           <Route path="/code-of-conduct" element={<CodeOfConduct />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/projects/:id" element={<SingleProjectPage />} />
           <Route path="/investors" element={<Investor />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/google/oauthcallback" element={<GoogleAuth />} />
           <Route path="/test" element={<Test />} />
+
+          {/* {CATCH ALL ROUTE} */}
           <Route path="*" element={<Nopage />} />
 
           {/* PROTECTED ROUTES */}
@@ -52,7 +57,6 @@ function App() {
             <Route path="/dashboard/edit-profile" element={<ProfileEdit />} />
             <Route path="/dashboard/wallet" element={<Wallet />} />
             <Route path="/success" element={<AllSet />} />
-            <Route path="/dashboard/project" element={<SingleProjectPage />} />
           </Route>
         </Route>
       </Routes>

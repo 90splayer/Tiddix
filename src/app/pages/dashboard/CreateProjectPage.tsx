@@ -918,7 +918,7 @@ const CreateProjectPage: FC = () => {
                   {currentStepIndex === 2 && (
                     <>
                       <Heading as="h2" mb="2.3rem ">
-                        Porfolio Upload
+                        Portfolio Upload
                       </Heading>
                       <Text size="body1" mb="5.4rem">
                         Upload a cover photo for your project, and optional

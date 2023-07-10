@@ -221,7 +221,9 @@ const LoginForm = () => {
                 transform: 'scale(1.03)',
               }}
             >
-              <Link to="#">
+              <Link
+                to={`${import.meta.env.VITE_APP_TIDDIX_BASE_URL}auth/google`}
+              >
                 <HStack justify="center" spacing="10px">
                   <Box>
                     <Image src={google} alt="google" />
@@ -247,7 +249,9 @@ const LoginForm = () => {
                 transform: 'scale(1.03)',
               }}
             >
-              <Link to="#">
+              <Link
+                to={`${import.meta.env.VITE_APP_TIDDIX_BASE_URL}auth/facebook`}
+              >
                 <HStack justify="center" spacing="10px">
                   <Box>
                     <Image src={facebook} alt="facebook" />
