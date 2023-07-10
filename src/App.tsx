@@ -22,6 +22,7 @@ import Faqs from 'app/pages/Faqs';
 import Contact from 'app/pages/Contact';
 import Wallet from 'app/pages/dashboard/Wallet';
 import GoogleAuth from 'app/pages/oauth/GoogleAuth';
+import FacebookAuth from 'app/pages/oauth/FacebookAuth';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/google/oauthcallback" element={<GoogleAuth />} />
+          <Route path="/facebook/oauthcallback" element={<FacebookAuth />} />
           <Route path="/test" element={<Test />} />
 
           {/* {CATCH ALL ROUTE} */}
