@@ -246,9 +246,7 @@ const SignUpForm = () => {
               }}
             >
               <Link
-                to={`${
-                  import.meta.env.VITE_APP_TIDDIX_BASE_URL
-                }auth/google?intent=signup`}
+                to={`${import.meta.env.VITE_APP_TIDDIX_BASE_URL}auth/google`}
               >
                 <HStack justify="center" spacing="10px">
                   <Box>
@@ -276,9 +274,7 @@ const SignUpForm = () => {
               }}
             >
               <Link
-                to={`${
-                  import.meta.env.VITE_APP_TIDDIX_BASE_URL
-                }auth/google?intent=signup`}
+                to={`${import.meta.env.VITE_APP_TIDDIX_BASE_URL}auth/facebook`}
               >
                 <HStack justify="center" spacing="10px">
                   <Box>
