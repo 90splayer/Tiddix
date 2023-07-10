@@ -1,4 +1,8 @@
 import {
+  FC,
+  //  useLayoutEffect, useRef, useState
+} from 'react';
+import {
   Flex,
   Heading,
   Modal,
@@ -14,10 +18,7 @@ import {
 } from '@chakra-ui/react';
 // import FocusLock from 'react-focus-lock';
 // import { DPIconToastClose } from 'app/assets/icons';
-import {
-  FC,
-  //  useLayoutEffect, useRef, useState
-} from 'react';
+import { CloseIcon } from '@chakra-ui/icons';
 
 type ModalProps = FC<
   {
@@ -72,8 +73,9 @@ const CustomModal: ModalProps = ({
             position="static"
             boxSize="2.4rem"
             bg="blackShade.2"
+            fontSize="xl"
           >
-            {/* <DPIconToastClose /> */}X
+            <CloseIcon />
           </ModalCloseButton>
         </Flex>
         {children}

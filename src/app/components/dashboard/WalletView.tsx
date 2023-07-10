@@ -34,6 +34,7 @@ import { BiRefresh } from 'react-icons/bi';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import { GoChevronDown } from 'react-icons/go';
+import DepositModal from './DepositModal';
 
 const WalletView: FC = () => {
   const {
@@ -120,7 +121,12 @@ const WalletView: FC = () => {
           </Flex>
         </Flex>
         {/* Modal COMPONENT */}
-        <Modal
+        <DepositModal
+          isOpen={isDepositOpen}
+          onClose={onDepositClose}
+          title="Deposit"
+        />
+        {/* <Modal
           size="4xl"
           isOpen={isDepositOpen}
           isCentered
@@ -193,7 +199,7 @@ const WalletView: FC = () => {
               </Button>
             </Flex>
           </ModalContent>
-        </Modal>
+        </Modal> */}
         {/* Withdraw modal */}
         <Modal
           size="4xl"
