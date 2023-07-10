@@ -26,6 +26,8 @@ import CustomTab from 'app/components/common/CustomTab';
 import TrendingProject from 'app/components/landing-page/TrendingProject';
 import CreativePovEquityProjectInfo from './CreativePovEquityProjectInfo';
 import CreativePovDebtProjectInfo from './CreativePovDebtProjectInfo';
+import InvestorPovDebtProjectInfo from './InvestorPovDebtProjectInfo';
+import InvestorPovEquityProjectInfo from './InvestorPovEquityProjectInfo';
 
 type projectT = {
   amount: number;
@@ -77,7 +79,7 @@ const SingleProject: FC = () => {
         }}
       >
         <SingleProjHeader />
-        <Flex mb="10rem" justify="space-between">
+        <Flex mb="10rem" justify="center">
           {/* <Stack spacing="19px">
             <Box>
               <Image
@@ -161,8 +163,10 @@ const SingleProject: FC = () => {
                 </Stack>
               </Flex>
 
-              <CreativePovDebtProjectInfo />
-              <CreativePovEquityProjectInfo />
+              {/* <CreativePovDebtProjectInfo /> */}
+              {/* <InvestorPovDebtProjectInfo /> */}
+              <InvestorPovEquityProjectInfo />
+              {/* <CreativePovEquityProjectInfo /> */}
             </Box>
           </Flex>
         </Flex>

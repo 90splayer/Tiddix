@@ -93,7 +93,7 @@ export const buttonStyles = {
         },
         multicolor: {
           background: 'gradientStyle.1',
-          border: '1px solid',
+          border: 'none',
           borderColor: 'transparent',
           outline: 'none',
           color: 'blackShade.1',
@@ -106,7 +106,7 @@ export const buttonStyles = {
         },
         multiradial: {
           background: 'gradientStyle.2',
-          border: '1px solid',
+          border: 'none',
           borderColor: 'transparent',
           outline: 'none',
           color: 'white',
