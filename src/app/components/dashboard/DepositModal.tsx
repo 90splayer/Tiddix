@@ -50,7 +50,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
             <Icon as={HiPlus} fontSize="1.6rem" color="#fff" />
           </Flex>
         </Flex>
-        <Flex align="center" justify="center">
+        <Flex align="center" justify="center" mt="4rem">
           <Button variant="multicolor" maxW="39rem" w="100%" fontSize="1.6rem">
             Make Payment
           </Button>
