@@ -7,7 +7,7 @@ const CoC = () => {
       <Container maxW="144rem" p="12.2rem" px="18.2rem">
         <Stack spacing="5rem">
           <Stack spacing="5rem">
-            <Heading size="display2" letterSpacing="3px">
+            <Heading size="display2" letterSpacing="2px">
               Code Of Conduct
             </Heading>
             <Text size="body1" textAlign="justify">
@@ -29,7 +29,7 @@ const CoC = () => {
             </Text>
           </Stack>
           <Stack spacing="2rem">
-            <Heading size="h2" letterSpacing="2px">
+            <Heading size="h2" letterSpacing="1px">
               Create Projects
             </Heading>
             <Text size="body1" textAlign="justify">
@@ -42,7 +42,7 @@ const CoC = () => {
             </Text>
           </Stack>
           <Stack spacing="2rem">
-            <Heading size="h2" letterSpacing="2px">
+            <Heading size="h2" letterSpacing="1px">
               Our Creatives
             </Heading>
             <Text size="body1" textAlign="justify">
@@ -53,7 +53,7 @@ const CoC = () => {
             </Text>
           </Stack>
           <Stack spacing="2rem">
-            <Heading size="h2" letterSpacing="2px">
+            <Heading size="h2" letterSpacing="1px">
               Our Investors
             </Heading>
             <Text size="body1" textAlign="justify">
@@ -64,7 +64,7 @@ const CoC = () => {
             </Text>
           </Stack>
           <Stack spacing="2rem">
-            <Heading size="h2" letterSpacing="2px">
+            <Heading size="h2" letterSpacing="1px">
               Our Supporters
             </Heading>
             <Text size="body1" textAlign="justify">
