@@ -21,10 +21,11 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
             justify="center"
             borderRadius="100%"
             p="2rem"
+            cursor="pointer"
           >
             <Icon as={HiMinus} fontSize="1.6rem" color="#fff" />
           </Flex>
-          <Box>
+          <Box flex="1">
             <Input
               pos="relative"
               placeholder="Enter Amount"
@@ -46,6 +47,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
             justify="center"
             borderRadius="100%"
             p="2rem"
+            cursor="pointer"
           >
             <Icon as={HiPlus} fontSize="1.6rem" color="#fff" />
           </Flex>

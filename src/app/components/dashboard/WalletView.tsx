@@ -36,8 +36,11 @@ import { HiMinus, HiPlus } from 'react-icons/hi';
 import { GoChevronDown } from 'react-icons/go';
 import DepositModal from './DepositModal';
 import WithdrawalModal from './WithdrawalModal';
+import useAuth from 'app/hooks/useAuth';
 
 const WalletView: FC = () => {
+  const authContext = useAuth();
+
   const {
     isOpen: isDepositOpen,
     onOpen: onDepositOpen,
@@ -49,6 +52,7 @@ const WalletView: FC = () => {
     onClose: onWithdrawClose,
   } = useDisclosure();
 
+  const walletBalance = authContext?.auth?.walletBalance;
   return (
     <Box>
       <Container
@@ -87,7 +91,7 @@ const WalletView: FC = () => {
                   Wallet Balance
                 </Text>
                 <Text fontSize="3.2rem" fontWeight="700" color="#fff">
-                  $50,000
+                  ${walletBalance}
                 </Text>
               </Stack>
 
@@ -153,7 +157,7 @@ const WalletView: FC = () => {
           </Flex>
           <Table size="lg">
             <Thead>
-              <Tr bg="#000">
+              <Tr bg="#000" borderBottom="2px solid #485155">
                 <Th
                   py="1.5rem"
                   color="#fff"
@@ -185,7 +189,7 @@ const WalletView: FC = () => {
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
+              <Tr borderBottom="2px solid #485155">
                 <Td
                   py="2.5rem"
                   color="#fff"
@@ -215,17 +219,18 @@ const WalletView: FC = () => {
               {/* <Tr> */}
               <HStack spacing="1.5rem" pt="4.7rem" pb="7.1rem">
                 <Icon as={RiArrowLeftSLine} fontSize="3.4rem" color="#99A1AA" />
-                <Box
+                <Text
                   bg="#fff"
                   p="5px 10px"
                   borderRadius="5px"
-                  fontSize="1.6rem"
+                  size="body2"
+                  color="blackShade.2"
                 >
                   1
-                </Box>
-                <Box p="5px 10px" fontSize="1.6rem">
+                </Text>
+                <Text p="5px 10px" size="body2" color="white">
                   2
-                </Box>
+                </Text>
                 <Icon
                   as={RiArrowRightSLine}
                   fontSize="3.4rem"
