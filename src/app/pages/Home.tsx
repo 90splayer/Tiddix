@@ -19,6 +19,7 @@ import Header from 'app/layout/Header';
 import { Footer } from 'app/layout/Footer';
 import useAuth from 'app/hooks/useAuth';
 import { isAuthenticated } from 'app/utils/helpers';
+import Impact from 'app/components/landing-page/Impact';
 
 const Home: FC = () => {
   const auth = useAuth();
@@ -69,6 +70,7 @@ const Home: FC = () => {
       </Container>
       <BecomeInvestor />
       <SignUpBanner />
+      <Impact />
       <Footer />
     </Box>
   );
