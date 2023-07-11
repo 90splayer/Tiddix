@@ -29,7 +29,6 @@ const Impact: FC = () => {
           <Heading
             as="h2"
             mb="4.7rem"
-            fontFamily="raleway"
             textAlign="center"
             fontWeight="700"
             fontSize={{ base: '3.6rem', md: '4.8rem' }}
@@ -38,13 +37,7 @@ const Impact: FC = () => {
           </Heading>
           <Flex align="center" justify="space-between" flexWrap="wrap">
             <VStack>
-              <Heading
-                as="h2"
-                fontFamily="raleway"
-                textAlign="center"
-                fontWeight="700"
-                fontSize={{ base: '4.8rem', md: '6.4rem' }}
-              >
+              <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 {counterOn && (
                   <CountUp start={0} end={45} duration={2} delay={0} />
                 )}
@@ -58,13 +51,7 @@ const Impact: FC = () => {
               bg="linear-gradient(180deg, rgba(218, 218, 218, 0.00) 1.04%, #B584C6 53.65%, rgba(217, 217, 217, 0.00) 100%)"
             ></Box>
             <VStack>
-              <Heading
-                as="h2"
-                fontFamily="raleway"
-                textAlign="center"
-                fontWeight="700"
-                fontSize={{ base: '4.8rem', md: '6.4rem' }}
-              >
+              <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 7000
               </Heading>
               <Text>Projects Launched</Text>
@@ -75,13 +62,7 @@ const Impact: FC = () => {
               bg="linear-gradient(180deg, rgba(218, 218, 218, 0.00) 1.04%, #B584C6 53.65%, rgba(217, 217, 217, 0.00) 100%)"
             ></Box>
             <VStack>
-              <Heading
-                as="h2"
-                fontFamily="raleway"
-                textAlign="center"
-                fontWeight="700"
-                fontSize={{ base: '4.8rem', md: '6.4rem' }}
-              >
+              <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 $
                 {counterOn && (
                   <CountUp start={100} end={500} duration={3} delay={0} />
@@ -96,13 +77,7 @@ const Impact: FC = () => {
               bg="linear-gradient(180deg, rgba(218, 218, 218, 0.00) 1.04%, #B584C6 53.65%, rgba(217, 217, 217, 0.00) 100%)"
             ></Box>
             <VStack>
-              <Heading
-                as="h2"
-                fontFamily="raleway"
-                textAlign="center"
-                fontWeight="700"
-                fontSize={{ base: '4.8rem', md: '6.4rem' }}
-              >
+              <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 1
               </Heading>
               <Text>Years of Service</Text>
