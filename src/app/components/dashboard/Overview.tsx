@@ -35,6 +35,7 @@ const Overview: FC = () => {
   const lastName = authContext?.auth?.lastName;
   const bio = authContext?.auth?.bio;
   const profilePicture = authContext?.auth?.profilePicture;
+  const walletBalance = authContext?.auth?.walletBalance;
 
   return (
     <Box>
@@ -121,7 +122,7 @@ const Overview: FC = () => {
                   Wallet Balance
                 </Text>
                 <Text fontSize="3.2rem" fontWeight="700" color="#fff">
-                  $50,000
+                  ${walletBalance}
                 </Text>
               </Stack>
 
