@@ -17,8 +17,8 @@ const Impact: FC = () => {
         justify="center"
         align="center"
         w="full"
-        pt="7.8rem"
-        pb="14.3rem"
+        pt="5.8rem"
+        pb="15.3rem"
       >
         <Container
           maxW="144rem"
