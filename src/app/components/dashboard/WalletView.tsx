@@ -34,8 +34,13 @@ import { BiRefresh } from 'react-icons/bi';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import { GoChevronDown } from 'react-icons/go';
+import DepositModal from './DepositModal';
+import WithdrawalModal from './WithdrawalModal';
+import useAuth from 'app/hooks/useAuth';
 
 const WalletView: FC = () => {
+  const authContext = useAuth();
+
   const {
     isOpen: isDepositOpen,
     onOpen: onDepositOpen,
@@ -47,6 +52,7 @@ const WalletView: FC = () => {
     onClose: onWithdrawClose,
   } = useDisclosure();
 
+  const walletBalance = authContext?.auth?.walletBalance;
   return (
     <Box>
       <Container
@@ -85,7 +91,7 @@ const WalletView: FC = () => {
                   Wallet Balance
                 </Text>
                 <Text fontSize="3.2rem" fontWeight="700" color="#fff">
-                  $50,000
+                  ${walletBalance}
                 </Text>
               </Stack>
 
@@ -119,209 +125,18 @@ const WalletView: FC = () => {
             </Button>
           </Flex>
         </Flex>
-        {/* Modal COMPONENT */}
-        <Modal
-          size="4xl"
+        {/* DEPOSIT MODAL */}
+        <DepositModal
           isOpen={isDepositOpen}
-          isCentered
           onClose={onDepositClose}
-        >
-          <ModalOverlay />
-          <ModalContent borderRadius="20px" pt="8rem" bg="#232629" pb="11.2rem">
-            <ModalHeader pb="4.5rem">
-              <Flex align="center" justify="center">
-                <Text color="#fff" fontSize="24px" fontWeight="700">
-                  Deposit
-                </Text>
-              </Flex>
-            </ModalHeader>
-            <ModalCloseButton
-              color="#000"
-              p="10px"
-              bg="white"
-              _hover={{ opacity: '0.5' }}
-              borderRadius="50px"
-              fontSize="lg"
-            />
-            <ModalBody pb="3rem">
-              <Flex align="center" justify="center" gap="1.4rem">
-                <Flex
-                  border="1px solid #99A1AA"
-                  align="center"
-                  justify="center"
-                  borderRadius="100%"
-                  p="2rem"
-                >
-                  <Icon as={HiMinus} fontSize="1.6rem" color="#fff" />
-                </Flex>
-                <Box>
-                  <Input
-                    pos="relative"
-                    placeholder="Enter Amount"
-                    px="1.5rem"
-                    type="number"
-                    borderRadius="2rem"
-                    border="1px solid #99A1AA"
-                    maxW="26.3rem"
-                    h="6.3rem"
-                    _placeholder={{
-                      fontSize: '1.6rem',
-                      color: '#99A1AA',
-                    }}
-                  />
-                </Box>
-                <Flex
-                  border="1px solid #99A1AA"
-                  align="center"
-                  justify="center"
-                  borderRadius="100%"
-                  p="2rem"
-                >
-                  <Icon as={HiPlus} fontSize="1.6rem" color="#fff" />
-                </Flex>
-              </Flex>
-            </ModalBody>
-
-            <Flex align="center" justify="center">
-              <Button
-                variant="multicolor"
-                maxW="39rem"
-                w="100%"
-                fontSize="1.6rem"
-              >
-                Make Payment
-              </Button>
-            </Flex>
-          </ModalContent>
-        </Modal>
+          title="Deposit"
+        />
         {/* Withdraw modal */}
-        <Modal
-          size="4xl"
+        <WithdrawalModal
           isOpen={isWithdrawOpen}
-          isCentered
           onClose={onWithdrawClose}
-        >
-          <ModalOverlay />
-          <ModalContent borderRadius="20px" pt="6rem" bg="#232629" pb="9.2rem">
-            <ModalHeader pb="3.5rem">
-              <Flex align="center" justify="center">
-                <Text color="#fff" fontSize="24px" fontWeight="700">
-                  Withdraw
-                </Text>
-              </Flex>
-            </ModalHeader>
-            <ModalCloseButton
-              color="#000"
-              p="10px"
-              bg="white"
-              _hover={{ opacity: '0.5' }}
-              borderRadius="50px"
-              fontSize="lg"
-            />
-            <ModalBody pb="3rem">
-              <Flex align="center" mb="3rem" justify="center" gap="1.4rem">
-                <Flex
-                  border="1px solid #99A1AA"
-                  align="center"
-                  justify="center"
-                  borderRadius="100%"
-                  p="2rem"
-                >
-                  <Icon as={HiMinus} fontSize="1.6rem" color="#fff" />
-                </Flex>
-                <Box>
-                  <Input
-                    pos="relative"
-                    placeholder="Enter Amount"
-                    px="1.5rem"
-                    type="number"
-                    borderRadius="2rem"
-                    border="1px solid #99A1AA"
-                    maxW="26.3rem"
-                    h="6.3rem"
-                    _placeholder={{
-                      fontSize: '1.6rem',
-                      color: '#99A1AA',
-                    }}
-                  />
-                </Box>
-                <Flex
-                  border="1px solid #99A1AA"
-                  align="center"
-                  justify="center"
-                  borderRadius="100%"
-                  p="2rem"
-                >
-                  <Icon as={HiPlus} fontSize="1.6rem" color="#fff" />
-                </Flex>
-              </Flex>
-              <VStack spacing="1.9rem">
-                <Box>
-                  <Input
-                    pos="relative"
-                    placeholder="select bank"
-                    px="1.5rem"
-                    type="number"
-                    borderRadius="2rem"
-                    border="1px solid #99A1AA"
-                    w="41.1rem"
-                    // maxW="41.1rem"
-                    h="6.3rem"
-                    _placeholder={{
-                      fontSize: '1.6rem',
-                      color: '#99A1AA',
-                    }}
-                  />
-                </Box>
-                <Box>
-                  <Input
-                    pos="relative"
-                    placeholder="Account Number"
-                    px="1.5rem"
-                    type="number"
-                    borderRadius="2rem"
-                    border="1px solid #99A1AA"
-                    // maxW="41.1rem"
-                    w="41.1rem"
-                    h="6.3rem"
-                    _placeholder={{
-                      fontSize: '1.6rem',
-                      color: '#99A1AA',
-                    }}
-                  />
-                </Box>
-                <Box>
-                  <Input
-                    pos="relative"
-                    placeholder="Account Name"
-                    px="1.5rem"
-                    type="number"
-                    borderRadius="2rem"
-                    border="1px solid #99A1AA"
-                    w="41.1rem"
-                    // maxW="41.1rem"
-                    h="6.3rem"
-                    _placeholder={{
-                      fontSize: '1.6rem',
-                      color: '#99A1AA',
-                    }}
-                  />
-                </Box>
-              </VStack>
-            </ModalBody>
-
-            <Flex align="center" justify="center">
-              <Button
-                variant="multicolor"
-                maxW="39rem"
-                w="100%"
-                fontSize="1.6rem"
-              >
-                Make Payment
-              </Button>
-            </Flex>
-          </ModalContent>
-        </Modal>
+          title="Withdraw"
+        />
         {/* TABLE COMPONENT */}
         <TableContainer borderRadius="30px" bg="#232629" pt="3rem" px="3.5rem">
           <Flex justify="space-between" align="center" pb="1.8rem">
@@ -342,7 +157,7 @@ const WalletView: FC = () => {
           </Flex>
           <Table size="lg">
             <Thead>
-              <Tr bg="#000">
+              <Tr bg="#000" borderBottom="2px solid #485155">
                 <Th
                   py="1.5rem"
                   color="#fff"
@@ -374,7 +189,7 @@ const WalletView: FC = () => {
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
+              <Tr borderBottom="2px solid #485155">
                 <Td
                   py="2.5rem"
                   color="#fff"
@@ -404,17 +219,18 @@ const WalletView: FC = () => {
               {/* <Tr> */}
               <HStack spacing="1.5rem" pt="4.7rem" pb="7.1rem">
                 <Icon as={RiArrowLeftSLine} fontSize="3.4rem" color="#99A1AA" />
-                <Box
+                <Text
                   bg="#fff"
                   p="5px 10px"
                   borderRadius="5px"
-                  fontSize="1.6rem"
+                  size="body2"
+                  color="blackShade.2"
                 >
                   1
-                </Box>
-                <Box p="5px 10px" fontSize="1.6rem">
+                </Text>
+                <Text p="5px 10px" size="body2" color="white">
                   2
-                </Box>
+                </Text>
                 <Icon
                   as={RiArrowRightSLine}
                   fontSize="3.4rem"

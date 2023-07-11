@@ -1,4 +1,8 @@
 import {
+  FC,
+  //  useLayoutEffect, useRef, useState
+} from 'react';
+import {
   Flex,
   Heading,
   Modal,
@@ -14,16 +18,14 @@ import {
 } from '@chakra-ui/react';
 // import FocusLock from 'react-focus-lock';
 // import { DPIconToastClose } from 'app/assets/icons';
-import {
-  FC,
-  //  useLayoutEffect, useRef, useState
-} from 'react';
+import { CloseIcon } from '@chakra-ui/icons';
 
 type ModalProps = FC<
   {
     isOpen: boolean;
     onClose: () => void;
     modalTitle?: string;
+    size?: 'string';
   } & ModalContentProps
 > & {
   Body: FC<ModalBodyProps>;
@@ -35,6 +37,7 @@ const CustomModal: ModalProps = ({
   onClose,
   modalTitle,
   children,
+  size,
   ...props
 }) => {
   return (
@@ -44,7 +47,7 @@ const CustomModal: ModalProps = ({
       onClose={onClose}
       isOpen={isOpen}
       isCentered
-      size="xl"
+      size={size ? size : '4xl'}
     >
       <ModalOverlay />
       <ModalContent
@@ -52,30 +55,28 @@ const CustomModal: ModalProps = ({
         borderRadius="2rem"
         paddingBottom="5rem"
         bg="blackShade.2"
+        padding={{ base: '2.5rem 2.5rem', sm: '5rem 7.6rem' }}
         {...props}
       >
-        <Flex
-          padding={{ base: 4, sm: 6 }}
-          alignItems="center"
-          width="full"
-          justifyContent="space-between"
-          className="modal__header"
+        <ModalCloseButton
+          position="absolute"
+          boxSize="2.4rem"
+          bg="blackShade.2"
+          fontSize="xl"
+          top="1.8rem"
+          right="1.8rem"
         >
-          <ModalHeader p="0px" flex="1" display="block">
-            {modalTitle && (
-              <Heading size="title" fontWeight="medium">
-                {modalTitle}
-              </Heading>
-            )}
-          </ModalHeader>
-          <ModalCloseButton
-            position="static"
-            boxSize="2.4rem"
-            bg="blackShade.2"
-          >
-            {/* <DPIconToastClose /> */}X
-          </ModalCloseButton>
-        </Flex>
+          <CloseIcon />
+        </ModalCloseButton>
+
+        <ModalHeader p="0px" flex="1" display="block">
+          {modalTitle && (
+            <Heading size="h2" textAlign="center" mb="5rem">
+              {modalTitle}
+            </Heading>
+          )}
+        </ModalHeader>
+
         {children}
       </ModalContent>
     </Modal>

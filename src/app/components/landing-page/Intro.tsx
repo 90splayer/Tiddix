@@ -40,21 +40,36 @@ const Intro: FC = () => {
               size="display1"
               mb={{ base: '3rem', md: '5rem' }}
               maxW="52.6rem"
+              lineHeight="8rem"
             >
-              Get all the <br />
+              Funding for
+              <br />
               <Heading
                 as="span"
                 bgGradient="linear(to-tr, #448FFF,#FF8CDF)"
                 bgClip="text"
                 size="display1"
               >
-                support
+                Creativity{' '}
+                <Heading as="span" size="display1">
+                  {' '}
+                  and
+                </Heading>
               </Heading>{' '}
-              you need as a creative.
+               {''}
+              <Heading
+                as="span"
+                bgGradient="linear(to-tr, #448FFF,#FF8CDF)"
+                bgClip="text"
+                size="display1"
+              >
+                Young Talent
+              </Heading>{' '}
             </Heading>
             <Text size="body1" maxW="550px" pb={{ base: '38px', md: '76px' }}>
-              We are a reliable and innovative digital platform that provides
-              hassle-free, quick debt and equity funding.
+              We provide a hassle-free digital platform that serves as a
+              launchpad for dreams, creativity and talent!" Join us today and
+              show the world who you really are"
             </Text>
             <Flex gap="24px">
               <Link to="/signup">

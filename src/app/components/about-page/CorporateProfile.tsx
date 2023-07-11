@@ -30,9 +30,10 @@ const CorporateProfile = () => {
             size="display4"
             textAlign="center"
             maxW="70.4rem"
+            letterSpacing="1px"
             pb="3.5rem"
           >
-            We take advantage of the shift towards decentralisation in finance
+            We are driving the shift towards decentralisation in finance
           </Heading>
         </VStack>
         <Box mb="8rem">
@@ -47,9 +48,8 @@ const CorporateProfile = () => {
         </Box>
         <Flex flexDir="column" px="10.2rem">
           <Text mb="5rem" textAlign="justify">
-            In 2023, we started operations in the United Kingdom. Our head
-            office is in London, and Tiddix is entirely British-owned and
-            operated.
+            We established in the United Kingdom in 2022, Tiddix is 100% British
+            owned and operated and our head office is in London.
             <br />
             <br />
             We are proud to be the bridge upon which the recognition of the

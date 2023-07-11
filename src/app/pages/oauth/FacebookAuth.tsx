@@ -12,37 +12,41 @@ export default function FacebookAuth() {
     const urlParams = window.location.href.split('?');
     const params = urlParams[1];
 
-    console.log('URLLL', window.location.href);
+    console.log('URLLL', params);
 
-    // api
-    //   .get(`/google/oauthcallback?${params}`, {
-    //     withCredentials: true,
-    //   })
-    //   .then(({ data }) => {
-    //     const {
-    //       accessToken,
-    //       firstName,
-    //       lastName,
-    //       profilePicture,
-    //       bio,
-    //       walletBalance,
-    //     } = data;
+    api
+      .get(`/facebook/oauthcallback?${params}`, {
+        withCredentials: true,
+      })
+      .then(({ data }) => {
+        console.log('DATAAA', data);
 
-    //     authContext?.setAuth({
-    //       accessToken,
-    //       firstName,
-    //       lastName,
-    //       profilePicture,
-    //       bio,
-    //       walletBalance,
-    //     });
+        const {
+          accessToken,
+          firstName,
+          lastName,
+          profilePicture,
+          bio,
+          walletBalance,
+        } = data;
 
-    //     // navigate('/dashboard', { replace: true });
-    //   })
-    //   .catch((err) => {
-    //     if (err.response.data.message.includes('Duplicate request')) return;
-    //     chkToaster.error({ title: err.response.data.message });
-    //   });
+        authContext?.setAuth({
+          accessToken,
+          firstName,
+          lastName,
+          profilePicture,
+          bio,
+          walletBalance,
+        });
+
+        chkToaster.success({ title: 'Logged in successfully' });
+
+        // navigate('/dashboard', { replace: true });
+      })
+      .catch((err) => {
+        if (err.response.data.message.includes('Duplicate request')) return;
+        chkToaster.error({ title: err.response.data.message });
+      });
   }, []);
   return <div>FaceBook state</div>;
 }

@@ -31,6 +31,7 @@ const Teams: FC = () => {
             maxW="64.9rem"
             textAlign="center"
             color="#fff"
+            letterSpacing="1px"
           >
             Meet the team of professionals that ensure the magic happens
           </Heading>

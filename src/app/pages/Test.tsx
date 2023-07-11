@@ -22,6 +22,7 @@ const CustomComponent = ({ name }: any) => {
 
 const Test: FC = () => {
   const { isOpen: open2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure();
+  const { isOpen: open3, onOpen: onOpen3, onClose: onClose3 } = useDisclosure();
 
   return (
     <>
@@ -152,7 +153,11 @@ const Test: FC = () => {
       <Button onClick={onOpen2} mb="200">
         Trigger modal 2
       </Button>
-      {/* <CustomModal modalTitle="Test title 2" isOpen={open2} onClose={onClose2}>
+      <Button onClick={onOpen3} mb="200">
+        Trigger modal 3
+      </Button>
+
+      <CustomModal modalTitle="Test title" isOpen={open3} onClose={onClose3}>
         <CustomModal.Body padding="0px" bg="white">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -163,11 +168,11 @@ const Test: FC = () => {
           exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </CustomModal.Body>
         <CustomModal.Footer>
-          <Button size="md" onClick={onClose2}>
+          <Button size="md" onClick={onClose3}>
             Close
           </Button>
         </CustomModal.Footer>
-      </CustomModal> */}
+      </CustomModal>
 
       <CustomModal isOpen={open2} onClose={onClose2}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
