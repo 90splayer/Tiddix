@@ -28,6 +28,7 @@ import ProjectOverview from './project/ProjectOverview';
 import useAuth from 'app/hooks/useAuth';
 import { Link } from 'react-router-dom';
 import TestimonialView from './TestimonialView';
+import { thousandsSeparators } from 'app/utils/helpers';
 
 const Overview: FC = () => {
   const authContext = useAuth();
@@ -122,7 +123,7 @@ const Overview: FC = () => {
                   Wallet Balance
                 </Text>
                 <Text fontSize="3.2rem" fontWeight="700" color="#fff">
-                  ${walletBalance}
+                  ${thousandsSeparators(String(walletBalance))}
                 </Text>
               </Stack>
 

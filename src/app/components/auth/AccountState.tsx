@@ -26,6 +26,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { apiPrivate } from 'app/api/tiddix';
 import useAuth from 'app/hooks/useAuth';
+import { thousandsSeparators } from 'app/utils/helpers';
 
 // const {
 //   likes,
@@ -87,7 +88,9 @@ export default function AccountState() {
                   <Text size="body2">Hello, {firstName}</Text>
                   <Flex align="center" gap=".5rem">
                     <WalletIcon />
-                    <Text size="body2">${walletBalance}</Text>
+                    <Text size="body2">
+                      ${thousandsSeparators(String(walletBalance))}
+                    </Text>
                   </Flex>
                 </Stack>
                 <ChevronDownIcon style={{ marginLeft: '.3rem' }} />
