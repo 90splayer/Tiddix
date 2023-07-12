@@ -11,6 +11,8 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  UnorderedList,
+  ListItem,
 } from '@chakra-ui/react';
 import Header from 'app/layout/Header';
 import { Footer } from 'app/layout/Footer';
@@ -58,14 +60,20 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  click the sign up button on the navbar and fill in the form to
-                  submit
-                  <br />
-                  After your signup is successful verify the link from your
-                  email then login
-                  <br />
-                  To be an investor you can view and invest in any project in
-                  categories from the explore page
+                  <UnorderedList>
+                    <ListItem>
+                      Click the sign up button on the navigation bar and fill in
+                      the form to submit.
+                    </ListItem>
+                    <ListItem>
+                      After your signup is successful verify the link from your
+                      email then login
+                    </ListItem>
+                    <ListItem>
+                      To be an investor you can view and invest in any project
+                      in categories from the explore page
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
 
@@ -79,10 +87,9 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  You can start making dreams come true with as little as £200
+                  and with as much as you wish to invest in any creatives
+                  dreams/projects
                 </AccordionPanel>
               </AccordionItem>
 
@@ -96,10 +103,17 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  <UnorderedList>
+                    <ListItem>
+                      The timing of your return on investments is set without
+                      the construct of creating a project.
+                    </ListItem>
+                    <ListItem>
+                      Before you invest in any project, please review to make
+                      sure that you are happy with the returns timeline proposed
+                      by the creative.
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
 
@@ -113,10 +127,18 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  <UnorderedList>
+                    <ListItem>
+                      Once you have signed up to invest in a project and the
+                      funds have been exchanged, you will have to remain on the
+                      project till the end of the project.
+                    </ListItem>
+                    <ListItem>
+                      You can invest in multiple creatives and you do not have
+                      to work with any creatives more than once if you do not
+                      want to.
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
 
@@ -130,10 +152,18 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  <UnorderedList>
+                    <ListItem>
+                      Tiddix offers three types of funding schemes - Debt
+                      (similar to a loan), Equity (shared risk shared reward)
+                      and Angel (supporting dreams without requiring any returns
+                      back).
+                    </ListItem>
+                    <ListItem>
+                      You can choose from any of these and fund projects with a
+                      mix of these funding schemes.
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
               <AccordionItem borderTop="1px solid #485155">
@@ -146,8 +176,17 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  click the particular project of choice from the explore page
-                  to view details and get more information about the project
+                  <UnorderedList>
+                    <ListItem>
+                      Investors are encouraged to read about each project
+                      carefully before investing.
+                    </ListItem>
+                    <ListItem>
+                      Click on the project you are interested in from the
+                      explore page to view details and get more information
+                      about the project
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
               <AccordionItem borderTop="1px solid #485155">
@@ -161,9 +200,40 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  You can access the creative’s project on the explore page,
-                  click the particular project of choice to view details and get
-                  more information about the project
+                  <UnorderedList>
+                    <ListItem>
+                      Creatives provide additional documents and project details
+                      to support their request for funding.
+                    </ListItem>
+                    <ListItem>
+                      You should read these documents and do your analysis to
+                      determine if the creative is asking for an appropriate
+                      amount of investment or not.
+                    </ListItem>
+                    <ListItem>
+                      You can access the creative’s project on the explore page.
+                    </ListItem>
+                    <ListItem>
+                      Click on the project you are interested in from the
+                      explore page to view details and get more information
+                      about the project
+                    </ListItem>
+                  </UnorderedList>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem borderTop="1px solid #485155">
+                <Heading as="h2">
+                  <AccordionButton py="25px" fontSize="2rem">
+                    <Box as="span" flex="1" textAlign="left" fontWeight="700">
+                      How do I monitor my investments?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </Heading>
+                <AccordionPanel pb={4} fontSize="1.6rem">
+                  Creatives are required to send investors status updates and
+                  periodic reports, to ensure that the project is on track.
                 </AccordionPanel>
               </AccordionItem>
 
@@ -177,14 +247,20 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  click the sign up button on the navbar and fill in the form to
-                  submit
-                  <br />
-                  After your signup is successful verify the link from your
-                  email then login
-                  <br />
-                  To be a creative you have access to create project, set budget
-                  and upload successfully
+                  <UnorderedList>
+                    <ListItem>
+                      Click the sign up button on the navigation bar and fill in
+                      the form to submit.
+                    </ListItem>
+                    <ListItem>
+                      Once your profile has been set up, you can view project
+                      across various categories from the explore page.
+                    </ListItem>
+                    <ListItem>
+                      As a creative you have access to create project, set
+                      budget, fundraise and promote your project.
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
 
@@ -198,8 +274,88 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Any project in the following Category: Fashion, Music, Film,
-                  Art, and Photography.
+                  <UnorderedList>
+                    <ListItem>
+                      You can upload any project you need funding for, from
+                      music to art to vlogging, design and film.
+                    </ListItem>
+                    <ListItem>
+                      You can look through the different project categories on
+                      the explore page.
+                    </ListItem>
+                  </UnorderedList>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem borderTop="1px solid #485155" borderBottom="0px">
+                <Heading as="h2">
+                  <AccordionButton py="25px" fontSize="2rem">
+                    <Box as="span" flex="1" textAlign="left" fontWeight="700">
+                      How do I upload my project?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </Heading>
+                <AccordionPanel pb={4} fontSize="1.6rem">
+                  <UnorderedList>
+                    <ListItem>
+                      You sign up, login, click on the create button on the
+                      navigation bar the fill the multistep form to create and
+                      upload a project
+                    </ListItem>
+                  </UnorderedList>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem borderTop="1px solid #485155" borderBottom="0px">
+                <Heading as="h2">
+                  <AccordionButton py="25px" fontSize="2rem">
+                    <Box as="span" flex="1" textAlign="left" fontWeight="700">
+                      Can I upload more than one project at a time?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </Heading>
+                <AccordionPanel pb={4} fontSize="1.6rem">
+                  Yes you can create multiple projects
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem borderTop="1px solid #485155" borderBottom="0px">
+                <Heading as="h2">
+                  <AccordionButton py="25px" fontSize="2rem">
+                    <Box as="span" flex="1" textAlign="left" fontWeight="700">
+                      How do I (un)subscribe to Tiddix newsletters?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </Heading>
+                <AccordionPanel pb={4} fontSize="1.6rem">
+                  <UnorderedList>
+                    <ListItem>
+                      You automatically subscribed to our newsletters when you
+                      signed up on our platform.
+                    </ListItem>
+                    <ListItem>
+                      You can unsubscribe from our newsletters through the link
+                      provided in your mail.{' '}
+                    </ListItem>
+                  </UnorderedList>
+                </AccordionPanel>
+              </AccordionItem>
+
+              <AccordionItem borderTop="1px solid #485155" borderBottom="0px">
+                <Heading as="h2">
+                  <AccordionButton py="25px" fontSize="2rem">
+                    <Box as="span" flex="1" textAlign="left" fontWeight="700">
+                      I have forgotten my password. What should I do?
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </Heading>
+                <AccordionPanel pb={4} fontSize="1.6rem">
+                  Click 'Forgotten password', and you will be sent an email to
+                  verify your accoun
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>

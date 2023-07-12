@@ -29,7 +29,7 @@ import CreativePovDebtProjectInfo from './CreativePovDebtProjectInfo';
 import InvestorPovDebtProjectInfo from './InvestorPovDebtProjectInfo';
 import InvestorPovEquityProjectInfo from './InvestorPovEquityProjectInfo';
 
-type projectT = {
+export type projectT = {
   amount: number;
   category: string;
   coverArt: string;
@@ -42,6 +42,7 @@ type projectT = {
   id: string;
   interest: 20;
   investmentType: string;
+  is_owner: boolean;
   period: string;
   pitchDeck: string;
   pitchVideo: string;
@@ -50,7 +51,7 @@ type projectT = {
   views: number;
 };
 
-const SingleProject: FC = () => {
+const SingleProject = () => {
   const { id } = useParams();
   const [project, setProject] = useState<projectT | undefined>();
   useEffect(() => {
@@ -66,6 +67,32 @@ const SingleProject: FC = () => {
     console.log('ID', id);
   }, []);
 
+  if (!project) {
+    return <h1>Loading...</h1>;
+  }
+
+  const {
+    amount,
+    category,
+    coverArt,
+    creativeName,
+    creativePicture,
+    creativeVerified,
+    description,
+    favourites,
+    fundingDeadline,
+    id: projectId,
+    interest,
+    investmentType,
+    is_owner,
+    period,
+    pitchDeck,
+    pitchVideo,
+    portfolioLinks,
+    projectName,
+    views,
+  } = project;
+
   return (
     <Box>
       <Container
@@ -78,7 +105,13 @@ const SingleProject: FC = () => {
           lg: '5rem 7.2rem',
         }}
       >
-        <SingleProjHeader />
+        <SingleProjHeader
+          projectName={projectName}
+          category={category}
+          creativeName={creativeName}
+          creativePicture={creativePicture}
+        />
+
         <Flex mb="10rem" justify="center">
           {/* <Stack spacing="19px">
             <Box>
@@ -119,7 +152,7 @@ const SingleProject: FC = () => {
                 h="61rem"
                 objectFit="cover"
                 borderRadius="20px"
-                src={project?.coverArt}
+                src={coverArt}
                 alt="project name"
               />
             </Box>
@@ -134,39 +167,39 @@ const SingleProject: FC = () => {
                 gap="3rem"
                 mb="2.4rem"
               >
-                <Stack spacing="1.2rem">
+                <Stack spacing="1.2rem" flex="1">
                   <Text size="body2">Views</Text>
                   <Flex gap="1rem">
                     <Box>{view}</Box>
                     <Text size="body2" color="#fff">
-                      {project?.views} Views
+                      {views} Views
                     </Text>
                   </Flex>
                 </Stack>
-                <Stack spacing="1.2rem">
+                <Stack spacing="1.2rem" flex="1">
                   <Text size="body2">Favorites</Text>
                   <Flex gap="1rem">
                     <Box>{love}</Box>
                     <Text size="body2" color="#fff">
-                      {project?.favourites} favorites
+                      {favourites} favorites
                     </Text>
                   </Flex>
                 </Stack>
-                <Stack spacing="1.2rem">
+                <Stack spacing="1.2rem" flex="1">
                   <Text size="body2">Type</Text>
                   <Flex gap="1rem">
                     <Box>{debt}</Box>
                     <Text size="body2" color="#fff">
-                      {project?.investmentType}
+                      {investmentType}
                     </Text>
                   </Flex>
                 </Stack>
               </Flex>
 
-              {/* <CreativePovDebtProjectInfo /> */}
-              <CreativePovEquityProjectInfo />
-              {/* <InvestorPovDebtProjectInfo /> */}
-              {/* <InvestorPovEquityProjectInfo /> */}
+              {investmentType === 'Debt' && <InvestorPovDebtProjectInfo />}
+              {investmentType === 'Equity' && (
+                <InvestorPovEquityProjectInfo id={projectId} />
+              )}
             </Box>
           </Flex>
         </Flex>
