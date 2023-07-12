@@ -1,20 +1,10 @@
 import {
-  Avatar,
   Box,
   Button,
   Container,
   Flex,
   HStack,
   Icon,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Select,
   Stack,
   Table,
   TableContainer,
@@ -37,6 +27,7 @@ import { GoChevronDown } from 'react-icons/go';
 import DepositModal from './DepositModal';
 import WithdrawalModal from './WithdrawalModal';
 import useAuth from 'app/hooks/useAuth';
+import { thousandsSeparators } from 'app/utils/helpers';
 
 const WalletView: FC = () => {
   const authContext = useAuth();
@@ -91,7 +82,7 @@ const WalletView: FC = () => {
                   Wallet Balance
                 </Text>
                 <Text fontSize="3.2rem" fontWeight="700" color="#fff">
-                  ${walletBalance}
+                  ${thousandsSeparators(String(walletBalance))}
                 </Text>
               </Stack>
 
