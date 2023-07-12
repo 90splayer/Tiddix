@@ -4,6 +4,9 @@ import { Box } from '@chakra-ui/react';
 import CountUp from 'react-countup';
 import { useState } from 'react';
 import ScrollTrigger from 'react-scroll-trigger';
+import { FaMedal } from 'react-icons/fa';
+import { MdOutlineManageHistory } from 'react-icons/md';
+import { GiTakeMyMoney, GiTeamIdea } from 'react-icons/gi';
 
 const Impact: FC = () => {
   const [counterOn, setCounterOn] = useState(false);
@@ -37,6 +40,9 @@ const Impact: FC = () => {
           </Heading>
           <Flex align="center" justify="space-between" flexWrap="wrap">
             <VStack>
+              <Box mb="3rem">
+                <FaMedal size="2.4rem" color="white" />
+              </Box>
               <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 {counterOn && (
                   <CountUp start={0} end={45} duration={2} delay={0} />
@@ -51,6 +57,9 @@ const Impact: FC = () => {
               bg="linear-gradient(180deg, rgba(218, 218, 218, 0.00) 1.04%, #B584C6 53.65%, rgba(217, 217, 217, 0.00) 100%)"
             ></Box>
             <VStack>
+              <Box mb="3rem">
+                <GiTeamIdea size="2.4rem" color="white" />
+              </Box>
               <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 7000
               </Heading>
@@ -62,6 +71,9 @@ const Impact: FC = () => {
               bg="linear-gradient(180deg, rgba(218, 218, 218, 0.00) 1.04%, #B584C6 53.65%, rgba(217, 217, 217, 0.00) 100%)"
             ></Box>
             <VStack>
+              <Box mb="3rem">
+                <GiTakeMyMoney size="2.4rem" color="white" />
+              </Box>
               <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 $
                 {counterOn && (
@@ -77,6 +89,9 @@ const Impact: FC = () => {
               bg="linear-gradient(180deg, rgba(218, 218, 218, 0.00) 1.04%, #B584C6 53.65%, rgba(217, 217, 217, 0.00) 100%)"
             ></Box>
             <VStack>
+              <Box mb="3rem">
+                <MdOutlineManageHistory size="2.4rem" color="white" />
+              </Box>
               <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 1
               </Heading>
