@@ -9,6 +9,8 @@ const SingleProjectPage = () => {
     <Box>
       <Header />
       <SingleProject />
+      <Box mb="100"></Box>
+      <Footer />
     </Box>
   );
 };

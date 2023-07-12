@@ -15,23 +15,27 @@ import { IoIosRocket } from 'react-icons/io';
 import { IoShareSocialSharp } from 'react-icons/io5';
 import { MdEdit } from 'react-icons/md';
 import React from 'react';
+import { projectT } from './SingleProject';
 
-const SingleProjHeader = () => {
+const SingleProjHeader = ({
+  projectName,
+  category,
+  creativeName,
+  creativePicture,
+}: any) => {
+  console.log('INFO', category);
+
   return (
-    <Flex mb="4.3rem" justify="space-between">
+    <Flex mb="4.3rem" justify="space-between" align="flex-start">
       <Stack spacing="24px">
         <HStack spacing="2.7rem">
-          <Heading size="display2">The Plant Picazzo</Heading>
-          <Text fontSize="14px">Art</Text>
+          <Heading size="display2">{projectName}</Heading>
+          <Text fontSize="14px">{category}</Text>
         </HStack>
         <HStack spacing="10px">
-          <Avatar
-            boxSize="25px"
-            name="Segun Adebayo"
-            src="https://bit.ly/sage-adebayo"
-          />
+          <Avatar boxSize="25px" name={creativeName} src={creativePicture} />
           <HStack>
-            <Text color="#fff">John Doe</Text>
+            <Text color="#fff">{creativeName}</Text>
             {''}
             <Box>{verify}</Box>
           </HStack>
