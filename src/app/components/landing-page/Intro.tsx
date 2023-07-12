@@ -63,13 +63,13 @@ const Intro: FC = () => {
                 bgClip="text"
                 size="display1"
               >
-                Young Talent
+                Talent
               </Heading>{' '}
             </Heading>
             <Text size="body1" maxW="550px" pb={{ base: '38px', md: '76px' }}>
               We provide a hassle-free digital platform that serves as a
-              launchpad for dreams, creativity and talent!" Join us today and
-              show the world who you really are"
+              launchpad for dreams, creativity and talent! Join us today and
+              show the world who you really are
             </Text>
             <Flex gap="24px">
               <Link to="/signup">

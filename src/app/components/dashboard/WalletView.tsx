@@ -177,6 +177,12 @@ const WalletView: FC = () => {
                 <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
                   Wallet Bal
                 </Th>
+                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  Source
+                </Th>
+                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  Destination
+                </Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -199,10 +205,16 @@ const WalletView: FC = () => {
                   43673572JKHLJ
                 </Td>
                 <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  $ 20,000
+                  £ 20,000
                 </Td>
                 <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  $ 20,000
+                  £ 20,000
+                </Td>
+                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  .....
+                </Td>
+                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  .....
                 </Td>
               </Tr>
             </Tbody>
