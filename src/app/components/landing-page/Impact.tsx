@@ -77,7 +77,7 @@ const Impact: FC = () => {
               <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
                 £
                 {counterOn && (
-                  <CountUp start={100} end={50} duration={3} delay={0} />
+                  <CountUp start={100} end={500} duration={3} delay={0} />
                 )}
                 k+
               </Heading>

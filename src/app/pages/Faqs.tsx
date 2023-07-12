@@ -32,7 +32,7 @@ const Faqs: FC = () => {
         maxW="144rem"
       >
         <Flex flexDir="column" fontFamily="bold" align="center" w="full">
-          <VStack mb="15.7rem">
+          <VStack mb="12.7rem">
             <Text
               mb="5rem"
               size="body2"
@@ -87,9 +87,13 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  You can start making dreams come true with as little as £200
-                  and with as much as you wish to invest in any creatives
-                  dreams/projects
+                  <UnorderedList>
+                    <ListItem>
+                      You can start making dreams come true with as little as
+                      £200 and with as much as you wish to invest in any
+                      creatives dreams/projects
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
 
@@ -232,8 +236,13 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Creatives are required to send investors status updates and
-                  periodic reports, to ensure that the project is on track.
+                  <UnorderedList>
+                    <ListItem>
+                      Creatives are required to send investors status updates
+                      and periodic reports, to ensure that the project is on
+                      track.
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
 
@@ -317,7 +326,9 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Yes you can create multiple projects
+                  <UnorderedList>
+                    <ListItem>Yes you can create multiple projects</ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
 
@@ -354,8 +365,12 @@ const Faqs: FC = () => {
                   </AccordionButton>
                 </Heading>
                 <AccordionPanel pb={4} fontSize="1.6rem">
-                  Click 'Forgotten password', and you will be sent an email to
-                  verify your accoun
+                  <UnorderedList>
+                    <ListItem>
+                      Go to the Login page then click 'Forgotten password', and
+                      you will be sent an email to verify your account
+                    </ListItem>
+                  </UnorderedList>
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
