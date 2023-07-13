@@ -51,7 +51,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                 creativePicture,
                 id,
               }: any) => (
-                <Flex key={id} gap="3rem">
+                <Flex key={id} align="center" gap="3rem">
                   <Link to={`/projects/${id}`}>
                     <HStack spacing="19px" flex="5">
                       <Box boxSize="10rem">
@@ -125,7 +125,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                 creativePicture,
                 id,
               }: any) => (
-                <Flex key={id} gap="3rem">
+                <Flex key={id} align="center" gap="3rem">
                   <Link to={`/projects/${id}`}>
                     <HStack spacing="19px" flex="5">
                       <Box boxSize="10rem">
