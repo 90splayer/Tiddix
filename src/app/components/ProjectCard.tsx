@@ -77,7 +77,7 @@ const ProjectCard: FC<Props> = ({
             <Heading fontSize="1.6rem">{investmentType}</Heading>
           </HStack>
 
-          <Heading fontSize="2.4rem">$ {thousandsSeparators(amount)}</Heading>
+          <Heading fontSize="2.4rem">£{thousandsSeparators(amount)}</Heading>
         </Box>
         <Box>
           <Text mb="15px" fontSize="1.6rem" textAlign="right" color="#99A1AA">
