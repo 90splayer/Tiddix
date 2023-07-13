@@ -23,7 +23,12 @@ import { thousandsSeparators } from 'app/utils/helpers';
 import { chkToaster } from 'app/components/common/Toaster';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 
-const InvestorPovEquityProjectInfo = ({ id }: any) => {
+const InvestorPovEquityProjectInfo = ({
+  id,
+  amount: target,
+  equityBought,
+  progress,
+}: any) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
   const [balanceConfirmed, setBalanceConfirmed] = useState(false);
@@ -71,9 +76,6 @@ const InvestorPovEquityProjectInfo = ({ id }: any) => {
             chkToaster.error({ title: 'Wallet balance insufficient' });
           }
         }
-        // console.log('SUCCESS', data);
-        // chkToaster.success({ title: 'Deposit Successful' });
-        // setAmount(0);
         setLoading(false);
       })
       .catch(() => {
@@ -98,15 +100,17 @@ const InvestorPovEquityProjectInfo = ({ id }: any) => {
               <Text pb="8px" size="body2">
                 Equity bought
               </Text>
-              <Heading fontSize="3.2rem">$ 2,000</Heading>
+              <Heading fontSize="3.2rem">
+                ${thousandsSeparators(equityBought)}
+              </Heading>
             </Box>
             <Box>
               <Text size="body2" pb="3rem">
                 {' '}
-                ($ 20,000) 45%
+                (${thousandsSeparators(equityBought)}) {progress}%
               </Text>
               <Progress
-                value={45}
+                value={progress}
                 borderRadius="2rem"
                 background="blackShade.3"
                 sx={{
@@ -163,7 +167,7 @@ const InvestorPovEquityProjectInfo = ({ id }: any) => {
               onClick={handleSubmit}
               isLoading={loading}
             >
-              Make Investment
+              Complete Investment
             </Button>
           </Box>
         </Stack>
@@ -181,15 +185,17 @@ const InvestorPovEquityProjectInfo = ({ id }: any) => {
               <Text pb="8px" size="body2">
                 Target
               </Text>
-              <Heading fontSize="3.2rem">$ 2,000</Heading>
+              <Heading fontSize="3.2rem">
+                ${thousandsSeparators(target)}
+              </Heading>
             </Box>
             <Box>
               <Text size="body2" pb="3rem">
                 {' '}
-                ($ 20,000) 45%
+                (${thousandsSeparators(equityBought)}) {progress}%
               </Text>
               <Progress
-                value={45}
+                value={progress}
                 borderRadius="2rem"
                 background="blackShade.3"
                 sx={{
