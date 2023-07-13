@@ -123,7 +123,7 @@ const Overview: FC = () => {
                   Wallet Balance
                 </Text>
                 <Text fontSize="3.2rem" fontWeight="700" color="#fff">
-                  ${thousandsSeparators(String(walletBalance))}
+                  £{thousandsSeparators(String(walletBalance))}
                 </Text>
               </Stack>
 

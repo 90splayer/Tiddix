@@ -16,7 +16,7 @@ const FundingChart = () => {
     labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June'],
     datasets: [
       {
-        data: ['0', '$1k', '$2k', '$3k'],
+        data: ['0', '£1k', '£2k', '£3k'],
         backgroundColor: 'transparent',
         border: '1px dashed #485155',
         pointBorderColor: 'transparent',

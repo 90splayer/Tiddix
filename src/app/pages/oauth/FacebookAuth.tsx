@@ -12,8 +12,6 @@ export default function FacebookAuth() {
     const urlParams = window.location.href.split('?');
     const params = urlParams[1];
 
-    console.log('URLLL', params);
-
     api
       .get(`/facebook/oauthcallback?${params}`, {
         withCredentials: true,
@@ -41,12 +39,12 @@ export default function FacebookAuth() {
 
         chkToaster.success({ title: 'Logged in successfully' });
 
-        // navigate('/dashboard', { replace: true });
+        navigate('/dashboard', { replace: true });
       })
       .catch((err) => {
         if (err.response.data.message.includes('Duplicate request')) return;
         chkToaster.error({ title: err.response.data.message });
       });
   }, []);
-  return <div>FaceBook state</div>;
+  return <div>Loading...</div>;
 }

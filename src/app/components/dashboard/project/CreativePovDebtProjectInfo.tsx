@@ -25,7 +25,7 @@ export default function DebtProjectInfo() {
         <Flex align="center" justify="space-between">
           <Box>
             <Text size="body2"> Repayment Amount</Text>
-            <Heading fontSize="3.2rem">$ 20,000</Heading>
+            <Heading fontSize="3.2rem">£20,000</Heading>
           </Box>
           <Box>
             <Text size="body2"> Moratorium period</Text>
@@ -60,7 +60,7 @@ export default function DebtProjectInfo() {
             <Box>
               <Text size="body2">Next Due </Text>
               <Text size="body2" color="#fff">
-                $4000
+                £4000
               </Text>
             </Box>
           </Stack>
@@ -68,7 +68,7 @@ export default function DebtProjectInfo() {
             <Box maxW="143px">
               <Text size="body2">Interest Payment </Text>
               <Text size="body2" color="#fff">
-                $2000
+                £2000
               </Text>
             </Box>
             <Box>

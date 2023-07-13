@@ -49,6 +49,8 @@ export type projectT = {
   portfolioLinks: string;
   projectName: string;
   views: number;
+  equityBought: number;
+  progress: number;
 };
 
 const SingleProject = () => {
@@ -91,6 +93,8 @@ const SingleProject = () => {
     portfolioLinks,
     projectName,
     views,
+    equityBought,
+    progress,
   } = project;
 
   return (
@@ -196,9 +200,20 @@ const SingleProject = () => {
                 </Stack>
               </Flex>
 
-              {investmentType === 'Debt' && <InvestorPovDebtProjectInfo />}
+              {investmentType === 'Debt' && (
+                <InvestorPovDebtProjectInfo
+                  id={projectId}
+                  amount={amount}
+                  interest={interest}
+                />
+              )}
               {investmentType === 'Equity' && (
-                <InvestorPovEquityProjectInfo id={projectId} />
+                <InvestorPovEquityProjectInfo
+                  id={projectId}
+                  amount={amount}
+                  equityBought={equityBought}
+                  progress={progress}
+                />
               )}
             </Box>
           </Flex>

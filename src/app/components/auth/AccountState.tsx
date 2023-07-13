@@ -89,7 +89,7 @@ export default function AccountState() {
                   <Flex align="center" gap=".5rem">
                     <WalletIcon />
                     <Text size="body2">
-                      ${thousandsSeparators(String(walletBalance))}
+                      £{thousandsSeparators(String(walletBalance))}
                     </Text>
                   </Flex>
                 </Stack>

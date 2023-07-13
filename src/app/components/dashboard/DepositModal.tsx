@@ -95,7 +95,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
                 size="lg"
                 // type="number"
                 maxW="26.3rem"
-                value={`\$${thousandsSeparators(amount)}`}
+                value={`\£${thousandsSeparators(amount)}`}
                 onChange={handleChange}
                 error={inputError}
               />
