@@ -42,5 +42,5 @@ export default function GoogleAuth() {
         chkToaster.error({ title: err.response.data.message });
       });
   }, []);
-  return <div>Google state</div>;
+  return <div>Loading...</div>;
 }
