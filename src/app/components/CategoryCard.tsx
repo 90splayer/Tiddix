@@ -68,7 +68,7 @@ const CategoryCard: FC<{ project: any }> = ({ project }) => {
                 bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
                 bgClip="text"
               >
-                ${thousandsSeparators(amount)}
+                £{thousandsSeparators(amount)}
               </Text>
             </Text>
           </Flex>

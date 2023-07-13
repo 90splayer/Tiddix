@@ -64,7 +64,7 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
           <Flex align="center" justify="space-between">
             <Box>
               <Text size="body2"> Repayment Amount</Text>
-              <Heading fontSize="3.2rem">$ 20,000</Heading>
+              <Heading fontSize="3.2rem">£20,000</Heading>
             </Box>
             <Box>
               <Text size="body2"> Moratorium period</Text>
@@ -99,7 +99,7 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
               <Box>
                 <Text size="body2">Next Due </Text>
                 <Text size="body2" color="#fff">
-                  $4000
+                  £4000
                 </Text>
               </Box>
             </Stack>
@@ -107,7 +107,7 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
               <Box maxW="143px">
                 <Text size="body2">Interest Payment </Text>
                 <Text size="body2" color="#fff">
-                  $2000
+                  £2000
                 </Text>
               </Box>
               <Box>
@@ -145,7 +145,7 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
         >
           <Box>
             <Text size="body2"> Loan Amount</Text>
-            <Heading fontSize="3.2rem">${amount}</Heading>
+            <Heading fontSize="3.2rem">£{amount}</Heading>
           </Box>
 
           <Flex maxW="49rem" flexDir="column">
@@ -170,7 +170,7 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
                 <Box maxW="143px">
                   <Text size="body2">Interest Payment </Text>
                   <Text size="body2" color="#fff">
-                    $2000
+                    £2000
                   </Text>
                 </Box>
               </Stack>

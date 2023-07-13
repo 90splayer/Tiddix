@@ -101,13 +101,13 @@ const InvestorPovEquityProjectInfo = ({
                 Equity bought
               </Text>
               <Heading fontSize="3.2rem">
-                ${thousandsSeparators(equityBought)}
+                £{thousandsSeparators(equityBought)}
               </Heading>
             </Box>
             <Box>
               <Text size="body2" pb="3rem">
                 {' '}
-                (${thousandsSeparators(equityBought)}) {progress}%
+                (£{thousandsSeparators(equityBought)}) {progress}%
               </Text>
               <Progress
                 value={progress}
@@ -186,13 +186,13 @@ const InvestorPovEquityProjectInfo = ({
                 Target
               </Text>
               <Heading fontSize="3.2rem">
-                ${thousandsSeparators(target)}
+                £{thousandsSeparators(target)}
               </Heading>
             </Box>
             <Box>
               <Text size="body2" pb="3rem">
                 {' '}
-                (${thousandsSeparators(equityBought)}) {progress}%
+                (£{thousandsSeparators(equityBought)}) {progress}%
               </Text>
               <Progress
                 value={progress}
@@ -212,7 +212,7 @@ const InvestorPovEquityProjectInfo = ({
             <CustomInput
               placeholder="Enter Amount"
               size="lg"
-              value={amount === 0 ? '' : `\$${thousandsSeparators(amount)}`}
+              value={amount === 0 ? '' : `\£${thousandsSeparators(amount)}`}
               onChange={handleChange}
             />
           </Box>
@@ -326,7 +326,7 @@ const InvestorPovEquityProjectInfo = ({
                 5%
               </Td>
               <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                $20,000
+                £20,000
               </Td>
             </Tr>
           </Tbody>

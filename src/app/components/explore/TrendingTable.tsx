@@ -82,7 +82,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                     </HStack>
                   </Link>
                   <Text size="body2" color="#fff" flex="1">
-                    ${numberMetricFormatter(amount, 2)}
+                    £{numberMetricFormatter(amount, 2)}
                   </Text>
                   <Progress
                     value={progress}
@@ -156,7 +156,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                     </HStack>
                   </Link>
                   <Text size="body2" color="#fff" flex="1">
-                    ${numberMetricFormatter(amount, 2)}
+                    £{numberMetricFormatter(amount, 2)}
                   </Text>
                   <Progress
                     value={progress}

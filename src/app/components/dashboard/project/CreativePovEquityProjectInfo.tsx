@@ -38,12 +38,12 @@ export default function EquityProjectInfo() {
             <Text pb="8px" size="body2">
               Equity bought
             </Text>
-            <Heading fontSize="3.2rem">$ 2,000</Heading>
+            <Heading fontSize="3.2rem">£2,000</Heading>
           </Box>
           <Box>
             <Text size="body2" pb="3rem">
               {' '}
-              ($ 20,000) 45%
+              (£20,000) 45%
             </Text>
             <Progress
               value={45}
@@ -184,7 +184,7 @@ export default function EquityProjectInfo() {
                 5%
               </Td>
               <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                $20,000
+                £20,000
               </Td>
             </Tr>
           </Tbody>
