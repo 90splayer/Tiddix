@@ -36,7 +36,7 @@ const InvestorPovEquityProjectInfo = ({
   const apiPrivate = useApiPrivate();
 
   const handleChange = (e: any) => {
-    const numWithoutComma = e.target.value.replace(/,|\$/gi, '');
+    const numWithoutComma = e.target.value.replace(/,|\£/gi, '');
     if (
       Number.isNaN(+numWithoutComma) ||
       Number(numWithoutComma) > 1000000000

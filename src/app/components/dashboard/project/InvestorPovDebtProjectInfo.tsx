@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from 'app/components/common/Toaster';
+import { thousandsSeparators } from 'app/utils/helpers';
 
 const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
   const [loading, setLoading] = useState(false);
@@ -145,7 +146,7 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
         >
           <Box>
             <Text size="body2"> Loan Amount</Text>
-            <Heading fontSize="3.2rem">£{amount}</Heading>
+            <Heading fontSize="3.2rem">£{thousandsSeparators(amount)}</Heading>
           </Box>
 
           <Flex maxW="49rem" flexDir="column">
