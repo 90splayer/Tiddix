@@ -33,8 +33,9 @@ const Impact: FC = () => {
             as="h2"
             mb="4.7rem"
             textAlign="center"
-            fontWeight="700"
-            fontSize={{ base: '3.6rem', md: '4.8rem' }}
+            bgGradient="linear(to-tr,#FF8CDF, #448FFF)"
+            bgClip="text"
+            size="display1"
           >
             Our Impact
           </Heading>
