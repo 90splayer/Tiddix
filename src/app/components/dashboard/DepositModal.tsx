@@ -34,7 +34,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
 
   const handleChange = (e: any) => {
     setInputError('');
-    const numWithoutComma = e.target.value.replace(/,|\$/gi, '');
+    const numWithoutComma = e.target.value.replace(/,|\£/gi, '');
     if (
       Number.isNaN(+numWithoutComma) ||
       Number(numWithoutComma) > 1000000000
@@ -95,7 +95,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
                 size="lg"
                 // type="number"
                 maxW="26.3rem"
-                value={`\£${thousandsSeparators(amount)}`}
+                value={amount === 0 ? '' : `£${thousandsSeparators(amount)}`}
                 onChange={handleChange}
                 error={inputError}
               />
