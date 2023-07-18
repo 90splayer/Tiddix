@@ -28,6 +28,8 @@ import CreativePovEquityProjectInfo from './CreativePovEquityProjectInfo';
 import CreativePovDebtProjectInfo from './CreativePovDebtProjectInfo';
 import InvestorPovDebtProjectInfo from './InvestorPovDebtProjectInfo';
 import InvestorPovEquityProjectInfo from './InvestorPovEquityProjectInfo';
+import tiddixIcon from 'app/assets/icons/png/tiddix.png';
+import { verify } from 'app/assets/svgs/home';
 
 export type projectT = {
   amount: number;
@@ -176,7 +178,7 @@ const SingleProject = () => {
                   <Flex gap="1rem">
                     <Box>{view}</Box>
                     <Text size="body2" color="#fff">
-                      {views} Views
+                      {views}
                     </Text>
                   </Flex>
                 </Stack>
@@ -185,7 +187,7 @@ const SingleProject = () => {
                   <Flex gap="1rem">
                     <Box>{love}</Box>
                     <Text size="body2" color="#fff">
-                      {favourites} favorites
+                      {favourites}
                     </Text>
                   </Flex>
                 </Stack>
@@ -195,6 +197,15 @@ const SingleProject = () => {
                     <Box>{debt}</Box>
                     <Text size="body2" color="#fff">
                       {investmentType}
+                    </Text>
+                  </Flex>
+                </Stack>
+                <Stack spacing="1.2rem" flex="1">
+                  <Text size="body2">Tiddix Score</Text>
+                  <Flex gap="1rem">
+                    <Box>{verify}</Box>
+                    <Text size="body2" color="#fff">
+                      - -
                     </Text>
                   </Flex>
                 </Stack>
