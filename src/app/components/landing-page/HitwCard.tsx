@@ -12,7 +12,7 @@ const HowItWorkCard: FC<Props> = ({ icon, title, desc }) => {
     <VStack
       color="#fff"
       bg="#232629"
-      w="40.4rem"
+      maxW="40.4rem"
       h="45.8rem"
       p="5.8rem 3rem 6rem"
       borderRadius="30px"

@@ -7,15 +7,7 @@ import { Link } from 'react-router-dom';
 const HowItWork = () => {
   return (
     <Container maxW="144rem" p="7.5rem 7.2rem">
-      <Heading
-        as="h2"
-        fontSize="4.8rem"
-        textAlign="center"
-        mb="10rem"
-        lineHeight="54.62px"
-        fontWeight="700"
-        color="#fff"
-      >
+      <Heading as="h2" size="display1sub" textAlign="center" mb="10rem">
         How it works
       </Heading>
       <Flex

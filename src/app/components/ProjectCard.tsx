@@ -37,7 +37,7 @@ const ProjectCard: FC<Props> = ({
   amount,
 }) => {
   return (
-    <Card maxW="30rem" bgColor="#232629" borderRadius="30px" p="16px 14px 37px">
+    <Card mx="5px" bgColor="#232629" borderRadius="30px" p="16px 14px 37px">
       <CardHeader p="0">
         <Flex gap="1rem" alignItems="center">
           <Avatar boxSize="25px" name={creativeName} src={images} />

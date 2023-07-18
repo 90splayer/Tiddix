@@ -44,6 +44,10 @@ export const headingStyles = {
             lg: '7.3rem',
           },
         },
+        display1sub: {
+          fontSize: { base: '3rem', sm: '3.2rem', md: '5.4rem' },
+          lineHeight: { base: '4rem', sm: '4.75rem', md: '6.4rem' },
+        },
         display2: {
           fontSize: { base: '3rem', sm: '3.2rem', md: '4.8rem' },
           lineHeight: { base: '4rem', sm: '4.75rem', md: '5.8rem' },
