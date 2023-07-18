@@ -100,7 +100,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
                 error={inputError}
               />
               <InputRightElement pr="1.6rem" width="auto">
-                <Text size="body2">Min $5</Text>
+                <Text size="body2">Min £5</Text>
               </InputRightElement>
             </InputGroup>
           </Box>

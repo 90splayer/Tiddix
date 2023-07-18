@@ -11,8 +11,8 @@ const CreativeCommunity: FC = () => {
       <Flex flexDir="column" align="center">
         <Heading
           as="h2"
-          size="display2"
-          maxW="49.8rem"
+          size="display1sub"
+          maxW="50.8rem"
           textAlign="center"
           mb="10rem"
         >

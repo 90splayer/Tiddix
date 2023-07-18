@@ -29,14 +29,7 @@ const Impact: FC = () => {
           m="0 auto"
           px={{ base: '3rem', md: '7rem', lg: '18.6rem' }}
         >
-          <Heading
-            as="h2"
-            mb="4.7rem"
-            textAlign="center"
-            bgGradient="linear(to-tr,#FF8CDF, #448FFF)"
-            bgClip="text"
-            size="display1"
-          >
+          <Heading as="h2" mb="4.7rem" textAlign="center" size="display1sub">
             Our Impact
           </Heading>
           <Flex align="center" justify="space-between" flexWrap="wrap">

@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 const BecomeInvestor: FC = () => {
   return (
     <Box>
-      <Container maxW="144rem" p="7.5rem 6.9rem 7.5rem 7.2rem">
+      <Container maxW="144rem" p="9.5rem 6.9rem 7.5rem 7.2rem">
         <Flex
           align="center"
           flexDir={{ base: 'column', md: 'row' }}
@@ -28,11 +28,12 @@ const BecomeInvestor: FC = () => {
           >
             <Heading
               as="h2"
-              color="#fff"
-              maxW="25.4rem"
-              lineHeight="54px"
-              fontWeight={700}
-              fontSize={{ base: '3.6rem', md: '4.8rem' }}
+              // color="#fff"
+              maxW="35.4rem"
+              size="display1sub"
+              // lineHeight="54px"
+              // fontWeight={700}
+              // fontSize={{ base: '3.6rem', md: '4.8rem' }}
             >
               Become an investor
             </Heading>
