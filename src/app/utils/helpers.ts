@@ -46,3 +46,9 @@ export const formikErrorHandler = (name: string, formikInstance: any) => {
     formikInstance.errors[name]
   );
 };
+
+export const round = (value: number, precision?: number) => {
+  if (!precision && value % 1 !== 0) precision = 1;
+  const multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
+};

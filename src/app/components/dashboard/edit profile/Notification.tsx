@@ -42,7 +42,6 @@ const Notification: FC = () => {
     <Box>
       <Stack spacing="1.7rem">
         <Text color="#fff" mb="5px">
-          {' '}
           Alert Notifications
         </Text>
 
@@ -54,7 +53,7 @@ const Notification: FC = () => {
           p="1.5rem"
         >
           <Box>
-            <Checkbox size="lg" colorScheme="pink" defaultChecked />
+            <Checkbox size="lg" colorScheme="pink" />
           </Box>
           <Stack>
             <Text size="body2" color="#fff">

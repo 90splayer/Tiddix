@@ -40,7 +40,6 @@ export type projectT = {
   creativeVerified: boolean;
   description: string;
   favourites: 0;
-  fundingDeadline: string;
   id: string;
   interest: 20;
   investmentType: string;
@@ -53,11 +52,14 @@ export type projectT = {
   views: number;
   equityBought: number;
   progress: number;
+  projectDuration: string;
+  moratoriumPeriod: string;
 };
 
 const SingleProject = () => {
   const { id } = useParams();
   const [project, setProject] = useState<projectT | undefined>();
+
   useEffect(() => {
     api
       .get(`/projects/${id}`)
@@ -84,15 +86,16 @@ const SingleProject = () => {
     creativeVerified,
     description,
     favourites,
-    fundingDeadline,
     id: projectId,
     interest,
     investmentType,
     is_owner,
+    moratoriumPeriod,
     period,
     pitchDeck,
     pitchVideo,
     portfolioLinks,
+    projectDuration,
     projectName,
     views,
     equityBought,
@@ -224,6 +227,8 @@ const SingleProject = () => {
                   amount={amount}
                   equityBought={equityBought}
                   progress={progress}
+                  moratoriumPeriod={moratoriumPeriod}
+                  projectDuration={projectDuration}
                 />
               )}
             </Box>

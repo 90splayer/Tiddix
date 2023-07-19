@@ -31,6 +31,7 @@ export const buttonStyles = {
             background: 'blackShade.4',
             color: 'blackShade.1',
             opacity: 1,
+            cursor: 'not-allowed',
           },
         },
         // _focus: {},
