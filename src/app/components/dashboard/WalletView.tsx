@@ -1,3 +1,4 @@
+import React, { FC, useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -19,7 +20,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { IoWallet } from 'react-icons/io5';
-import React, { FC } from 'react';
+
 import { BiRefresh } from 'react-icons/bi';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 import { HiMinus, HiPlus } from 'react-icons/hi';
@@ -28,9 +29,25 @@ import DepositModal from './DepositModal';
 import WithdrawalModal from './WithdrawalModal';
 import useAuth from 'app/hooks/useAuth';
 import { thousandsSeparators } from 'app/utils/helpers';
+import useApiPrivate from 'app/hooks/useApiPrivate';
+import { chkToaster } from '../common/Toaster';
+
+type TransactionT = {
+  amount: string;
+  created_at: string;
+  description: string;
+  destination: string;
+  id: string;
+  source: string;
+  status: string;
+  type: string;
+};
 
 const WalletView: FC = () => {
+  const [transactions, setTransactions] = useState<TransactionT[]>([]);
+
   const authContext = useAuth();
+  const apiPrivate = useApiPrivate();
 
   const {
     isOpen: isDepositOpen,
@@ -44,6 +61,19 @@ const WalletView: FC = () => {
   } = useDisclosure();
 
   const walletBalance = authContext?.auth?.walletBalance;
+
+  useEffect(() => {
+    apiPrivate
+      .get('/user/wallet/transactions')
+      .then(({ data }) => {
+        console.log('RESPONSE', data.transactions);
+        setTransactions(data.transactions);
+      })
+      .catch(() => {
+        chkToaster.error({ title: 'Something went wrong' });
+      });
+  }, []);
+
   return (
     <Box>
       <Container
@@ -174,9 +204,9 @@ const WalletView: FC = () => {
                 <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
                   Amount
                 </Th>
-                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                {/* <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
                   Wallet Bal
-                </Th>
+                </Th> */}
                 <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
                   Source
                 </Th>
@@ -186,37 +216,69 @@ const WalletView: FC = () => {
               </Tr>
             </Thead>
             <Tbody>
-              <Tr borderBottom="2px solid #485155">
-                <Td
-                  py="2.5rem"
-                  color="#fff"
-                  textTransform="capitalize"
-                  fontSize="1.6rem"
-                >
-                  Dec 08, 2022
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  Deposit
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  Card payment
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  43673572JKHLJ
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  £ 20,000
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  £ 20,000
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  .....
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  .....
-                </Td>
-              </Tr>
+              {transactions.map((transaction) => {
+                return (
+                  <Tr borderBottom="2px solid #485155">
+                    <Td
+                      py="2.5rem"
+                      color="#fff"
+                      textTransform="capitalize"
+                      fontSize="1.6rem"
+                    >
+                      {transaction.created_at.slice(0, 10)}
+                    </Td>
+                    <Td
+                      color="#fff"
+                      textTransform="capitalize"
+                      fontSize="1.6rem"
+                    >
+                      {transaction.type}
+                    </Td>
+                    <Td
+                      color="#fff"
+                      textTransform="capitalize"
+                      fontSize="1.6rem"
+                    >
+                      {transaction.description}
+                    </Td>
+                    <Td
+                      color="#fff"
+                      textTransform="capitalize"
+                      fontSize="1.6rem"
+                    >
+                      {transaction.id}
+                    </Td>
+                    <Td
+                      color="#fff"
+                      textTransform="capitalize"
+                      fontSize="1.6rem"
+                    >
+                      £{thousandsSeparators(transaction.amount)}
+                    </Td>
+                    {/* <Td
+                      color="#fff"
+                      textTransform="capitalize"
+                      fontSize="1.6rem"
+                    >
+                      £ 20,000
+                    </Td> */}
+                    <Td
+                      color="#fff"
+                      textTransform="capitalize"
+                      fontSize="1.6rem"
+                    >
+                      {transaction.source}
+                    </Td>
+                    <Td
+                      color="#fff"
+                      textTransform="capitalize"
+                      fontSize="1.6rem"
+                    >
+                      {transaction.destination}
+                    </Td>
+                  </Tr>
+                );
+              })}
             </Tbody>
             <Tfoot>
               {/* <Tr> */}
