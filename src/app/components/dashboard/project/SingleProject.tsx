@@ -28,6 +28,8 @@ import CreativePovEquityProjectInfo from './CreativePovEquityProjectInfo';
 import CreativePovDebtProjectInfo from './CreativePovDebtProjectInfo';
 import InvestorPovDebtProjectInfo from './InvestorPovDebtProjectInfo';
 import InvestorPovEquityProjectInfo from './InvestorPovEquityProjectInfo';
+import tiddixIcon from 'app/assets/icons/png/tiddix.png';
+import { verify } from 'app/assets/svgs/home';
 
 export type projectT = {
   amount: number;
@@ -38,7 +40,6 @@ export type projectT = {
   creativeVerified: boolean;
   description: string;
   favourites: 0;
-  fundingDeadline: string;
   id: string;
   interest: 20;
   investmentType: string;
@@ -51,11 +52,17 @@ export type projectT = {
   views: number;
   equityBought: number;
   progress: number;
+  projectDuration: string;
+  moratoriumPeriod: string;
+  investors: any;
+  loanGiven: number;
+  repaymentFrequency: string;
 };
 
 const SingleProject = () => {
   const { id } = useParams();
   const [project, setProject] = useState<projectT | undefined>();
+
   useEffect(() => {
     api
       .get(`/projects/${id}`)
@@ -82,19 +89,23 @@ const SingleProject = () => {
     creativeVerified,
     description,
     favourites,
-    fundingDeadline,
     id: projectId,
     interest,
     investmentType,
     is_owner,
+    moratoriumPeriod,
     period,
     pitchDeck,
     pitchVideo,
     portfolioLinks,
+    projectDuration,
     projectName,
     views,
     equityBought,
     progress,
+    investors,
+    loanGiven,
+    repaymentFrequency,
   } = project;
 
   return (
@@ -176,7 +187,7 @@ const SingleProject = () => {
                   <Flex gap="1rem">
                     <Box>{view}</Box>
                     <Text size="body2" color="#fff">
-                      {views} Views
+                      {views}
                     </Text>
                   </Flex>
                 </Stack>
@@ -185,7 +196,7 @@ const SingleProject = () => {
                   <Flex gap="1rem">
                     <Box>{love}</Box>
                     <Text size="body2" color="#fff">
-                      {favourites} favorites
+                      {favourites}
                     </Text>
                   </Flex>
                 </Stack>
@@ -198,6 +209,15 @@ const SingleProject = () => {
                     </Text>
                   </Flex>
                 </Stack>
+                <Stack spacing="1.2rem" flex="1">
+                  <Text size="body2">Tiddix Score</Text>
+                  <Flex gap="1rem">
+                    <Box>{verify}</Box>
+                    <Text size="body2" color="#fff">
+                      - -
+                    </Text>
+                  </Flex>
+                </Stack>
               </Flex>
 
               {investmentType === 'Debt' && (
@@ -205,6 +225,12 @@ const SingleProject = () => {
                   id={projectId}
                   amount={amount}
                   interest={interest}
+                  investors={investors}
+                  progress={progress}
+                  loanGiven={loanGiven}
+                  moratoriumPeriod={moratoriumPeriod}
+                  projectDuration={projectDuration}
+                  repaymentFrequency={repaymentFrequency}
                 />
               )}
               {investmentType === 'Equity' && (
@@ -213,6 +239,9 @@ const SingleProject = () => {
                   amount={amount}
                   equityBought={equityBought}
                   progress={progress}
+                  moratoriumPeriod={moratoriumPeriod}
+                  projectDuration={projectDuration}
+                  investors={investors}
                 />
               )}
             </Box>

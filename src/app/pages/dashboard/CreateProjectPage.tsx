@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import Header from 'app/layout/Header';
 import { Footer } from 'app/layout/Footer';
-import InvestmentType from 'app/components/dashboard/create-project/InvestmentType';
+// import InvestmentType from 'app/components/dashboard/create-project/InvestmentType';
 import Success from 'app/components/dashboard/create-project/Success';
 import { IoCloudUploadSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';

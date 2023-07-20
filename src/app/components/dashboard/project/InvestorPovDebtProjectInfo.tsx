@@ -8,18 +8,59 @@ import {
   Text,
   HStack,
   Avatar,
+  useDisclosure,
+  Progress,
+  Icon,
+  Checkbox,
 } from '@chakra-ui/react';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from 'app/components/common/Toaster';
-import { thousandsSeparators } from 'app/utils/helpers';
+import { thousandsSeparators, capitalizeFirstLetter } from 'app/utils/helpers';
+import { CustomInput } from 'app/components/common/CustomInput';
+import { RiArrowLeftSLine } from 'react-icons/ri';
+import CustomModal from 'app/components/common/CustomModal';
 
-const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
+const InvestorPovDebtProjectInfo = ({
+  id,
+  amount: target,
+  interest,
+  progress,
+  investors,
+  loanGiven,
+  moratoriumPeriod,
+  projectDuration,
+  repaymentFrequency,
+}: any) => {
+  const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
   const [balanceConfirmed, setBalanceConfirmed] = useState(false);
+  const [acceptAgreement, setAcceptAgreement] = useState(false);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const apiPrivate = useApiPrivate();
 
+  const percentageOfTarget = (amount / target) * 100;
+
+  const amountDue = (interest / 100) * amount + amount;
+
+  const handleChange = (e: any) => {
+    const numWithoutComma = e.target.value.replace(/,|\£/gi, '');
+    if (
+      Number.isNaN(+numWithoutComma) ||
+      Number(numWithoutComma) > 1000000000
+    ) {
+      return;
+    }
+
+    setAmount(Number(numWithoutComma));
+  };
+
   const handleSubmit = () => {
+    if (!amount) {
+      chkToaster.error({ title: 'Please input a valid amount' });
+      return;
+    }
     setLoading(true);
 
     let url: string;
@@ -35,6 +76,7 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
       .then(({ data }) => {
         if (balanceConfirmed) {
           chkToaster.success({ title: 'Investment Successful' });
+          setAmount(0);
           setBalanceConfirmed(false);
         } else {
           if (data.status) {
@@ -51,8 +93,50 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
       });
   };
 
+  const goBack = () => {
+    setBalanceConfirmed(false);
+  };
+
+  const parseProjectDuration: any = {
+    oneMonth: '1 Month',
+    threeMonths: '3 Months',
+    sixMonths: '6 Months',
+    nineMonths: '9 Months',
+    twelveMonths: '12 Months',
+    aboveTwelveMonths: 'Above 12 Months',
+  };
+
+  const parseMoratoriumPeriod: any = {
+    none: 'None',
+    oneWeek: '1 Week',
+    twoWeeks: '2 Weeks',
+    threeWeeks: '3 Weeks',
+    fourWeeks: '4 Weeks',
+  };
+
   return (
     <Box>
+      <CustomModal isOpen={isOpen} onClose={onClose}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat.
+        <Button
+          variant="whitebg"
+          size="sm"
+          w="12rem"
+          mt="4rem"
+          onClick={() => {
+            setAcceptAgreement(true);
+            onClose();
+          }}
+        >
+          Agree
+        </Button>
+      </CustomModal>
       {balanceConfirmed ? (
         <Stack
           spacing="3rem"
@@ -62,10 +146,23 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
           mb="1.9rem"
           maxW="55rem"
         >
+          <Flex align="center">
+            <Icon
+              as={RiArrowLeftSLine}
+              fill="white"
+              fontSize="2.5rem"
+              color="#99A1AA"
+              cursor="pointer"
+              onClick={goBack}
+            />
+          </Flex>
+
           <Flex align="center" justify="space-between">
             <Box>
-              <Text size="body2"> Repayment Amount</Text>
-              <Heading fontSize="3.2rem">£20,000</Heading>
+              <Text size="body2">Amount Due</Text>
+              <Heading fontSize="3.2rem">
+                £{thousandsSeparators(amountDue)}
+              </Heading>
             </Box>
             <Box>
               <Text size="body2"> Moratorium period</Text>
@@ -80,56 +177,72 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
               <Box maxW="143px">
                 <Text size="body2">Interest</Text>
                 <Text size="body2" color="#fff">
-                  20%
+                  {interest}%
                 </Text>
               </Box>
               <Box>
-                <Text size="body2">Next repayment </Text>
+                <Text size="body2">Repayment Frequency</Text>
                 <Text size="body2" color="#fff">
-                  2 January 2023
+                  {capitalizeFirstLetter(repaymentFrequency)}
                 </Text>
               </Box>
             </Stack>
             <Stack spacing="3rem">
               <Box maxW="143px">
-                <Text size="body2">Period </Text>
+                <Text size="body2">Project Duration</Text>
                 <Text size="body2" color="#fff">
-                  5 Months
+                  {parseProjectDuration[projectDuration]}
                 </Text>
               </Box>
               <Box>
-                <Text size="body2">Next Due </Text>
+                <Text size="body2">ROI</Text>
                 <Text size="body2" color="#fff">
-                  £4000
+                  £{thousandsSeparators(amountDue - amount)}
                 </Text>
               </Box>
             </Stack>
             <Stack spacing="3rem">
               <Box maxW="143px">
-                <Text size="body2">Interest Payment </Text>
+                <Text size="body2">Moratorium Period</Text>
                 <Text size="body2" color="#fff">
-                  £2000
+                  {parseMoratoriumPeriod[moratoriumPeriod]}
                 </Text>
               </Box>
               <Box>
-                <Text size="body2">Due date </Text>
+                <Text size="body2">No of Investors</Text>
                 <Text size="body2" color="#fff">
-                  12 April 2023
+                  {investors.length}
                 </Text>
               </Box>
             </Stack>
           </Flex>
 
           <Box>
-            <Button bg="#485155" border="0px" size="lg" w="100%">
-              Proceed to Agreement
-            </Button>
+            <HStack spacing="1.2rem" p="1.2rem" cursor="pointer">
+              <Checkbox
+                isChecked={acceptAgreement}
+                size="lg"
+                colorScheme="pink"
+                onChange={(e: any) => setAcceptAgreement(e.target.checked)}
+              />
+              <Text size="body2" color="#fff">
+                I agree to the{' '}
+                <span
+                  style={{ fontWeight: 'bold', textDecoration: 'underline' }}
+                  onClick={onOpen}
+                >
+                  project agreement
+                </span>{' '}
+                as set out by the project creator.
+              </Text>
+            </HStack>
             <Button
               variant="multiradial"
               w="100%"
               fontSize="1.6rem"
               onClick={handleSubmit}
               isLoading={loading}
+              isDisabled={!acceptAgreement}
             >
               Complete Investment
             </Button>
@@ -144,13 +257,37 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
           mb="2rem"
           maxW="55rem"
         >
-          <Box>
-            <Text size="body2"> Loan Amount</Text>
-            <Heading fontSize="3.2rem">£{thousandsSeparators(amount)}</Heading>
-          </Box>
+          <Flex align="center" justify="space-between">
+            <Box>
+              <Text size="body2">Loan Amount</Text>
+              <Heading fontSize="3.2rem">
+                £{thousandsSeparators(target)}
+              </Heading>
+            </Box>
 
-          <Flex maxW="49rem" flexDir="column">
-            <Flex justify="space-between" pb="3rem">
+            <Box>
+              <Text size="body2" pb=".8rem">
+                Amount Raised
+              </Text>
+              <Text size="body2" pb=".8rem" color="white">
+                £{thousandsSeparators(loanGiven)} ({progress}%)
+              </Text>
+              <Progress
+                value={progress}
+                borderRadius="2rem"
+                background="blackShade.3"
+                sx={{
+                  '& > div': {
+                    background: 'gradientStyle.1',
+                  },
+                }}
+                flex="2"
+              />
+            </Box>
+          </Flex>
+
+          <Flex maxW="49rem" flexDir="column" gap="3rem">
+            <Flex justify="space-between">
               <Stack>
                 <Box maxW="143px">
                   <Text size="body2">Interest</Text>
@@ -159,23 +296,33 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
                   </Text>
                 </Box>
               </Stack>
-              <Stack>
+              {/* <Stack>
                 <Box maxW="143px">
                   <Text size="body2">Period </Text>
                   <Text size="body2" color="#fff">
                     5 Months
                   </Text>
                 </Box>
-              </Stack>
-              <Stack>
+              </Stack> */}
+              {/* <Stack>
                 <Box maxW="143px">
                   <Text size="body2">Interest Payment </Text>
                   <Text size="body2" color="#fff">
-                    £2000
+                    £20007
                   </Text>
                 </Box>
-              </Stack>
+              </Stack> */}
             </Flex>
+
+            <Box>
+              <CustomInput
+                placeholder="Enter Amount"
+                size="lg"
+                value={amount === 0 ? '' : `\£${thousandsSeparators(amount)}`}
+                onChange={handleChange}
+              />
+            </Box>
+
             <Flex gap={16} justify="space-between">
               <Button
                 variant="multiradial"
@@ -187,7 +334,7 @@ const InvestorPovDebtProjectInfo = ({ id, amount, interest }: any) => {
                 Make Investment
               </Button>
               <Button variant="primary" w="100%" fontSize="1.6rem">
-                Gift Creatives
+                Invest as Angel
               </Button>
             </Flex>
           </Flex>

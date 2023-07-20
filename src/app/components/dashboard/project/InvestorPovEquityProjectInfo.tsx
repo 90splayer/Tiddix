@@ -16,22 +16,36 @@ import {
   Tr,
   Th,
   Thead,
+  Icon,
+  Checkbox,
+  useDisclosure,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { CustomInput } from 'app/components/common/CustomInput';
 import { thousandsSeparators } from 'app/utils/helpers';
 import { chkToaster } from 'app/components/common/Toaster';
 import useApiPrivate from 'app/hooks/useApiPrivate';
+import { RiArrowLeftSLine } from 'react-icons/ri';
+import { round } from 'app/utils/helpers';
+import CustomModal from 'app/components/common/CustomModal';
 
 const InvestorPovEquityProjectInfo = ({
   id,
   amount: target,
   equityBought,
   progress,
+  moratoriumPeriod,
+  projectDuration,
+  investors,
 }: any) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
   const [balanceConfirmed, setBalanceConfirmed] = useState(false);
+  const [acceptAgreement, setAcceptAgreement] = useState(false);
+
+  const percentageOfTarget = (amount / target) * 100;
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const apiPrivate = useApiPrivate();
 
@@ -84,93 +98,161 @@ const InvestorPovEquityProjectInfo = ({
       });
   };
 
+  const goBack = () => {
+    setBalanceConfirmed(false);
+  };
+
+  const parseProjectDuration: any = {
+    oneMonth: '1 Month',
+    threeMonths: '3 Months',
+    sixMonths: '6 Months',
+    nineMonths: '9 Months',
+    twelveMonths: '12 Months',
+    aboveTwelveMonths: 'Above 12 Months',
+  };
+
+  const parseMoratoriumPeriod: any = {
+    none: 'None',
+    oneWeek: '1 Week',
+    twoWeeks: '2 Weeks',
+    threeWeeks: '3 Weeks',
+    fourWeeks: '4 Weeks',
+  };
+
   return (
     <Box>
-      {balanceConfirmed ? (
-        <Stack
-          spacing="3rem"
-          p="3rem"
-          bg="#232629"
-          borderRadius="20px"
-          mb="1.9rem"
-          maxW="55rem"
+      <CustomModal isOpen={isOpen} onClose={onClose}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat.
+        <Button
+          variant="whitebg"
+          size="sm"
+          w="12rem"
+          mt="4rem"
+          onClick={() => {
+            setAcceptAgreement(true);
+            onClose();
+          }}
         >
-          <Flex align="center" justify="space-between">
-            <Box>
-              <Text pb="8px" size="body2">
-                Equity bought
-              </Text>
-              <Heading fontSize="3.2rem">
-                £{thousandsSeparators(equityBought)}
-              </Heading>
-            </Box>
-            <Box>
-              <Text size="body2" pb="3rem">
-                {' '}
-                (£{thousandsSeparators(equityBought)}) {progress}%
-              </Text>
-              <Progress
-                value={progress}
-                borderRadius="2rem"
-                background="blackShade.3"
-                sx={{
-                  '& > div': {
-                    background: 'gradientStyle.1',
-                  },
-                }}
-                flex="2"
+          Agree
+        </Button>
+      </CustomModal>
+      {balanceConfirmed ? (
+        <>
+          <Stack
+            spacing="3rem"
+            p="3rem"
+            bg="#232629"
+            borderRadius="20px"
+            mb="1.9rem"
+            maxW="55rem"
+          >
+            <Flex align="center">
+              <Icon
+                as={RiArrowLeftSLine}
+                fill="white"
+                fontSize="2.5rem"
+                color="#99A1AA"
+                cursor="pointer"
+                onClick={goBack}
               />
+            </Flex>
+
+            <Flex align="center" justify="space-between">
+              <Box>
+                <Text pb=".8rem" size="body2">
+                  % Equity
+                </Text>
+                <Heading fontSize="3.2rem">
+                  {round(percentageOfTarget)}%
+                  {/* ( £{thousandsSeparators(amount)}) */}
+                </Heading>
+              </Box>
+              <Box>
+                <Text size="body2" pb=".8rem">
+                  Amount Raised
+                </Text>
+                <Text size="body2" pb=".8rem" color="white">
+                  £{thousandsSeparators(equityBought)} ({progress}%)
+                </Text>
+                <Progress
+                  value={progress}
+                  borderRadius="2rem"
+                  background="blackShade.3"
+                  sx={{
+                    '& > div': {
+                      background: 'gradientStyle.1',
+                    },
+                  }}
+                  flex="2"
+                />
+              </Box>
+            </Flex>
+
+            <Flex maxW="49rem" justify="space-between">
+              <Stack spacing="3rem">
+                <Box maxW="143px">
+                  <Text size="body2">Moratorium period</Text>
+                  <Text size="body2" color="#fff">
+                    {parseMoratoriumPeriod[moratoriumPeriod]}
+                  </Text>
+                </Box>
+              </Stack>
+              <Stack spacing="3rem">
+                <Box maxW="143px">
+                  <Text size="body2">Project Duration</Text>
+                  <Text size="body2" color="#fff">
+                    {parseProjectDuration[projectDuration]}
+                  </Text>
+                </Box>
+              </Stack>
+              <Stack spacing="3rem">
+                <Box maxW="143px">
+                  <Text size="body2">No of Investors</Text>
+                  <Text size="body2" color="#fff">
+                    {investors.length}
+                  </Text>
+                </Box>
+              </Stack>
+            </Flex>
+
+            <Box>
+              <HStack spacing="1.2rem" p="1.2rem" cursor="pointer">
+                <Checkbox
+                  isChecked={acceptAgreement}
+                  size="lg"
+                  colorScheme="pink"
+                  onChange={(e: any) => setAcceptAgreement(e.target.checked)}
+                />
+                <Text size="body2" color="#fff">
+                  I agree to the{' '}
+                  <span
+                    style={{ fontWeight: 'bold', textDecoration: 'underline' }}
+                    onClick={onOpen}
+                  >
+                    project agreement
+                  </span>{' '}
+                  as set out by the project creator.
+                </Text>
+              </HStack>
+              <Button
+                variant="multiradial"
+                w="100%"
+                fontSize="1.6rem"
+                onClick={handleSubmit}
+                isLoading={loading}
+                isDisabled={!acceptAgreement}
+              >
+                Complete Investment
+              </Button>
             </Box>
-          </Flex>
-
-          <Flex maxW="49rem" justify="space-between">
-            <Stack spacing="3rem">
-              <Box maxW="143px">
-                <Text size="body2">Moratorium period</Text>
-                <Text size="body2" color="#fff">
-                  2 Months
-                </Text>
-              </Box>
-            </Stack>
-            <Stack spacing="3rem">
-              <Box maxW="143px">
-                <Text size="body2">Period </Text>
-                <Text size="body2" color="#fff">
-                  5 Months
-                </Text>
-              </Box>
-            </Stack>
-            <Stack spacing="3rem">
-              <Box maxW="143px">
-                <Text size="body2">Value </Text>
-                <Text size="body2" color="#fff">
-                  1% = £1
-                </Text>
-              </Box>
-            </Stack>
-          </Flex>
-
-          <Box>
-            <Button
-              bg="#485155"
-              border="0px"
-              size="lg"
-              w="100%"
-              variant="primary"
-            >
-              View Agreement
-            </Button>
-            <Button
-              variant="multiradial"
-              w="100%"
-              fontSize="1.6rem"
-              onClick={handleSubmit}
-              isLoading={loading}
-            >
-              Complete Investment
-            </Button>
-          </Box>
-        </Stack>
+          </Stack>
+        </>
       ) : (
         <Stack
           spacing="3rem"
@@ -190,9 +272,11 @@ const InvestorPovEquityProjectInfo = ({
               </Heading>
             </Box>
             <Box>
-              <Text size="body2" pb="3rem">
-                {' '}
-                (£{thousandsSeparators(equityBought)}) {progress}%
+              <Text size="body2" pb=".8rem">
+                Amount Raised
+              </Text>
+              <Text size="body2" pb=".8rem" color="white">
+                £{thousandsSeparators(equityBought)} ({progress}%)
               </Text>
               <Progress
                 value={progress}
@@ -225,10 +309,10 @@ const InvestorPovEquityProjectInfo = ({
               onClick={handleSubmit}
               isLoading={loading}
             >
-              Make Investment
+              Initiate Investment
             </Button>
             <Button variant="primary" w="100%" fontSize="1.6rem">
-              Gift Creatives
+              Invest as Angel
             </Button>
           </Flex>
         </Stack>
