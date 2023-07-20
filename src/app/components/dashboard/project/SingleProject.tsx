@@ -210,7 +210,9 @@ const SingleProject = () => {
                   </Flex>
                 </Stack>
                 <Stack spacing="1.2rem" flex="1">
-                  <Text size="body2">Tiddix Score</Text>
+                  <Text size="body2" whiteSpace="nowrap">
+                    Tiddix Score
+                  </Text>
                   <Flex gap="1rem">
                     <Box>{verify}</Box>
                     <Text size="body2" color="#fff">
