@@ -36,6 +36,7 @@ const InvestorPovEquityProjectInfo = ({
   progress,
   moratoriumPeriod,
   projectDuration,
+  investors,
 }: any) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
@@ -99,6 +100,23 @@ const InvestorPovEquityProjectInfo = ({
 
   const goBack = () => {
     setBalanceConfirmed(false);
+  };
+
+  const parseProjectDuration: any = {
+    oneMonth: '1 Month',
+    threeMonths: '3 Months',
+    sixMonths: '6 Months',
+    nineMonths: '9 Months',
+    twelveMonths: '12 Months',
+    aboveTwelveMonths: 'Above 12 Months',
+  };
+
+  const parseMoratoriumPeriod: any = {
+    none: 'None',
+    oneWeek: '1 Week',
+    twoWeeks: '2 Weeks',
+    threeWeeks: '3 Weeks',
+    fourWeeks: '4 Weeks',
   };
 
   return (
@@ -181,15 +199,15 @@ const InvestorPovEquityProjectInfo = ({
                 <Box maxW="143px">
                   <Text size="body2">Moratorium period</Text>
                   <Text size="body2" color="#fff">
-                    {moratoriumPeriod}
+                    {parseMoratoriumPeriod[moratoriumPeriod]}
                   </Text>
                 </Box>
               </Stack>
               <Stack spacing="3rem">
                 <Box maxW="143px">
-                  <Text size="body2">Project Period</Text>
+                  <Text size="body2">Project Duration</Text>
                   <Text size="body2" color="#fff">
-                    {projectDuration}
+                    {parseProjectDuration[projectDuration]}
                   </Text>
                 </Box>
               </Stack>
@@ -197,7 +215,7 @@ const InvestorPovEquityProjectInfo = ({
                 <Box maxW="143px">
                   <Text size="body2">No of Investors</Text>
                   <Text size="body2" color="#fff">
-                    5 (?)
+                    {investors.length}
                   </Text>
                 </Box>
               </Stack>
@@ -254,8 +272,11 @@ const InvestorPovEquityProjectInfo = ({
               </Heading>
             </Box>
             <Box>
-              <Text size="body2" pb="3rem">
-                £{thousandsSeparators(equityBought)} raised ({progress}%)
+              <Text size="body2" pb=".8rem">
+                Amount Raised
+              </Text>
+              <Text size="body2" pb=".8rem" color="white">
+                £{thousandsSeparators(equityBought)} ({progress}%)
               </Text>
               <Progress
                 value={progress}
@@ -291,7 +312,7 @@ const InvestorPovEquityProjectInfo = ({
               Initiate Investment
             </Button>
             <Button variant="primary" w="100%" fontSize="1.6rem">
-              Gift Creatives
+              Invest as Angel
             </Button>
           </Flex>
         </Stack>

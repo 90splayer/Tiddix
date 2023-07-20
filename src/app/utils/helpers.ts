@@ -52,3 +52,6 @@ export const round = (value: number, precision?: number) => {
   const multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
 };
+
+export const capitalizeFirstLetter = (word: string) =>
+  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();

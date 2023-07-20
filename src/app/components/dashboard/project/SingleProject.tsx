@@ -54,6 +54,9 @@ export type projectT = {
   progress: number;
   projectDuration: string;
   moratoriumPeriod: string;
+  investors: any;
+  loanGiven: number;
+  repaymentFrequency: string;
 };
 
 const SingleProject = () => {
@@ -100,6 +103,9 @@ const SingleProject = () => {
     views,
     equityBought,
     progress,
+    investors,
+    loanGiven,
+    repaymentFrequency,
   } = project;
 
   return (
@@ -219,6 +225,12 @@ const SingleProject = () => {
                   id={projectId}
                   amount={amount}
                   interest={interest}
+                  investors={investors}
+                  progress={progress}
+                  loanGiven={loanGiven}
+                  moratoriumPeriod={moratoriumPeriod}
+                  projectDuration={projectDuration}
+                  repaymentFrequency={repaymentFrequency}
                 />
               )}
               {investmentType === 'Equity' && (
@@ -229,6 +241,7 @@ const SingleProject = () => {
                   progress={progress}
                   moratoriumPeriod={moratoriumPeriod}
                   projectDuration={projectDuration}
+                  investors={investors}
                 />
               )}
             </Box>
