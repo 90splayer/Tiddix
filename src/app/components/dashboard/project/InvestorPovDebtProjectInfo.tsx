@@ -19,6 +19,7 @@ import { thousandsSeparators, capitalizeFirstLetter } from 'app/utils/helpers';
 import { CustomInput } from 'app/components/common/CustomInput';
 import { RiArrowLeftSLine } from 'react-icons/ri';
 import CustomModal from 'app/components/common/CustomModal';
+import { round } from 'app/utils/helpers';
 
 const InvestorPovDebtProjectInfo = ({
   id,
@@ -167,7 +168,7 @@ const InvestorPovDebtProjectInfo = ({
             <Box>
               <Text size="body2"> Moratorium period</Text>
               <Heading textAlign="right" fontSize="1.6rem">
-                2 Months
+                {parseMoratoriumPeriod[moratoriumPeriod]}
               </Heading>
             </Box>
           </Flex>
@@ -197,17 +198,11 @@ const InvestorPovDebtProjectInfo = ({
               <Box>
                 <Text size="body2">ROI</Text>
                 <Text size="body2" color="#fff">
-                  £{thousandsSeparators(amountDue - amount)}
+                  £{thousandsSeparators(round(amountDue - amount))}
                 </Text>
               </Box>
             </Stack>
             <Stack spacing="3rem">
-              <Box maxW="143px">
-                <Text size="body2">Moratorium Period</Text>
-                <Text size="body2" color="#fff">
-                  {parseMoratoriumPeriod[moratoriumPeriod]}
-                </Text>
-              </Box>
               <Box>
                 <Text size="body2">No of Investors</Text>
                 <Text size="body2" color="#fff">
