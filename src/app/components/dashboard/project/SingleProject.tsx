@@ -57,6 +57,7 @@ export type projectT = {
   investors: any;
   loanGiven: number;
   repaymentFrequency: string;
+  tiddixScore: number;
 };
 
 const SingleProject = () => {
@@ -106,6 +107,7 @@ const SingleProject = () => {
     investors,
     loanGiven,
     repaymentFrequency,
+    tiddixScore,
   } = project;
 
   return (
@@ -216,7 +218,7 @@ const SingleProject = () => {
                   <Flex gap="1rem">
                     <Box>{verify}</Box>
                     <Text size="body2" color="#fff">
-                      - -
+                      {tiddixScore}/100
                     </Text>
                   </Flex>
                 </Stack>
