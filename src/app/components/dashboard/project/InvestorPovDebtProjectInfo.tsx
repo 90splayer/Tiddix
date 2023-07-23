@@ -12,6 +12,7 @@ import {
   Progress,
   Icon,
   Checkbox,
+  SimpleGrid,
 } from '@chakra-ui/react';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from 'app/components/common/Toaster';
@@ -36,6 +37,7 @@ const InvestorPovDebtProjectInfo = ({
   const [loading, setLoading] = useState(false);
   const [balanceConfirmed, setBalanceConfirmed] = useState(false);
   const [acceptAgreement, setAcceptAgreement] = useState(false);
+  const [angelInvestorMode, setAngelInvestorMode] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -96,6 +98,7 @@ const InvestorPovDebtProjectInfo = ({
 
   const goBack = () => {
     setBalanceConfirmed(false);
+    setAngelInvestorMode(false);
   };
 
   const parseProjectDuration: any = {
@@ -118,13 +121,32 @@ const InvestorPovDebtProjectInfo = ({
   return (
     <Box>
       <CustomModal isOpen={isOpen} onClose={onClose}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat.
+        {angelInvestorMode ? (
+          <div>
+            Project terms and condition for angel investors..Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </div>
+        ) : (
+          <div>
+            Project terms and condition for regular investors..Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </div>
+        )}
+
         <Button
           variant="whitebg"
           size="sm"
@@ -165,52 +187,78 @@ const InvestorPovDebtProjectInfo = ({
                 £{thousandsSeparators(amountDue)}
               </Heading>
             </Box>
+          </Flex>
+
+          <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={8}>
+            {!angelInvestorMode && (
+              <>
+                <Box maxW="143px">
+                  <Text size="body2">Interest</Text>
+                  <Text size="body2" color="#fff">
+                    {interest}%
+                  </Text>
+                </Box>
+
+                <Box>
+                  <Text size="body2">ROI</Text>
+                  <Text size="body2" color="#fff">
+                    £{thousandsSeparators(round(amountDue - amount))}
+                  </Text>
+                </Box>
+
+                <Box>
+                  <Text size="body2">Repayment Frequency</Text>
+                  <Text size="body2" color="#fff">
+                    {capitalizeFirstLetter(repaymentFrequency)}
+                  </Text>
+                </Box>
+
+                <Box>
+                  <Text size="body2"> Moratorium period</Text>
+                  <Heading fontSize="1.6rem">
+                    {parseMoratoriumPeriod[moratoriumPeriod]}
+                  </Heading>
+                </Box>
+              </>
+            )}
+
+            <Box maxW="143px">
+              <Text size="body2">Project Duration</Text>
+              <Text size="body2" color="#fff">
+                {parseProjectDuration[projectDuration]}
+              </Text>
+            </Box>
+
+            <Box>
+              <Text size="body2">No of Investors</Text>
+              <Text size="body2" color="#fff">
+                {investors.length}
+              </Text>
+            </Box>
+          </SimpleGrid>
+
+          {/* <Flex maxW="49rem" justify="space-between">
             <Box>
               <Text size="body2"> Moratorium period</Text>
-              <Heading textAlign="right" fontSize="1.6rem">
+              <Heading fontSize="1.6rem">
                 {parseMoratoriumPeriod[moratoriumPeriod]}
               </Heading>
             </Box>
-          </Flex>
 
-          <Flex maxW="49rem" justify="space-between">
-            <Stack spacing="3rem">
-              <Box maxW="143px">
-                <Text size="body2">Interest</Text>
-                <Text size="body2" color="#fff">
-                  {interest}%
-                </Text>
-              </Box>
-              <Box>
-                <Text size="body2">Repayment Frequency</Text>
-                <Text size="body2" color="#fff">
-                  {capitalizeFirstLetter(repaymentFrequency)}
-                </Text>
-              </Box>
-            </Stack>
-            <Stack spacing="3rem">
-              <Box maxW="143px">
-                <Text size="body2">Project Duration</Text>
-                <Text size="body2" color="#fff">
-                  {parseProjectDuration[projectDuration]}
-                </Text>
-              </Box>
-              <Box>
-                <Text size="body2">ROI</Text>
-                <Text size="body2" color="#fff">
-                  £{thousandsSeparators(round(amountDue - amount))}
-                </Text>
-              </Box>
-            </Stack>
-            <Stack spacing="3rem">
-              <Box>
-                <Text size="body2">No of Investors</Text>
-                <Text size="body2" color="#fff">
-                  {investors.length}
-                </Text>
-              </Box>
-            </Stack>
-          </Flex>
+            <Box maxW="143px">
+              <Text size="body2">Project Duration</Text>
+              <Text size="body2" color="#fff">
+                {parseProjectDuration[projectDuration]}
+              </Text>
+            </Box>
+
+            <Box>
+              <Text size="body2">No of Investors</Text>
+              <Text size="body2" color="#fff">
+                {investors.length}
+              </Text>
+            </Box>
+          </Flex> */}
 
           <Box>
             <HStack spacing="1.2rem" p="1.2rem" cursor="pointer">
@@ -324,11 +372,20 @@ const InvestorPovDebtProjectInfo = ({
                 w="100%"
                 fontSize="1.6rem"
                 onClick={handleSubmit}
-                isLoading={loading}
+                isLoading={loading && !angelInvestorMode}
               >
-                Make Investment
+                Initiate Investment
               </Button>
-              <Button variant="primary" w="100%" fontSize="1.6rem">
+              <Button
+                variant="primary"
+                w="100%"
+                fontSize="1.6rem"
+                onClick={() => {
+                  setAngelInvestorMode(true);
+                  handleSubmit();
+                }}
+                isLoading={loading && angelInvestorMode}
+              >
                 Invest as Angel
               </Button>
             </Flex>
