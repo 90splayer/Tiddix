@@ -7,6 +7,7 @@ import ScrollTrigger from 'react-scroll-trigger';
 import { FaMedal } from 'react-icons/fa';
 import { MdOutlineManageHistory } from 'react-icons/md';
 import { GiTakeMyMoney, GiTeamIdea } from 'react-icons/gi';
+import { Fade } from 'react-reveal';
 
 const Impact: FC = () => {
   const [counterOn, setCounterOn] = useState(false);
@@ -29,9 +30,12 @@ const Impact: FC = () => {
           m="0 auto"
           px={{ base: '3rem', md: '7rem', lg: '18.6rem' }}
         >
-          <Heading as="h2" mb="4.7rem" textAlign="center" size="display1sub">
-            Our Impact
-          </Heading>
+          <Fade duration={3500}>
+            <Heading as="h2" mb="4.7rem" textAlign="center" size="display1sub">
+              Our Impact
+            </Heading>
+          </Fade>
+
           <Flex align="center" justify="space-between" flexWrap="wrap">
             <VStack>
               <Box mb="3rem">

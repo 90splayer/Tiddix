@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 // import { projectData } from '../data/ProjectData';
 import api from 'app/api/tiddix';
 import { chkToaster } from '../common/Toaster';
+import { Fade } from 'react-reveal';
 
 const TrendingProject = () => {
   var settings = {
@@ -62,12 +63,17 @@ const TrendingProject = () => {
 
   return (
     <Container maxW="144rem" p="7.5rem 3rem">
-      <Heading as="h2" size="display1sub" textAlign="center" pb="2rem">
-        Trending Projects
-      </Heading>
-      <Text textAlign="center" pb="11rem">
-        Check out our weekly updated trending projects
-      </Text>
+      <Fade duration={3500}>
+        <Heading as="h2" size="display1sub" textAlign="center" pb="2rem">
+          Trending Projects
+        </Heading>
+      </Fade>
+
+      <Fade>
+        <Text textAlign="center" pb="11rem">
+          Check out our weekly updated trending projects
+        </Text>
+      </Fade>
 
       <Box>
         <Slider {...settings}>

@@ -3,13 +3,17 @@ import { Container, Flex, Heading } from '@chakra-ui/react';
 import { plus, setUp, funds } from '../../assets/svgs/home';
 import HowItWorkCard from './HitwCard';
 import { Link } from 'react-router-dom';
+import { Fade } from 'react-reveal';
 
 const HowItWork = () => {
   return (
     <Container maxW="144rem" p="7.5rem 7.2rem">
-      <Heading as="h2" size="display1sub" textAlign="center" mb="10rem">
-        How it works
-      </Heading>
+      <Fade duration={3500}>
+        <Heading as="h2" size="display1sub" textAlign="center" mb="10rem">
+          How it works
+        </Heading>
+      </Fade>
+
       <Flex
         justify="center"
         flexWrap={{ base: 'wrap', lg: 'nowrap' }}
