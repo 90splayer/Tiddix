@@ -195,9 +195,9 @@ const WalletView: FC = () => {
                 >
                   Transaction type
                 </Th>
-                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                {/* <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
                   Description
-                </Th>
+                </Th> */}
                 <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
                   Reference
                 </Th>
@@ -234,13 +234,13 @@ const WalletView: FC = () => {
                     >
                       {transaction.type}
                     </Td>
-                    <Td
+                    {/* <Td
                       color="#fff"
                       textTransform="capitalize"
                       fontSize="1.6rem"
                     >
                       {transaction.description}
-                    </Td>
+                    </Td> */}
                     <Td
                       color="#fff"
                       textTransform="capitalize"

@@ -10,6 +10,7 @@ import {
 import React, { FC } from 'react';
 import TeamsCard from './TeamsCard';
 import { TeamsData } from 'app/components/data/about/TeamsData';
+import { Fade } from 'react-reveal';
 
 const Teams: FC = () => {
   return (
@@ -25,16 +26,17 @@ const Teams: FC = () => {
           >
             TEAM
           </Text>
-
-          <Heading
-            size="display4"
-            maxW="64.9rem"
-            textAlign="center"
-            color="#fff"
-            letterSpacing="1px"
-          >
-            Meet the team of professionals that ensure the magic happens
-          </Heading>
+          <Fade duration="3500">
+            <Heading
+              size="display4"
+              maxW="64.9rem"
+              textAlign="center"
+              color="#fff"
+              letterSpacing="1px"
+            >
+              Meet the team of professionals that ensure the magic happens
+            </Heading>
+          </Fade>
         </VStack>
         <Grid templateColumns="repeat(4, 1fr)" pb="3.6rem" gap="3rem">
           {TeamsData.map((item) => (

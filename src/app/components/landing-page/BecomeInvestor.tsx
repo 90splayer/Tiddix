@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import graphImg from '../../assets/images/home/graph.png';
 import { Link } from 'react-router-dom';
+import { Fade } from 'react-reveal';
 
 const BecomeInvestor: FC = () => {
   return (
@@ -25,22 +26,21 @@ const BecomeInvestor: FC = () => {
             spacing="46px"
             w={{ base: '100%', md: '50%' }}
             mb={{ base: '5rem', md: 0 }}
+            letterSpacing="1px"
           >
-            <Heading
-              as="h2"
-              // color="#fff"
-              maxW="35.4rem"
-              size="display1sub"
-              // lineHeight="54px"
-              // fontWeight={700}
-              // fontSize={{ base: '3.6rem', md: '4.8rem' }}
-            >
-              Become an investor
-            </Heading>
-            <Text size="body1" maxW="395px">
-              Be the catalyst and spark to ignite the flame in the journey of a
-              creative. You just might be funding the next big thing!
-            </Text>
+            <Fade duration={3500}>
+              <Heading as="h2" maxW="35.4rem" size="display1sub">
+                Become an investor
+              </Heading>
+            </Fade>
+
+            <Fade>
+              <Text size="body1" maxW="475px">
+                Be the catalyst and spark to ignite the flame in the journey of
+                a creative. You just might be funding the next big thing!
+              </Text>
+            </Fade>
+
             <Flex gap="24px">
               <Link to="/dashboard">
                 <Button

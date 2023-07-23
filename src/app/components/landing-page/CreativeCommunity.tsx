@@ -4,20 +4,23 @@ import Marquee from 'react-fast-marquee';
 import React, { FC } from 'react';
 import MarqueBtn from './MarqueBtn';
 import { CategoryData } from '../data/Category';
+import { Zoom, Fade } from 'react-reveal';
 
 const CreativeCommunity: FC = () => {
   return (
     <Box p="8.3rem 0 7.5rem">
       <Flex flexDir="column" align="center">
-        <Heading
-          as="h2"
-          size="display1sub"
-          maxW="50.8rem"
-          textAlign="center"
-          mb="10rem"
-        >
-          Our growing creative community
-        </Heading>
+        <Fade duration={3500}>
+          <Heading
+            as="h2"
+            size="display1sub"
+            maxW="50.8rem"
+            textAlign="center"
+            mb="10rem"
+          >
+            Our growing creative community
+          </Heading>
+        </Fade>
 
         {/* <Stack spacing="30px">
           <Marquee speed={15} direction="left">

@@ -12,6 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import heroImg from '../../assets/images/home/heroImg.png';
 import useAuth from 'app/hooks/useAuth';
+import { Zoom, Fade } from 'react-reveal';
 
 const Intro: FC = () => {
   const authContext = useAuth();
@@ -36,41 +37,47 @@ const Intro: FC = () => {
             zIndex={3}
             mb={{ base: '5rem', md: 0 }}
           >
-            <Heading
-              size="display1"
-              mb={{ base: '3rem', md: '5rem' }}
-              maxW="52.6rem"
-              lineHeight="8rem"
-            >
-              Funding for
-              <br />
+            <Fade duration={3500}>
               <Heading
-                as="span"
-                bgGradient="linear(to-tr, #448FFF,#FF8CDF)"
-                bgClip="text"
                 size="display1"
+                mb={{ base: '3rem', md: '5rem' }}
+                maxW="52.6rem"
+                lineHeight="8rem"
               >
-                Creativity{' '}
-                <Heading as="span" size="display1">
-                  {' '}
-                  and
-                </Heading>
-              </Heading>{' '}
-               {''}
-              <Heading
-                as="span"
-                bgGradient="linear(to-tr, #448FFF,#FF8CDF)"
-                bgClip="text"
-                size="display1"
-              >
-                Talent
-              </Heading>{' '}
-            </Heading>
-            <Text size="body1" maxW="550px" pb={{ base: '38px', md: '76px' }}>
-              We provide a hassle-free digital platform that serves as a
-              launchpad for dreams, creativity and talent! Join us today and
-              show the world who you really are
-            </Text>
+                Funding for
+                <br />
+                <Heading
+                  as="span"
+                  bgGradient="linear(to-tr, #448FFF,#FF8CDF)"
+                  bgClip="text"
+                  size="display1"
+                >
+                  Creativity{' '}
+                  <Heading as="span" size="display1">
+                    {' '}
+                    and
+                  </Heading>
+                </Heading>{' '}
+                 {''}
+                <Heading
+                  as="span"
+                  bgGradient="linear(to-tr, #448FFF,#FF8CDF)"
+                  bgClip="text"
+                  size="display1"
+                >
+                  Talent
+                </Heading>{' '}
+              </Heading>
+            </Fade>
+
+            <Fade duration={4500}>
+              <Text size="body1" maxW="550px" pb={{ base: '38px', md: '76px' }}>
+                We provide a hassle-free digital platform that serves as a
+                launchpad for dreams, creativity and talent! Join us today and
+                show the world who you really are
+              </Text>
+            </Fade>
+
             <Flex gap="24px">
               <Link to="/signup">
                 <Button variant="multicolor" size="lg">
@@ -84,7 +91,9 @@ const Intro: FC = () => {
           </Stack>
 
           <Box zIndex={2}>
-            <Image src={heroImg} alt="hero image" />
+            <Zoom>
+              <Image src={heroImg} alt="hero image" />
+            </Zoom>
           </Box>
 
           <Box

@@ -42,10 +42,16 @@ const InvestorPovEquityProjectInfo = ({
   const [loading, setLoading] = useState(false);
   const [balanceConfirmed, setBalanceConfirmed] = useState(false);
   const [acceptAgreement, setAcceptAgreement] = useState(false);
+  const [angelInvestorMode, setAngelInvestorMode] = useState(false);
 
   const percentageOfTarget = (amount / target) * 100;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isOpenAngelAgreement,
+    onOpen: onOpenAngelAgreement,
+    onClose: onCloseAngelAgreement,
+  } = useDisclosure();
 
   const apiPrivate = useApiPrivate();
 
@@ -100,6 +106,7 @@ const InvestorPovEquityProjectInfo = ({
 
   const goBack = () => {
     setBalanceConfirmed(false);
+    setAngelInvestorMode(false);
   };
 
   const parseProjectDuration: any = {
@@ -122,13 +129,32 @@ const InvestorPovEquityProjectInfo = ({
   return (
     <Box>
       <CustomModal isOpen={isOpen} onClose={onClose}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat.
+        {angelInvestorMode ? (
+          <div>
+            Project terms and condition for angel investors..Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </div>
+        ) : (
+          <div>
+            Project terms and condition for regular investors..Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </div>
+        )}
+
         <Button
           variant="whitebg"
           size="sm"
@@ -142,6 +168,7 @@ const InvestorPovEquityProjectInfo = ({
           Agree
         </Button>
       </CustomModal>
+
       {balanceConfirmed ? (
         <>
           <Stack
@@ -164,15 +191,17 @@ const InvestorPovEquityProjectInfo = ({
             </Flex>
 
             <Flex align="center" justify="space-between">
-              <Box>
-                <Text pb=".8rem" size="body2">
-                  % Equity
-                </Text>
-                <Heading fontSize="3.2rem">
-                  {round(percentageOfTarget)}%
-                  {/* ( £{thousandsSeparators(amount)}) */}
-                </Heading>
-              </Box>
+              {!angelInvestorMode && (
+                <Box>
+                  <Text pb=".8rem" size="body2">
+                    % Equity
+                  </Text>
+                  <Heading fontSize="3.2rem">
+                    {round(percentageOfTarget)}%
+                    {/* ( £{thousandsSeparators(amount)}) */}
+                  </Heading>
+                </Box>
+              )}
               <Box>
                 <Text size="body2" pb=".8rem">
                   Amount Raised
@@ -307,11 +336,20 @@ const InvestorPovEquityProjectInfo = ({
               w="100%"
               fontSize="1.6rem"
               onClick={handleSubmit}
-              isLoading={loading}
+              isLoading={loading && !angelInvestorMode}
             >
               Initiate Investment
             </Button>
-            <Button variant="primary" w="100%" fontSize="1.6rem">
+            <Button
+              variant="primary"
+              w="100%"
+              fontSize="1.6rem"
+              onClick={() => {
+                setAngelInvestorMode(true);
+                handleSubmit();
+              }}
+              isLoading={loading && angelInvestorMode}
+            >
               Invest as Angel
             </Button>
           </Flex>

@@ -11,27 +11,28 @@ import React, { FC } from 'react';
 import AudienceCard from './AudienceCard';
 import AudienceImg from '../../assets/images/about/audience.png';
 import InvestorImg from '../../assets/images/about/investor-icons.png';
+import { Fade } from 'react-reveal';
 
 const Audiences: FC = () => {
   return (
     <Box>
       <Container maxW="144rem" p="10.8rem 18.2rem 18.8rem ">
         <VStack>
-          <Heading size="display2" textAlign="center" pb="5.1rem">
-            Our Audience
-          </Heading>
+          <Fade duration={3500}>
+            <Heading size="display2" textAlign="center" pb="5.1rem">
+              Our Audience
+            </Heading>
+          </Fade>
 
-          <Text
-            size="body1"
-            textAlign="center"
-            color="#99A1AA"
-            pb="13.9rem"
-            maxW="72.9rem"
-          >
-            We invite investors to the creative space where creator metrics
-            (views, engagements, followers, rankings etc) can be used to
-            properly determine a creator’s value and prospects for investments.
-          </Text>
+          <Fade duration={3500}>
+            <Text size="body1" textAlign="center" pb="13.9rem" maxW="72.9rem">
+              We invite investors to the creative space where creator metrics
+              (views, engagements, followers, rankings etc) can be used to
+              properly determine a creator’s value and prospects for
+              investments.
+            </Text>
+          </Fade>
+
           <Flex justify="cente" gap="3.1rem">
             <AudienceCard
               title={'Creator'}
