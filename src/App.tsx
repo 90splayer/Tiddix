@@ -24,6 +24,7 @@ import Wallet from 'app/pages/dashboard/Wallet';
 import GoogleAuth from 'app/pages/oauth/GoogleAuth';
 import FacebookAuth from 'app/pages/oauth/FacebookAuth';
 import UserProfile from 'app/pages/UserProfile';
+import EmailConfirmationPage from 'app/pages/EmailConfirmationPage';
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/google/oauthcallback" element={<GoogleAuth />} />
           <Route path="/facebook/oauthcallback" element={<FacebookAuth />} />
+          <Route
+            path="/email-confirmation/:token"
+            element={<EmailConfirmationPage />}
+          />
           <Route path="/test" element={<Test />} />
 
           {/* {CATCH ALL ROUTE} */}
