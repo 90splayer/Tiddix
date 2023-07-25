@@ -98,9 +98,7 @@ const CorporateProfile = () => {
             </Fade>
 
             <Fade duration={3500}>
-              <Text mb="5rem" fontWeight="700" size="body1" color="#fff">
-                Come Join Us
-              </Text>
+              <Heading as="h2">Come Join Us</Heading>
             </Fade>
 
             <Fade>
@@ -114,8 +112,8 @@ const CorporateProfile = () => {
                 magic from the comfort of their homes.
                 <br />
                 <br />
-                What are you waiting for? Come join the movement! See you at the
-                top, with all the other great creators.
+                What are you waiting for you? Come join the movement! See you at
+                the top, with all the other great creators.
               </Text>
             </Fade>
 
