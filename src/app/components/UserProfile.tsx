@@ -114,12 +114,23 @@ const UserProfile: FC = () => {
               </HStack>
             </Stack>
 
-            <Flex align="center" gap={50}>
-              <Stack align="center">
+            <Flex align="center" gap={10}>
+              <Button size="xs" w="12rem" p="2rem" fontSize="1.6rem">
                 <Icon as={FaHeart} fontSize="1.6rem" color="red" />
-                <Text size="body2">Like</Text>
-              </Stack>
-              <Button variant="multicolor" size="xs" p="2rem" fontSize="1.6rem">
+                <Text size="body2" fontWeight="600" ml={5}>
+                  Like
+                </Text>
+                <Text size="body2" fontWeight="600" ml={2}>
+                  4
+                </Text>
+              </Button>
+              <Button
+                variant="multicolor"
+                size="xs"
+                p="2rem"
+                w="12rem"
+                fontSize="1.6rem"
+              >
                 Report user
               </Button>
             </Flex>
