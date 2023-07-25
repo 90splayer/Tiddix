@@ -16,12 +16,14 @@ import { IoShareSocialSharp } from 'react-icons/io5';
 import { MdEdit } from 'react-icons/md';
 import React from 'react';
 import { projectT } from './SingleProject';
+import { Link } from 'react-router-dom';
 
 const SingleProjHeader = ({
   projectName,
   category,
   creativeName,
   creativePicture,
+  id,
 }: any) => {
   console.log('INFO', category);
 
@@ -32,14 +34,16 @@ const SingleProjHeader = ({
           <Heading size="display2">{projectName}</Heading>
           <Text fontSize="14px">{category}</Text>
         </HStack>
-        <HStack spacing="10px">
-          <Avatar boxSize="25px" name={creativeName} src={creativePicture} />
-          <HStack>
-            <Text color="#fff">{creativeName}</Text>
-            {''}
-            <Box>{verify}</Box>
+        <Link to={`/user-profile/${id}`}>
+          <HStack spacing="10px">
+            <Avatar boxSize="25px" name={creativeName} src={creativePicture} />
+            <HStack>
+              <Text color="#fff">{creativeName}</Text>
+              {''}
+              <Box>{verify}</Box>
+            </HStack>
           </HStack>
-        </HStack>
+        </Link>
       </Stack>
       <HStack spacing="15px">
         <Box>
