@@ -12,7 +12,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { verify } from 'app/assets/svgs/home';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { LinkIcon } from '@chakra-ui/icons';
 
 import { PaletteIcon, TestimonialIcon } from 'app/assets/icons';
@@ -33,7 +33,10 @@ const UserProfile: FC = () => {
   const bio = authContext?.auth?.bio;
   const profilePicture = authContext?.auth?.profilePicture;
   const walletBalance = authContext?.auth?.walletBalance;
+  const [like, setLike] = useState(false);
 
+  const likeHandler = () => setLike(!like);
+  const likeValue = 4;
   return (
     <Box>
       <Container
@@ -114,12 +117,27 @@ const UserProfile: FC = () => {
               </HStack>
             </Stack>
 
-            <Flex align="center" gap={50}>
-              <Stack align="center">
-                <Icon as={FaHeart} fontSize="1.6rem" color="red" />
-                <Text size="body2">Like</Text>
-              </Stack>
-              <Button variant="multicolor" size="xs" p="2rem" fontSize="1.6rem">
+            <Flex align="center" gap={10}>
+              <Button size="xs" w="12rem" p="2rem" onClick={likeHandler}>
+                <Icon
+                  as={FaHeart}
+                  fontSize="1.5rem"
+                  color={like ? 'red' : 'gray'}
+                />
+                <Text fontSize="1.5rem" fontWeight="600" ml={5}>
+                  {like ? 'Dislike' : 'Like'}
+                </Text>
+                <Text fontSize="1.5rem" fontWeight="600" ml={2}>
+                  {like ? likeValue + 1 : likeValue}
+                </Text>
+              </Button>
+              <Button
+                variant="multicolor"
+                size="xs"
+                p="2rem"
+                w="12rem"
+                fontSize="1.5rem"
+              >
                 Report user
               </Button>
             </Flex>
