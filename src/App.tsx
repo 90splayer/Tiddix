@@ -23,6 +23,7 @@ import Contact from 'app/pages/Contact';
 import Wallet from 'app/pages/dashboard/Wallet';
 import GoogleAuth from 'app/pages/oauth/GoogleAuth';
 import FacebookAuth from 'app/pages/oauth/FacebookAuth';
+import UserProfile from 'app/pages/UserProfile';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/code-of-conduct" element={<CodeOfConduct />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/projects/:id" element={<SingleProjectPage />} />
+          <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/investors" element={<Investor />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />

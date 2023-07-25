@@ -14,7 +14,7 @@ import React, { useState } from 'react';
 const TestimonialView = () => {
   //   const { rating, setRating } = useState(null);
   return (
-    <Box pt="4.8rem" px="7.2rem" w="full">
+    <Box pt="4.8rem" px="3.5rem" w="full">
       <Heading fontSize="2rem" mb="2.2rem">
         Ratings & review
       </Heading>
@@ -68,7 +68,7 @@ const TestimonialView = () => {
             </HStack>
           </Stack>
         </Flex>
-        <Text size="body2">
+        <Text size="body2" maxW="73.5rem">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet
           risus nullam eget felis eget nunc lobortis mattis. Magna eget est
