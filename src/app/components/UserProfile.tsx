@@ -148,14 +148,19 @@ const UserProfile: FC = () => {
           // largerHeading
           tabs={[
             {
-              label: 'Testimonials',
-              body: <TestimonialView />,
-              icon: TestimonialIcon,
+              label: 'Dashboard',
+              body: <DashboardOverview />,
+              icon: PaletteIcon,
             },
             {
               label: 'Project',
               body: 'coming soon',
               icon: PaletteIcon,
+            },
+            {
+              label: 'Testimonials',
+              body: <TestimonialView />,
+              icon: TestimonialIcon,
             },
           ]}
         />
