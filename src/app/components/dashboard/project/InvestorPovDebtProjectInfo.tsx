@@ -393,18 +393,28 @@ const InvestorPovDebtProjectInfo = ({
         </Stack>
       )}
 
-      <Flex p="3rem" bg="#232629" borderRadius="20px">
-        <HStack spacing="2rem">
-          <Avatar
-            src="https://bit.ly/sage-adebayo"
-            border="3px solid pink"
-            boxSize="40px"
-          />
-          <Box>
-            <Heading fontSize="1.6rem">Smith Nicole</Heading>
-            <Text size="body2">Investor</Text>
-          </Box>
-        </HStack>
+      <Flex
+        p="3rem"
+        bg="#232629"
+        borderRadius="20px"
+        direction="column"
+        gap="2rem"
+      >
+        {investors.map((investor: any) => (
+          <>
+            <HStack spacing="2rem">
+              <Avatar
+                src={investor.investorPicture}
+                border="3px solid pink"
+                boxSize="40px"
+              />
+              <Box>
+                <Heading fontSize="1.6rem">{investor.investorName}</Heading>
+                <Text size="body2">{investor.percentage}%</Text>
+              </Box>
+            </HStack>
+          </>
+        ))}
       </Flex>
     </Box>
   );
