@@ -18,6 +18,7 @@ import { thousandsSeparators } from 'app/utils/helpers';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from 'app/components/common/Toaster';
 import { setIn } from 'formik';
+import useAuth from 'app/hooks/useAuth';
 
 type ModalProps = {
   isOpen: boolean;
@@ -31,6 +32,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
   const [inputError, setInputError] = useState('');
 
   const apiPrivate = useApiPrivate();
+  const authContext = useAuth();
 
   const handleChange = (e: any) => {
     setInputError('');
@@ -57,6 +59,31 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
         console.log('success', data);
         chkToaster.success({ title: 'Deposit Successful' });
         setAmount(0);
+
+        apiPrivate
+          .get('/user/summary')
+          .then(({ data }) => {
+            const {
+              accessToken,
+              firstName,
+              lastName,
+              profilePicture,
+              bio,
+              walletBalance,
+            } = data;
+            authContext?.setAuth({
+              accessToken,
+              firstName,
+              lastName,
+              profilePicture,
+              bio,
+              walletBalance,
+            });
+          })
+          .catch(() => {
+            chkToaster.error({ title: 'Something went wrong' });
+          });
+
         setLoading(false);
         onClose();
       })
