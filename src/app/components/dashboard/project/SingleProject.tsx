@@ -127,6 +127,7 @@ const SingleProject = () => {
           category={category}
           creativeName={creativeName}
           creativePicture={creativePicture}
+          id={id}
         />
 
         <Flex mb="10rem" justify="center">

@@ -38,7 +38,7 @@ function App() {
           <Route path="/code-of-conduct" element={<CodeOfConduct />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/projects/:id" element={<SingleProjectPage />} />
-          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/user-profile/:id" element={<UserProfile />} />
           <Route path="/investors" element={<Investor />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />
