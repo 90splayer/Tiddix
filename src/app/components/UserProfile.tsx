@@ -15,7 +15,7 @@ import { verify } from 'app/assets/svgs/home';
 import { FC, useState } from 'react';
 import { LinkIcon } from '@chakra-ui/icons';
 
-import { PaletteIcon, TestimonialIcon } from 'app/assets/icons';
+import { PaletteIcon, DashboardIcon, TestimonialIcon } from 'app/assets/icons';
 import CustomTab from '../components/common/CustomTab';
 
 import useAuth from 'app/hooks/useAuth';
@@ -25,6 +25,7 @@ import DashboardOverview from './dashboard/DashboardOverview';
 import ProjectOverview from './dashboard/project/ProjectOverview';
 import TestimonialView from './dashboard/TestimonialView';
 import { FaHeart, FaStar } from 'react-icons/fa';
+import UserDashboard from './UserDashboard';
 
 const UserProfile: FC = () => {
   const authContext = useAuth();
@@ -148,14 +149,19 @@ const UserProfile: FC = () => {
           // largerHeading
           tabs={[
             {
-              label: 'Testimonials',
-              body: <TestimonialView />,
-              icon: TestimonialIcon,
+              label: 'Dashboard',
+              body: <UserDashboard />,
+              icon: DashboardIcon,
             },
             {
               label: 'Project',
               body: 'coming soon',
               icon: PaletteIcon,
+            },
+            {
+              label: 'Testimonials',
+              body: <TestimonialView />,
+              icon: TestimonialIcon,
             },
           ]}
         />
