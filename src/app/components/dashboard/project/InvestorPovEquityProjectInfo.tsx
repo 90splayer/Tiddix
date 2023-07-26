@@ -28,6 +28,7 @@ import useApiPrivate from 'app/hooks/useApiPrivate';
 import { RiArrowLeftSLine } from 'react-icons/ri';
 import { round } from 'app/utils/helpers';
 import CustomModal from 'app/components/common/CustomModal';
+import useAuth from 'app/hooks/useAuth';
 
 const InvestorPovEquityProjectInfo = ({
   id,
@@ -54,6 +55,7 @@ const InvestorPovEquityProjectInfo = ({
   } = useDisclosure();
 
   const apiPrivate = useApiPrivate();
+  const authContext = useAuth();
 
   const handleChange = (e: any) => {
     const numWithoutComma = e.target.value.replace(/,|\£/gi, '');
@@ -88,6 +90,31 @@ const InvestorPovEquityProjectInfo = ({
         if (balanceConfirmed) {
           chkToaster.success({ title: 'Investment Successful' });
           setAmount(0);
+
+          apiPrivate
+            .get('/user/summary')
+            .then(({ data }) => {
+              const {
+                accessToken,
+                firstName,
+                lastName,
+                profilePicture,
+                bio,
+                walletBalance,
+              } = data;
+              authContext?.setAuth({
+                accessToken,
+                firstName,
+                lastName,
+                profilePicture,
+                bio,
+                walletBalance,
+              });
+            })
+            .catch(() => {
+              chkToaster.error({ title: 'Something went wrong' });
+            });
+
           setBalanceConfirmed(false);
         } else {
           if (data.status) {
