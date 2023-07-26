@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CustomModal from 'app/components/common/CustomModal';
 import { Flex, Box, Input, Icon, Button, VStack } from '@chakra-ui/react';
 import { HiMinus } from 'react-icons/hi';
 import { HiPlus } from 'react-icons/hi';
+import { CustomInput } from '../common/CustomInput';
+import { thousandsSeparators } from 'app/utils/helpers';
+import useApiPrivate from 'app/hooks/useApiPrivate';
+import { chkToaster } from '../common/Toaster';
 
 type ModalProps = {
   isOpen: boolean;
@@ -15,6 +19,46 @@ export default function WithdrawalModal({
   onClose,
   title,
 }: ModalProps) {
+  const [amount, setAmount] = useState<number>(0);
+  const [loading, setLoading] = useState(false);
+  const [inputError, setInputError] = useState('');
+
+  const apiPrivate = useApiPrivate();
+
+  const handleChange = (e: any) => {
+    setInputError('');
+    const numWithoutComma = e.target.value.replace(/,|\£/gi, '');
+    if (
+      Number.isNaN(+numWithoutComma) ||
+      Number(numWithoutComma) > 1000000000
+    ) {
+      return;
+    }
+
+    setAmount(Number(numWithoutComma));
+  };
+
+  const handleSubmit = () => {
+    if (!amount) {
+      setInputError('Please input a valid amount');
+      return;
+    }
+    setLoading(true);
+    apiPrivate
+      .post('/user/wallet/transaction/withdraw', { amount })
+      .then(({ data }) => {
+        console.log('success', data);
+        chkToaster.success({ title: 'Withdraw Successful' });
+        setAmount(0);
+        setLoading(false);
+        onClose();
+      })
+      .catch(() => {
+        chkToaster.success({ title: 'Something went wrong, please try again' });
+        setLoading(false);
+      });
+  };
+
   return (
     <CustomModal modalTitle={title} isOpen={isOpen} onClose={onClose}>
       <Box pb="3rem">
@@ -25,15 +69,22 @@ export default function WithdrawalModal({
             justify="center"
             borderRadius="100%"
             p="2rem"
+            cursor="pointer"
+            onClick={() => {
+              if (amount - 10 < 0) {
+                setAmount(0);
+              } else {
+                setAmount(amount - 10);
+              }
+            }}
           >
             <Icon as={HiMinus} fontSize="1.6rem" color="#fff" />
           </Flex>
-          <Box>
-            <Input
-              pos="relative"
+          <Box flex="1">
+            <CustomInput
+              size="lg"
               placeholder="Enter Amount"
               px="1.5rem"
-              type="number"
               borderRadius="2rem"
               border="1px solid #99A1AA"
               maxW="26.3rem"
@@ -42,6 +93,9 @@ export default function WithdrawalModal({
                 fontSize: '1.6rem',
                 color: '#99A1AA',
               }}
+              value={amount === 0 ? '' : `£${thousandsSeparators(amount)}`}
+              onChange={handleChange}
+              error={inputError}
             />
           </Box>
           <Flex
@@ -50,11 +104,13 @@ export default function WithdrawalModal({
             justify="center"
             borderRadius="100%"
             p="2rem"
+            cursor="pointer"
+            onClick={() => setAmount(amount + 10)}
           >
             <Icon as={HiPlus} fontSize="1.6rem" color="#fff" />
           </Flex>
         </Flex>
-        <VStack spacing="1.9rem">
+        {/* <VStack spacing="1.9rem">
           <Box>
             <Input
               pos="relative"
@@ -106,11 +162,18 @@ export default function WithdrawalModal({
               }}
             />
           </Box>
-        </VStack>
+        </VStack> */}
 
         <Flex align="center" justify="center" mt="4rem">
-          <Button variant="multicolor" maxW="39rem" w="100%" fontSize="1.6rem">
-            Make Payment
+          <Button
+            variant="multicolor"
+            maxW="39rem"
+            w="100%"
+            fontSize="1.6rem"
+            onClick={handleSubmit}
+            isLoading={loading}
+          >
+            Withdraw
           </Button>
         </Flex>
       </Box>
