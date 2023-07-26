@@ -407,6 +407,7 @@ const InvestorPovDebtProjectInfo = ({
                 src={investor.investorPicture}
                 border="3px solid pink"
                 boxSize="40px"
+                name={investor.investorName}
               />
               <Box>
                 <Heading fontSize="1.6rem">{investor.investorName}</Heading>

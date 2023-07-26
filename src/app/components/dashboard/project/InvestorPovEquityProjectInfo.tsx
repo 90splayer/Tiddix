@@ -419,38 +419,41 @@ const InvestorPovEquityProjectInfo = ({
               </Th>
             </Tr>
           </Thead>
-          <Tbody>
-            <Tr>
-              <Td
-                py="2.5rem"
-                color="#fff"
-                textTransform="capitalize"
-                fontSize="1.6rem"
-              >
-                Dec 08, 2022
-              </Td>
-              <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                <HStack spacing="5px">
-                  <Avatar
-                    boxSize="30px"
-                    border="2px solid pink"
-                    name="Segun Adebayo"
-                    src="https://bit.ly/sage-adebayo"
-                  />
 
-                  <Text size="body2" color="#fff">
-                    John Doe
-                  </Text>
-                  {''}
-                </HStack>
-              </Td>
-              <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                5%
-              </Td>
-              <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                £20,000
-              </Td>
-            </Tr>
+          <Tbody>
+            {investors.map((investor: any) => (
+              <Tr>
+                <Td
+                  py="2.5rem"
+                  color="#fff"
+                  textTransform="capitalize"
+                  fontSize="1.6rem"
+                >
+                  {investor.date}
+                </Td>
+                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  <HStack spacing="5px">
+                    <Avatar
+                      boxSize="30px"
+                      border="2px solid pink"
+                      name={investor.investorName}
+                      src={investor.investorPicture}
+                    />
+
+                    <Text size="body2" color="#fff">
+                      {investor.investorName}
+                    </Text>
+                    {''}
+                  </HStack>
+                </Td>
+                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  {investor.percentage}%
+                </Td>
+                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  £{thousandsSeparators(investor.value)}
+                </Td>
+              </Tr>
+            ))}
           </Tbody>
         </Table>
       </TableContainer>
