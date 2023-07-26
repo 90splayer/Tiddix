@@ -7,6 +7,7 @@ import { CustomInput } from '../common/CustomInput';
 import { thousandsSeparators } from 'app/utils/helpers';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from '../common/Toaster';
+import useAuth from 'app/hooks/useAuth';
 
 type ModalProps = {
   isOpen: boolean;
@@ -24,6 +25,7 @@ export default function WithdrawalModal({
   const [inputError, setInputError] = useState('');
 
   const apiPrivate = useApiPrivate();
+  const authContext = useAuth();
 
   const handleChange = (e: any) => {
     setInputError('');
@@ -50,6 +52,31 @@ export default function WithdrawalModal({
         console.log('success', data);
         chkToaster.success({ title: 'Withdraw Successful' });
         setAmount(0);
+
+        apiPrivate
+          .get('/user/summary')
+          .then(({ data }) => {
+            const {
+              accessToken,
+              firstName,
+              lastName,
+              profilePicture,
+              bio,
+              walletBalance,
+            } = data;
+            authContext?.setAuth({
+              accessToken,
+              firstName,
+              lastName,
+              profilePicture,
+              bio,
+              walletBalance,
+            });
+          })
+          .catch(() => {
+            chkToaster.error({ title: 'Something went wrong' });
+          });
+
         setLoading(false);
         onClose();
       })

@@ -21,6 +21,7 @@ import { CustomInput } from 'app/components/common/CustomInput';
 import { RiArrowLeftSLine } from 'react-icons/ri';
 import CustomModal from 'app/components/common/CustomModal';
 import { round } from 'app/utils/helpers';
+import useAuth from 'app/hooks/useAuth';
 
 const InvestorPovDebtProjectInfo = ({
   id,
@@ -42,6 +43,7 @@ const InvestorPovDebtProjectInfo = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const apiPrivate = useApiPrivate();
+  const authContext = useAuth();
 
   const percentageOfTarget = (amount / target) * 100;
 
@@ -79,6 +81,31 @@ const InvestorPovDebtProjectInfo = ({
       .then(({ data }) => {
         if (balanceConfirmed) {
           chkToaster.success({ title: 'Investment Successful' });
+
+          apiPrivate
+            .get('/user/summary')
+            .then(({ data }) => {
+              const {
+                accessToken,
+                firstName,
+                lastName,
+                profilePicture,
+                bio,
+                walletBalance,
+              } = data;
+              authContext?.setAuth({
+                accessToken,
+                firstName,
+                lastName,
+                profilePicture,
+                bio,
+                walletBalance,
+              });
+            })
+            .catch(() => {
+              chkToaster.error({ title: 'Something went wrong' });
+            });
+
           setAmount(0);
           setBalanceConfirmed(false);
         } else {
