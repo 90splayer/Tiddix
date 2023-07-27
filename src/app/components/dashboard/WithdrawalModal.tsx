@@ -8,6 +8,7 @@ import { thousandsSeparators } from 'app/utils/helpers';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from '../common/Toaster';
 import useAuth from 'app/hooks/useAuth';
+import { AuthUserT } from 'app/context/AuthProvider';
 
 type ModalProps = {
   isOpen: boolean;
@@ -56,20 +57,9 @@ export default function WithdrawalModal({
         apiPrivate
           .get('/user/summary')
           .then(({ data }) => {
-            const {
-              accessToken,
-              firstName,
-              lastName,
-              profilePicture,
-              bio,
-              walletBalance,
-            } = data;
+            const { walletBalance } = data;
             authContext?.setAuth({
-              accessToken,
-              firstName,
-              lastName,
-              profilePicture,
-              bio,
+              ...(authContext.auth as AuthUserT),
               walletBalance,
             });
           })
@@ -81,7 +71,7 @@ export default function WithdrawalModal({
         onClose();
       })
       .catch(() => {
-        chkToaster.success({ title: 'Something went wrong, please try again' });
+        chkToaster.error({ title: 'Something went wrong, please try again' });
         setLoading(false);
       });
   };

@@ -17,8 +17,8 @@ import { CustomInput } from '../common/CustomInput';
 import { thousandsSeparators } from 'app/utils/helpers';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from 'app/components/common/Toaster';
-import { setIn } from 'formik';
 import useAuth from 'app/hooks/useAuth';
+import { AuthUserT } from 'app/context/AuthProvider';
 
 type ModalProps = {
   isOpen: boolean;
@@ -63,20 +63,9 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
         apiPrivate
           .get('/user/summary')
           .then(({ data }) => {
-            const {
-              accessToken,
-              firstName,
-              lastName,
-              profilePicture,
-              bio,
-              walletBalance,
-            } = data;
+            const { walletBalance } = data;
             authContext?.setAuth({
-              accessToken,
-              firstName,
-              lastName,
-              profilePicture,
-              bio,
+              ...(authContext.auth as AuthUserT),
               walletBalance,
             });
           })
@@ -88,7 +77,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
         onClose();
       })
       .catch(() => {
-        chkToaster.success({ title: 'Something went wrong, please try again' });
+        chkToaster.error({ title: 'Something went wrong, please try again' });
         setLoading(false);
       });
   };
