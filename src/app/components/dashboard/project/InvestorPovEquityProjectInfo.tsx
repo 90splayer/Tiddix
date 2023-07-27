@@ -29,6 +29,7 @@ import { RiArrowLeftSLine } from 'react-icons/ri';
 import { round } from 'app/utils/helpers';
 import CustomModal from 'app/components/common/CustomModal';
 import useAuth from 'app/hooks/useAuth';
+import { AuthUserT } from 'app/context/AuthProvider';
 
 const InvestorPovEquityProjectInfo = ({
   id,
@@ -89,32 +90,19 @@ const InvestorPovEquityProjectInfo = ({
       .then(({ data }) => {
         if (balanceConfirmed) {
           chkToaster.success({ title: 'Investment Successful' });
-          setAmount(0);
-
           apiPrivate
             .get('/user/summary')
             .then(({ data }) => {
-              const {
-                accessToken,
-                firstName,
-                lastName,
-                profilePicture,
-                bio,
-                walletBalance,
-              } = data;
+              const { walletBalance } = data;
               authContext?.setAuth({
-                accessToken,
-                firstName,
-                lastName,
-                profilePicture,
-                bio,
+                ...(authContext.auth as AuthUserT),
                 walletBalance,
               });
             })
             .catch(() => {
               chkToaster.error({ title: 'Something went wrong' });
             });
-
+          setAmount(0);
           setBalanceConfirmed(false);
         } else {
           if (data.status) {
@@ -124,6 +112,7 @@ const InvestorPovEquityProjectInfo = ({
           }
         }
         setLoading(false);
+        setAcceptAgreement(false);
       })
       .catch(() => {
         chkToaster.error({ title: 'Something went wrong, please try again' });
