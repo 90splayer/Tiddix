@@ -58,6 +58,7 @@ export type projectT = {
   loanGiven: number;
   repaymentFrequency: string;
   tiddixScore: number;
+  creativeId: string;
 };
 
 const SingleProject = () => {
@@ -108,6 +109,7 @@ const SingleProject = () => {
     loanGiven,
     repaymentFrequency,
     tiddixScore,
+    creativeId,
   } = project;
 
   return (
@@ -128,6 +130,7 @@ const SingleProject = () => {
           creativeName={creativeName}
           creativePicture={creativePicture}
           id={id}
+          creativeId={creativeId}
         />
 
         <Flex mb="10rem" justify="center">
