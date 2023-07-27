@@ -24,6 +24,7 @@ const SingleProjHeader = ({
   creativeName,
   creativePicture,
   id,
+  creativeId,
 }: any) => {
   console.log('INFO', category);
 
@@ -34,7 +35,7 @@ const SingleProjHeader = ({
           <Heading size="display2">{projectName}</Heading>
           <Text fontSize="14px">{category}</Text>
         </HStack>
-        <Link to={`/user-profile/${id}`}>
+        <Link to={`/user-profile/${creativeId}`}>
           <HStack spacing="10px">
             <Avatar boxSize="25px" name={creativeName} src={creativePicture} />
             <HStack>
