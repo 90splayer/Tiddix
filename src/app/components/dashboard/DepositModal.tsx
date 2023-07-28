@@ -23,10 +23,18 @@ import { AuthUserT } from 'app/context/AuthProvider';
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  reload: boolean;
+  setReload: React.Dispatch<React.SetStateAction<boolean>>;
   title?: string;
 };
 
-export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
+export default function DepositModal({
+  isOpen,
+  onClose,
+  reload,
+  setReload,
+  title,
+}: ModalProps) {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
   const [inputError, setInputError] = useState('');
@@ -73,6 +81,7 @@ export default function DepositModal({ isOpen, onClose, title }: ModalProps) {
             chkToaster.error({ title: 'Something went wrong' });
           });
 
+        setReload(!reload);
         setLoading(false);
         onClose();
       })
