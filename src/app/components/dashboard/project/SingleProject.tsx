@@ -166,8 +166,8 @@ const SingleProject = () => {
               />
             </Box>
           </Stack> */}
-          <Flex gap="33px" w="90%" justify="space-between">
-            <Box>
+          <Flex gap="33px" w="90%" justify="space-between" align="start">
+            <Box position="sticky" top="4rem">
               <Image
                 maxW="58.4rem"
                 h="61rem"
