@@ -14,7 +14,7 @@ import ProjectCard from 'app/components/ProjectCard';
 import { projectData } from 'app/components/data/ProjectData';
 import { verify } from 'app/assets/svgs/home';
 
-const MainProject: FC = () => {
+const MainInvestment: FC = () => {
   return (
     <Box w="100%" borderLeft="1px solid #485155" pl="4rem" py="3rem" h="auto">
       <Flex
@@ -34,7 +34,7 @@ const MainProject: FC = () => {
                 h="10rem"
                 borderRadius="2rem"
                 objectFit="cover"
-                src="https://bit.ly/dan-abramov"
+                src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="dan"
               />
             </Box>
@@ -55,22 +55,25 @@ const MainProject: FC = () => {
             </Stack>
           </HStack>
           <Stack>
-            <Text size="body2">Funding Type</Text>
-            <Text color="#fff">Debt</Text>
+            <Text size="body2">Repayment Amount</Text>
+            <Text color="#fff">£ 20,000</Text>
+          </Stack>
+          <Stack>
+            <Text size="body2">Interest</Text>
+            <Text color="#fff">20%</Text>
           </Stack>
           <Stack>
             <Text size="body2">Period</Text>
             <Text color="#fff">5 Month</Text>
           </Stack>
-          <Box>
-            <Button variant="multiradial" fontSize="1.4rem" size="sm">
-              Withdraw
-            </Button>
-          </Box>
+          <Stack>
+            <Text size="body2">Interest Payment</Text>
+            <Text color="#fff">£ 2000</Text>
+          </Stack>
         </Flex>
       </Flex>
     </Box>
   );
 };
 
-export default MainProject;
+export default MainInvestment;

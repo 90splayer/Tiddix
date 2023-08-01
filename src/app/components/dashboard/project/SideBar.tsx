@@ -36,12 +36,8 @@ const SideBar = () => {
           Debt Projects
         </Text>
       </Box>
-      <Box py="2rem" mb="1.4rem">
-        <Text color="#fff" size="body2">
-          Draft
-        </Text>
-      </Box>
-      <Box>
+
+      {/* <Box>
         <Button
           borderRadius="100px"
           bg="#232629"
@@ -53,7 +49,7 @@ const SideBar = () => {
         >
           Recent Project
         </Button>
-      </Box>
+      </Box> */}
     </Stack>
   );
 };

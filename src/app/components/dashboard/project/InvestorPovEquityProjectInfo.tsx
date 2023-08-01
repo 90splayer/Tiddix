@@ -280,7 +280,7 @@ const InvestorPovEquityProjectInfo = ({
                     style={{ fontWeight: 'bold', textDecoration: 'underline' }}
                     onClick={onOpen}
                   >
-                    project agreement
+                    investment terms
                   </span>{' '}
                   as set out by the project creator.
                 </Text>
