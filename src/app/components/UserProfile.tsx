@@ -12,32 +12,54 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { verify } from 'app/assets/svgs/home';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { LinkIcon } from '@chakra-ui/icons';
 
 import { PaletteIcon, DashboardIcon, TestimonialIcon } from 'app/assets/icons';
 import CustomTab from '../components/common/CustomTab';
 
 import useAuth from 'app/hooks/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { thousandsSeparators } from 'app/utils/helpers';
 import DashboardOverview from './dashboard/DashboardOverview';
 import ProjectOverview from './dashboard/project/ProjectOverview';
 import TestimonialView from './dashboard/TestimonialView';
 import { FaHeart, FaStar } from 'react-icons/fa';
 import UserDashboard from './UserDashboard';
+import api from 'app/api/tiddix';
+import { chkToaster } from './common/Toaster';
 
 const UserProfile: FC = () => {
-  const authContext = useAuth();
-  const firstName = authContext?.auth?.firstName;
-  const lastName = authContext?.auth?.lastName;
-  const bio = authContext?.auth?.bio;
-  const profilePicture = authContext?.auth?.profilePicture;
-  const walletBalance = authContext?.auth?.walletBalance;
+  const { id } = useParams();
+  const [dashboardInfo, setDashboardInfo] = useState<any>();
+
+  // const authContext = useAuth();
+  // const firstName = authContext?.auth?.firstName;
+  // const lastName = authContext?.auth?.lastName;
+  // const bio = authContext?.auth?.bio;
+  // const profilePicture = authContext?.auth?.profilePicture;
+  // const walletBalance = authContext?.auth?.walletBalance;
   const [like, setLike] = useState(false);
+
+  useEffect(() => {
+    api
+      .get(`/user/${id}`)
+      .then(({ data }) => {
+        setDashboardInfo(data);
+        console.log('DATAA', data);
+      })
+      .catch(() => {
+        chkToaster.error({ title: 'Something went wrong' });
+      });
+  }, []);
 
   const likeHandler = () => setLike(!like);
   const likeValue = 4;
+
+  if (!dashboardInfo) {
+    return <h1>Loading...</h1>;
+  }
+  const { bio, firstName, lastName, profilePicture } = dashboardInfo;
   return (
     <Box>
       <Container
