@@ -66,8 +66,8 @@ const WalletView: FC = () => {
     apiPrivate
       .get('/user/wallet/transactions')
       .then(({ data }) => {
-        console.log('RESPONSE', data.transactions);
-        setTransactions(data.transactions);
+        console.log('RESPONSEEEE', data.data);
+        setTransactions(data.data);
       })
       .catch(() => {
         chkToaster.error({ title: 'Something went wrong' });
