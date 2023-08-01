@@ -29,6 +29,7 @@ import useAuth from 'app/hooks/useAuth';
 import { Link } from 'react-router-dom';
 import TestimonialView from './TestimonialView';
 import { thousandsSeparators } from 'app/utils/helpers';
+import InvestmentOverview from './project/InvestmentOveriew';
 
 const Overview: FC = () => {
   const authContext = useAuth();
@@ -152,7 +153,7 @@ const Overview: FC = () => {
             },
             {
               label: 'Investment',
-              body: 'lorem ipsum',
+              body: <InvestmentOverview />,
               icon: InvestmentIcon,
             },
             {
