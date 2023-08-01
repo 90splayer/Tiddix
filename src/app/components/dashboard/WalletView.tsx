@@ -50,16 +50,11 @@ type TransactionT = {
 };
 
 const columns = {
-  sn: {
-    key: 's/n',
-    label: 'S/N',
-    active: true,
-  },
-  id: {
-    key: 'id',
-    label: 'Reference',
-    active: true,
-  },
+  // sn: {
+  //   key: 's/n',
+  //   label: 'S/N',
+  //   active: true,
+  // },
   source: {
     key: 'source',
     label: 'Source',
@@ -226,6 +221,22 @@ const WalletView: FC = () => {
         />
         {/* TABLE COMPONENT */}
         <TableContainer borderRadius="30px" bg="#232629" pt="3rem" px="3.5rem">
+          <Flex justify="space-between" align="center" pb="1.8rem">
+            <Text color="#fff">Transaction</Text>
+            <Box>
+              <Button
+                borderRadius="100px"
+                bg="#232629"
+                border="1px solid #485155"
+                maxW="17.5rem"
+                color="#fff"
+                rightIcon={<ChevronDownIconW />}
+                size="md"
+              >
+                filter
+              </Button>
+            </Box>{' '}
+          </Flex>
           <CustomTable columns={columns} data={tableData} loading={false} />
 
           {/* PLAIN TABLE */}

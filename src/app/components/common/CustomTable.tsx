@@ -155,7 +155,7 @@ export const CustomTable: React.FC<TableProps> = ({
                     p="8px"
                     borderRadius="4px"
                     height="28px"
-                    variant="tertiary"
+                    // variant="tertiary"
                     onClick={() =>
                       expandedMobileIndex === i
                         ? setExpandedMobileIndex(-1)
@@ -195,7 +195,7 @@ export const CustomTable: React.FC<TableProps> = ({
                                 color="gray.500"
                                 mb={1}
                               >
-                                {columns[col].label?.toString().toUpperCase()}
+                                {columns[col].label?.toString()}
                               </Text>
                             ) : (
                               columns[col].label
@@ -214,7 +214,7 @@ export const CustomTable: React.FC<TableProps> = ({
                               color="gray.500"
                               mb={1}
                             >
-                              {columns[col].label?.toString().toUpperCase()}
+                              {columns[col].label?.toString()}
                             </Text>
                           ) : (
                             columns[col].label
@@ -252,31 +252,38 @@ export const CustomTable: React.FC<TableProps> = ({
         }}
         ref={tableTop}
       >
-        <Table variant="simple">
-          <Thead h={{ regular: '56px', small: '42px' }[variant]} bg="gray.25">
-            <Tr>
+        {/* <Table variant="simple"> */}
+        <Table size="lg">
+          <Thead>
+            <Tr bg="#000" borderBottom="2px solid #485155">
               {Object.keys(columns)
                 .filter((col) => columns[col].active)
                 .map((key) => (
                   <Th
-                    _first={{
-                      paddingLeft: { regular: '48px', small: '0px' }[variant],
-                    }}
-                    _last={{
-                      paddingRight: { regular: '48px', small: '0px' }[variant],
-                    }}
-                    textAlign={key === 'actions' ? 'center' : undefined}
-                    borderBottom="0px"
-                    padding="0px 20px 0px 0px"
+                    // _first={{
+                    //   paddingLeft: { regular: '48px', small: '0px' }[variant],
+                    // }}
+                    // _last={{
+                    //   paddingRight: { regular: '48px', small: '0px' }[variant],
+                    // }}
+                    // textAlign={key === 'actions' ? 'center' : undefined}
+                    // borderBottom="0px"
+                    // padding="0px 20px 0px 0px"
+                    py="1.5rem"
+                    color="#fff"
+                    textTransform="capitalize"
+                    fontSize="1.6rem"
                     key={key}
                   >
                     {typeof columns[key].label === 'object' ? (
                       columns[key].label
                     ) : (
                       <Text
-                        fontWeight="medium"
-                        color="blackScheme.400"
+                        fontWeight="700"
+                        // color="blackScheme.400"
+                        color="#fff"
                         size="caption"
+                        fontSize="1.6rem"
                       >
                         {columns[key].label}
                       </Text>
@@ -288,7 +295,8 @@ export const CustomTable: React.FC<TableProps> = ({
           <Tbody>
             {data.map((item: any, i: any) => (
               <Tr
-                h={{ regular: '56px', small: '42px' }[variant]}
+                // h={{ regular: '56px', small: '42px' }[variant]}
+                borderBottom="2px solid #485155"
                 key={`${i}key`}
               >
                 {Object.keys(columns)
@@ -299,19 +307,23 @@ export const CustomTable: React.FC<TableProps> = ({
                       const Component = item[key];
                       return (
                         <Td
-                          _first={{
-                            paddingLeft: { regular: '48px', small: '0px' }[
-                              variant
-                            ],
-                          }}
-                          _last={{
-                            paddingRight: { regular: '48px', small: '0px' }[
-                              variant
-                            ],
-                          }}
-                          borderBottomColor="gray.100"
-                          padding="0px 20px 0px 0px"
-                          textAlign={key === 'actions' ? 'center' : undefined}
+                          // _first={{
+                          //   paddingLeft: { regular: '48px', small: '0px' }[
+                          //     variant
+                          //   ],
+                          // }}
+                          // _last={{
+                          //   paddingRight: { regular: '48px', small: '0px' }[
+                          //     variant
+                          //   ],
+                          // }}
+                          // borderBottomColor="gray.100"
+                          // padding="0px 20px 0px 0px"
+                          // textAlign={key === 'actions' ? 'center' : undefined}
+                          py="2.5rem"
+                          color="#fff"
+                          textTransform="capitalize"
+                          fontSize="1.6rem"
                           key={`count-${keys}`}
                         >
                           {Component}
@@ -320,19 +332,23 @@ export const CustomTable: React.FC<TableProps> = ({
                     }
                     return (
                       <Td
-                        _first={{
-                          paddingLeft: { regular: '48px', small: '0px' }[
-                            variant
-                          ],
-                        }}
-                        _last={{
-                          paddingRight: { regular: '48px', small: '0px' }[
-                            variant
-                          ],
-                        }}
-                        borderBottomColor="gray.100"
-                        padding="0px 20px 0px 0px"
-                        textAlign={key === 'actions' ? 'center' : undefined}
+                        // _first={{
+                        //   paddingLeft: { regular: '48px', small: '0px' }[
+                        //     variant
+                        //   ],
+                        // }}
+                        // _last={{
+                        //   paddingRight: { regular: '48px', small: '0px' }[
+                        //     variant
+                        //   ],
+                        // }}
+                        // borderBottomColor="gray.100"
+                        // padding="0px 20px 0px 0px"
+                        // textAlign={key === 'actions' ? 'center' : undefined}
+                        py="2.5rem"
+                        color="#fff"
+                        textTransform="capitalize"
+                        fontSize="1.6rem"
                         key={`count-${keys}`}
                       >
                         {item[key]}
@@ -498,10 +514,16 @@ export const EmptyChkTable = ({
         {icon ?? <EmptyTableIcon width="48px" height="48px" />}
       </Center>
       <Box width="230px">
-        <Text mb={1} color="black" size="md" fontWeight="medium">
-          {title ?? 'No information available'}
-        </Text>
-        <Text size="sm">{subtitle}</Text>
+        {title ? (
+          <Text color="black" fontWeight="medium">
+            {title}
+          </Text>
+        ) : (
+          <Text textAlign="center" color="#fff">
+            You have no transactions yet, but no worries. <br />
+            They are many like you but you have the power to change that.
+          </Text>
+        )}
       </Box>
     </Center>
   );
