@@ -13,12 +13,16 @@ import { AuthUserT } from 'app/context/AuthProvider';
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  reload: boolean;
+  setReload: React.Dispatch<React.SetStateAction<boolean>>;
   title?: string;
 };
 
 export default function WithdrawalModal({
   isOpen,
   onClose,
+  reload,
+  setReload,
   title,
 }: ModalProps) {
   const [amount, setAmount] = useState<number>(0);
@@ -67,6 +71,7 @@ export default function WithdrawalModal({
             chkToaster.error({ title: 'Something went wrong' });
           });
 
+        setReload(!reload);
         setLoading(false);
         onClose();
       })

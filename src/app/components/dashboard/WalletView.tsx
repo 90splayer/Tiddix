@@ -45,6 +45,8 @@ type TransactionT = {
 
 const WalletView: FC = () => {
   const [transactions, setTransactions] = useState<TransactionT[]>([]);
+  const [reload, setReload] = useState(false);
+  const [walletBalance, setWalletBalance] = useState(0);
 
   const authContext = useAuth();
   const apiPrivate = useApiPrivate();
@@ -60,19 +62,27 @@ const WalletView: FC = () => {
     onClose: onWithdrawClose,
   } = useDisclosure();
 
-  const walletBalance = authContext?.auth?.walletBalance;
-
   useEffect(() => {
     apiPrivate
       .get('/user/wallet/transactions')
       .then(({ data }) => {
-        console.log('RESPONSE', data.transactions);
-        setTransactions(data.transactions);
+        console.log('RESPONSEEEE', data.data);
+        setTransactions(data.data);
       })
       .catch(() => {
         chkToaster.error({ title: 'Something went wrong' });
       });
-  }, []);
+
+    apiPrivate
+      .get('/user/summary')
+      .then(({ data }) => {
+        const { walletBalance } = data;
+        setWalletBalance(walletBalance);
+      })
+      .catch(() => {
+        chkToaster.error({ title: 'Error fetching wallet balance' });
+      });
+  }, [reload]);
 
   return (
     <Box>
@@ -151,12 +161,16 @@ const WalletView: FC = () => {
           isOpen={isDepositOpen}
           onClose={onDepositClose}
           title="Deposit"
+          reload={reload}
+          setReload={setReload}
         />
         {/* Withdraw modal */}
         <WithdrawalModal
           isOpen={isWithdrawOpen}
           onClose={onWithdrawClose}
           title="Withdraw"
+          reload={reload}
+          setReload={setReload}
         />
         {/* TABLE COMPONENT */}
         <TableContainer borderRadius="30px" bg="#232629" pt="3rem" px="3.5rem">

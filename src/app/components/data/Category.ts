@@ -9,10 +9,9 @@ export const CategoryData = [
   'Sculpture',
   'Design',
   'Art',
-  'Story telling',
-  'Explorer',
   'Architecture',
   'Gaming',
-  'Performing',
   'Technology',
+  'Voiceover artists',
+  'Performing',
 ];
