@@ -36,7 +36,7 @@ const Intro: FC = () => {
             >
               Creatives
             </Text>
-            <Heading maxW="45rem" size="display2" pb="4.6rem">
+            <Heading maxW="51rem" size="display1sub" pb="4.6rem">
               Achieving your dreams starts here!
             </Heading>
             <Text maxW="47.4rem">
@@ -64,7 +64,7 @@ const Intro: FC = () => {
             <Image src={raisedFund} alt="fund-raising-image" />
           </Flex>
 
-          <Heading as="h2" maxW="35rem">
+          <Heading fontSize="2.8rem" maxW="50.6rem">
             Tiddix offers you the easiest way to raise funds to support your
             career, aspirations, ideas and projects.
           </Heading>
