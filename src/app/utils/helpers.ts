@@ -55,3 +55,26 @@ export const round = (value: number, precision?: number) => {
 
 export const capitalizeFirstLetter = (word: string) =>
   word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+
+export const resolveDataToTableData = <T>(
+  data: T[],
+  reshape?: (curObject: T, i: number) => T | object,
+) => {
+  if (data.length) {
+    return data.reduce((res: any[], _cur, i) => {
+      if (reshape) {
+        const overwrite = reshape(_cur, i);
+        res.push({ sn: i + 1, ..._cur, ...overwrite });
+      } else res.push({ sn: i + 1, ..._cur });
+      return res;
+    }, []);
+  }
+  return data;
+};
+
+export const setSN = (_page = 1, limit = 10, idx = 0) => {
+  const page = _page < 1 ? 1 : _page;
+  const number = limit * page - (limit - idx) + 1;
+
+  return (number < 10 ? '00' : number < 100 ? '0' : '') + number;
+};

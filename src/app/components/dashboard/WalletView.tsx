@@ -28,9 +28,15 @@ import { GoChevronDown } from 'react-icons/go';
 import DepositModal from './DepositModal';
 import WithdrawalModal from './WithdrawalModal';
 import useAuth from 'app/hooks/useAuth';
-import { thousandsSeparators } from 'app/utils/helpers';
+import {
+  thousandsSeparators,
+  resolveDataToTableData,
+  setSN,
+} from 'app/utils/helpers';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from '../common/Toaster';
+import { ChevronDownIconW } from 'app/assets/icons';
+import { CustomTable } from '../common/CustomTable';
 
 type TransactionT = {
   amount: string;
@@ -41,6 +47,39 @@ type TransactionT = {
   source: string;
   status: string;
   type: string;
+};
+
+const columns = {
+  // sn: {
+  //   key: 's/n',
+  //   label: 'S/N',
+  //   active: true,
+  // },
+  source: {
+    key: 'source',
+    label: 'Source',
+    active: true,
+  },
+  type: {
+    key: 'type',
+    label: 'Transaction Type',
+    active: true,
+  },
+  created_at: {
+    key: 'created_at',
+    label: 'Date',
+    active: true,
+  },
+  amount: {
+    key: 'amount',
+    label: 'Amount',
+    active: true,
+  },
+  destination: {
+    key: 'destination',
+    label: 'Destination',
+    active: true,
+  },
 };
 
 const WalletView: FC = () => {
@@ -83,6 +122,14 @@ const WalletView: FC = () => {
         chkToaster.error({ title: 'Error fetching wallet balance' });
       });
   }, [reload]);
+
+  const tableData = resolveDataToTableData<TransactionT>(
+    transactions,
+    (cur, i) => ({
+      // sn: setSN(page, pageSize, i),
+      destination: cur.destination,
+    }),
+  );
 
   return (
     <Box>
@@ -183,7 +230,26 @@ const WalletView: FC = () => {
                 border="1px solid #485155"
                 maxW="17.5rem"
                 color="#fff"
-                rightIcon={<GoChevronDown />}
+                rightIcon={<ChevronDownIconW />}
+                size="md"
+              >
+                filter
+              </Button>
+            </Box>{' '}
+          </Flex>
+          <CustomTable columns={columns} data={tableData} loading={false} />
+
+          {/* PLAIN TABLE */}
+          <Flex justify="space-between" align="center" pb="1.8rem">
+            <Text color="#fff">Transaction</Text>
+            <Box>
+              <Button
+                borderRadius="100px"
+                bg="#232629"
+                border="1px solid #485155"
+                maxW="17.5rem"
+                color="#fff"
+                rightIcon={<ChevronDownIconW />}
                 size="md"
               >
                 filter
