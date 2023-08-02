@@ -54,10 +54,17 @@ const MainProject: FC = () => {
               <Text fontSize="1.4rem">Debt</Text>
             </Stack>
           </HStack>
+
           <Stack>
             <Text size="body2">Funding Type</Text>
             <Text color="#fff">Debt</Text>
           </Stack>
+
+          <Stack>
+            <Text size="body2">Date created</Text>
+            <Text color="#fff">12/05/2023</Text>
+          </Stack>
+
           <Stack>
             <Text size="body2">Period</Text>
             <Text color="#fff">5 Month</Text>
