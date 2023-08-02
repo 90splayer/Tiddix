@@ -140,7 +140,7 @@ const TopNav = () => {
                   Investors
                 </Text>
               </NavLink>
-              <NavLink to="/creative">
+              <NavLink to="/creatives">
                 <Text
                   size="body2"
                   display={{ base: 'none', md: 'flex', lg: 'flex' }}
