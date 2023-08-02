@@ -35,6 +35,7 @@ const EasyStepCard: FC<Props> = ({ icon, count, desc }) => {
         </Box>
         <Text
           fontSize="2.4rem"
+          lineHeight="3rem"
           fontWeight="700"
           textAlign="center"
           maxW="26.4rem"

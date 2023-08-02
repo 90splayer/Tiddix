@@ -4,6 +4,7 @@ import React from 'react';
 import { Footer } from 'app/layout/Footer';
 import Header from 'app/layout/Header';
 import EasySteps from 'app/components/creatives/EasySteps';
+import SignUpBanner from 'app/components/SignUpBanner';
 
 const Creatives = () => {
   return (
@@ -11,6 +12,7 @@ const Creatives = () => {
       <Header />
       <Intro />
       <EasySteps />
+      <SignUpBanner />
       <Footer />
     </Box>
   );
