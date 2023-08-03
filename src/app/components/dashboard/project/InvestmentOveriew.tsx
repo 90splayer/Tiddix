@@ -1,14 +1,14 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 import SideBar from './SideBar';
-import MainInvestment from './MainInvestment';
+import UserInvestment from './UserInvestment';
 
 const InvestmentOverview = () => {
   return (
     <Box>
       <Flex>
         <SideBar />
-        <MainInvestment />
+        <UserInvestment />
       </Flex>
     </Box>
   );

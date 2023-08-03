@@ -14,7 +14,7 @@ import { verify } from 'app/assets/svgs/home';
 import React, { useEffect, useRef } from 'react';
 import project from '../../assets/images/investor/project.jpg';
 
-const AccessProj = () => {
+const Offers = () => {
   const boxRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -107,7 +107,7 @@ const AccessProj = () => {
   ];
   return (
     <Box>
-      <Container maxW="144rem" p="12.5rem 12rem 7.5rem 7.2rem">
+      <Container maxW="144rem" p="41.5rem 12rem 7.5rem 7.2rem">
         <Flex
           align="center"
           flexDir={{
@@ -118,25 +118,15 @@ const AccessProj = () => {
           gap={17}
         >
           <Stack
-            spacing="54px"
+            spacing="32px"
             w={{ base: '100%', md: '50%' }}
             mb={{ base: '5rem', md: 0 }}
           >
-            <Heading
-              as="h2"
-              color="#fff"
-              maxW="41.4rem"
-              lineHeight="54px"
-              fontWeight={700}
-              fontSize={{ base: '3.6rem', md: '4.8rem' }}
-            >
-              Access unlimited projects
+            <Heading as="h2" maxW="41.4rem" size="display2">
+              Tiddix offer you a platform to safely earn money
             </Heading>
-            <Text size="body1" maxW="475px">
-              We invite investors to the creative space where creator metrics
-              (views, engagements, followers, rankings etc) can be used to
-              properly determine a creator’s value and prospects for
-              investments.
+            <Text size="body1" maxW="357px">
+              while building careers and making dreams come true.
             </Text>
           </Stack>
           <Stack spacing="20px">
@@ -207,4 +197,4 @@ const AccessProj = () => {
   );
 };
 
-export default AccessProj;
+export default Offers;
