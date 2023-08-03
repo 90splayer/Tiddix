@@ -52,7 +52,7 @@ const UserInvestment: FC = () => {
           py="2rem"
         >
           <Box>
-            <Text>{index}</Text>
+            <Text>{index + 1}</Text>
           </Box>
           <Flex w="100%" justify="space-between" align="center">
             <HStack spacing="19px">
