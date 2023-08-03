@@ -509,7 +509,7 @@ export const EmptyChkTable = ({
         boxSize="80px"
         bg="gray.100"
         borderRadius="full"
-        sx={{ path: { fill: 'gray.300' } }}
+        sx={{ path: { fill: 'red' } }}
       >
         {icon ?? <EmptyTableIcon width="48px" height="48px" />}
       </Center>
