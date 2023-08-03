@@ -87,6 +87,15 @@ const WalletView: FC = () => {
   const [reload, setReload] = useState(false);
   const [walletBalance, setWalletBalance] = useState(0);
 
+  const [page, setPage] = useState(1);
+  const [pageLength, setPageLength] = useState(10);
+  const [pageMeta, setPageMeta] = useState({
+    page: 0,
+    totalPages: 0,
+    limit: 10,
+    total: 0,
+  });
+
   const authContext = useAuth();
   const apiPrivate = useApiPrivate();
 
@@ -106,6 +115,14 @@ const WalletView: FC = () => {
       .get('/user/wallet/transactions')
       .then(({ data }) => {
         console.log('RESPONSEEEE', data.data);
+
+        setPageMeta({
+          page: 0,
+          totalPages: 0,
+          limit: pageLength,
+          total: data.totalElements,
+        });
+
         setTransactions(data.data);
       })
       .catch(() => {
@@ -121,7 +138,7 @@ const WalletView: FC = () => {
       .catch(() => {
         chkToaster.error({ title: 'Error fetching wallet balance' });
       });
-  }, [reload]);
+  }, [reload, page, pageLength]);
 
   const tableData = resolveDataToTableData<TransactionT>(
     transactions,
@@ -220,7 +237,13 @@ const WalletView: FC = () => {
           setReload={setReload}
         />
         {/* TABLE COMPONENT */}
-        <TableContainer borderRadius="30px" bg="#232629" pt="3rem" px="3.5rem">
+        <TableContainer
+          borderRadius="30px"
+          bg="#232629"
+          pt="3rem"
+          px="3.5rem"
+          pb="10rem"
+        >
           <Flex justify="space-between" align="center" pb="1.8rem">
             <Text color="#fff">Transaction</Text>
             <Box>
@@ -237,155 +260,15 @@ const WalletView: FC = () => {
               </Button>
             </Box>{' '}
           </Flex>
-          <CustomTable columns={columns} data={tableData} loading={false} />
-
-          {/* PLAIN TABLE */}
-          <Flex justify="space-between" align="center" pb="1.8rem">
-            <Text color="#fff">Transaction</Text>
-            <Box>
-              <Button
-                borderRadius="100px"
-                bg="#232629"
-                border="1px solid #485155"
-                maxW="17.5rem"
-                color="#fff"
-                rightIcon={<ChevronDownIconW />}
-                size="md"
-              >
-                filter
-              </Button>
-            </Box>{' '}
-          </Flex>
-          <Table size="lg">
-            <Thead>
-              <Tr bg="#000" borderBottom="2px solid #485155">
-                <Th
-                  py="1.5rem"
-                  color="#fff"
-                  textTransform="capitalize"
-                  fontSize="1.6rem"
-                >
-                  Date
-                </Th>
-                <Th
-                  py="1.5rem"
-                  color="#fff"
-                  textTransform="capitalize"
-                  fontSize="1.6rem"
-                >
-                  Transaction type
-                </Th>
-                {/* <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  Description
-                </Th> */}
-                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  Reference
-                </Th>
-                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  Amount
-                </Th>
-                {/* <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  Wallet Bal
-                </Th> */}
-                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  Source
-                </Th>
-                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  Destination
-                </Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {transactions.map((transaction) => {
-                return (
-                  <Tr borderBottom="2px solid #485155">
-                    <Td
-                      py="2.5rem"
-                      color="#fff"
-                      textTransform="capitalize"
-                      fontSize="1.6rem"
-                    >
-                      {transaction.created_at.slice(0, 10)}
-                    </Td>
-                    <Td
-                      color="#fff"
-                      textTransform="capitalize"
-                      fontSize="1.6rem"
-                    >
-                      {transaction.type}
-                    </Td>
-                    {/* <Td
-                      color="#fff"
-                      textTransform="capitalize"
-                      fontSize="1.6rem"
-                    >
-                      {transaction.description}
-                    </Td> */}
-                    <Td
-                      color="#fff"
-                      textTransform="capitalize"
-                      fontSize="1.6rem"
-                    >
-                      {transaction.id}
-                    </Td>
-                    <Td
-                      color="#fff"
-                      textTransform="capitalize"
-                      fontSize="1.6rem"
-                    >
-                      £{thousandsSeparators(transaction.amount)}
-                    </Td>
-                    {/* <Td
-                      color="#fff"
-                      textTransform="capitalize"
-                      fontSize="1.6rem"
-                    >
-                      £ 20,000
-                    </Td> */}
-                    <Td
-                      color="#fff"
-                      textTransform="capitalize"
-                      fontSize="1.6rem"
-                    >
-                      {transaction.source}
-                    </Td>
-                    <Td
-                      color="#fff"
-                      textTransform="capitalize"
-                      fontSize="1.6rem"
-                    >
-                      {transaction.destination}
-                    </Td>
-                  </Tr>
-                );
-              })}
-            </Tbody>
-            <Tfoot>
-              {/* <Tr> */}
-              <HStack spacing="1.5rem" pt="4.7rem" pb="7.1rem">
-                <Icon as={RiArrowLeftSLine} fontSize="3.4rem" color="#99A1AA" />
-                <Text
-                  bg="#fff"
-                  p="5px 10px"
-                  borderRadius="5px"
-                  size="body2"
-                  color="blackShade.2"
-                >
-                  1
-                </Text>
-                <Text p="5px 10px" size="body2" color="white">
-                  2
-                </Text>
-                <Icon
-                  as={RiArrowRightSLine}
-                  fontSize="3.4rem"
-                  color="#99A1AA"
-                />
-              </HStack>
-              {/* </Tr> */}
-            </Tfoot>
-          </Table>
-        </TableContainer>{' '}
+          <CustomTable
+            columns={columns}
+            data={tableData}
+            loading={false}
+            paginationMeta={pageMeta}
+            handlePagination={setPage}
+            setPageLength={setPageLength}
+          />
+        </TableContainer>
       </Container>
     </Box>
   );

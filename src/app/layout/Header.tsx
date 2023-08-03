@@ -77,8 +77,17 @@ const TopNav = () => {
                   transition="all 0.2s"
                   borderRadius="md"
                   whiteSpace="nowrap"
+                  _hover={{
+                    bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                    bgClip: 'text',
+                  }}
                 >
-                  About Us <ChevronDownIcon />
+                  About Us{' '}
+                  <ChevronDownIcon
+                    sx={{
+                      path: { fill: '#99A1AA' },
+                    }}
+                  />
                 </MenuButton>
                 <MenuList
                   overflow="hidden"
@@ -89,16 +98,16 @@ const TopNav = () => {
                   border="1px solid grey"
                 >
                   <MenuItem
-                    as="a"
-                    href="/corporate-profile"
+                    as="li"
                     gap="5px"
                     padding="1.2rem"
                     bg="blackShade.2"
                     _hover={{
                       bg: 'blackShade.1',
                     }}
+                    transition="0.2s ease-in-out"
                   >
-                    Corporate Profile
+                    <NavLink to="/corporate-profile">Corporate Profile</NavLink>
                   </MenuItem>
                   <MenuItem
                     as="a"
