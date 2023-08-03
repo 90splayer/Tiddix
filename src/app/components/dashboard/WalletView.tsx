@@ -84,11 +84,12 @@ const columns = {
 
 const WalletView: FC = () => {
   const [transactions, setTransactions] = useState<TransactionT[]>([]);
+  const [loading, setLoading] = useState(false);
   const [reload, setReload] = useState(false);
   const [walletBalance, setWalletBalance] = useState(0);
 
   const [page, setPage] = useState(1);
-  const [pageLength, setPageLength] = useState(10);
+  const [pageLength, setPageLength] = useState(5);
   const [pageMeta, setPageMeta] = useState({
     page: 0,
     totalPages: 0,
@@ -111,22 +112,25 @@ const WalletView: FC = () => {
   } = useDisclosure();
 
   useEffect(() => {
+    setLoading(true);
     apiPrivate
-      .get('/user/wallet/transactions')
+      .get(`/user/wallet/transactions?page=${page}&size=${pageLength}`)
       .then(({ data }) => {
         console.log('RESPONSEEEE', data.data);
 
         setPageMeta({
-          page: 0,
-          totalPages: 0,
+          page: data.page,
+          totalPages: data.totalPages,
           limit: pageLength,
           total: data.totalElements,
         });
 
         setTransactions(data.data);
+        setLoading(false);
       })
       .catch(() => {
         chkToaster.error({ title: 'Something went wrong' });
+        setLoading(false);
       });
 
     apiPrivate
@@ -147,6 +151,8 @@ const WalletView: FC = () => {
       destination: cur.destination,
     }),
   );
+
+  console.log('PAGE META ON WALLET VIEW', pageMeta);
 
   return (
     <Box>
@@ -263,9 +269,10 @@ const WalletView: FC = () => {
           <CustomTable
             columns={columns}
             data={tableData}
-            loading={false}
+            loading={loading}
             paginationMeta={pageMeta}
             handlePagination={setPage}
+            pageLength={pageLength}
             setPageLength={setPageLength}
           />
         </TableContainer>

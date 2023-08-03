@@ -63,6 +63,18 @@ export const buttonStyles = {
           // _active: {},
           // _focus: {},
         },
+        vanilla: {
+          border: 'none',
+          // borderColor: 'blackShade.4',
+          // color: 'white',
+          background: 'transparent',
+          padding: '0',
+          _hover: {
+            opacity: '0.8',
+            cursor: 'pointer',
+            _disabled: {},
+          },
+        },
         whitebg: {
           border: '1px solid',
           borderColor: 'transparent',

@@ -9,6 +9,8 @@ import {
   Divider,
   Button,
   Collapse,
+  HStack,
+  Icon,
 } from '@chakra-ui/react';
 import {
   TableContainer,
@@ -63,8 +65,9 @@ interface TableProps {
 }
 
 const requestRadioOptions = [
+  { label: '5', value: '5' },
   { label: '10', value: '10' },
-  { label: '25', value: '25' },
+  { label: '20', value: '20' },
   { label: '50', value: '50' },
   { label: '100', value: '100' },
 ];
@@ -96,6 +99,8 @@ export const CustomTable: React.FC<TableProps> = ({
     return ['--', '--', '--'];
   };
   const [start, end, totalData] = calculateData(paginationMeta);
+
+  console.log('PAGINATION META ON CUSTOM TABLE', paginationMeta);
 
   if (loading) {
     return <TableLoadingSkeleton />;
@@ -364,33 +369,56 @@ export const CustomTable: React.FC<TableProps> = ({
       {paginationMeta && handlePagination && (
         <Flex my="24px" justifyContent="space-between">
           <Flex align="center" gap={2}>
-            <DropdownRadio
-              options={requestRadioOptions}
-              title={
-                <Button
-                  rightIcon={<ChevronDownIcon className="dropdown_toggle" />}
-                  backgroundColor="gray.25"
-                  size="sm"
-                  variant="tertiary"
+            <HStack spacing="1.5rem" pt="4.7rem" pb="7.1rem">
+              <Icon
+                // isDisabled={paginationMeta.page === 0}
+                as={LeftCaretIcon}
+                color="#99A1AA"
+                aria-label="previous"
+                onClick={() => {
+                  const page = currentPage ?? 0;
+                  handlePagination(page);
+                  setCurrentPage(page - 1);
+                  if (tableTop.current) {
+                    tableTop.current.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                cursor="pointer"
+              />
+              <Flex>
+                <Text
+                  bg="#fff"
+                  p="5px 10px"
+                  borderRadius="5px"
+                  size="body2"
+                  color="blackShade.2"
                 >
-                  Showing {pageLength}
-                </Button>
-              }
-              onClick={(e) => {
-                handlePagination(1);
-                if (setPageLength) setPageLength(Number(e.value));
-              }}
-              value={pageLength?.toString() ?? '10'}
-            />
-            <Text
-              display={{ base: 'none', sm: 'block' }}
-              size="sm"
-              fontWeight="medium"
-              color="gray.400"
-            >
-              {/* <Text size="sm" fontWeight="medium" color="gray.400"> */}
-              Results per page
-            </Text>
+                  {paginationMeta.page}
+                </Text>
+                <Text p="5px 10px" size="body2" marginLeft=".6rem">
+                  /
+                </Text>
+                <Text p="5px 10px" size="body2" color="white">
+                  {paginationMeta.totalPages}
+                </Text>
+              </Flex>
+              <Icon
+                //  isDisabled={
+                //   paginationMeta.page + 1 === paginationMeta.totalPages
+                // }
+                as={RightCaretIcon}
+                color="#99A1AA"
+                onClick={() => {
+                  const page = currentPage ?? 0;
+                  handlePagination(page + 2);
+                  setCurrentPage(page + 1);
+                  if (tableTop.current) {
+                    tableTop.current.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                cursor="pointer"
+              />
+            </HStack>
           </Flex>
           <Flex align="center">
             <Box
@@ -400,91 +428,46 @@ export const CustomTable: React.FC<TableProps> = ({
                 },
               }}
             >
-              <Text
-                display={{ base: 'none', sm: 'block' }}
-                size="sm"
-                fontWeight="medium"
-              >
+              <DropdownRadio
+                options={requestRadioOptions}
+                title={
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    rightIcon={<ChevronDownIcon className="dropdown_toggle" />}
+                  >
+                    <Text
+                      size="body2"
+                      color="white"
+                      width="9rem"
+                      textAlign="left"
+                    >
+                      {pageLength} / page
+                    </Text>
+                  </Button>
+                }
+                onClick={(e) => {
+                  handlePagination(1);
+                  if (setPageLength) setPageLength(Number(e.value));
+                  if (tableTop.current) {
+                    tableTop.current.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                value={pageLength?.toString() ?? '10'}
+              />
+            </Box>
+
+            {/* INVESTIGATE LATER */}
+            <Box display="none">
+              <Center height="20px" ml="1rem" mr="1rem">
+                <Divider orientation="vertical" borderColor="#9DBCDC" />
+              </Center>
+              <Text display={{ base: 'none', sm: 'block' }} fontSize="1.4rem">
                 {/* <Text size="sm" fontWeight="medium"> */}
                 {`${start} - ${end} of ${thousandsSeparators(totalData)} `}{' '}
               </Text>
             </Box>
-            <Center height="20px" ml="20px" mr="5px">
-              <Divider orientation="vertical" borderColor="#9DBCDC" />
-            </Center>
-            <Flex align="center">
-              <IconButton
-                isDisabled={paginationMeta.page === 0}
-                aria-label="previous"
-                size="smIcon"
-                boxSize="31px"
-                variant="tertiaryIcon"
-                onClick={() => {
-                  const page = currentPage ?? 0;
-                  handlePagination(page);
-                  setCurrentPage(page - 1);
-                  if (tableTop.current) {
-                    tableTop.current.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                icon={<LeftCaretIcon width="10px" />}
-              />
-              <Text size="sm" color="#777777" fontWeight="medium">
-                Page
-              </Text>
-              <NumberInput
-                outline="0px"
-                boxShadow="none"
-                color="white"
-                precision={0}
-                value={(currentPage ?? 0) + 1}
-                onChange={(e) => setCurrentPage(+e - 1)}
-                min={1}
-                max={paginationMeta.totalPages}
-                onBlur={(e) => handlePagination(Number(e.target.value))}
-                onKeyDown={(e) => {
-                  if (e.code === 'Enter' && typeof currentPage === 'number') {
-                    handlePagination(currentPage + 1);
-                  }
-                }}
-              >
-                <NumberInputField
-                  outline="0px"
-                  boxShadow="none"
-                  _focusVisible={{ outline: '0px' }}
-                  borderRadius="3px"
-                  bg="blackScheme.500"
-                  color="white"
-                  fontSize="14px"
-                  height="31px"
-                  padding="0px 5px"
-                  textAlign="center"
-                  width="42px"
-                  margin="0px 7px"
-                />
-              </NumberInput>
-              <Text size="sm" color="#777777" fontWeight="medium">
-                of {paginationMeta.totalPages}
-              </Text>
-              <IconButton
-                isDisabled={
-                  paginationMeta.page + 1 === paginationMeta.totalPages
-                }
-                aria-label="next"
-                size="smIcon"
-                boxSize="31px"
-                variant="tertiaryIcon"
-                onClick={() => {
-                  const page = currentPage ?? 0;
-                  handlePagination(page + 2);
-                  setCurrentPage(page + 1);
-                  if (tableTop.current) {
-                    tableTop.current.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                icon={<RightCaretIcon width="10px" />}
-              />
-            </Flex>
+            {/* INVESTIGATE LATER */}
           </Flex>
         </Flex>
       )}
@@ -506,20 +489,19 @@ export const EmptyChkTable = ({
     >
       <Center
         mb={4}
-        boxSize="80px"
-        bg="gray.100"
-        borderRadius="full"
-        sx={{ path: { fill: 'red' } }}
+        boxSize="17.2rem"
+        // borderRadius="full"
+        // sx={{ path: { fill: 'red' } }}
       >
-        {icon ?? <EmptyTableIcon width="48px" height="48px" />}
+        {icon ?? <EmptyTableIcon />}
       </Center>
-      <Box width="230px">
+      <Box>
         {title ? (
           <Text color="black" fontWeight="medium">
             {title}
           </Text>
         ) : (
-          <Text textAlign="center" color="#fff">
+          <Text textAlign="center" color="#fff" size="body1">
             You have no transactions yet, but no worries. <br />
             They are many like you but you have the power to change that.
           </Text>
