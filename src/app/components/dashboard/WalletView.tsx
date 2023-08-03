@@ -111,13 +111,14 @@ const WalletView: FC = () => {
   } = useDisclosure();
 
   useEffect(() => {
+    // .get(`/user/wallet/transactions?page=${page}&size=${pageLength}`)
     apiPrivate
-      .get('/user/wallet/transactions')
+      .get(`/user/wallet/transactions`)
       .then(({ data }) => {
         console.log('RESPONSEEEE', data.data);
 
         setPageMeta({
-          page: 0,
+          page: data.page,
           totalPages: 0,
           limit: pageLength,
           total: data.totalElements,

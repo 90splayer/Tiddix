@@ -506,20 +506,19 @@ export const EmptyChkTable = ({
     >
       <Center
         mb={4}
-        boxSize="80px"
-        bg="gray.100"
-        borderRadius="full"
-        sx={{ path: { fill: 'red' } }}
+        boxSize="17.2rem"
+        // borderRadius="full"
+        // sx={{ path: { fill: 'red' } }}
       >
-        {icon ?? <EmptyTableIcon width="48px" height="48px" />}
+        {icon ?? <EmptyTableIcon />}
       </Center>
-      <Box width="230px">
+      <Box>
         {title ? (
           <Text color="black" fontWeight="medium">
             {title}
           </Text>
         ) : (
-          <Text textAlign="center" color="#fff">
+          <Text textAlign="center" color="#fff" size="body.1">
             You have no transactions yet, but no worries. <br />
             They are many like you but you have the power to change that.
           </Text>
