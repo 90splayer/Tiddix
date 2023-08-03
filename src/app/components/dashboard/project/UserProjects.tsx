@@ -39,7 +39,7 @@ const UserProjects: FC = () => {
     apiPrivate
       .get('/user/projects')
       .then(({ data }) => {
-        console.log('RESPONSE', data.projects);
+        // console.log('RESPONSE', data.projects);
         setProjects(data.projects);
       })
       .catch(() => {
@@ -64,8 +64,8 @@ const UserProjects: FC = () => {
                   h="10rem"
                   borderRadius="2rem"
                   objectFit="cover"
-                  src="https://bit.ly/dan-abramov"
-                  alt="dan"
+                  src={project.coverArt}
+                  alt={project.projectName}
                 />
               </Box>
               <Stack>
