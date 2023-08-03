@@ -25,7 +25,7 @@ const HeroBanner = () => {
       w="full"
       className="hero"
     >
-      <Container maxW="144rem" pos="relative">
+      <Container maxW="144rem" m="0 auto" pos="relative">
         <VStack spacing="48px">
           <Text
             fontSize="2.6rem"
@@ -34,13 +34,13 @@ const HeroBanner = () => {
           >
             INVESTORS
           </Text>
-          <Heading size="display4" textAlign="center" maxW="52rem">
-            This should have an investor tag line for this page
+          <Heading size="display1sub" textAlign="center" maxW="50rem">
+            The catalyst of dream making!
           </Heading>
           <Text maxW="70rem" size="body1" mt="5px" textAlign="center">
-            We invite investors to the creative space where creator metrics
-            (views, engagements, followers, rankings etc) can be used to
-            properly determine a creator’s value and prospects for investments.
+            There are fewer things rewarding in life than making people’s dreams
+            come true. With small amounts of money sitting in your bank account,
+            you can be part of a budding creatives’ success story.
           </Text>
         </VStack>
 

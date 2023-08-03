@@ -84,7 +84,7 @@ const Intro: FC = () => {
                   Get Started
                 </Button>
               </Link>
-              <Link to="/about">
+              <Link to="/creatives">
                 <Button size="lg">Learn More</Button>
               </Link>
             </Flex>

@@ -31,7 +31,7 @@ const EasyStepCard: FC<Props> = ({ icon, count, desc }) => {
       </Box>
       <Flex flexDir="column" align="center" justify="center">
         <Box pb="40px">
-          <Image src={icon} alt="journey-step" />
+          <Image src={icon} alt="journey-step-img" />
         </Box>
         <Text
           fontSize="2.4rem"
