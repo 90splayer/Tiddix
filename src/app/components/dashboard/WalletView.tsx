@@ -32,6 +32,7 @@ import {
   thousandsSeparators,
   resolveDataToTableData,
   setSN,
+  dateFormat,
 } from 'app/utils/helpers';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from '../common/Toaster';
@@ -40,7 +41,7 @@ import { CustomTable } from '../common/CustomTable';
 
 type TransactionT = {
   amount: string;
-  created_at: string;
+  created_at: Date;
   description: string;
   destination: string;
   id: string;
@@ -55,9 +56,9 @@ const columns = {
   //   label: 'S/N',
   //   active: true,
   // },
-  source: {
-    key: 'source',
-    label: 'Source',
+  created_at: {
+    key: 'created_at',
+    label: 'Date',
     active: true,
   },
   type: {
@@ -65,14 +66,19 @@ const columns = {
     label: 'Transaction Type',
     active: true,
   },
-  created_at: {
-    key: 'created_at',
-    label: 'Date',
-    active: true,
-  },
   amount: {
     key: 'amount',
     label: 'Amount',
+    active: true,
+  },
+  id: {
+    key: 'id',
+    label: 'Reference',
+    active: true,
+  },
+  source: {
+    key: 'source',
+    label: 'Source',
     active: true,
   },
   destination: {
@@ -148,7 +154,7 @@ const WalletView: FC = () => {
     transactions,
     (cur, i) => ({
       // sn: setSN(page, pageSize, i),
-      destination: cur.destination,
+      created_at: dateFormat(cur.created_at).easyDate,
     }),
   );
 
