@@ -72,8 +72,8 @@ const UserProjects: FC = () => {
                 <HStack>
                   <Avatar
                     boxSize="25px"
-                    name="dan abramov"
-                    src="https://bit.ly/dan-abramov"
+                    name={project.creativeName}
+                    src={project.creativePicture}
                   />
                   <Text size="body2" color="#fff">
                     {project.creativeName}
