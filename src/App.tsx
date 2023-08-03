@@ -25,6 +25,7 @@ import GoogleAuth from 'app/pages/oauth/GoogleAuth';
 import FacebookAuth from 'app/pages/oauth/FacebookAuth';
 import UserProfile from 'app/pages/UserProfile';
 import EmailConfirmationPage from 'app/pages/EmailConfirmationPage';
+import Creatives from 'app/pages/Creatives';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/projects/:id" element={<SingleProjectPage />} />
           <Route path="/user-profile/:id" element={<UserProfile />} />
           <Route path="/investors" element={<Investor />} />
+          <Route path="/creatives" element={<Creatives />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<LoginForm />} />
