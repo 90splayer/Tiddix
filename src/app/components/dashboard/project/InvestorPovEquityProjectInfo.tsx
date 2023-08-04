@@ -408,7 +408,7 @@ const InvestorPovEquityProjectInfo = ({
       </Flex>
 
       {/* TABLE COMPONENT */}
-      {isAuthenticated && investors.length ? (
+      {isAuthenticated() && investors.length ? (
         <TableContainer borderRadius="30px" bg="#232629" p="3rem">
           <Box pb="3rem">
             <Text size="body2">Investors </Text>
