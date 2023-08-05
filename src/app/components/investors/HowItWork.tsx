@@ -11,6 +11,8 @@ import {
 import { Link } from 'react-router-dom';
 import { Fade } from 'react-reveal';
 import icon from '../../assets/images/creatives/raise-fund.png';
+import { investPathData } from '../data/investPath';
+import HowItWorkCard from './HowItWorkCard';
 
 const HowItWork = () => {
   return (
@@ -23,35 +25,32 @@ const HowItWork = () => {
         </Fade>
 
         <Fade>
-          <Text maxW="635px" mb="10rem">
+          <Text maxW="635px" mb="10rem" textAlign="center">
             Be the catalyst and spark to ignite the flame in the journey of a
             creative. You just might be funding the next big thing!
           </Text>
         </Fade>
-        <Flex
-          p="7.5rem 15rem 7.4rem 8.7rem"
-          align="center"
-          justify="space-between"
-          w="100%"
-          borderRadius="4rem"
-          bgColor="rgb(152 151 151 / 25%)"
-          filter="drop-shadow(2px 4px 6px black)"
-          sx={{ WebkitBackdropFilter: 'blur(8px)' }}
-          boxShadow="inset 0 0 0 100% rgba(255,255,255,0.08)"
-        >
-          <Stack>
-            <Heading size="display1" color="#485155">
-              01
-            </Heading>
-            <Heading size="display2" maxW="37.5rem">
-              Pick your path, debt or equity
-            </Heading>
-          </Stack>
-
-          <Box>
-            <Image src={icon} zIndex={50000} alt="journey-step-img" />
+      </Flex>
+      <Stack spacing="3.2rem" mb="13.1rem">
+        {investPathData.map((path) => (
+          <Box key={path.id}>
+            <HowItWorkCard
+              icon={path.img}
+              count={path.id}
+              desc={path.desc}
+              w={''}
+            />
           </Box>
-        </Flex>
+        ))}
+      </Stack>
+
+      <Flex justify="center">
+        <Fade duration={3500}>
+          <Heading maxW="89.1rem" size="display1" textAlign="center">
+            You fund their dreams, they fund your wallet and it’s win-win for
+            all!🤑
+          </Heading>
+        </Fade>
       </Flex>
     </Container>
   );

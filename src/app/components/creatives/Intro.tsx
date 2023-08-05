@@ -11,6 +11,7 @@ import {
 import React, { FC } from 'react';
 import creativeDreams from '../../assets/images/creatives/creative.png';
 import raisedFund from '../../assets/images/creatives/raise-fund.png';
+import { Bounce, Fade } from 'react-reveal';
 
 const Intro: FC = () => {
   return (
@@ -36,17 +37,24 @@ const Intro: FC = () => {
             >
               Creatives
             </Text>
-            <Heading maxW="51rem" size="display1sub" pb="4.6rem">
-              Achieving your dreams starts here!
-            </Heading>
-            <Text maxW="47.4rem">
-              Your talent, projects, and general musings are valid and the world
-              should see it
-            </Text>
+            <Bounce duration="3500">
+              <Heading maxW="51rem" size="display1sub" pb="4.6rem">
+                Achieving your dreams starts here!
+              </Heading>
+            </Bounce>
+
+            <Fade duration="3500">
+              <Text maxW="47.4rem">
+                Your talent, projects, and general musings are valid and the
+                world should see it
+              </Text>
+            </Fade>
           </Stack>
-          <Flex flexDir="column" alignSelf="end">
-            <Image src={creativeDreams} alt="creatives-dreams" />
-          </Flex>
+          <Fade duration="1500" right>
+            <Flex flexDir="column" alignSelf="end">
+              <Image src={creativeDreams} alt="creatives-dreams" />
+            </Flex>
+          </Fade>
         </Flex>
 
         <Flex
@@ -60,14 +68,18 @@ const Intro: FC = () => {
           w="full"
           h="47.6rem"
         >
-          <Flex flexDir="column" alignSelf="end" zIndex={5}>
-            <Image src={raisedFund} alt="fund-raising-image" />
-          </Flex>
+          <Fade duration="1500" left>
+            <Flex flexDir="column" alignSelf="end">
+              <Image src={raisedFund} alt="fund-raising-image" />
+            </Flex>
+          </Fade>
 
-          <Heading fontSize="2.8rem" maxW="50.6rem">
-            Tiddix offers you the easiest way to raise funds to support your
-            career, aspirations, ideas and projects.
-          </Heading>
+          <Fade duration="2500">
+            <Heading fontSize="2.8rem" maxW="50.6rem">
+              Tiddix offers you the easiest way to raise funds to support your
+              career, aspirations, ideas and projects.
+            </Heading>
+          </Fade>
 
           <Box
             w="32rem"
