@@ -1,4 +1,8 @@
 import useAuth from 'app/hooks/useAuth';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import tz from 'dayjs/plugin/timezone';
+import { format } from 'date-fns-tz';
 
 export const isAuthenticated = () => {
   const authContext = useAuth();
@@ -77,4 +81,28 @@ export const setSN = (_page = 1, limit = 10, idx = 0) => {
   const number = limit * page - (limit - idx) + 1;
 
   return (number < 10 ? '00' : number < 100 ? '0' : '') + number;
+};
+
+export const dateFormat = (date: Date) => {
+  dayjs.extend(utc);
+  dayjs.extend(tz);
+
+  const timezone = dayjs.tz.guess();
+
+  return {
+    time: format(new Date(date), 'p', { timeZone: 'Europe/London' }),
+    date: format(new Date(date), 'dd/MM/yyy', { timeZone: 'Europe/London' }),
+    filterType: format(new Date(date), 'dd/MM/yyy', {
+      timeZone: 'Europe/London',
+    }),
+    inputType: format(new Date(date), 'dd-MM-yyy', {
+      timeZone: 'Europe/London',
+    }),
+    easyDate: format(new Date(date), 'MMM dd, yyyy', {
+      timeZone: 'Europe/London',
+    }),
+    tableType: dayjs.utc(date).tz(timezone).format('DD MMM YYYY - HH:mm A'),
+    friendlyDate: dayjs.utc(date).tz(timezone).format('DD MMM YYYY'),
+    simpleDate: dayjs.utc(date).tz(timezone).format('MMM DD, YYYY'),
+  };
 };
