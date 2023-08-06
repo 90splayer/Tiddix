@@ -53,7 +53,7 @@ const StyledContent = styled(DropdownMenuPrimitive.Content)`
   max-width: 340px;
   min-width: 140px;
   background-color: var(--dot-colors-white);
-  border-radius: var(--dot-space-2);
+  border-radius: 3rem;
   ${(props) =>
     props.theme.mode === 'dark' &&
     css`
@@ -116,7 +116,7 @@ const StyledItem = styled(DropdownMenuPrimitive.Item)`
   all: unset;
   display: flex;
   align-items: center;
-  gap: var(--dot-space-2);
+  gap: 0.8rem;
   /* height: 20px; */
   padding: 12px 13px;
   border-bottom: 1px solid var(--dot-colors-gray-25);
@@ -137,7 +137,7 @@ const StyledRadio = styled(DropdownMenuPrimitive.RadioItem)`
   all: unset;
   display: flex;
   align-items: center;
-  gap: var(--dot-space-2);
+  gap: 0.8rem;
   padding: 12px 13px;
   border-bottom: 1px solid var(--dot-colors-gray-25);
 
@@ -145,7 +145,7 @@ const StyledRadio = styled(DropdownMenuPrimitive.RadioItem)`
   user-select: none;
 
   &[data-disabled] {
-    background-color: ${({ theme }) => theme.lighterGrey}4a;
+    background-color: ${({ theme }) => theme.lighterGrey};
     pointer-events: none;
   }
 
@@ -353,7 +353,10 @@ export const DropdownRadio: React.FC<RadioDropdownType> = ({
           {title}
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent sideOffset={offset ?? 5}>
+      <DropdownMenuContent
+        sideOffset={offset ?? 5}
+        style={{ background: '#232629', padding: '1rem' }}
+      >
         <DropdownMenuPrimitive.RadioGroup
           value={value}
           onValueChange={handleValueChange}

@@ -1,6 +1,7 @@
 import {
   Flex,
   Stack,
+  VStack,
   Heading,
   Text,
   Box,
@@ -13,6 +14,7 @@ import {
 import { verify } from 'app/assets/svgs/home';
 import React, { useEffect, useRef } from 'react';
 import project from '../../assets/images/investor/project.jpg';
+import { Fade } from 'react-reveal';
 
 const Offers = () => {
   const boxRefs = [
@@ -122,14 +124,17 @@ const Offers = () => {
             w={{ base: '100%', md: '50%' }}
             mb={{ base: '5rem', md: 0 }}
           >
-            <Heading as="h2" maxW="41.4rem" size="display2">
-              Tiddix offer you a platform to safely earn money
-            </Heading>
+            <Fade duration="1500">
+              <Heading as="h2" maxW="41.4rem" size="display2">
+                Tiddix offer you a platform to safely earn money
+              </Heading>
+            </Fade>
+
             <Text size="body1" maxW="357px">
               while building careers and making dreams come true.
             </Text>
           </Stack>
-          <Stack spacing="20px">
+          <VStack spacing="20px">
             {projectData?.map((singleData, id) => (
               <Flex
                 p="1.5rem"
@@ -139,7 +144,7 @@ const Offers = () => {
                 sx={{
                   '&.active': {
                     transform: 'scale(1.2)',
-                    w: '51.9rem',
+                    w: '45rem',
                   },
                 }}
                 justify="space-between"
@@ -149,7 +154,6 @@ const Offers = () => {
                 bg="#232629"
               >
                 <HStack spacing="14px">
-                  <Text>{singleData?.id + 1}</Text>
                   <Box>
                     <Image
                       borderRadius="16px"
@@ -190,7 +194,7 @@ const Offers = () => {
                 </HStack>
               </Flex>
             ))}
-          </Stack>{' '}
+          </VStack>{' '}
         </Flex>
       </Container>
     </Box>

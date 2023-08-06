@@ -69,7 +69,6 @@ const requestRadioOptions = [
   { label: '10', value: '10' },
   { label: '20', value: '20' },
   { label: '50', value: '50' },
-  { label: '100', value: '100' },
 ];
 
 export const CustomTable: React.FC<TableProps> = ({
@@ -369,7 +368,7 @@ export const CustomTable: React.FC<TableProps> = ({
       {paginationMeta && handlePagination && (
         <Flex my="24px" justifyContent="space-between">
           <Flex align="center" gap={2}>
-            <HStack spacing="1.5rem" pt="4.7rem" pb="7.1rem">
+            <HStack spacing="1.5rem" pt="1.5rem" pb="2.4rem">
               <Icon
                 // isDisabled={paginationMeta.page === 0}
                 as={LeftCaretIcon}

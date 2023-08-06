@@ -22,7 +22,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { CustomInput } from 'app/components/common/CustomInput';
-import { thousandsSeparators } from 'app/utils/helpers';
+import { thousandsSeparators, isAuthenticated } from 'app/utils/helpers';
 import { chkToaster } from 'app/components/common/Toaster';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { RiArrowLeftSLine } from 'react-icons/ri';
@@ -337,38 +337,42 @@ const InvestorPovEquityProjectInfo = ({
             </Box>
           </Flex>
 
-          <Box>
-            <CustomInput
-              placeholder="Enter Amount"
-              size="lg"
-              value={amount === 0 ? '' : `\£${thousandsSeparators(amount)}`}
-              onChange={handleChange}
-            />
-          </Box>
+          {isAuthenticated() && (
+            <>
+              <Box>
+                <CustomInput
+                  placeholder="Enter Amount"
+                  size="lg"
+                  value={amount === 0 ? '' : `\£${thousandsSeparators(amount)}`}
+                  onChange={handleChange}
+                />
+              </Box>
 
-          <Flex gap={16} justify="space-between">
-            <Button
-              variant="multiradial"
-              w="100%"
-              fontSize="1.6rem"
-              onClick={handleSubmit}
-              isLoading={loading && !angelInvestorMode}
-            >
-              Initiate Investment
-            </Button>
-            <Button
-              variant="primary"
-              w="100%"
-              fontSize="1.6rem"
-              onClick={() => {
-                setAngelInvestorMode(true);
-                handleSubmit();
-              }}
-              isLoading={loading && angelInvestorMode}
-            >
-              Invest as Angel
-            </Button>
-          </Flex>
+              <Flex gap={16} justify="space-between">
+                <Button
+                  variant="multiradial"
+                  w="100%"
+                  fontSize="1.6rem"
+                  onClick={handleSubmit}
+                  isLoading={loading && !angelInvestorMode}
+                >
+                  Initiate Investment
+                </Button>
+                <Button
+                  variant="primary"
+                  w="100%"
+                  fontSize="1.6rem"
+                  onClick={() => {
+                    setAngelInvestorMode(true);
+                    handleSubmit();
+                  }}
+                  isLoading={loading && angelInvestorMode}
+                >
+                  Invest as Angel
+                </Button>
+              </Flex>
+            </>
+          )}
         </Stack>
       )}
 
@@ -404,75 +408,79 @@ const InvestorPovEquityProjectInfo = ({
       </Flex>
 
       {/* TABLE COMPONENT */}
-      <TableContainer borderRadius="30px" bg="#232629" p="3rem">
-        <Box pb="3rem">
-          <Text size="body2">Investors </Text>
-        </Box>
-        <Table size="md">
-          <Thead>
-            <Tr bg="#000">
-              <Th
-                py="1.5rem"
-                color="#fff"
-                textTransform="capitalize"
-                fontSize="1.6rem"
-              >
-                Date
-              </Th>
-              <Th
-                py="1.5rem"
-                color="#fff"
-                textTransform="capitalize"
-                fontSize="1.6rem"
-              >
-                Investor
-              </Th>
-              <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                %
-              </Th>
-              <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                Value
-              </Th>
-            </Tr>
-          </Thead>
-
-          <Tbody>
-            {investors.map((investor: any) => (
-              <Tr>
-                <Td
-                  py="2.5rem"
+      {isAuthenticated() && investors.length ? (
+        <TableContainer borderRadius="30px" bg="#232629" p="3rem">
+          <Box pb="3rem">
+            <Text size="body2">Investors </Text>
+          </Box>
+          <Table size="md">
+            <Thead>
+              <Tr bg="#000">
+                <Th
+                  py="1.5rem"
                   color="#fff"
                   textTransform="capitalize"
                   fontSize="1.6rem"
                 >
-                  {investor.date}
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  <HStack spacing="5px">
-                    <Avatar
-                      boxSize="30px"
-                      border="2px solid pink"
-                      name={investor.investorName}
-                      src={investor.investorPicture}
-                    />
-
-                    <Text size="body2" color="#fff">
-                      {investor.investorName}
-                    </Text>
-                    {''}
-                  </HStack>
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  {investor.percentage}%
-                </Td>
-                <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
-                  £{thousandsSeparators(investor.value)}
-                </Td>
+                  Date
+                </Th>
+                <Th
+                  py="1.5rem"
+                  color="#fff"
+                  textTransform="capitalize"
+                  fontSize="1.6rem"
+                >
+                  Investor
+                </Th>
+                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  %
+                </Th>
+                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  Value
+                </Th>
               </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+            </Thead>
+
+            <Tbody>
+              {investors.map((investor: any) => (
+                <Tr>
+                  <Td
+                    py="2.5rem"
+                    color="#fff"
+                    textTransform="capitalize"
+                    fontSize="1.6rem"
+                  >
+                    {investor.date}
+                  </Td>
+                  <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                    <HStack spacing="5px">
+                      <Avatar
+                        boxSize="30px"
+                        border="2px solid pink"
+                        name={investor.investorName}
+                        src={investor.investorPicture}
+                      />
+
+                      <Text size="body2" color="#fff">
+                        {investor.investorName}
+                      </Text>
+                      {''}
+                    </HStack>
+                  </Td>
+                  <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                    {investor.percentage}%
+                  </Td>
+                  <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                    £{thousandsSeparators(investor.value)}
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </TableContainer>
+      ) : (
+        ''
+      )}
     </Box>
   );
 };

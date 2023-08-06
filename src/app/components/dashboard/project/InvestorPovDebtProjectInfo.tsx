@@ -16,7 +16,11 @@ import {
 } from '@chakra-ui/react';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from 'app/components/common/Toaster';
-import { thousandsSeparators, capitalizeFirstLetter } from 'app/utils/helpers';
+import {
+  thousandsSeparators,
+  capitalizeFirstLetter,
+  isAuthenticated,
+} from 'app/utils/helpers';
 import { CustomInput } from 'app/components/common/CustomInput';
 import { RiArrowLeftSLine } from 'react-icons/ri';
 import CustomModal from 'app/components/common/CustomModal';
@@ -345,94 +349,100 @@ const InvestorPovDebtProjectInfo = ({
             </Box>
           </Flex>
 
-          <Flex maxW="49rem" flexDir="column" gap="3rem">
-            <Flex justify="space-between">
-              <Stack>
-                <Box maxW="143px">
-                  <Text size="body2">Interest</Text>
-                  <Text size="body2" color="#fff">
-                    {interest}%
-                  </Text>
-                </Box>
-              </Stack>
-              {/* <Stack>
-                <Box maxW="143px">
-                  <Text size="body2">Period </Text>
-                  <Text size="body2" color="#fff">
-                    5 Months
-                  </Text>
-                </Box>
-              </Stack> */}
-              {/* <Stack>
-                <Box maxW="143px">
-                  <Text size="body2">Interest Payment </Text>
-                  <Text size="body2" color="#fff">
-                    £20007
-                  </Text>
-                </Box>
-              </Stack> */}
-            </Flex>
+          {isAuthenticated() && (
+            <Flex maxW="49rem" flexDir="column" gap="3rem">
+              <Flex justify="space-between">
+                <Stack>
+                  <Box maxW="143px">
+                    <Text size="body2">Interest</Text>
+                    <Text size="body2" color="#fff">
+                      {interest}%
+                    </Text>
+                  </Box>
+                </Stack>
+                {/* <Stack>
+    <Box maxW="143px">
+      <Text size="body2">Period </Text>
+      <Text size="body2" color="#fff">
+        5 Months
+      </Text>
+    </Box>
+  </Stack> */}
+                {/* <Stack>
+    <Box maxW="143px">
+      <Text size="body2">Interest Payment </Text>
+      <Text size="body2" color="#fff">
+        £20007
+      </Text>
+    </Box>
+  </Stack> */}
+              </Flex>
 
-            <Box>
-              <CustomInput
-                placeholder="Enter Amount"
-                size="lg"
-                value={amount === 0 ? '' : `\£${thousandsSeparators(amount)}`}
-                onChange={handleChange}
-              />
-            </Box>
+              <Box>
+                <CustomInput
+                  placeholder="Enter Amount"
+                  size="lg"
+                  value={amount === 0 ? '' : `\£${thousandsSeparators(amount)}`}
+                  onChange={handleChange}
+                />
+              </Box>
 
-            <Flex gap={16} justify="space-between">
-              <Button
-                variant="multiradial"
-                w="100%"
-                fontSize="1.6rem"
-                onClick={handleSubmit}
-                isLoading={loading && !angelInvestorMode}
-              >
-                Initiate Investment
-              </Button>
-              <Button
-                variant="primary"
-                w="100%"
-                fontSize="1.6rem"
-                onClick={() => {
-                  setAngelInvestorMode(true);
-                  handleSubmit();
-                }}
-                isLoading={loading && angelInvestorMode}
-              >
-                Invest as Angel
-              </Button>
+              <Flex gap={16} justify="space-between">
+                <Button
+                  variant="multiradial"
+                  w="100%"
+                  fontSize="1.6rem"
+                  onClick={handleSubmit}
+                  isLoading={loading && !angelInvestorMode}
+                >
+                  Initiate Investment
+                </Button>
+                <Button
+                  variant="primary"
+                  w="100%"
+                  fontSize="1.6rem"
+                  onClick={() => {
+                    setAngelInvestorMode(true);
+                    handleSubmit();
+                  }}
+                  isLoading={loading && angelInvestorMode}
+                >
+                  Invest as Angel
+                </Button>
+              </Flex>
             </Flex>
-          </Flex>
+          )}
         </Stack>
       )}
 
-      <Flex
-        p="3rem"
-        bg="#232629"
-        borderRadius="20px"
-        direction="column"
-        gap="2rem"
-      >
-        {investors.map((investor: any) => (
-          <>
-            <HStack spacing="2rem">
-              <Avatar
-                src={investor.investorPicture}
-                border="3px solid pink"
-                boxSize="40px"
-                name={investor.investorName}
-              />
-              <Box>
-                <Heading fontSize="1.6rem">{investor.investorName}</Heading>
-                <Text size="body2">{investor.percentage}%</Text>
-              </Box>
-            </HStack>
-          </>
-        ))}
-      </Flex>
+      {isAuthenticated() && investors.length ? (
+        <Flex
+          p="3rem"
+          bg="#232629"
+          borderRadius="20px"
+          direction="column"
+          gap="2rem"
+        >
+          {investors.map((investor: any) => (
+            <>
+              <HStack spacing="2rem">
+                <Avatar
+                  src={investor.investorPicture}
+                  border="3px solid pink"
+                  boxSize="40px"
+                  name={investor.investorName}
+                />
+                <Box>
+                  <Heading fontSize="1.6rem">{investor.investorName}</Heading>
+                  <Text size="body2">{investor.percentage}%</Text>
+                </Box>
+              </HStack>
+            </>
+          ))}
+        </Flex>
+      ) : (
+        ''
+      )}
     </Box>
   );
 };
