@@ -1,42 +1,36 @@
-import { Text, VStack, Container, Button } from '@chakra-ui/react';
+import { Text, VStack, Container, Button, Heading } from '@chakra-ui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SignUpBanner = () => {
   return (
-    <Container maxW="144rem" p="7.5rem 7.2rem 15rem">
+    <Container
+      maxW="144rem"
+      p={{ base: '3.5rem 2rem 3.5rem', md: '7.5rem 7.2rem 15rem' }}
+    >
       <VStack
         borderRadius="40px"
         justify="center"
-        spacing="9rem"
+        px="2rem"
+        spacing={{ base: '6rem', md: '9rem' }}
         h="45.8rem"
         bgGradient="radial(170.01% 203.82% at 137.98% -39.33%, #FF2727 0%, #FF8CDF 44.52%, #448FFF 100%)"
       >
-        <Text
-          fontSize="4.8rem"
-          lineHeight="54.62px"
+        <Heading
+          size="display2"
+          maxW={{ base: '31.6rem', sm: '48.8rem', md: '75rem' }}
           textAlign="center"
-          color="#fff"
-          fontWeight="700"
         >
-          Join the world's largest digital
-          <br /> platform and start getting funds.
-        </Text>
+          Join the world's largest digital platform and start getting funds.
+        </Heading>
         <Link to="/signup">
           <Button
-            borderRadius="10rem"
-            w="14.9rem"
-            h="59px"
-            bg="#fff"
-            color="#000"
-            fontSize="1.6rem"
-            transition="0.5s ease"
-            boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
+            variant="whitebg"
             _hover={{
               opacity: 0.8,
             }}
           >
-            Sign up
+            Sign up now
           </Button>
         </Link>
       </VStack>

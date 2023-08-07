@@ -13,6 +13,7 @@ const HowItWorkCard: FC<Props> = ({ icon, title, desc }) => {
       color="#fff"
       bg="#232629"
       maxW="40.4rem"
+      mb={{ base: '3rem', lg: '0rem' }}
       h="45.8rem"
       p="5.8rem 3rem 6rem"
       borderRadius="30px"

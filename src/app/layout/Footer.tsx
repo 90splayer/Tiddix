@@ -23,10 +23,13 @@ export const Footer: FC = () => {
   const { colorMode } = useColorMode();
   return (
     <Box>
-      <Container maxW="1440px" p="0 7.2rem 7.1rem">
+      <Container
+        maxW="1440px"
+        p={{ base: ' 0 2rem 10rem', md: '0 7.2rem 13.1rem' }}
+      >
         <Stack
           spacing={{ base: '50px', md: '110px' }}
-          p="14.7rem 5.1rem 11.5rem"
+          p={{ base: '5.7rem 4rem 11.5rem', md: '14.7rem 5.1rem 11.5rem' }}
           bgColor="#232629"
           borderRadius="4rem"
         >
@@ -36,7 +39,7 @@ export const Footer: FC = () => {
           >
             <Stack
               spacing="62px"
-              mb={{ base: '3rem', lg: '0' }}
+              mb={{ base: '6.7rem', lg: '0' }}
               w={{ base: '100%', lg: '40%' }}
             >
               <NavLink to="/">
@@ -61,7 +64,7 @@ export const Footer: FC = () => {
                     borderRadius="10rem"
                     border="1px solid #99A1AA"
                     maxW="30.6rem"
-                    // h="5.6rem"
+                    minH="5.6rem"
                     _placeholder={{
                       fontSize: '1.6rem',
                       color: '#99A1AA',
@@ -86,8 +89,9 @@ export const Footer: FC = () => {
               flexWrap="wrap"
               justify="space-between"
               w={{ base: '100%', lg: '60%' }}
+              gap="2rem"
             >
-              <Stack spacing="4rem">
+              <Stack spacing="4rem" mb={{ base: '4rem', md: '0' }}>
                 <Text fontWeight={700} color="#fff">
                   Quick links
                 </Text>
@@ -101,7 +105,7 @@ export const Footer: FC = () => {
                   <Text color="#99A1AA">Investors</Text>
                 </Link>
               </Stack>
-              <Stack spacing="4rem">
+              <Stack spacing="4rem" mb={{ base: '4rem', md: '0' }}>
                 <Text fontWeight={700} color="#fff">
                   Company
                 </Text>
@@ -115,7 +119,7 @@ export const Footer: FC = () => {
                   <Text color="#99A1AA">Contact Us</Text>
                 </Link>
               </Stack>
-              <Stack spacing="4rem">
+              <Stack spacing="4rem" mb={{ base: '4rem', md: '0' }}>
                 <Text fontWeight={700} color="#fff">
                   Resources
                 </Text>
@@ -123,7 +127,7 @@ export const Footer: FC = () => {
                   <Text color="#99A1AA">FAQs</Text>
                 </Link>
                 <Link to="*">
-                <Text color="#99A1AA">Blog</Text>
+                  <Text color="#99A1AA">Blog</Text>
                 </Link>
               </Stack>
               <Stack spacing="4rem">
@@ -193,8 +197,8 @@ export const Footer: FC = () => {
               textAlign="center"
             >
               <Link to="*">
-                <Text  _hover={{ textDecoration: 'underline' }}>
-                Legal Terms of Service
+                <Text _hover={{ textDecoration: 'underline' }}>
+                  Legal Terms of Service
                 </Text>
               </Link>
               <Link to="/privacy-policy">

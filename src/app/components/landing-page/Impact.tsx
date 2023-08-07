@@ -22,13 +22,13 @@ const Impact: FC = () => {
         align="center"
         w="full"
         pt="5.8rem"
-        pb="15.3rem"
+        pb={{ base: '7.5rem', md: '15.3rem' }}
       >
         <Container
           maxW="144rem"
           pos="relative"
           m="0 auto"
-          px={{ base: '3rem', md: '7rem', lg: '18.6rem' }}
+          px={{ base: '2rem', md: '7rem', lg: '18.6rem' }}
         >
           <Fade duration={3500}>
             <Heading as="h2" mb="4.7rem" textAlign="center" size="display1sub">
@@ -36,18 +36,28 @@ const Impact: FC = () => {
             </Heading>
           </Fade>
 
-          <Flex align="center" justify="space-between" flexWrap="wrap">
+          <Flex align="center" gap="1rem" justify="space-between">
             <VStack>
               <Box mb="3rem">
                 <FaMedal size="2.4rem" color="white" />
               </Box>
-              <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
+              <Heading
+                as="h2"
+                textAlign="center"
+                fontWeight="700"
+                fontSize={{ base: '2rem', md: '4.8rem' }}
+              >
                 {counterOn && (
                   <CountUp start={0} end={45} duration={2} delay={0} />
                 )}
                 %
               </Heading>
-              <Text>Success Rate</Text>
+              <Text
+                fontSize={{ base: '1.6rem', md: '2rem' }}
+                textAlign="center"
+              >
+                Success Rate
+              </Text>
             </VStack>
             <Box
               h="139px"
@@ -58,10 +68,20 @@ const Impact: FC = () => {
               <Box mb="3rem">
                 <GiTeamIdea size="2.4rem" color="white" />
               </Box>
-              <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
+              <Heading
+                as="h2"
+                textAlign="center"
+                fontWeight="700"
+                fontSize={{ base: '2rem', md: '4.8rem' }}
+              >
                 7000
               </Heading>
-              <Text>Projects Launched</Text>
+              <Text
+                fontSize={{ base: '1.6rem', md: '2rem' }}
+                textAlign="center"
+              >
+                Projects Launched
+              </Text>
             </VStack>
             <Box
               h="139px"
@@ -72,14 +92,24 @@ const Impact: FC = () => {
               <Box mb="3rem">
                 <GiTakeMyMoney size="2.4rem" color="white" />
               </Box>
-              <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
+              <Heading
+                as="h2"
+                textAlign="center"
+                fontWeight="700"
+                fontSize={{ base: '2rem', md: '4.8rem' }}
+              >
                 £
                 {counterOn && (
                   <CountUp start={100} end={500} duration={3} delay={0} />
                 )}
                 k+
               </Heading>
-              <Text>Raised Amount</Text>
+              <Text
+                fontSize={{ base: '1.6rem', md: '2rem' }}
+                textAlign="center"
+              >
+                Raised Amount
+              </Text>
             </VStack>
             <Box
               h="139px"
@@ -90,10 +120,20 @@ const Impact: FC = () => {
               <Box mb="3rem">
                 <MdOutlineManageHistory size="2.4rem" color="white" />
               </Box>
-              <Heading as="h2" textAlign="center" fontWeight="700" size="body1">
+              <Heading
+                as="h2"
+                textAlign="center"
+                fontWeight="700"
+                fontSize={{ base: '2rem', md: '4.8rem' }}
+              >
                 1
               </Heading>
-              <Text>Years of Service</Text>
+              <Text
+                fontSize={{ base: '1.6rem', md: '2rem' }}
+                textAlign="center"
+              >
+                Years of Service
+              </Text>
             </VStack>
           </Flex>
         </Container>

@@ -22,7 +22,7 @@ const Intro: FC = () => {
       <Container
         maxW="144rem"
         p={{
-          base: '7rem 2.5rem 5rem ',
+          base: '7rem 2rem 5rem ',
           md: '7rem 3rem 5rem ',
           lg: '11.7rem 10.2rem 8.4rem 7.2rem',
         }}
@@ -35,14 +35,13 @@ const Intro: FC = () => {
           <Stack
             w={{ base: '100%', md: '50%' }}
             zIndex={3}
-            mb={{ base: '5rem', md: 0 }}
+            mb={{ base: '7.7rem', md: 0 }}
           >
             <Fade duration={3500}>
               <Heading
                 size="display1"
                 mb={{ base: '3rem', md: '5rem' }}
                 maxW="52.6rem"
-                lineHeight="8rem"
               >
                 Funding for
                 <br />
@@ -71,7 +70,7 @@ const Intro: FC = () => {
             </Fade>
 
             <Fade duration={4500}>
-              <Text size="body1" maxW="550px" pb={{ base: '38px', md: '76px' }}>
+              <Text size="body1" maxW="550px" pb={{ base: '45px', md: '76px' }}>
                 We provide a hassle-free digital platform that serves as a
                 launchpad for dreams, creativity and talent! Join us today and
                 show the world who you really are

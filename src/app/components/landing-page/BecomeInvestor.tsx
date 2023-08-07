@@ -16,7 +16,10 @@ import { Fade } from 'react-reveal';
 const BecomeInvestor: FC = () => {
   return (
     <Box>
-      <Container maxW="144rem" p="9.5rem 6.9rem 7.5rem 7.2rem">
+      <Container
+        maxW="144rem"
+        p={{ base: '7.5rem 2rem 4rem', md: '9.5rem 6.9rem 7.5rem 7.2rem' }}
+      >
         <Flex
           align="center"
           flexDir={{ base: 'column', md: 'row' }}
@@ -29,31 +32,35 @@ const BecomeInvestor: FC = () => {
             letterSpacing="1px"
           >
             <Fade duration={3500}>
-              <Heading as="h2" maxW="35.4rem" size="display1sub">
+              <Heading
+                as="h2"
+                textAlign={{ base: 'center', md: 'inherit' }}
+                maxW={{ base: '100%', md: '35.4rem' }}
+                size="display1sub"
+              >
                 Become an investor
               </Heading>
             </Fade>
 
             <Fade>
-              <Text size="body1" maxW="475px">
+              <Text
+                size="body1"
+                maxW={{ base: '100%', md: '475px' }}
+                textAlign={{ base: 'center', md: 'inherit' }}
+              >
                 Be the catalyst and spark to ignite the flame in the journey of
                 a creative. You just might be funding the next big thing!
               </Text>
             </Fade>
 
-            <Flex gap="24px">
+            <Flex gap="24px" flexDir={{ base: 'column', md: 'row' }}>
               <Link to="/dashboard">
                 <Button
-                  bg="#fff"
-                  borderRadius="10rem"
-                  w="20.5rem"
+                  variant="whitebg"
+                  size="lg"
+                  w={{ base: '100%', md: '20.5rem' }}
                   h="59px"
-                  outline="none"
-                  border="none"
-                  color="#000"
-                  fontSize="1.6rem"
                   transition="0.5s ease"
-                  boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
                   _hover={{
                     opacity: 0.8,
                     transform: 'scale(1.02)',
@@ -63,21 +70,7 @@ const BecomeInvestor: FC = () => {
                 </Button>
               </Link>{' '}
               <Link to="/about">
-                <Button
-                  border="1px solid #fff"
-                  borderRadius="10rem"
-                  w="14.7rem"
-                  h="59px"
-                  fontSize="1.6rem"
-                  transition="0.5s ease"
-                  boxShadow="0px 4px 50px rgba(0, 0, 0, 0.15)"
-                  _hover={{
-                    opacity: 0.8,
-                    transform: 'scale(1.02)',
-                  }}
-                  bg="transparent"
-                  color="#fff"
-                >
+                <Button size="lg" h="59px" w={{ base: '100%', md: '14.7rem' }}>
                   Learn More
                 </Button>
               </Link>

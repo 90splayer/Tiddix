@@ -30,7 +30,7 @@ const TrendingProject = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -38,7 +38,7 @@ const TrendingProject = () => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -62,7 +62,7 @@ const TrendingProject = () => {
   }, []);
 
   return (
-    <Container maxW="144rem" p="7.5rem 3rem">
+    <Container maxW="144rem" p={{ base: '3rem ', md: '7.5rem 3rem' }}>
       <Fade duration={3500}>
         <Heading as="h2" size="display1sub" textAlign="center" pb="2rem">
           Trending Projects
@@ -70,7 +70,7 @@ const TrendingProject = () => {
       </Fade>
 
       <Fade>
-        <Text textAlign="center" pb="11rem">
+        <Text textAlign="center" pb={{ base: '8.5rem', md: '11rem' }}>
           Check out our weekly updated trending projects
         </Text>
       </Fade>
@@ -94,7 +94,11 @@ const TrendingProject = () => {
             </Box>
           ))}
         </Slider>
-        <Flex align="center" justify="center" mt="19rem">
+        <Flex
+          align="center"
+          justify="center"
+          mt={{ base: '7.5rem', md: '19rem' }}
+        >
           <Link to="/explore">
             <Button
               border="1px solid #fff"
