@@ -23,7 +23,11 @@ const MarqueBtn: FC<Props> = ({ title }) => {
         p="20px 50px"
         className="gradient-border"
       >
-        <Heading as="h2" padding="0 5rem">
+        <Heading
+          as="h2"
+          fontSize={{ base: '1.6rem', md: '2.4rem' }}
+          padding={{ base: '0 2rem', md: '0 5rem' }}
+        >
           {title}
         </Heading>
       </Flex>

@@ -14,7 +14,7 @@ const CreativeCommunity: FC = () => {
           <Heading
             as="h2"
             size="display1sub"
-            maxW="50.8rem"
+            maxW={{ base: '41rem', md: '50.8rem' }}
             textAlign="center"
             mb="10rem"
           >
@@ -52,7 +52,7 @@ const CreativeCommunity: FC = () => {
             </GridItem>
           ))}
         </Grid> */}
-        <Flex gap={10} wrap="wrap" justify="center">
+        <Flex gap={{ base: 3, md: 10 }} wrap="wrap" justify="center">
           {CategoryData.slice(0, 15).map((item, index) => (
             <GridItem key={index}>
               <MarqueBtn title={item} />

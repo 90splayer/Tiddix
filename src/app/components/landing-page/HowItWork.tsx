@@ -7,9 +7,14 @@ import { Fade } from 'react-reveal';
 
 const HowItWork = () => {
   return (
-    <Container maxW="144rem" p="7.5rem 7.2rem">
+    <Container maxW="144rem" p={{ base: '7.5rem 2rem', md: '7.5rem 7.2rem' }}>
       <Fade duration={3500}>
-        <Heading as="h2" size="display1sub" textAlign="center" mb="10rem">
+        <Heading
+          as="h2"
+          size="display1sub"
+          textAlign="center"
+          mb={{ base: '3.8rem', sm: '5rem', md: '10rem' }}
+        >
           How it works
         </Heading>
       </Fade>

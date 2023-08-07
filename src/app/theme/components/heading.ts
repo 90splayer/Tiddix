@@ -11,11 +11,11 @@ export const headingStyles = {
       // font size and line height set for md. base and sm assumed till mobile is ready. Default text is body1
       sizes: {
         body1: {
-          fontSize: { base: '1.2rem', sm: '1.6rem', md: '2.0rem' },
-          lineHeight: { base: '1.5rem', sm: '1.9rem', md: '2.4rem' },
+          fontSize: { base: '2.0rem' },
+          // lineHeight: { base: '1.5rem', sm: '1.9rem', md: '2.4rem' },
         },
         body2: {
-          fontSize: { base: '1.0rem', sm: '1.4rem', md: '1.6rem' },
+          fontSize: { base: '1.4rem', md: '1.6rem' },
           lineHeight: { base: '1.25rem', sm: '1.6rem', md: '1.9rem' },
         },
         body3: {
@@ -36,20 +36,18 @@ export const headingStyles = {
       // font size and line height set for md. base and sm assumed till mobile is ready. Default heading is display2
       sizes: {
         display1: {
-          fontSize: { base: '4.2rem', sm: '4.8rem', md: '6.4rem' },
+          fontSize: { base: '4.8rem', sm: '5.4rem', md: '6.4rem' },
           lineHeight: {
-            base: '5.2rem',
-            sm: '5.75rem',
-            md: '6.4rem',
-            lg: '7.3rem',
+            base: '6.4rem',
+            md: '7.6rem',
           },
         },
         display1sub: {
           fontSize: { base: '3rem', sm: '3.2rem', md: '5.4rem' },
-          lineHeight: { base: '4rem', sm: '4.75rem', md: '6.4rem' },
+          lineHeight: { base: '4.2rem', md: '6rem' },
         },
         display2: {
-          fontSize: { base: '3rem', sm: '3.2rem', md: '4.8rem' },
+          fontSize: { base: '2.8rem', sm: '3.2rem', md: '4.8rem' },
           lineHeight: { base: '4rem', sm: '4.75rem', md: '5.8rem' },
         },
         display3: {
