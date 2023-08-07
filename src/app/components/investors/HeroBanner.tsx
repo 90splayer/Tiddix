@@ -15,6 +15,7 @@ import piechart from '../../assets/images/investor/piecart.png';
 import music from '../../assets/images/investor/music.png';
 import paint from '../../assets/images/investor/paint-art.png';
 import React from 'react';
+import { Bounce, Fade } from 'react-reveal';
 
 const HeroBanner = () => {
   return (
@@ -34,14 +35,19 @@ const HeroBanner = () => {
           >
             INVESTORS
           </Text>
-          <Heading size="display1sub" textAlign="center" maxW="50rem">
-            The catalyst of dream making!
-          </Heading>
-          <Text maxW="70rem" size="body1" mt="5px" textAlign="center">
-            There are fewer things rewarding in life than making people’s dreams
-            come true. With small amounts of money sitting in your bank account,
-            you can be part of a budding creatives’ success story.
-          </Text>
+          <Bounce duration="2500">
+            <Heading size="display1sub" textAlign="center" maxW="59rem">
+              The catalyst of dream making!
+            </Heading>
+          </Bounce>
+
+          <Fade duration="2500">
+            <Text maxW="70rem" size="body1" mt="5px" textAlign="center">
+              There are fewer things rewarding in life than making people’s
+              dreams come true. With small amounts of money sitting in your bank
+              account, you can be part of a budding creatives’ success story.
+            </Text>
+          </Fade>
         </VStack>
 
         <Box pos="absolute" right={53} bottom={30}>

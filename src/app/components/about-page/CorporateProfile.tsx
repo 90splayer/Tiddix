@@ -9,7 +9,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import profile from '../../assets/images/about/coporate-profile.webp';
-import { Fade } from 'react-reveal';
+import { Fade, Bounce } from 'react-reveal';
 import React from 'react';
 
 const CorporateProfile = () => {
@@ -27,9 +27,9 @@ const CorporateProfile = () => {
             CORPORATE PROFILE
           </Text>
 
-          <Fade duration="3500">
+          <Bounce duration="2500">
             <Heading
-              size="display4"
+              size="display2"
               textAlign="center"
               maxW="70.4rem"
               letterSpacing="1px"
@@ -37,7 +37,7 @@ const CorporateProfile = () => {
             >
               We are driving the shift towards decentralisation in finance
             </Heading>
-          </Fade>
+          </Bounce>
         </VStack>
         <Box mb="8rem">
           <Image
