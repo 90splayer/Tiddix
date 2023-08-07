@@ -158,8 +158,6 @@ const WalletView: FC = () => {
     }),
   );
 
-  console.log('PAGE META ON WALLET VIEW', pageMeta);
-
   return (
     <Box>
       <Container

@@ -99,8 +99,6 @@ export const CustomTable: React.FC<TableProps> = ({
   };
   const [start, end, totalData] = calculateData(paginationMeta);
 
-  console.log('PAGINATION META ON CUSTOM TABLE', paginationMeta);
-
   if (loading) {
     return <TableLoadingSkeleton />;
   }
@@ -370,11 +368,16 @@ export const CustomTable: React.FC<TableProps> = ({
           <Flex align="center" gap={2}>
             <HStack spacing="1.5rem" pt="1.5rem" pb="2.4rem">
               <Icon
-                // isDisabled={paginationMeta.page === 0}
                 as={LeftCaretIcon}
                 color="#99A1AA"
                 aria-label="previous"
                 onClick={() => {
+                  console.log(
+                    'DEBUG',
+                    paginationMeta.page,
+                    paginationMeta.totalPages,
+                  );
+                  if (paginationMeta.page === 1) return;
                   const page = currentPage ?? 0;
                   handlePagination(page);
                   setCurrentPage(page - 1);
@@ -382,7 +385,7 @@ export const CustomTable: React.FC<TableProps> = ({
                     tableTop.current.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                cursor="pointer"
+                cursor={paginationMeta.page === 1 ? 'not-allowed' : 'pointer'}
               />
               <Flex>
                 <Text
@@ -402,12 +405,19 @@ export const CustomTable: React.FC<TableProps> = ({
                 </Text>
               </Flex>
               <Icon
-                //  isDisabled={
-                //   paginationMeta.page + 1 === paginationMeta.totalPages
-                // }
                 as={RightCaretIcon}
                 color="#99A1AA"
                 onClick={() => {
+                  console.log(
+                    'DEBUG',
+                    paginationMeta.page,
+                    paginationMeta.totalPages,
+                  );
+                  if (paginationMeta.page === paginationMeta.totalPages) {
+                    console.log('SOMETHING WILL GO WRONG');
+                    return;
+                  }
+                  console.log('GOT HERE DESPITE');
                   const page = currentPage ?? 0;
                   handlePagination(page + 2);
                   setCurrentPage(page + 1);
@@ -415,7 +425,11 @@ export const CustomTable: React.FC<TableProps> = ({
                     tableTop.current.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                cursor="pointer"
+                cursor={
+                  paginationMeta.page === paginationMeta.totalPages
+                    ? 'not-allowed'
+                    : 'pointer'
+                }
               />
             </HStack>
           </Flex>
