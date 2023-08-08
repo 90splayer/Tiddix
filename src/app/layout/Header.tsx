@@ -203,7 +203,7 @@ const TopNav = () => {
               border="none"
               borderRadius="10px"
               p="1.2rem"
-              size="sm"
+              size="md"
               aria-label="hamburger menu"
               transition="0.5s ease-in-out"
               fontSize="2.8rem"
@@ -254,7 +254,7 @@ const TopNav = () => {
                 border="none"
                 borderRadius="10px"
                 p="1.2rem"
-                size="sm"
+                size="md"
                 _hover={{ bgColor: '#dbd9d9' }}
                 fontSize="24px"
                 aria-label="close button"
