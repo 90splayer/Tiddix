@@ -151,15 +151,15 @@ export const buttonStyles = {
           minW: '10',
           fontSize: { base: '2.0rem' },
           lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
-          height: { base: '6.4rem' },
+          height: { base: '5.2rem', sm: '5.6rem', md: '6.0rem' },
           p: { base: '2.0rem 3.0rem' },
         },
         md: {
           minW: '8',
           fontSize: { base: '2.0rem' },
           lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
-          height: { base: '6.0rem' },
-          p: { base: '2.0rem 3.0rem' },
+          height: { base: '4.2rem', sm: '4.6rem', md: '6.0rem' },
+          p: { base: '2.0rem 2.5rem', md: '2.0rem 3.0rem' },
         },
         sm: {
           minW: '6',
