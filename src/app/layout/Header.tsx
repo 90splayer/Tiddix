@@ -14,6 +14,7 @@ import {
   MenuItem,
   MenuList,
   Icon,
+  Stack,
 } from '@chakra-ui/react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import tiddix from '../assets/images/tiddix.png';
@@ -22,23 +23,23 @@ import AccountState from 'app/components/auth/AccountState';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { MdOutlineClose } from 'react-icons/md';
 
 const TopNav = () => {
-  const [isMobile, setIsMobile] = useState('none');
   const navigate = useNavigate();
-
+  const [isMobile, setIsMobile] = useState('none');
   const closeMenu = () => setIsMobile('none');
   return (
     <Box
       as="nav"
       bg="transparent"
-      borderBottom={{ base: '1px solid #eded', lg: 'none' }}
+      // borderBottom={{ base: '1px solid #eded', lg: 'none' }}
     >
       <Container
         maxW="144rem"
         zIndex={5}
         p={{
-          base: '3.5rem 2rem',
+          base: '2.3rem 2rem',
           sm: '3.6rem 3rem 3rem',
           md: '3.6rem 5.2rem 3rem',
           lg: '3.6rem 7.2rem 3rem',
@@ -191,21 +192,150 @@ const TopNav = () => {
             <AccountState />
           </Box>
 
-          <Box display={{ base: 'block', lg: 'none' }}>
+          <Box
+            display={{ base: 'block', lg: 'none' }}
+            _hover={{ opacity: '0.7' }}
+          >
             <IconButton
-              _hover={{ bgColor: '#f4f4f4', color: '#0A0A0A' }}
               onClick={() => setIsMobile('flex')}
               color="white"
-              bg="#191919"
-              borderRadius="5px"
-              p="2.5rem 1rem"
+              bg="#232629"
+              border="none"
+              borderRadius="10px"
+              p="1.2rem"
+              size="sm"
               aria-label="hamburger menu"
               transition="0.5s ease-in-out"
-              size="md"
-              fontSize="3.6rem"
+              fontSize="2.8rem"
               icon={<RxHamburgerMenu />}
             />
           </Box>
+          <Flex
+            bgColor="#15181d"
+            pos="fixed"
+            top={0}
+            left={0}
+            h="100vh"
+            w="full"
+            zIndex={20}
+            overflowY="auto"
+            transition="0.8s ease-in-out"
+            // justify="center"
+            flexDir="column"
+            display={isMobile}
+          >
+            <Box
+              mt="2rem"
+              ml="2rem"
+              pos="absolute"
+              top={0}
+              left={0}
+              onClick={() => {
+                if (isMobile === 'flex') closeMenu();
+              }}
+            >
+              <NavLink to="/">
+                <Image src={tiddix} alt="tiddix logo" maxW="100px" />
+              </NavLink>
+            </Box>
+            <Flex
+              mt="2rem"
+              mr="2rem"
+              pos="absolute"
+              top={0}
+              right={0}
+              color="black"
+            >
+              <IconButton
+                onClick={() => setIsMobile('none')}
+                icon={<MdOutlineClose />}
+                transition="0.5s ease-in-out"
+                bg="#232629"
+                border="none"
+                borderRadius="10px"
+                p="1.2rem"
+                size="sm"
+                _hover={{ bgColor: '#dbd9d9' }}
+                fontSize="24px"
+                aria-label="close button"
+                isRound={true}
+              />
+            </Flex>
+            <Stack
+              mt="14rem"
+              spacing="25px"
+              alignItems="center"
+              fontWeight="600"
+              color="white"
+              px="2rem"
+            >
+              <Text
+                onClick={() => {
+                  if (isMobile === 'flex') closeMenu();
+                }}
+                transition="0.5s ease-in-out"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <NavLink to="/">Home</NavLink>
+              </Text>
+              <Text
+                onClick={() => {
+                  if (isMobile === 'flex') closeMenu();
+                }}
+                transition="0.5s ease-in-out"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <NavLink to="/explore">Explore</NavLink>
+              </Text>
+              <Text
+                onClick={() => {
+                  if (isMobile === 'flex') closeMenu();
+                }}
+                transition="0.5s ease-in-out"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <NavLink to="/creatives">Creatives</NavLink>
+              </Text>
+              <Text
+                onClick={() => {
+                  if (isMobile === 'flex') closeMenu();
+                }}
+                transition="0.5s ease-in-out"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <NavLink to="/investors">Investors</NavLink>
+              </Text>
+
+              <Text
+                onClick={() => {
+                  if (isMobile === 'flex') closeMenu();
+                }}
+                transition="0.5s ease-in-out"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <NavLink to="/teams">Our Team</NavLink>
+              </Text>
+              <Text
+                onClick={() => {
+                  if (isMobile === 'flex') closeMenu();
+                }}
+                transition="0.5s ease-in-out"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <NavLink to="/corporate-profile">Corporate Profile</NavLink>
+              </Text>
+
+              <Text
+                onClick={() => {
+                  if (isMobile === 'flex') closeMenu();
+                }}
+                transition="0.5s ease-in-out"
+                _hover={{ textDecoration: 'underline' }}
+              >
+                <NavLink to="/code-of-conduct">Code of Conduct</NavLink>
+              </Text>
+            </Stack>
+          </Flex>
         </Flex>
       </Container>
     </Box>
