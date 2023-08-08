@@ -15,14 +15,17 @@ import React from 'react';
 const CorporateProfile = () => {
   return (
     <Box>
-      <Container maxW="144rem" pt="12.2rem" px="0">
-        <VStack mb="8.7rem">
+      <Container maxW="144rem" pt={{ base: '9rem', md: '12.2rem' }} px="0">
+        <VStack
+          mb={{ base: '5rem', sm: '8.7rem' }}
+          px={{ base: '2rem', sm: '0' }}
+        >
           <Text
-            mb="5rem"
+            mb={{ base: '3rem', sm: '5rem' }}
             size="body2"
             bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
             bgClip="text"
-            fontSize="2.6rem"
+            fontSize={{ base: '1.6rem', md: '2.6rem' }}
           >
             CORPORATE PROFILE
           </Text>
@@ -31,7 +34,7 @@ const CorporateProfile = () => {
             <Heading
               size="display2"
               textAlign="center"
-              maxW="70.4rem"
+              maxW={{ base: '50rem', md: '70.4rem' }}
               letterSpacing="1px"
               pb="3.5rem"
             >
@@ -49,13 +52,13 @@ const CorporateProfile = () => {
             objectFit="cover"
           />
         </Box>
-        <Flex flexDir="column" px="10.2rem">
+        <Flex flexDir="column" px={{ base: '2rem', sm: '5rem', md: '10.2rem' }}>
           <Stack spacing="3rem">
             <Fade duration={3500}>
               <Heading as="h2">Status quo</Heading>
             </Fade>
             <Fade>
-              <Text textAlign="justify">
+              <Text textAlign={{ base: 'unset', sm: 'justify' }}>
                 In the creative economy today, the nature of centralised markets
                 means that creatives can only raise funds for production through
                 corporations like record labels and publishers, often wrapping
@@ -78,7 +81,7 @@ const CorporateProfile = () => {
               <Heading as="h2">The disruption</Heading>
             </Fade>
             <Fade>
-              <Text textAlign="justify">
+              <Text textAlign={{ base: 'unset', sm: 'justify' }}>
                 Tiddix aims to take advantage of the shift towards
                 decentralisation in finance to invite investors to the creative
                 space where creator metrics (views, engagements, followers,
@@ -102,7 +105,7 @@ const CorporateProfile = () => {
             </Fade>
 
             <Fade>
-              <Text textAlign="justify">
+              <Text textAlign={{ base: 'unset', sm: 'justify' }}>
                 The trend already exists in the emergence of many successful
                 independent artists across the creative field, but with investor
                 backing, we believe the next producer would not need an

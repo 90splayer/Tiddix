@@ -16,7 +16,14 @@ import { Fade } from 'react-reveal';
 const Audiences: FC = () => {
   return (
     <Box>
-      <Container maxW="144rem" p="10.8rem 18.2rem 18.8rem ">
+      <Container
+        maxW="144rem"
+        p={{
+          base: '8.8rem 1.9rem 11.8rem',
+          sm: '10.8rem 5rem 18.8rem',
+          md: '10.8rem 18.2rem 18.8rem ',
+        }}
+      >
         <VStack>
           <Fade duration={3500}>
             <Heading size="display2" textAlign="center" pb="5.1rem">
@@ -25,7 +32,12 @@ const Audiences: FC = () => {
           </Fade>
 
           <Fade duration={3500}>
-            <Text size="body1" textAlign="center" pb="13.9rem" maxW="72.9rem">
+            <Text
+              size="body1"
+              textAlign="center"
+              pb={{ base: '6rem', md: '13.9rem' }}
+              maxW="72.9rem"
+            >
               We invite investors to the creative space where creator metrics
               (views, engagements, followers, rankings etc) can be used to
               properly determine a creator’s value and prospects for
@@ -33,7 +45,11 @@ const Audiences: FC = () => {
             </Text>
           </Fade>
 
-          <Flex justify="cente" gap="3.1rem">
+          <Flex
+            justify="center"
+            flexDir={{ base: 'column', md: 'row' }}
+            gap="3.1rem"
+          >
             <AudienceCard
               title={'Creator'}
               image={AudienceImg}
