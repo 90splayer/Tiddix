@@ -22,7 +22,7 @@ const Intro: FC = () => {
       <Container
         maxW="144rem"
         p={{
-          base: '7rem 2rem 5rem ',
+          base: '7rem 1.8rem 5rem ',
           md: '7rem 3rem 5rem ',
           lg: '11.7rem 10.2rem 8.4rem 7.2rem',
         }}
@@ -77,7 +77,7 @@ const Intro: FC = () => {
               </Text>
             </Fade>
 
-            <Flex gap={{ base: '2rem', sm: '24px' }}>
+            <Flex gap={{ base: '1.5rem', sm: '2.4' }}>
               <Link to="/signup">
                 <Button variant="multicolor" size="lg">
                   Get Started
