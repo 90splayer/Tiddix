@@ -5,7 +5,12 @@ import { Fade } from 'react-reveal';
 const CoC = () => {
   return (
     <Box>
-      <Container maxW="144rem" p="12.2rem" px="18.2rem">
+      <Container
+        maxW="144rem"
+        pt={{ base: '9rem', md: '12.2rem' }}
+        pb={{ base: '11rem', md: '17.2rem' }}
+        px={{ base: '2rem', sm: '5rem', md: '10.2rem', lg: '18.2rem' }}
+      >
         <Stack spacing="5rem">
           <Stack spacing="5rem">
             <Fade duration={3500}>
@@ -14,7 +19,7 @@ const CoC = () => {
               </Heading>
             </Fade>
             <Fade>
-              <Text size="body1" textAlign="justify">
+              <Text size="body1" textAlign={{ base: 'unset', sm: 'justify' }}>
                 We want all visitors and contributors of Tiddix to have a safe,
                 interesting and friendly experience while using our product.
                 <br />
@@ -40,7 +45,7 @@ const CoC = () => {
               </Heading>
             </Fade>
             <Fade>
-              <Text size="body1" textAlign="justify">
+              <Text size="body1" textAlign={{ base: 'unset', sm: 'justify' }}>
                 Creators in particular are expected to do the research required
                 to ensure their projects and presence on the site are not
                 perpetuating harm to any segment of the community. (Especially
@@ -57,7 +62,7 @@ const CoC = () => {
               </Heading>
             </Fade>
             <Fade>
-              <Text size="body1" textAlign="justify">
+              <Text size="body1" textAlign={{ base: 'unset', sm: 'justify' }}>
                 Creatives are expected to act in a ethical manner at all times.
                 You are expected to provide accurate information and description
                 of your project and your profile. You are expected to comply
@@ -72,7 +77,7 @@ const CoC = () => {
               </Heading>
             </Fade>
             <Fade>
-              <Text size="body1" textAlign="justify">
+              <Text size="body1" textAlign={{ base: 'unset', sm: 'justify' }}>
                 Investors are expected to do their research and due diligence on
                 each creative and project before they choose to support them.
                 You are also expected to comply with the terms and conditions of
@@ -88,7 +93,7 @@ const CoC = () => {
             </Fade>
 
             <Fade>
-              <Text size="body1" textAlign="justify">
+              <Text size="body1" textAlign={{ base: 'unset', sm: 'justify' }}>
                 There is no us without you, and there is no stars without you!
                 While we are grateful for your support, we would implore you to
                 not use obscene, hateful, or harassing language.
