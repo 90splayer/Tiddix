@@ -149,17 +149,17 @@ export const buttonStyles = {
       sizes: {
         lg: {
           minW: '10',
-          fontSize: { base: '1.6rem', sm: '1.6rem', md: '2.0rem' },
+          fontSize: { base: '2.0rem' },
           lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
-          height: { base: '4.6rem', sm: '5.4rem', md: '6.4rem' },
-          p: { base: '12px 24px', sm: '13px 24px', md: '2.0rem 3.0rem' },
+          height: { base: '6.4rem' },
+          p: { base: '2.0rem 3.0rem' },
         },
         md: {
           minW: '8',
-          fontSize: { base: '1.4rem', sm: '1.6rem', md: '2.0rem' },
+          fontSize: { base: '2.0rem' },
           lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
-          height: { base: '4.2rem', sm: '4.6rem', md: '6.0rem' },
-          p: { base: '8px 16px', sm: '10px 20px', md: '2.0rem 3.0rem' },
+          height: { base: '6.0rem' },
+          p: { base: '2.0rem 3.0rem' },
         },
         sm: {
           minW: '6',
