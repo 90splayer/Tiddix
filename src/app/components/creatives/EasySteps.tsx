@@ -9,7 +9,11 @@ import file from '../../assets/images/creatives/files.png';
 import explore from '../../assets/images/creatives/explore.png';
 const EasySteps = () => {
   return (
-    <Container maxW="144rem" margin="0 auto" p="7.5rem 7.2rem 13rem">
+    <Container
+      maxW="144rem"
+      margin="0 auto"
+      p={{ base: '3rem 2rem 6.7rem', md: '7.5rem 7.2rem 13rem' }}
+    >
       <Flex justify="center">
         <Fade duration={3500}>
           <Heading
@@ -25,9 +29,10 @@ const EasySteps = () => {
       </Flex>
 
       <Flex
-        justify="space-between"
-        mb="20.4rem"
-        flexWrap={{ base: 'wrap', lg: 'nowrap' }}
+        justify={{ base: 'center', md: 'space-between' }}
+        align={{ base: 'center', md: 'unset' }}
+        mb={{ base: '9.7rem', md: '20.4rem' }}
+        flexWrap={{ base: 'wrap', md: 'nowrap' }}
         // gap="4.2rem"
         gap={{ base: '2%', lg: '3%' }}
       >
@@ -50,7 +55,7 @@ const EasySteps = () => {
 
       <Flex justify="center">
         <Fade duration={3500}>
-          <Heading maxW="97.9rem" size="display1" textAlign="center">
+          <Heading maxW="83.9rem" size="display1sub" textAlign="center">
             We are here to support your journey and cannot wait to see your name
             in lights!🥰
           </Heading>
