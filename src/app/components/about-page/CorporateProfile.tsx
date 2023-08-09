@@ -16,13 +16,10 @@ const CorporateProfile = () => {
   return (
     <Box>
       <Container maxW="144rem" pt={{ base: '9rem', md: '12.2rem' }} px="0">
-        <VStack
-          mb={{ base: '5rem', sm: '8.7rem' }}
-          px={{ base: '2rem', sm: '0' }}
-        >
+        <VStack mb={{ base: '5rem', sm: '8.7rem' }}>
           <Text
             mb={{ base: '3rem', sm: '5rem' }}
-            size="body2"
+            // size="body2"
             bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
             bgClip="text"
             fontSize={{ base: '1.6rem', md: '2.6rem' }}
@@ -33,8 +30,9 @@ const CorporateProfile = () => {
           <Bounce duration="2500">
             <Heading
               size="display2"
+              px={{ base: '2rem', sm: '0' }}
               textAlign="center"
-              maxW={{ base: '50rem', md: '70.4rem' }}
+              maxW={{ base: '100%', md: '70.4rem' }}
               letterSpacing="1px"
               pb="3.5rem"
             >

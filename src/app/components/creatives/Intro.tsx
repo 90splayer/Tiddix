@@ -16,19 +16,26 @@ import { Bounce, Fade } from 'react-reveal';
 const Intro: FC = () => {
   return (
     <Box>
-      <Container maxW="144rem" pt="10.7rem" pb="7.2rem" px="7.1rem">
+      <Container
+        maxW="144rem"
+        pt={{ base: '9rem', md: '10.7rem' }}
+        pb={{ base: '5rem', md: '7.2rem' }}
+        px={{ bae: '2rem', sm: '5rem', md: '7.1rem' }}
+      >
         <Flex
           bgColor="#232629"
           align="center"
+          flexDir={{ base: 'column', md: 'row' }}
           mb="4.2rem"
           justify="space-between"
           borderRadius="4rem"
-          pl="9.3rem"
-          pr="8.4rem"
+          pt={{ base: '5rem', md: '0' }}
+          pl={{ base: '3rem', sm: '5rem', md: '9.3rem' }}
+          pr={{ base: '2rem', sm: '4rem', md: '8.4rem' }}
           w="full"
-          h="47.6rem"
+          h={{ base: 'auto', md: '47.6rem' }}
         >
-          <Stack>
+          <Stack mb={{ base: '3rem', md: '0' }}>
             <Text
               fontSize="2.6rem"
               bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
@@ -38,7 +45,11 @@ const Intro: FC = () => {
               Creatives
             </Text>
             <Bounce duration="3500">
-              <Heading maxW="51rem" size="display1sub" pb="4.6rem">
+              <Heading
+                maxW="51rem"
+                size="display1sub"
+                pb={{ base: '3rem', md: '4.6rem' }}
+              >
                 Achieving your dreams starts here!
               </Heading>
             </Bounce>
@@ -61,21 +72,27 @@ const Intro: FC = () => {
           bgColor="#232629"
           align="center"
           mb="4.2rem"
+          flexDir={{ base: 'column-reverse', md: 'row' }}
           justify="space-between"
           borderRadius="4rem"
           pos="relative"
-          px="9.3rem"
+          pt={{ base: '5rem', md: '0' }}
+          px={{ base: '3rem', sm: '5rem', md: '9.3rem' }}
           w="full"
-          h="47.6rem"
+          h={{ base: 'auto', md: '47.6rem' }}
         >
-          <Fade duration="1500" left>
+          <Fade duration="2500" left>
             <Flex flexDir="column" alignSelf="end">
               <Image src={raisedFund} alt="fund-raising-image" />
             </Flex>
           </Fade>
 
           <Fade duration="2500">
-            <Heading fontSize="2.8rem" maxW="50.6rem">
+            <Heading
+              fontSize="2.8rem"
+              maxW="50.6rem"
+              mb={{ base: '6rem', md: '0' }}
+            >
               Tiddix offers you the easiest way to raise funds to support your
               career, aspirations, ideas and projects.
             </Heading>

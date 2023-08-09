@@ -14,6 +14,7 @@ const EasyStepCard: FC<Props> = ({ icon, count, desc }) => {
       bg="#232629"
       maxW="40.4rem"
       w="100%"
+      mb={{ base: '3rem', md: '0' }}
       h="45.8rem"
       p="2.3rem 3.9rem 5.9rem"
       borderRadius="30px"
