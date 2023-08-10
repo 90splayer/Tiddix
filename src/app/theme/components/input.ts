@@ -14,18 +14,18 @@ export const inputStyles = {
       sizes: {
         md: {
           field: {
-            height: { base: '4rem', sm: '4.2rem', md: '5.6rem' },
+            height: { base: '5.4rem', md: '5.6rem' },
             padding: '1rem 1rem 1rem 2rem',
             borderRadius: '10rem',
-            fontSize: { base: '1.0rem', sm: '1.4rem', md: '1.6rem' },
+            fontSize: { base: '1.6rem' },
           },
         },
         lg: {
           field: {
-            height: { base: '4rem', sm: '4.5rem', md: '5.9rem' },
+            height: { base: '5.4rem', md: '5.9rem' },
             padding: '2rem 1.5rem',
             borderRadius: '2rem',
-            fontSize: { base: '1.0rem', sm: '1.4rem', md: '1.6rem' },
+            fontSize: { base: '1.6rem' },
           },
         },
       },

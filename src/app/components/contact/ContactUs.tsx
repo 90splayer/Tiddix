@@ -85,30 +85,38 @@ const ContactUs: FC = () => {
 
   return (
     <Box>
-      <Container maxW="144rem" pt="8.06rem" px="18.2rem" pb="12.19rem">
+      <Container
+        maxW="144rem"
+        pt={{ base: '9rem', md: '12rem' }}
+        px={{ base: '2rem', sm: '5rem', md: '12rem', lg: '18.2rem' }}
+        pb="12.19rem"
+      >
         <Flex flexDir="column" w="full">
-          <VStack mb="8.13rem">
+          <VStack mb={{ base: '6rem', md: '8.13rem' }}>
             <Text
               mb="4.8rem"
               size="body2"
               bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
               bgClip="text"
-              fontSize="2.6rem"
+              fontSize={{ base: '2rem', md: '2.6rem' }}
             >
               Contact Us
             </Text>
-            <Heading size="display2" pb="1.81rem">
+            <Heading size="display2" textAlign="center" pb="2rem">
               Got questions about any of our services?
             </Heading>
             <Text size="body1" textAlign="center">
-              Contact us now through the channels below; email, by phone, or the
-              contact form.
+              Contact us now through the channels below.
               <br />
-              Let us assist you with any of your queries. We will get back to
+              Let us assist you with any of your queries, we will get back to
               you promptly.
             </Text>
           </VStack>
-          <Flex justify="space-between" gap="7.6rem" align="flex-start">
+          <Flex
+            justify="space-between"
+            gap="7rem"
+            flexDir={{ base: 'column-reverse', md: 'row' }}
+          >
             <VStack spacing="20px" align="flex-start">
               <Box mb="1.6rem">
                 <Image src={ContactImg} alt="contact us" />
@@ -137,7 +145,11 @@ const ContactUs: FC = () => {
             </VStack>
             <form style={{ width: '100%' }} onSubmit={authHandler.handleSubmit}>
               <Stack spacing="24px">
-                <Heading size="h1" pb="3.94rem">
+                <Heading
+                  size="h1"
+                  pb={{ base: '2rem', md: '3rem' }}
+                  textAlign={{ base: 'center', md: 'unset' }}
+                >
                   Get in touch with us
                 </Heading>
                 <CustomInput
