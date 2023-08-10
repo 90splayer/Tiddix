@@ -24,19 +24,28 @@ const HeroBanner = () => {
       justify="center"
       flexDir="column"
       w="full"
-      className="hero"
+      h={{ base: ' auto', md: 'calc(100vh - 100px)' }}
     >
-      <Container maxW="144rem" m="0 auto" pos="relative">
+      <Container
+        maxW="144rem"
+        m="0 auto"
+        pt={{ base: '9rem', md: '0' }}
+        pos="relative"
+      >
         <VStack spacing="48px">
           <Text
-            fontSize="2.6rem"
+            fontSize={{ base: '1.6rem', md: '2.6rem' }}
             bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
             bgClip="text"
           >
             INVESTORS
           </Text>
           <Bounce duration="2500">
-            <Heading size="display1sub" textAlign="center" maxW="59rem">
+            <Heading
+              size="display1sub"
+              textAlign="center"
+              maxW={{ base: '35rem', sm: '59rem' }}
+            >
               The catalyst of dream making!
             </Heading>
           </Bounce>
@@ -50,23 +59,53 @@ const HeroBanner = () => {
           </Fade>
         </VStack>
 
-        <Box pos="absolute" right={53} bottom={30}>
-          <Image src={art} alt="art" />
+        <Box
+          pos="absolute"
+          right={{ base: 10, md: 53 }}
+          bottom={{ base: -100, md: 30 }}
+        >
+          <Image src={art} alt="art" w={{ base: '80px', md: '100%' }} />
         </Box>
-        <Box pos="absolute" left={35} bottom={30}>
+        <Box
+          pos="absolute"
+          left={35}
+          bottom={{ base: 130, md: 30 }}
+          display={{ base: 'none', md: 'unset' }}
+        >
           <Image src={photography} alt="photography" />
         </Box>
-        <Box pos="absolute" left={161} top={10}>
-          <Image src={piechart} alt="piechart" />
+        <Box pos="absolute" left={{ base: 30, md: 100, lg: 161 }} top={10}>
+          <Image
+            src={piechart}
+            alt="piechart"
+            maxW={{ base: '80px', md: '100%' }}
+          />
         </Box>
-        <Box pos="absolute" right={272} top="-50px">
-          <Image src={music} alt="music" />
+        <Box
+          pos="absolute"
+          right={{ base: 50, md: 170, lg: 272 }}
+          top={{ base: 10, md: '-50px' }}
+        >
+          <Image src={music} alt="music" maxW={{ base: '80px', md: '100%' }} />
         </Box>
-        <Box pos="absolute" left="30%" bottom="-40%">
-          <Image src={paint} alt="paint face" />
+        <Box
+          pos="absolute"
+          left={{ base: '3%', md: '30%' }}
+          bottom={{ base: '-25%', md: '-40%' }}
+        >
+          <Image
+            w={{ base: '80px', md: '100%' }}
+            src={paint}
+            alt="paint face"
+          />
         </Box>
       </Container>
-      <Flex align="center" pos="absolute" top={0}>
+      <Flex
+        align="center"
+        pos="absolute"
+        top={0}
+        display={{ base: 'none', md: 'unset' }}
+      >
         <Image src={circle} alt="cicle" />
       </Flex>
     </Flex>

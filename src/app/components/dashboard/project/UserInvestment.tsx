@@ -23,6 +23,7 @@ type investmentT = {
   category: string;
   creativeId: string;
   projectName: string;
+  projectDuration: string;
   creativeVerified: boolean;
   investmentType: string;
   progress: number;
@@ -92,11 +93,13 @@ const UserInvestment: FC = () => {
             </Stack>
             <Stack>
               <Text size="body2">Period</Text>
-              <Text color="#fff">..month</Text>
+              <Text color="#fff">{investment.projectDuration}</Text>
             </Stack>
             <Stack>
-              <Text size="body2">Interest Payment</Text>
-              <Text color="#fff">£ {investment.amount}</Text>
+              <Text size="body2">ROI</Text>
+              <Text color="#fff">
+                {(investment.amount * investment.interest) / 100}
+              </Text>
             </Stack>
           </Flex>
         </Flex>

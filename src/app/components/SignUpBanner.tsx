@@ -26,6 +26,7 @@ const SignUpBanner = () => {
         <Link to="/signup">
           <Button
             variant="whitebg"
+            size="lg"
             _hover={{
               opacity: 0.8,
             }}
