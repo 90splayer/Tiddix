@@ -27,7 +27,7 @@ const CorporateProfile = () => {
             CORPORATE PROFILE
           </Text>
 
-          <Bounce duration="2500">
+          <Fade>
             <Heading
               size="display2"
               px={{ base: '2rem', sm: '0' }}
@@ -38,7 +38,7 @@ const CorporateProfile = () => {
             >
               We are driving the shift towards decentralisation in finance
             </Heading>
-          </Bounce>
+          </Fade>
         </VStack>
         <Box mb="8rem">
           <Image

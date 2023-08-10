@@ -109,32 +109,50 @@ const Offers = () => {
   ];
   return (
     <Box>
-      <Container maxW="144rem" p="41.5rem 12rem 7.5rem 7.2rem">
+      <Container
+        maxW="144rem"
+        p={{
+          base: '18.5rem 2rem 0rem',
+          sm: '18.5rem 5rem 0rem',
+          md: '28.5rem 7rem 7.5rem 7.2rem',
+          lg: '38.5rem 12rem 7.5rem 7.2rem',
+        }}
+      >
         <Flex
           align="center"
           flexDir={{
             base: 'column',
-            lg: 'row',
+            md: 'row',
           }}
           justify="space-between"
-          gap={17}
+          gap={5}
         >
           <Stack
+            align={{ base: 'center', md: 'unset' }}
             spacing="32px"
             w={{ base: '100%', md: '50%' }}
             mb={{ base: '5rem', md: 0 }}
           >
             <Fade duration="1500">
-              <Heading as="h2" maxW="41.4rem" size="display2">
+              <Heading
+                as="h2"
+                maxW={{ base: '47rem', md: '41.4rem' }}
+                size="display2"
+                textAlign={{ base: 'center', md: 'unset' }}
+              >
                 Tiddix offer you a platform to safely earn money
               </Heading>
             </Fade>
 
-            <Text size="body1" maxW="357px">
+            <Text
+              size="body1"
+              maxW="35.7rem"
+              textAlign={{ base: 'center', md: 'unset' }}
+            >
               while building careers and making dreams come true.
             </Text>
           </Stack>
-          <VStack spacing="20px">
+          <VStack spacing="20px" display={{ base: 'none', md: 'flex' }}>
             {projectData?.map((singleData, id) => (
               <Flex
                 p="1.5rem"
@@ -144,12 +162,12 @@ const Offers = () => {
                 sx={{
                   '&.active': {
                     transform: 'scale(1.2)',
-                    w: '45rem',
+                    w: { base: '37rem', md: '45rem' },
                   },
                 }}
                 justify="space-between"
                 align="center"
-                w="59rem"
+                w={{ base: '39rem', md: '59rem' }}
                 borderRadius="15px"
                 bg="#232629"
               >

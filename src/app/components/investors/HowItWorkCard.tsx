@@ -6,14 +6,19 @@ type Props = {
   icon: string;
   count: string;
   desc: string;
-  w: string;
 };
-const HowItWorkCard: FC<Props> = ({ icon, count, w, desc }) => {
+const HowItWorkCard: FC<Props> = ({ icon, count, desc }) => {
   return (
     <Flex
-      p="7.5rem 15rem 7.4rem 8.7rem"
-      align="center"
+      p={{
+        base: '4rem 3rem 5.4rem 5.7rem',
+        sm: '6rem 5rem 7.4rem 6.7rem',
+        md: '7.5rem 15rem 7.4rem 8.7rem',
+      }}
+      flexDir={{ base: 'column', sm: 'row' }}
+      align={{ base: 'unset', sm: 'center' }}
       justify="space-between"
+      gap={5}
       w="full"
       borderRadius="4rem"
       bgColor="rgb(152 151 151 / 25%)"
@@ -26,7 +31,7 @@ const HowItWorkCard: FC<Props> = ({ icon, count, w, desc }) => {
           {count}
         </Heading>
         <Fade duration="2500">
-          <Heading size="display2" maxW="65%">
+          <Heading size="display2" maxW={{ base: '42.5rem', md: '65%' }}>
             {desc}
           </Heading>
         </Fade>
@@ -34,7 +39,11 @@ const HowItWorkCard: FC<Props> = ({ icon, count, w, desc }) => {
 
       <Fade duration="2500" right>
         <Box>
-          <Image src={icon} alt="journey-step-img" />
+          <Image
+            src={icon}
+            alt="journey-step-img"
+            maxW={{ base: '15rem', sm: '100%' }}
+          />
         </Box>
       </Fade>
     </Flex>

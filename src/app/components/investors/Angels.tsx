@@ -15,17 +15,24 @@ import { Zoom, Fade } from 'react-reveal';
 const Angels: FC = () => {
   return (
     <Box>
-      <Container maxW="144rem" pt="6.2rem" px=" 7.2rem">
+      <Container
+        maxW="144rem"
+        pt="6.2rem"
+        px={{ base: '2rem', sm: '5rem', md: ' 7.2rem' }}
+      >
         <Flex
           bgColor="#232629"
           align="center"
+          flexDir={{ base: 'column-reverse', md: 'row' }}
           gap={10}
           justify="space-between"
           borderRadius="4rem"
-          pl="9.8rem"
-          pr="8.9rem"
+          pl={{ base: '3rem', md: '7.2rem', lg: '9.8rem' }}
+          pr={{ base: '3rem', md: '7.5rem', lg: '8.9rem' }}
+          pt={{ base: '5rem', md: '0' }}
+          pb={{ base: '7rem', md: '0' }}
           w="full"
-          h="66.4rem"
+          h={{ md: '60rem', lg: '66.4rem' }}
         >
           <Zoom>
             <Box>
@@ -35,7 +42,7 @@ const Angels: FC = () => {
 
           <Stack>
             <Text
-              fontSize="2.6rem"
+              fontSize={{ base: '1.6rem', md: '2.6rem' }}
               bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
               bgClip="text"
               mb="1.8rem"
@@ -43,7 +50,11 @@ const Angels: FC = () => {
               ANGELS
             </Text>
             <Fade duration="2500">
-              <Heading maxW="45.8rem" size="display1sub" pb="6.6rem">
+              <Heading
+                maxW="45.8rem"
+                size="display1sub"
+                pb={{ base: '3rem', md: '5rem', lg: '6.6rem' }}
+              >
                 The gift that keeps on giving!
               </Heading>
             </Fade>
@@ -54,7 +65,6 @@ const Angels: FC = () => {
                 just desire to bask in the joy of fully supporting dreams, no
                 strings attached!
               </Fade>
-              <br />
               <br />
               <Fade duration="4500">
                 Our Angels invest in projects and dreams and require nothing but
