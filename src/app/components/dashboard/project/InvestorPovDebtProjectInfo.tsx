@@ -110,8 +110,13 @@ const InvestorPovDebtProjectInfo = ({
         setLoading(false);
         setAcceptAgreement(false);
       })
-      .catch(() => {
-        chkToaster.error({ title: 'Something went wrong, please try again' });
+      .catch((err) => {
+        console.log(err);
+        chkToaster.error({
+          title:
+            err.response.data.message ||
+            'Something went wrong, please try again',
+        });
         setLoading(false);
       });
   };
