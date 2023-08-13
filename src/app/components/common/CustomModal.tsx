@@ -55,7 +55,7 @@ const CustomModal: ModalProps = ({
         borderRadius="2rem"
         paddingBottom="5rem"
         bg="blackShade.2"
-        padding={{ base: '2.5rem 2.5rem', sm: '5rem 7.6rem' }}
+        padding={{ base: '2.5rem 2.5rem', sm: '5rem' }}
         {...props}
       >
         <ModalCloseButton

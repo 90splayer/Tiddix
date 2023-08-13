@@ -13,6 +13,7 @@ import {
   CardHeader,
   Progress,
   SimpleGrid,
+  useDisclosure,
 } from '@chakra-ui/react';
 import ProjectCard from 'app/components/ProjectCard';
 import { projectData } from 'app/components/data/ProjectData';
@@ -23,6 +24,7 @@ import { debt } from 'app/assets/svgs/dashboard/dashboard';
 import { thousandsSeparators } from 'app/utils/helpers';
 import { progress } from 'framer-motion';
 import img from 'app/assets/images/contact.png';
+import ConfirmationDialogModal from 'app/components/common/ConfirmationDialogModal';
 
 type projectT = {
   amount: number;
@@ -42,6 +44,28 @@ const UserProjects: FC = () => {
   const apiPrivate = useApiPrivate();
 
   const [projects, setProjects] = useState<projectT[]>([]);
+  const [selectedProjectId, setSelectedProjectId] = useState('');
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const confirmActionDialogue = {
+    title: 'Confirm Action',
+    text: `Are you sure you want to move project's funds to your wallet?`,
+    accept: 'YES',
+    reject: 'CANCEL',
+  };
+
+  const withdrawProjectFunds = () => {
+    apiPrivate
+      .post(`/user/projects/${selectedProjectId}/withdraw`)
+      .then((res) => {
+        console.log('RESPONSE', res);
+        chkToaster.success({ title: 'Projects fund withdraw successful' });
+      })
+      .catch(() => {
+        chkToaster.error({ title: 'Something went wrong' });
+      });
+  };
 
   useEffect(() => {
     apiPrivate
@@ -114,6 +138,12 @@ const UserProjects: FC = () => {
     //     </Flex>
     //   ))}
     <SimpleGrid w="100%" columns={3} spacingX="24px" spacingY="30px">
+      <ConfirmationDialogModal
+        dialogContent={confirmActionDialogue}
+        next={withdrawProjectFunds}
+        modalState={isOpen}
+        closeModal={onClose}
+      />
       {projects.map((project) => (
         <Card bgColor="#232629" borderRadius="30px" p="13px 14.5px 32px 13px">
           <Box
@@ -154,6 +184,10 @@ const UserProjects: FC = () => {
                   p="1.5rem 1rem"
                   size="xs"
                   isDisabled={project.progress !== 100}
+                  onClick={() => {
+                    setSelectedProjectId(project.id);
+                    onOpen();
+                  }}
                 >
                   Withdraw
                 </Button>
