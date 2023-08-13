@@ -7,6 +7,8 @@ import Slider from 'react-slick';
 import api from 'app/api/tiddix';
 import { chkToaster } from '../common/Toaster';
 import { Fade } from 'react-reveal';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const TrendingProject = () => {
   var settings = {

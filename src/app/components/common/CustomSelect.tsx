@@ -43,7 +43,7 @@ function CustomSelectField({
         </FormLabel>
         <Select
           icon={<ChevronDownIcon />}
-          fontSize="14px"
+          fontSize={{ base: '10px', sm: '14px' }}
           borderRadius="2rem"
           height="5.9rem"
           _hover={{ border: '2px solid #FF8CDF' }}

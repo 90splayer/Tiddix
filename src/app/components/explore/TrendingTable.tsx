@@ -25,7 +25,11 @@ import { Link } from 'react-router-dom';
 const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
   return (
     <Box>
-      <Flex justify="space-between" gap="14rem">
+      <Flex
+        justify="space-between"
+        flexDir={{ base: 'column', md: 'row' }}
+        gap={{ md: '3rem', lg: '14rem' }}
+      >
         <Stack flex="1" spacing="3rem">
           <Flex gap="3rem" mb="1rem">
             <Text size="body2" flex="5">
@@ -34,7 +38,12 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
             <Text size="body2" flex="1">
               Target
             </Text>
-            <Text size="body2" flex="2" textAlign="right">
+            <Text
+              size="body2"
+              display={{ base: 'none', sm: 'unset' }}
+              flex="2"
+              textAlign="right"
+            >
               Progress
             </Text>
           </Flex>
@@ -85,6 +94,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
                     £{numberMetricFormatter(amount, 2)}
                   </Text>
                   <Progress
+                    display={{ base: 'none', sm: 'unset' }}
                     value={progress}
                     borderRadius="2rem"
                     background="blackShade.3"
@@ -100,7 +110,7 @@ const TrendingTable: FC<{ projects: any }> = ({ projects }) => {
             )}
         </Stack>
 
-        <Stack flex="1" spacing="3rem">
+        <Stack display={{ base: 'none', md: 'unset' }} flex="1" spacing="3rem">
           <Flex gap="3rem" mb="1rem">
             <Text size="body2" flex="5">
               Project

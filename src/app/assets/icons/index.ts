@@ -21,3 +21,4 @@ export { ReactComponent as LeftCaretIcon } from './left-caret.svg';
 export { ReactComponent as RightCaretIcon } from './right-caret.svg';
 export { ReactComponent as RadioCheckedIcon } from './radio-checked.svg';
 export { ReactComponent as RadioUncheckedIcon } from './radio-unchecked.svg';
+export { ReactComponent as ShieldWarningicon } from './shield-warning.svg';

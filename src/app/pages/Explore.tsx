@@ -64,10 +64,19 @@ const Explore: FC = () => {
       <Header />
       {/* <Category /> */}
       <Box>
-        <Container maxW="144rem" p="6.4rem 7.4rem 8rem 7.2rem">
+        <Container
+          maxW="144rem"
+          p={{
+            base: '8.4rem 2rem 8rem ',
+            md: '8.4rem 7.4rem 8rem 7.2rem',
+          }}
+        >
           <Stack spacing="3.4rem">
             <Heading size="display3">Browse by Category</Heading>
-            <Flex gap="2rem">
+            <Flex
+              flexWrap={{ base: 'wrap', md: 'nowrap' }}
+              gap={{ base: '1.5rem', md: '2rem' }}
+            >
               <Button
                 size="md"
                 variant="default"
@@ -111,7 +120,12 @@ const Explore: FC = () => {
                 Photography
               </Button>
             </Flex>
-            <Flex justify="space-between" gap="2rem">
+            <Flex
+              justify="space-between"
+              align="center"
+              flexDir={{ base: 'column', sm: 'row' }}
+              gap="2rem"
+            >
               {headerProjects.slice(0, 2).map((project) => (
                 <CategoryCard project={project} key={project.id} />
               ))}
@@ -122,8 +136,15 @@ const Explore: FC = () => {
 
       {/* <TopTrending /> */}
       <Box>
-        <Container maxW="144rem" p="6.4rem 7.2rem 8rem ">
-          <Flex justify="space-between" mb="7.4rem">
+        <Container
+          maxW="144rem"
+          p={{
+            base: '5rem 2rem 8rem',
+            sm: '6rem 5rem 8rem',
+            md: '6.4rem 7.2rem 8rem ',
+          }}
+        >
+          <Flex justify="space-between" gap={5} mb="7.4rem">
             <Stack spacing="1.4rem" maxW="44rem">
               <Heading size="display3">Top Trending Projects</Heading>
               <Text size="body2">
@@ -131,11 +152,13 @@ const Explore: FC = () => {
                 amount raised and project type.
               </Text>
             </Stack>
-            <Flex gap="2.3rem">
+            <Flex flexWrap="wrap" gap={{ base: '1.6rem', md: '2.3rem' }}>
               <CustomSelectField
                 // placeholder="Recent Projects"
                 defaultValue="allTime"
                 fontSize="2rem"
+                maxW={{ base: '20rem', md: 'auto' }}
+                w="100%"
                 fontWeight="700"
                 _placeholder={{ color: 'black' }}
                 color="white"
@@ -164,6 +187,8 @@ const Explore: FC = () => {
               />
 
               <CustomSelectField
+                maxW={{ base: '20rem', md: 'auto' }}
+                w="100%"
                 placeholder="Category"
                 fontSize="2rem"
                 fontWeight="700"
@@ -199,19 +224,6 @@ const Explore: FC = () => {
                   },
                 ]}
               />
-              {/* <Select
-                placeholder="All"
-                h="4.9rem"
-                fontWeight="700"
-                color="#fff"
-                fontSize="1.6rem"
-                border="2px solid #99A1AA"
-                borderRadius="10rem"
-              >
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </Select> */}
             </Flex>
           </Flex>
           <TrendingTable projects={projects} />

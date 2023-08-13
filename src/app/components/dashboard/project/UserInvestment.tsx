@@ -84,7 +84,7 @@ const UserInvestment: FC = () => {
               </Stack>
             </HStack>
             <Stack>
-              <Text size="body2">Repayment Amount</Text>
+              <Text size="body2"> Amount Due</Text>
               <Text color="#fff">£ {investment.amount}</Text>
             </Stack>
             <Stack>
@@ -98,7 +98,7 @@ const UserInvestment: FC = () => {
             <Stack>
               <Text size="body2">ROI</Text>
               <Text color="#fff">
-                {(investment.amount * investment.interest) / 100}
+                £{(investment.amount * investment.interest) / 100}
               </Text>
             </Stack>
           </Flex>

@@ -106,3 +106,15 @@ export const dateFormat = (date: Date) => {
     simpleDate: dayjs.utc(date).tz(timezone).format('MMM DD, YYYY'),
   };
 };
+
+export const toTitleCase = (str: string): string => {
+  if (str) {
+    return str
+      .toLowerCase()
+      .trim()
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+  return str;
+};

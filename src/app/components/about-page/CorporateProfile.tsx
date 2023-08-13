@@ -30,10 +30,8 @@ const CorporateProfile = () => {
           <Fade>
             <Heading
               size="display2"
-              px={{ base: '2rem', sm: '0' }}
               textAlign="center"
-              maxW={{ base: '100%', md: '70.4rem' }}
-              letterSpacing="1px"
+              maxW={{ base: '39rem', md: '70.4rem' }}
               pb="3.5rem"
             >
               We are driving the shift towards decentralisation in finance

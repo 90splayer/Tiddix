@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Container,
   Box,
@@ -10,6 +11,7 @@ import {
   Image,
   Stack,
   Input,
+  useDisclosure,
 } from '@chakra-ui/react';
 import useAuth from 'app/hooks/useAuth';
 import twitter from 'app/assets/images/dashboard/twitter.png';
@@ -19,7 +21,7 @@ import facebook from 'app/assets/images/dashboard/facebook.png';
 import insta from 'app/assets/images/dashboard/insta.png';
 import youtube from 'app/assets/images/dashboard/youtube.png';
 import React, { FC } from 'react';
-
+import CustomModal from 'app/components/common/CustomModal';
 import { CustomInput } from '../../common/CustomInput';
 import { Link } from 'react-router-dom';
 import { MdClear } from 'react-icons/md';
@@ -28,17 +30,37 @@ const SocialMedia: FC = () => {
   const authContext = useAuth();
   const firstName = authContext?.auth?.firstName;
   const lastName = authContext?.auth?.lastName;
-  const steps = [
-    'General',
-    'Edit Profile',
-    'Password',
-    'Social media account',
-    'Email Notification',
-    'Credit Score',
-    'Delete Account',
-  ];
+  const [platform, setPlatform] = useState('');
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Box>
+      <CustomModal isOpen={isOpen} onClose={onClose}>
+        <div>
+          <h2>{platform} Agreement</h2>
+          Project terms and condition for angel investors..Lorem ipsum dolor sit
+          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </div>
+
+        <Button
+          variant="whitebg"
+          size="sm"
+          w="12rem"
+          mt="4rem"
+          onClick={() => {
+            onClose();
+          }}
+        >
+          Agree
+        </Button>
+      </CustomModal>
       <Stack spacing="1.8rem">
         <Stack spacing="2.4rem" mb="1.3rem">
           <Text size="body2">
@@ -56,6 +78,10 @@ const SocialMedia: FC = () => {
                 transform: 'scale(1.03)',
               }}
               borderRadius="10px"
+              onClick={() => {
+                setPlatform('twitter');
+                onOpen();
+              }}
             >
               <Image src={twitter} w="3rem" h="3rem" alt="twitter" />
             </Box>
@@ -68,6 +94,10 @@ const SocialMedia: FC = () => {
               }}
               bg="#232629"
               borderRadius="10px"
+              onClick={() => {
+                setPlatform('google');
+                onOpen();
+              }}
             >
               <Image src={google} w="3rem" h="3rem" alt="google" />
             </Box>
@@ -80,6 +110,10 @@ const SocialMedia: FC = () => {
               }}
               bg="#232629"
               borderRadius="10px"
+              onClick={() => {
+                setPlatform('tiktok');
+                onOpen();
+              }}
             >
               <Image src={tiktok} w="3rem" h="3rem" alt="tiktok" />
             </Box>
