@@ -163,7 +163,7 @@ export const buttonStyles = {
         },
         sm: {
           minW: '6',
-          fontSize: { base: '1.4rem', sm: '1.6rem', md: '2.0rem' },
+          fontSize: { base: '1.4rem', sm: '1.6rem' },
           lineHeight: { base: '2rem', sm: '2.2rem', md: '2.4rem' },
           height: { base: '40px', sm: '44px', md: '5.0rem' },
           p: { base: '6px 12px', sm: '8px 16px', md: '1.3rem 2.0rem' },

@@ -18,6 +18,7 @@ import DebtUserInvestment from './UserDebtInvestment';
 import UserDebtInvestment from './UserDebtInvestment';
 import UserEquityInvestment from './UserEquityInvestment';
 import UserAngelInvestment from './UserAngelInvestment';
+import NoUserInvestment from './NoUserInvestment';
 
 type investmentT = {
   id: string;
@@ -48,8 +49,10 @@ const UserInvestment: FC = () => {
       })
       .catch((err) => console.log('RESPOND', err));
   }, []);
-  return (
-    <Box w="100%" borderLeft="1px solid #485155" pl="4rem" py="3rem" h="auto">
+  return investments.length === 0 ? (
+    <NoUserInvestment />
+  ) : (
+    <Box w="100%">
       {investments.map((investment, index) => (
         <Flex
           align="center"
