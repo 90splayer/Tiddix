@@ -9,6 +9,7 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import { verify } from 'app/assets/svgs/home';
+import { thousandsSeparators } from 'app/utils/helpers';
 import React from 'react';
 
 const UserEquityInvestment = ({ investment }: any) => {
@@ -43,11 +44,11 @@ const UserEquityInvestment = ({ investment }: any) => {
       </HStack>
       <Stack>
         <Text size="body2"> Equity Bought</Text>
-        <Text color="#fff">£ {investment.amount}</Text>
+        <Text color="#fff">£ {thousandsSeparators(investment.amount)}</Text>
       </Stack>
       <Stack>
         <Text size="body2">Equity Value</Text>
-        <Text color="#fff">{investment.amount}%</Text>
+        <Text color="#fff">{investment.amount}</Text>
       </Stack>
       <Stack>
         <Text size="body2">Duration</Text>

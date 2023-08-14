@@ -8,10 +8,6 @@ import { Button } from '@chakra-ui/react';
 const ProjectOverview = () => {
   return (
     <Box>
-      {/* <Flex>
-        <SideBar />
-        <UserProjects />
-      </Flex> */}
       <SideTabsLayout
         components={[
           {

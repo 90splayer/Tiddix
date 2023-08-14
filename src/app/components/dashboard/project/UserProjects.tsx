@@ -25,6 +25,7 @@ import { thousandsSeparators } from 'app/utils/helpers';
 import { progress } from 'framer-motion';
 import img from 'app/assets/images/contact.png';
 import ConfirmationDialogModal from 'app/components/common/ConfirmationDialogModal';
+import NoUserProjects from './NoUserProjects';
 
 type projectT = {
   amount: number;
@@ -79,64 +80,9 @@ const UserProjects: FC = () => {
       });
   }, []);
 
-  return (
-    // <Box w="100%" py="3rem" h="auto">
-    //   {projects.map((project) => (
-    //     <Flex
-    //       align="center"
-    //       gap="3rem"
-    //       borderBottom="1px solid #485155"
-    //       py="2rem"
-    //     >
-    //       <Flex w="100%" justify="space-between" align="center">
-    //         <HStack spacing="19px">
-    //           <Box boxSize="10rem">
-    //             <Image
-    //               w="100%"
-    //               h="10rem"
-    //               borderRadius="2rem"
-    //               objectFit="cover"
-    //               src={project.coverArt}
-    //               alt={project.projectName}
-    //             />
-    //           </Box>
-    //           <Stack>
-    //             <HStack>
-    //               <Avatar
-    //                 boxSize="25px"
-    //                 name={project.creativeName}
-    //                 src={project.creativePicture}
-    //               />
-    //               <Text size="body2" color="#fff">
-    //                 {project.creativeName}
-    //               </Text>
-    //               <Box>{project.creativeVerified && verify}</Box>
-    //             </HStack>
-    //             <Heading size="h3">{project.projectName}</Heading>
-    //             <Text fontSize="1.4rem">{project.investmentType}</Text>
-    //           </Stack>
-    //         </HStack>
-    //         <Stack>
-    //           <Text size="body2">Funding Type</Text>
-    //           <Text color="#fff">{project.investmentType}</Text>
-    //         </Stack>
-    //         <Stack>
-    //           <Text size="body2">Period</Text>
-    //           <Text color="#fff">5 Month</Text>
-    //         </Stack>
-    //         <Box>
-    //           <Button
-    //             variant="multiradial"
-    //             fontSize="1.4rem"
-    //             size="sm"
-    //             isDisabled={project.progress !== 100}
-    //           >
-    //             Withdraw
-    //           </Button>
-    //         </Box>
-    //       </Flex>
-    //     </Flex>
-    //   ))}
+  return projects.length === 0 ? (
+    <NoUserProjects />
+  ) : (
     <SimpleGrid w="100%" columns={3} spacingX="24px" spacingY="30px">
       <ConfirmationDialogModal
         dialogContent={confirmActionDialogue}
@@ -209,8 +155,8 @@ const UserProjects: FC = () => {
         </Card>
       ))}
     </SimpleGrid>
-    // </Box>
   );
+  // </Box>
 };
 
 export default UserProjects;
