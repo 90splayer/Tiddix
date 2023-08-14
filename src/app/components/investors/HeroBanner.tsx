@@ -52,7 +52,7 @@ const HeroBanner = () => {
 
           <Fade duration="2500">
             <Text maxW="70rem" size="body1" mt="5px" textAlign="center">
-              There are fewer things rewarding in life than making people’s
+              There are fewer things more rewarding in life than making people’s
               dreams come true. With small amounts of money sitting in your bank
               account, you can be part of a budding creatives’ success story.
             </Text>

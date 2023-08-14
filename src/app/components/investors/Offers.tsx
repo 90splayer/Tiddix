@@ -140,7 +140,7 @@ const Offers = () => {
                 size="display2"
                 textAlign={{ base: 'center', md: 'unset' }}
               >
-                Tiddix offer you a platform to safely earn money
+                Tiddix offers you a platform to safely earn money
               </Heading>
             </Fade>
 
