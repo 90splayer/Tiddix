@@ -14,6 +14,10 @@ import ProjectCard from 'app/components/ProjectCard';
 import { projectData } from 'app/components/data/ProjectData';
 import { verify } from 'app/assets/svgs/home';
 import useApiPrivate from 'app/hooks/useApiPrivate';
+import DebtUserInvestment from './UserDebtInvestment';
+import UserDebtInvestment from './UserDebtInvestment';
+import UserEquityInvestment from './UserEquityInvestment';
+import UserAngelInvestment from './UserAngelInvestment';
 
 type investmentT = {
   id: string;
@@ -28,6 +32,7 @@ type investmentT = {
   investmentType: string;
   progress: number;
   creativeName: string;
+  isAngel: boolean;
   creativePicture: string;
 };
 const UserInvestment: FC = () => {
@@ -55,53 +60,16 @@ const UserInvestment: FC = () => {
           <Box>
             <Text>{index + 1}</Text>
           </Box>
-          <Flex w="100%" justify="space-between" align="center">
-            <HStack spacing="19px">
-              <Box boxSize="10rem">
-                <Image
-                  w="100%"
-                  h="10rem"
-                  borderRadius="2rem"
-                  objectFit="cover"
-                  src={investment.coverArt}
-                  alt={investment.projectName}
-                />
-              </Box>
-              <Stack>
-                <HStack>
-                  <Avatar
-                    boxSize="25px"
-                    name={investment.creativeName}
-                    src={investment.creativePicture}
-                  />
-                  <Text size="body2" color="#fff">
-                    {investment.creativeName}
-                  </Text>
-                  <Box>{investment.creativeVerified && verify}</Box>
-                </HStack>
-                <Heading size="h3">{investment.projectName}</Heading>
-                <Text fontSize="1.4rem">{investment.investmentType}</Text>
-              </Stack>
-            </HStack>
-            <Stack>
-              <Text size="body2"> Amount Due</Text>
-              <Text color="#fff">£ {investment.amount}</Text>
-            </Stack>
-            <Stack>
-              <Text size="body2">Interest</Text>
-              <Text color="#fff">{investment.interest}%</Text>
-            </Stack>
-            <Stack>
-              <Text size="body2">Period</Text>
-              <Text color="#fff">{investment.projectDuration}</Text>
-            </Stack>
-            <Stack>
-              <Text size="body2">ROI</Text>
-              <Text color="#fff">
-                £{(investment.amount * investment.interest) / 100}
-              </Text>
-            </Stack>
-          </Flex>
+
+          {investment.investmentType === 'Debt' && (
+            <UserDebtInvestment investment={investment} />
+          )}
+          {investment.investmentType === 'Equity' && (
+            <UserEquityInvestment investment={investment} />
+          )}
+          {/* {investment.isAngel && (
+            <UserAngelInvestment investment={investment} />
+          )} */}
         </Flex>
       ))}
     </Box>
