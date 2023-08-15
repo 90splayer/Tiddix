@@ -39,6 +39,7 @@ type projectT = {
   projectName: string;
   creativePicture: string;
   progress: number;
+  isActive: boolean;
 };
 
 const UserProjects: FC = () => {
@@ -129,7 +130,7 @@ const UserProjects: FC = () => {
                   fontSize="1.2rem"
                   p="1.5rem 1rem"
                   size="xs"
-                  isDisabled={project.progress !== 100}
+                  isDisabled={project.progress < 100 && project.isActive}
                   onClick={() => {
                     setSelectedProjectId(project.id);
                     onOpen();

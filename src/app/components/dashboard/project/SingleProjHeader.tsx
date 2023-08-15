@@ -17,6 +17,7 @@ import { MdEdit } from 'react-icons/md';
 import React from 'react';
 import { projectT } from './SingleProject';
 import { Link } from 'react-router-dom';
+import { dateFormat } from 'app/utils/helpers';
 
 const SingleProjHeader = ({
   projectName,
@@ -25,6 +26,7 @@ const SingleProjHeader = ({
   creativePicture,
   id,
   creativeId,
+  dateCreated,
 }: any) => {
   console.log('INFO', category);
 
@@ -34,7 +36,7 @@ const SingleProjHeader = ({
         <HStack spacing="2.7rem">
           <Box>
             <Heading size="display2">{projectName}</Heading>
-            <Text fontSize="14px">Created 27th, July 2023</Text>
+            <Text fontSize="14px">{dateFormat(dateCreated).easyDate}</Text>
           </Box>
           <Text fontSize="14px">{category}</Text>
         </HStack>
