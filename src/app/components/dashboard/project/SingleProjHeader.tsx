@@ -32,7 +32,10 @@ const SingleProjHeader = ({
     <Flex mb="4.3rem" justify="space-between" align="flex-start">
       <Stack spacing="24px">
         <HStack spacing="2.7rem">
-          <Heading size="display2">{projectName}</Heading>
+          <Box>
+            <Heading size="display2">{projectName}</Heading>
+            <Text fontSize="14px">Created 27th, July 2023</Text>
+          </Box>
           <Text fontSize="14px">{category}</Text>
         </HStack>
         <Link to={`/user-profile/${creativeId}`}>

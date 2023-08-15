@@ -12,6 +12,7 @@ import {
   Stack,
   Input,
   useDisclosure,
+  Heading,
 } from '@chakra-ui/react';
 import useAuth from 'app/hooks/useAuth';
 import twitter from 'app/assets/images/dashboard/twitter.png';
@@ -36,17 +37,53 @@ const SocialMedia: FC = () => {
 
   return (
     <Box>
-      <CustomModal isOpen={isOpen} onClose={onClose}>
+      <CustomModal isOpen={isOpen} onClose={onClose} overflow="scroll" my="5">
         <div>
-          <h2>{platform} Agreement</h2>
-          Project terms and condition for angel investors..Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          <Heading mb="10" size="h3">
+            Aquisition FAQs
+          </Heading>
+          <Text fontWeight="bold" color="white" mb="2" size="body2">
+            Why do you need access to my social media accounts?
+          </Text>
+          <Text size="body2">
+            We understand your concern about giving us access, and we need to
+            clarify that giving us access to your social media accounts allows
+            us to only gather data needed to improve your user experience (We do
+            not edit or make changes to your account)
+          </Text>
+          <Text fontWeight="bold" color="white" mt="8" mb="2" size="body2">
+            Why have you requested this particular scope?
+          </Text>
+          <Text size="body2">
+            The listed scopes directly correlates with the data required to
+            offer you our full range of services and benefits. If any of the
+            scopes are denied, we cannot assure you the full Tiddix experience.
+          </Text>
+          <Text fontWeight="bold" color="white" mt="8" mb="2" size="body2">
+            Do I have to give full access to all scopes listed?
+          </Text>
+          <Text size="body2">
+            To enjoy the full range of benefits Tiddix offers, you have to.
+          </Text>
+          <Text fontWeight="bold" color="white" mt="8" mb="2" size="body2">
+            Is my social media data safe?
+          </Text>
+          <Text size="body2">
+            Yes. Our commitment to data security is unwavering, we put in place
+            a measures to protect your information from third-party invasion. We
+            are committed to upholding the trust you place in us.
+          </Text>
+          <Text fontWeight="bold" color="white" mt="8" mb="2" size="body2">
+            What are you using the data for?
+          </Text>
+          <Text size="body2">
+            Your social media data enables us to create your personalized Tiddix
+            score which is the core functionality of our platform. We use this
+            Tiddix score to craft a tailored experience for you. We encourage
+            open communications. We want you to feel confident while we provide
+            you with our services; so don't hesitate to reach out to us if you
+            have any concern.
+          </Text>
         </div>
 
         <Button
