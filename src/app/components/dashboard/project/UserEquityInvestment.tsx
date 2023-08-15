@@ -13,6 +13,7 @@ import { thousandsSeparators } from 'app/utils/helpers';
 import React from 'react';
 
 const UserEquityInvestment = ({ investment }: any) => {
+  const roe = (investment.equityBought * 100) / investment.amount;
   return (
     <Flex w="100%" justify="space-between" align="center">
       <HStack spacing="19px">
@@ -43,16 +44,22 @@ const UserEquityInvestment = ({ investment }: any) => {
         </Stack>
       </HStack>
       <Stack>
-        <Text size="body2"> Equity Bought</Text>
+        <Text size="body2"> Equity Value</Text>
         <Text color="#fff">£ {thousandsSeparators(investment.amount)}</Text>
       </Stack>
       <Stack>
-        <Text size="body2">Equity Value</Text>
-        <Text color="#fff">{investment.amount}</Text>
+        <Text size="body2">Equity Bought</Text>
+        <Text color="#fff">
+          £ {thousandsSeparators(investment.equityBought)}
+        </Text>
       </Stack>
       <Stack>
         <Text size="body2">Duration</Text>
         <Text color="#fff">{investment.projectDuration}</Text>
+      </Stack>
+      <Stack>
+        <Text size="body2">ROE</Text>
+        <Text color="#fff">{Math.round(roe)}%</Text>
       </Stack>
     </Flex>
   );
