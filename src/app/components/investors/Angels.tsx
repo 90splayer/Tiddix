@@ -47,7 +47,7 @@ const Angels: FC = () => {
               bgClip="text"
               mb="1.8rem"
             >
-              ANGELS
+              Heros
             </Text>
             <Fade duration="2500">
               <Heading
@@ -67,7 +67,7 @@ const Angels: FC = () => {
               </Fade>
               <br />
               <Fade duration="4500">
-                Our Angels invest in projects and dreams and require nothing but
+                Our Heros invest in projects and dreams and require nothing but
                 success back from the creatives.
               </Fade>
             </Text>

@@ -24,6 +24,7 @@ type investmentT = {
   id: string;
   interest: number;
   amount: number;
+  equityBought: number;
   coverArt: string;
   category: string;
   creativeId: string;
