@@ -122,8 +122,8 @@ const SingleProject = () => {
         p={{
           base: '3.5rem 2rem',
           sm: '4rem 5rem',
-          md: '5rem 5.2rem',
-          lg: '5rem 7.2rem',
+          md: '7rem 5.2rem',
+          lg: '7rem 7.2rem',
         }}
       >
         <SingleProjHeader
