@@ -19,6 +19,8 @@ import UserDebtInvestment from './UserDebtInvestment';
 import UserEquityInvestment from './UserEquityInvestment';
 import UserAngelInvestment from './UserAngelInvestment';
 import NoUserInvestment from './NoUserInvestment';
+import { TableLoadingSkeleton } from 'app/components/common/TableLoadingSkeleton';
+import { chkToaster } from 'app/components/common/Toaster';
 
 type investmentT = {
   id: string;
@@ -40,16 +42,25 @@ type investmentT = {
 const UserInvestment: FC = () => {
   const apiPrivate = useApiPrivate();
   const [investments, setInvestments] = useState<investmentT[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     apiPrivate
       .get('/user/investments')
       .then(({ data }) => {
-        console.log(data);
         setInvestments(data.projects);
+        setLoading(false);
       })
-      .catch((err) => console.log('RESPOND', err));
+      .catch(() => {
+        chkToaster.error({ title: 'Could not get user investments' });
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return <TableLoadingSkeleton />;
+  }
+
   return investments.length === 0 ? (
     <NoUserInvestment />
   ) : (

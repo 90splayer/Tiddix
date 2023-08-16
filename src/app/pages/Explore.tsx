@@ -19,6 +19,7 @@ import api from 'app/api/tiddix';
 import CustomSelectField from 'app/components/common/CustomSelect';
 import { chkToaster } from 'app/components/common/Toaster';
 import styled from 'styled-components';
+import { ExploreHeadingSkeleton } from 'app/components/common/ExploreHeadingSkeleton';
 
 const Explore: FC = () => {
   // const apiPrivate = useApiPrivate();
@@ -120,16 +121,20 @@ const Explore: FC = () => {
                 Photography
               </Button>
             </Flex>
-            <Flex
-              justify="space-between"
-              align="center"
-              flexDir={{ base: 'column', sm: 'row' }}
-              gap="2rem"
-            >
-              {headerProjects.slice(0, 2).map((project) => (
-                <CategoryCard project={project} key={project.id} />
-              ))}
-            </Flex>
+            {headerProjects.length < 1 ? (
+              <ExploreHeadingSkeleton />
+            ) : (
+              <Flex
+                justify="space-between"
+                align="center"
+                flexDir={{ base: 'column', sm: 'row' }}
+                gap="2rem"
+              >
+                {headerProjects.slice(0, 2).map((project) => (
+                  <CategoryCard project={project} key={project.id} />
+                ))}
+              </Flex>
+            )}
           </Stack>
         </Container>
       </Box>

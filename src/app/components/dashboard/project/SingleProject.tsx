@@ -59,6 +59,7 @@ export type projectT = {
   repaymentFrequency: string;
   tiddixScore: number;
   creativeId: string;
+  dateCreated: string;
 };
 
 const SingleProject = () => {
@@ -110,6 +111,7 @@ const SingleProject = () => {
     repaymentFrequency,
     tiddixScore,
     creativeId,
+    dateCreated,
   } = project;
 
   return (
@@ -120,8 +122,8 @@ const SingleProject = () => {
         p={{
           base: '3.5rem 2rem',
           sm: '4rem 5rem',
-          md: '5rem 5.2rem',
-          lg: '5rem 7.2rem',
+          md: '7rem 5.2rem',
+          lg: '7rem 7.2rem',
         }}
       >
         <SingleProjHeader
@@ -131,6 +133,7 @@ const SingleProject = () => {
           creativePicture={creativePicture}
           id={id}
           creativeId={creativeId}
+          dateCreated={dateCreated}
         />
 
         <Flex mb="10rem" justify="center">
@@ -260,17 +263,17 @@ const SingleProject = () => {
           tabs={[
             {
               label: 'Description',
-              body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              body: <>{description}</>,
             },
 
             {
               label: 'About',
               body: ' adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             },
-            {
-              label: 'Portfolio',
-              body: ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            },
+            // {
+            //   label: 'Portfolio',
+            //   body: ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            // },
           ]}
         />
         <>

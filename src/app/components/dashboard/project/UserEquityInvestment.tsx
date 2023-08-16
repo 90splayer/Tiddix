@@ -59,7 +59,7 @@ const UserEquityInvestment = ({ investment }: any) => {
       </Stack>
       <Stack>
         <Text size="body2">ROE</Text>
-        <Text color="#fff">{Math.round(roe)}%</Text>
+        <Text color="#fff">{roe.toFixed(2)}%</Text>
       </Stack>
     </Flex>
   );

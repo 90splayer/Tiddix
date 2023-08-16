@@ -5,6 +5,7 @@ import {
   HStack,
   Text,
   Stack,
+  VStack,
   Heading,
   Button,
   Icon,
@@ -17,6 +18,7 @@ import { MdEdit } from 'react-icons/md';
 import React from 'react';
 import { projectT } from './SingleProject';
 import { Link } from 'react-router-dom';
+import { dateFormat } from 'app/utils/helpers';
 
 const SingleProjHeader = ({
   projectName,
@@ -25,6 +27,7 @@ const SingleProjHeader = ({
   creativePicture,
   id,
   creativeId,
+  dateCreated,
 }: any) => {
   console.log('INFO', category);
 
@@ -32,8 +35,15 @@ const SingleProjHeader = ({
     <Flex mb="4.3rem" justify="space-between" align="flex-start">
       <Stack spacing="24px">
         <HStack spacing="2.7rem">
-          <Heading size="display2">{projectName}</Heading>
-          <Text fontSize="14px">{category}</Text>
+          <Box>
+            <Heading size="display2">{projectName}</Heading>
+          </Box>
+          <VStack spacing={0}>
+            <Text fontSize="14px">Category: {category}</Text>
+            <Text fontSize="14px">
+              Date Created: {dateFormat(dateCreated).easyDate}
+            </Text>
+          </VStack>
         </HStack>
         <Link to={`/user-profile/${creativeId}`}>
           <HStack spacing="10px">

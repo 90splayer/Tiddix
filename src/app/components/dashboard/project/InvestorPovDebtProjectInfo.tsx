@@ -13,6 +13,13 @@ import {
   Icon,
   Checkbox,
   SimpleGrid,
+  TableContainer,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Td,
+  Tbody,
 } from '@chakra-ui/react';
 import useApiPrivate from 'app/hooks/useApiPrivate';
 import { chkToaster } from 'app/components/common/Toaster';
@@ -421,30 +428,75 @@ const InvestorPovDebtProjectInfo = ({
       )}
 
       {isAuthenticated() && investors.length ? (
-        <Flex
-          p="3rem"
-          bg="#232629"
-          borderRadius="20px"
-          direction="column"
-          gap="2rem"
-        >
-          {investors.map((investor: any) => (
-            <>
-              <HStack spacing="2rem">
-                <Avatar
-                  src={investor.investorPicture}
-                  border="3px solid pink"
-                  boxSize="40px"
-                  name={investor.investorName}
-                />
-                <Box>
-                  <Heading fontSize="1.6rem">{investor.investorName}</Heading>
-                  <Text size="body2">{investor.percentage}%</Text>
-                </Box>
-              </HStack>
-            </>
-          ))}
-        </Flex>
+        <TableContainer borderRadius="30px" bg="#232629" p="3rem">
+          <Box pb="3rem">
+            <Text size="body2">Investors </Text>
+          </Box>
+          <Table size="md">
+            <Thead>
+              <Tr bg="#000">
+                <Th
+                  py="1.5rem"
+                  color="#fff"
+                  textTransform="capitalize"
+                  fontSize="1.6rem"
+                >
+                  Date
+                </Th>
+                <Th
+                  py="1.5rem"
+                  color="#fff"
+                  textTransform="capitalize"
+                  fontSize="1.6rem"
+                >
+                  Investor
+                </Th>
+                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  %
+                </Th>
+                <Th color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                  Value
+                </Th>
+              </Tr>
+            </Thead>
+
+            <Tbody>
+              {investors.map((investor: any) => (
+                <Tr>
+                  <Td
+                    py="2.5rem"
+                    color="#fff"
+                    textTransform="capitalize"
+                    fontSize="1.6rem"
+                  >
+                    {investor.date}
+                  </Td>
+                  <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                    <HStack spacing="5px">
+                      <Avatar
+                        boxSize="30px"
+                        border="2px solid pink"
+                        name={investor.investorName}
+                        src={investor.investorPicture}
+                      />
+
+                      <Text size="body2" color="#fff">
+                        {investor.investorName}
+                      </Text>
+                      {''}
+                    </HStack>
+                  </Td>
+                  <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                    {investor.percentage}%
+                  </Td>
+                  <Td color="#fff" textTransform="capitalize" fontSize="1.6rem">
+                    £{thousandsSeparators(investor.value)}
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </TableContainer>
       ) : (
         ''
       )}
