@@ -5,6 +5,7 @@ import {
   HStack,
   Text,
   Stack,
+  VStack,
   Heading,
   Button,
   Icon,
@@ -36,9 +37,13 @@ const SingleProjHeader = ({
         <HStack spacing="2.7rem">
           <Box>
             <Heading size="display2">{projectName}</Heading>
-            <Text fontSize="14px">{dateFormat(dateCreated).easyDate}</Text>
           </Box>
-          <Text fontSize="14px">{category}</Text>
+          <VStack spacing={0}>
+            <Text fontSize="14px">Category: {category}</Text>
+            <Text fontSize="14px">
+              Date Created: {dateFormat(dateCreated).easyDate}
+            </Text>
+          </VStack>
         </HStack>
         <Link to={`/user-profile/${creativeId}`}>
           <HStack spacing="10px">
