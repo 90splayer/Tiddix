@@ -9,22 +9,11 @@ import {
   Stack,
   Table,
   TableContainer,
-  Tbody,
-  Td,
   Text,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-  VStack,
   useDisclosure,
 } from '@chakra-ui/react';
 import { IoWallet } from 'react-icons/io5';
-
 import { BiRefresh } from 'react-icons/bi';
-import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-import { HiMinus, HiPlus } from 'react-icons/hi';
-import { GoChevronDown } from 'react-icons/go';
 import DepositModal from './DepositModal';
 import WithdrawalModal from './WithdrawalModal';
 import useAuth from 'app/hooks/useAuth';
@@ -90,7 +79,7 @@ const columns = {
 
 const WalletView: FC = () => {
   const [transactions, setTransactions] = useState<TransactionT[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [reload, setReload] = useState(false);
   const [walletBalance, setWalletBalance] = useState(0);
 
@@ -118,7 +107,6 @@ const WalletView: FC = () => {
   } = useDisclosure();
 
   useEffect(() => {
-    setLoading(true);
     apiPrivate
       .get(`/user/wallet/transactions?page=${page}&size=${pageLength}`)
       .then(({ data }) => {

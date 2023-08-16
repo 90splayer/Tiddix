@@ -26,6 +26,8 @@ import { progress } from 'framer-motion';
 import img from 'app/assets/images/contact.png';
 import ConfirmationDialogModal from 'app/components/common/ConfirmationDialogModal';
 import NoUserProjects from './NoUserProjects';
+import { TableLoadingSkeleton } from 'app/components/common/TableLoadingSkeleton';
+import { GridSkeleton } from 'app/components/common/GridSkeleton';
 
 type projectT = {
   amount: number;
@@ -47,6 +49,7 @@ const UserProjects: FC = () => {
 
   const [projects, setProjects] = useState<projectT[]>([]);
   const [selectedProjectId, setSelectedProjectId] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -75,11 +78,17 @@ const UserProjects: FC = () => {
       .then(({ data }) => {
         // console.log('RESPONSE', data.projects);
         setProjects(data.projects);
+        setLoading(false);
       })
       .catch(() => {
         chkToaster.error({ title: 'Something went wrong' });
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return <GridSkeleton />;
+  }
 
   return projects.length === 0 ? (
     <NoUserProjects />

@@ -6,29 +6,35 @@ import {
   Image,
   VStack,
   Button,
+  Icon,
 } from '@chakra-ui/react';
 import noproject from '../../../assets/images/dashboard/no-project.png';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { EmptyTableIcon } from 'app/assets/icons';
 
 const NoUserProjects = () => {
   return (
-    <Box>
-      <VStack spacing="3rem">
-        <Image maxW="12rem" src={noproject} alt="no-project img" />
-        <Heading size="display4">No projects found</Heading>
-        <Text maxW="59rem" textAlign="center" pb="1rem">
-          Looks like you haven't created a project yet! Project information will
-          appear here as soon as you create your first project
-        </Text>
+    <Flex
+      direction="column"
+      justify="center"
+      align="center"
+      height="100%"
+      gap="1rem"
+    >
+      <Icon as={EmptyTableIcon} boxSize={'8rem'} />
+      <Heading size="h3">No projects found</Heading>
+      <Text maxW="59rem" textAlign="center" pb="1rem" size="body2">
+        Looks like you haven't created a project yet! Project information will
+        appear here as soon as you create your first project
+      </Text>
 
-        <Link to="/dashboard/create-project">
-          <Button variant="multicolor" size="sm">
-            Create Project
-          </Button>
-        </Link>
-      </VStack>
-    </Box>
+      <Link to="/dashboard/create-project">
+        <Button variant="multicolor" size="sm">
+          Create Project
+        </Button>
+      </Link>
+    </Flex>
   );
 };
 

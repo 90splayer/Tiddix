@@ -30,7 +30,7 @@ import {
 } from 'app/assets/icons';
 import { thousandsSeparators } from 'app/utils/helpers';
 import { DropdownRadio } from './DropDownRadio';
-import { TableLoadingSkeleton } from '../TableLoadingSkeleton';
+import { TableLoadingSkeleton } from './TableLoadingSkeleton';
 
 export type EmptyChkTableProps = {
   icon?: React.ReactElement;
