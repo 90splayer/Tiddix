@@ -235,7 +235,7 @@ const TopNav = () => {
               }}
             >
               <NavLink to="/">
-                <Image src={tiddix} alt="tiddix logo" maxW="100px" />
+                <Image src={tiddix} alt="tiddix logo" maxW="120px" />
               </NavLink>
             </Box>
             <Flex
