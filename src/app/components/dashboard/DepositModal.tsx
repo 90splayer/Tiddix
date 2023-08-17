@@ -124,8 +124,8 @@ export default function DepositModal({
                 onChange={handleChange}
                 error={inputError}
               />
-              <InputRightElement pr="1.6rem" width="auto">
-                <Text size="body2">Min £5</Text>
+              <InputRightElement width="auto">
+                <Text size="body2">min £5</Text>
               </InputRightElement>
             </InputGroup>
           </Box>
