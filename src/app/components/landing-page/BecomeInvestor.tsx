@@ -69,7 +69,7 @@ const BecomeInvestor: FC = () => {
                   Become an investor
                 </Button>
               </Link>{' '}
-              <Link to="/about">
+              <Link to="/corporate-profile">
                 <Button size="lg" h="59px" w={{ base: '100%', md: '14.7rem' }}>
                   Learn More
                 </Button>

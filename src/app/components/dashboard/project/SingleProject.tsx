@@ -137,56 +137,31 @@ const SingleProject = () => {
         />
 
         <Flex mb="10rem" justify="center">
-          {/* <Stack spacing="19px">
-            <Box>
+          <Flex
+            gap="33px"
+            flexDir={{ base: 'column', md: 'row' }}
+            w="100%"
+            justify="space-between"
+            align={{ base: 'center', md: 'flex-start' }}
+          >
+            <Box position={{ base: 'unset', md: 'sticky' }} top="4rem">
               <Image
-                w="98px"
-                h="110px"
-                borderRadius="20px"
-                objectFit="cover"
-                src={projectImg}
-                alt="project name"
-              />
-            </Box>
-            <Box>
-              <Image
-                w="98px"
-                h="110px"
-                borderRadius="20px"
-                objectFit="cover"
-                src={projectImg}
-                alt="project name"
-              />
-            </Box>
-            <Box>
-              <Image
-                w="98px"
-                h="110px"
-                borderRadius="20px"
-                objectFit="cover"
-                src={projectImg}
-                alt="project name"
-              />
-            </Box>
-          </Stack> */}
-          <Flex gap="33px" w="90%" justify="space-between" align="start">
-            <Box position="sticky" top="4rem">
-              <Image
-                maxW="58.4rem"
-                h="61rem"
+                // maxW="58.4rem"
+                maxH="61rem"
                 objectFit="cover"
                 borderRadius="20px"
                 src={coverArt}
-                alt="project name"
+                alt={projectName}
               />
             </Box>
 
             {/* debt */}
-            <Box w="55rem">
+            <Box w={{ base: '100%', sm: '55rem' }}>
               <Flex
                 bg="#232629"
                 borderRadius="20px"
                 maxW="55rem"
+                // w="55rem"
                 p="3rem"
                 gap="3rem"
                 mb="2.4rem"
@@ -200,7 +175,11 @@ const SingleProject = () => {
                     </Text>
                   </Flex>
                 </Stack>
-                <Stack spacing="1.2rem" flex="1">
+                <Stack
+                  spacing="1.2rem"
+                  flex="1"
+                  display={{ base: 'none', sm: 'unset' }}
+                >
                   <Text size="body2">Favorites</Text>
                   <Flex gap="1rem">
                     <Box>{love}</Box>

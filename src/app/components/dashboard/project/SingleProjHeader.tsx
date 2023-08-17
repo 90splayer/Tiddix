@@ -32,18 +32,27 @@ const SingleProjHeader = ({
   console.log('INFO', category);
 
   return (
-    <Flex mb="4.3rem" justify="space-between" align="flex-start">
-      <Stack spacing="24px">
-        <HStack spacing="2.7rem">
+    <Flex
+      mb="4.3rem"
+      gap={2}
+      flexDir={{ base: 'column', md: 'row' }}
+      justify="space-between"
+      align="flex-start"
+    >
+      <Stack
+        mb={{ base: '2rem', md: '0' }}
+        spacing={{ base: '14px', lg: '24px' }}
+      >
+        <HStack spacing="2.7rem" whiteSpace="nowrap">
           <Box>
             <Heading size="display2">{projectName}</Heading>
           </Box>
-          <VStack spacing={0}>
-            <Text fontSize="14px">Category: {category}</Text>
-            <Text fontSize="14px">
-              Date Created: {dateFormat(dateCreated).easyDate}
+          <HStack spacing={{ base: '1rem', sm: '1.5rem' }}>
+            <Text fontSize={{ base: '12px', sm: '14px' }}> {category}</Text>
+            <Text fontSize={{ base: '12px', sm: '14px' }}>
+              {dateFormat(dateCreated).easyDate}
             </Text>
-          </VStack>
+          </HStack>
         </HStack>
         <Link to={`/user-profile/${creativeId}`}>
           <HStack spacing="10px">
@@ -56,84 +65,89 @@ const SingleProjHeader = ({
           </HStack>
         </Link>
       </Stack>
-      <HStack spacing="15px">
-        <Box>
-          <Button
-            borderRadius="100px"
+      <Flex gap="15px" flexDir={{ base: 'column', lg: 'row' }}>
+        <HStack spacing="15px">
+          <Box>
+            <Button
+              borderRadius="100px"
+              bg="#232629"
+              border="2px solid #99A1AA"
+              maxW="19.6rem"
+              color="#fff"
+              leftIcon={<IoIosRocket />}
+              size={{ base: 'sm', sm: 'md' }}
+              variant="default"
+            >
+              Boost Project
+            </Button>
+          </Box>
+          <Box>
+            <Button
+              borderRadius="100px"
+              bg="#232629"
+              border="2px solid #99A1AA"
+              maxW="19.6rem"
+              color="#fff"
+              leftIcon={<AiFillPlusCircle />}
+              size={{ base: 'sm', sm: 'md' }}
+              variant="default"
+            >
+              Invite Investor
+            </Button>
+          </Box>
+        </HStack>
+
+        <HStack spacing="15px">
+          <Flex
             bg="#232629"
             border="2px solid #99A1AA"
-            maxW="19.6rem"
-            color="#fff"
-            leftIcon={<IoIosRocket />}
-            size="md"
-            variant="default"
+            align="center"
+            justify="center"
+            borderRadius="100%"
+            w="50px"
+            h="50px"
+            transition="0.5 ease"
+            _hover={{
+              cursor: 'pointer',
+              transform: 'scale(1.03)',
+            }}
           >
-            Boost Project
-          </Button>
-        </Box>
-        <Box>
-          <Button
-            borderRadius="100px"
+            <Icon as={MdEdit} fontSize="2rem" color="#fff" />
+          </Flex>
+          <Flex
+            bg="#232629"
+            align="center"
+            border="2px solid #99A1AA"
+            justify="center"
+            borderRadius="100%"
+            w="50px"
+            h="50px"
+            transition="0.5 ease"
+            _hover={{
+              cursor: 'pointer',
+              transform: 'scale(1.03)',
+            }}
+          >
+            <Icon as={AiTwotoneHeart} fontSize="2rem" color="#fff" />
+          </Flex>
+          <Flex
             bg="#232629"
             border="2px solid #99A1AA"
-            maxW="19.6rem"
-            color="#fff"
-            leftIcon={<AiFillPlusCircle />}
-            size="md"
-            variant="default"
+            align="center"
+            justify="center"
+            borderRadius="100%"
+            w="50px"
+            h="50px"
+            transition="0.5 ease"
+            _hover={{
+              cursor: 'pointer',
+              transform: 'scale(1.03)',
+            }}
           >
-            Invite Investor
-          </Button>
-        </Box>
-        <Flex
-          bg="#232629"
-          border="2px solid #99A1AA"
-          align="center"
-          justify="center"
-          borderRadius="100%"
-          w="50px"
-          h="50px"
-          transition="0.5 ease"
-          _hover={{
-            cursor: 'pointer',
-            transform: 'scale(1.03)',
-          }}
-        >
-          <Icon as={MdEdit} fontSize="2rem" color="#fff" />
-        </Flex>
-        <Flex
-          bg="#232629"
-          align="center"
-          border="2px solid #99A1AA"
-          justify="center"
-          borderRadius="100%"
-          w="50px"
-          h="50px"
-          transition="0.5 ease"
-          _hover={{
-            cursor: 'pointer',
-            transform: 'scale(1.03)',
-          }}
-        >
-          <Icon as={AiTwotoneHeart} fontSize="2rem" color="#fff" />
-        </Flex>
-        <Flex
-          bg="#232629"
-          border="2px solid #99A1AA"
-          align="center"
-          justify="center"
-          borderRadius="100%"
-          w="50px"
-          h="50px"
-          transition="0.5 ease"
-          _hover={{
-            cursor: 'pointer',
-            transform: 'scale(1.03)',
-          }}
-        >
-          <Icon as={IoShareSocialSharp} fontSize="2rem" color="#fff" />
-        </Flex>
-      </HStack>
+            <Icon as={IoShareSocialSharp} fontSize="2rem" color="#fff" />
+          </Flex>
+        </HStack>
+      </Flex>
     </Flex>
   );
 };
