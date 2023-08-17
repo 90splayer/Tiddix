@@ -489,6 +489,14 @@ const CreateProjectPage: FC = () => {
                                 label: 'Fashion',
                                 value: 'fashion',
                               },
+                              {
+                                label: 'Technology',
+                                value: 'Technology',
+                              },
+                              {
+                                label: 'Other',
+                                value: 'Other',
+                              },
                             ]}
                           />
                         </SimpleGrid>

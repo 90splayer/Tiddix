@@ -40,7 +40,7 @@ const ProjectCard: FC<Props> = ({
     <Card mx="5px" bgColor="#232629" borderRadius="30px" p="16px 14px 37px">
       <CardHeader p="0">
         <Flex gap="1rem" alignItems="center">
-          <Avatar boxSize="25px" name={creativeName} src={images} />
+          <Avatar boxSize="25px" name={creativeName} src={creativePicture} />
 
           <Flex gap="3px" align="center">
             <Text fontSize="1.6rem" color="#fff">
