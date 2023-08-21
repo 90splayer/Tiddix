@@ -45,6 +45,8 @@ const InvestorPovDebtProjectInfo = ({
   moratoriumPeriod,
   projectDuration,
   repaymentFrequency,
+  reload,
+  setReload,
 }: any) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
@@ -116,6 +118,7 @@ const InvestorPovDebtProjectInfo = ({
         }
         setLoading(false);
         setAcceptAgreement(false);
+        setReload(!reload);
       })
       .catch((err) => {
         console.log(err);

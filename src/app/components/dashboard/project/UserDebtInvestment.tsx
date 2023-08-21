@@ -14,6 +14,16 @@ import React from 'react';
 
 const UserDebtInvestment = ({ investment }: any) => {
   const roi = (investment.amount * investment.interest) / 100;
+
+  const parseProjectDuration: any = {
+    oneMonth: '1 Month',
+    threeMonths: '3 Months',
+    sixMonths: '6 Months',
+    nineMonths: '9 Months',
+    twelveMonths: '12 Months',
+    aboveTwelveMonths: 'Above 12 Months',
+  };
+
   return (
     <Flex w="100%" justify="space-between" align="center">
       <HStack spacing="19px">
@@ -55,7 +65,9 @@ const UserDebtInvestment = ({ investment }: any) => {
       </Stack>
       <Stack>
         <Text size="body2">Duration</Text>
-        <Text color="#fff">{investment.projectDuration}</Text>
+        <Text color="#fff">
+          {parseProjectDuration[investment.projectDuration]}
+        </Text>
       </Stack>
       <Stack>
         <Text size="body2">ROI</Text>

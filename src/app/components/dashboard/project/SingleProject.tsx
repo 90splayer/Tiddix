@@ -65,6 +65,7 @@ export type projectT = {
 const SingleProject = () => {
   const { id } = useParams();
   const [project, setProject] = useState<projectT | undefined>();
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     api
@@ -77,7 +78,7 @@ const SingleProject = () => {
         chkToaster.error({ title: 'Something went wrong' });
       });
     console.log('ID', id);
-  }, []);
+  }, [reload]);
 
   if (!project) {
     return <h1>Loading...</h1>;
@@ -147,7 +148,7 @@ const SingleProject = () => {
             <Box position={{ base: 'unset', md: 'sticky' }} top="4rem">
               <Image
                 // maxW="58.4rem"
-                maxH="61rem"
+                h={{ base: 'auto', md: '61rem' }}
                 objectFit="cover"
                 borderRadius="20px"
                 src={coverArt}
@@ -221,6 +222,8 @@ const SingleProject = () => {
                   moratoriumPeriod={moratoriumPeriod}
                   projectDuration={projectDuration}
                   repaymentFrequency={repaymentFrequency}
+                  reload={reload}
+                  setReload={setReload}
                 />
               )}
               {investmentType === 'Equity' && (
@@ -232,6 +235,8 @@ const SingleProject = () => {
                   moratoriumPeriod={moratoriumPeriod}
                   projectDuration={projectDuration}
                   investors={investors}
+                  reload={reload}
+                  setReload={setReload}
                 />
               )}
             </Box>

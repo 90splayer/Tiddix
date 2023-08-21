@@ -39,6 +39,8 @@ const InvestorPovEquityProjectInfo = ({
   moratoriumPeriod,
   projectDuration,
   investors,
+  reload,
+  setReload,
 }: any) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
@@ -113,6 +115,7 @@ const InvestorPovEquityProjectInfo = ({
         }
         setLoading(false);
         setAcceptAgreement(false);
+        setReload(!reload);
       })
       .catch((err) => {
         chkToaster.error({
