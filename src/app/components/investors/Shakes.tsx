@@ -24,7 +24,7 @@ const Shakes: FC = () => {
         <Flex
           bgColor="#232629"
           align="center"
-          flexDir={{ base: 'column-reverse', md: 'row' }}
+          flexDir={{ base: 'column', md: 'row' }}
           gap={10}
           // justify="space-between"
           borderRadius="4rem"
@@ -58,10 +58,6 @@ const Shakes: FC = () => {
               <Fade duration="3500">
                 Tiddix will be bringing you daily opportunities from the globe,
                 vetted with our algorithm for a trusted evaluation.
-                {/* Do you believe in the future of the creative economy?
-                <br />
-                Do you want to be an early stage investor in some of the world's
-                coolest creatives and their project? */}
               </Fade>
               <br />
               <Fade duration="4500">
@@ -73,13 +69,7 @@ const Shakes: FC = () => {
           </Stack>
           <Zoom>
             <Box>
-              <Image
-                // maxW="50rem"
-                src={shakes}
-                alt="investors-img"
-
-                // bottom={0}
-              />
+              <Image src={shakes} alt="investors-img" />
             </Box>
           </Zoom>
         </Flex>
