@@ -8,6 +8,7 @@ import React from 'react';
 import Offers from 'app/components/investors/Offers';
 import HowItWork from 'app/components/investors/HowItWork';
 import Angels from 'app/components/investors/Angels';
+import Shakes from 'app/components/investors/Shakes';
 
 const Investor = () => {
   return (
@@ -16,8 +17,8 @@ const Investor = () => {
       <HeroBanner />
       <Offers />
       <HowItWork />
+      <Shakes />
       <Angels />
-      {/* <MonitorInvestment /> */}
       <SignUpBanner />
       <Footer />
     </Box>

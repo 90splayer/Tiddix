@@ -1,0 +1,91 @@
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  VStack,
+  Image,
+  Flex,
+  Stack,
+} from '@chakra-ui/react';
+import React, { FC } from 'react';
+import shakes from '../../assets/images/investor/golden-goose1.png';
+import { Zoom, Fade } from 'react-reveal';
+
+const Shakes: FC = () => {
+  return (
+    <Box>
+      <Container
+        maxW="144rem"
+        pt="6.2rem"
+        pos="relative"
+        px={{ base: '2rem', sm: '5rem', md: ' 7.2rem' }}
+      >
+        <Flex
+          bgColor="#232629"
+          align="center"
+          flexDir={{ base: 'column-reverse', md: 'row' }}
+          gap={10}
+          // justify="space-between"
+          borderRadius="4rem"
+          pl={{ base: '3rem', md: '7.2rem', lg: '9.8rem' }}
+          pr={{ base: '3rem', md: '7.5rem', lg: '8.9rem' }}
+          pt={{ base: '5rem', md: '0' }}
+          pb={{ base: '7rem', md: '0' }}
+          w="full"
+          h={{ md: '60rem', lg: '66.4rem' }}
+        >
+          <Stack>
+            <Text
+              fontSize={{ base: '1.6rem', md: '2.6rem' }}
+              bgGradient="linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)"
+              bgClip="text"
+              mb="1.8rem"
+            >
+              Shakes
+            </Text>
+            <Fade duration="2500">
+              <Heading
+                maxW="45.8rem"
+                size="display1sub"
+                pb={{ base: '3rem', md: '5rem', lg: '6.6rem' }}
+              >
+                Finding the Golden Goose
+              </Heading>
+            </Fade>
+
+            <Text maxW="52.8rem">
+              <Fade duration="3500">
+                Tiddix will be bringing you daily opportunities from the globe,
+                vetted with our algorithm for a trusted evaluation.
+                {/* Do you believe in the future of the creative economy?
+                <br />
+                Do you want to be an early stage investor in some of the world's
+                coolest creatives and their project? */}
+              </Fade>
+              <br />
+              <Fade duration="4500">
+                Get rewarded whether you invest as a philanthropist or for the
+                money,sit back and watch the creatives execute and the benefit
+                rolls in{' '}
+              </Fade>
+            </Text>
+          </Stack>
+          <Zoom>
+            <Box>
+              <Image
+                // maxW="50rem"
+                src={shakes}
+                alt="investors-img"
+
+                // bottom={0}
+              />
+            </Box>
+          </Zoom>
+        </Flex>
+      </Container>
+    </Box>
+  );
+};
+
+export default Shakes;
