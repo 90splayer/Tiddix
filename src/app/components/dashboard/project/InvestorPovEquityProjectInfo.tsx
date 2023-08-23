@@ -89,7 +89,7 @@ const InvestorPovEquityProjectInfo = ({
     }
 
     apiPrivate
-      .post(url, { amount })
+      .post(url, { amount, ...(angelInvestorMode ? { hero: true } : {}) })
       .then(({ data }) => {
         if (balanceConfirmed) {
           chkToaster.success({ title: 'Investment Successful' });
@@ -107,6 +107,7 @@ const InvestorPovEquityProjectInfo = ({
             });
           setAmount(0);
           setBalanceConfirmed(false);
+          setAngelInvestorMode(false);
         } else {
           if (data.status) {
             setBalanceConfirmed(data.status);

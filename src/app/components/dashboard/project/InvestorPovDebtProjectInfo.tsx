@@ -92,7 +92,7 @@ const InvestorPovDebtProjectInfo = ({
     }
 
     apiPrivate
-      .post(url, { amount })
+      .post(url, { amount, ...(angelInvestorMode ? { hero: true } : {}) })
       .then(({ data }) => {
         if (balanceConfirmed) {
           chkToaster.success({ title: 'Investment Successful' });
@@ -110,6 +110,7 @@ const InvestorPovDebtProjectInfo = ({
             });
           setAmount(0);
           setBalanceConfirmed(false);
+          setAngelInvestorMode(false);
         } else {
           if (data.status) {
             setBalanceConfirmed(data.status);
@@ -216,14 +217,16 @@ const InvestorPovDebtProjectInfo = ({
             />
           </Flex>
 
-          <Flex align="center" justify="space-between">
-            <Box>
-              <Text size="body2">Amount Due</Text>
-              <Heading fontSize="3.2rem">
-                £{thousandsSeparators(amountDue)}
-              </Heading>
-            </Box>
-          </Flex>
+          {!angelInvestorMode && (
+            <Flex align="center" justify="space-between">
+              <Box>
+                <Text size="body2">Amount Due</Text>
+                <Heading fontSize="3.2rem">
+                  £{thousandsSeparators(amountDue)}
+                </Heading>
+              </Box>
+            </Flex>
+          )}
 
           <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={8}>
             {!angelInvestorMode && (

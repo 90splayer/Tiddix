@@ -42,6 +42,7 @@ type projectT = {
   creativePicture: string;
   progress: number;
   isActive: boolean;
+  goalAchieved: boolean;
 };
 
 const UserProjects: FC = () => {
@@ -139,7 +140,7 @@ const UserProjects: FC = () => {
                   fontSize="1.2rem"
                   p="1.5rem 1rem"
                   size="xs"
-                  isDisabled={project.progress < 100 && project.isActive}
+                  isDisabled={!(project.goalAchieved && project.isActive)}
                   onClick={() => {
                     setSelectedProjectId(project.id);
                     onOpen();
@@ -157,7 +158,12 @@ const UserProjects: FC = () => {
                 size="md"
                 colorScheme="transparent"
                 borderRadius="20px"
-                background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
+                background="blackShade.3"
+                sx={{
+                  '& > div': {
+                    background: 'gradientStyle.1',
+                  },
+                }}
                 w="10rem"
               />
             </Stack>

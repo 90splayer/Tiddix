@@ -88,7 +88,12 @@ const ProjectCard: FC<Props> = ({
             size="md"
             colorScheme="transparent"
             borderRadius="20px"
-            background="linear-gradient(transparent, transparent) padding-box, linear-gradient(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%) border-box"
+            background="blackShade.3"
+            sx={{
+              '& > div': {
+                background: 'gradientStyle.1',
+              },
+            }}
             w="8.8rem"
           />
         </Box>
