@@ -41,6 +41,7 @@ const InvestorPovEquityProjectInfo = ({
   investors,
   reload,
   setReload,
+  isOwner,
 }: any) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
@@ -346,38 +347,44 @@ const InvestorPovEquityProjectInfo = ({
 
           {isAuthenticated() && (
             <>
-              <Box>
-                <CustomInput
-                  placeholder="Enter Amount"
-                  size="lg"
-                  value={amount === 0 ? '' : `\£${thousandsSeparators(amount)}`}
-                  onChange={handleChange}
-                />
-              </Box>
+              {!isOwner && (
+                <>
+                  <Box>
+                    <CustomInput
+                      placeholder="Enter Amount"
+                      size="lg"
+                      value={
+                        amount === 0 ? '' : `\£${thousandsSeparators(amount)}`
+                      }
+                      onChange={handleChange}
+                    />
+                  </Box>
 
-              <Flex gap={16} justify="space-between">
-                <Button
-                  variant="multiradial"
-                  w="100%"
-                  fontSize="1.6rem"
-                  onClick={handleSubmit}
-                  isLoading={loading && !angelInvestorMode}
-                >
-                  Initiate Investment
-                </Button>
-                <Button
-                  variant="primary"
-                  w="100%"
-                  fontSize="1.6rem"
-                  onClick={() => {
-                    setAngelInvestorMode(true);
-                    handleSubmit();
-                  }}
-                  isLoading={loading && angelInvestorMode}
-                >
-                  Invest as Angel
-                </Button>
-              </Flex>
+                  <Flex gap={16} justify="space-between">
+                    <Button
+                      variant="multiradial"
+                      w="100%"
+                      fontSize="1.6rem"
+                      onClick={handleSubmit}
+                      isLoading={loading && !angelInvestorMode}
+                    >
+                      Initiate Investment
+                    </Button>
+                    <Button
+                      variant="primary"
+                      w="100%"
+                      fontSize="1.6rem"
+                      onClick={() => {
+                        setAngelInvestorMode(true);
+                        handleSubmit();
+                      }}
+                      isLoading={loading && angelInvestorMode}
+                    >
+                      Invest as Angel
+                    </Button>
+                  </Flex>
+                </>
+              )}
             </>
           )}
         </Stack>

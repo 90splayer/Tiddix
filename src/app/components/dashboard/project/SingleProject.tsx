@@ -43,7 +43,7 @@ export type projectT = {
   id: string;
   interest: 20;
   investmentType: string;
-  is_owner: boolean;
+  isOwner: boolean;
   period: string;
   pitchDeck: string;
   pitchVideo: string;
@@ -96,7 +96,7 @@ const SingleProject = () => {
     id: projectId,
     interest,
     investmentType,
-    is_owner,
+    isOwner,
     moratoriumPeriod,
     period,
     pitchDeck,
@@ -224,6 +224,7 @@ const SingleProject = () => {
                   repaymentFrequency={repaymentFrequency}
                   reload={reload}
                   setReload={setReload}
+                  isOwner={isOwner}
                 />
               )}
               {investmentType === 'Equity' && (
@@ -237,6 +238,7 @@ const SingleProject = () => {
                   investors={investors}
                   reload={reload}
                   setReload={setReload}
+                  isOwner={isOwner}
                 />
               )}
             </Box>
