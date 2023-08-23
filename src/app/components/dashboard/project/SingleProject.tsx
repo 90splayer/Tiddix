@@ -17,7 +17,6 @@ import React, { FC } from 'react';
 import projectImg from '../../../assets/images/investor/project.jpg';
 import SingleProjHeader from './SingleProjHeader';
 import { useParams } from 'react-router-dom';
-import api from 'app/api/tiddix';
 import { chkToaster } from 'app/components/common/Toaster';
 import { love } from 'app/assets/svgs/dashboard/dashboard';
 import { debt } from 'app/assets/svgs/dashboard/dashboard';
@@ -30,6 +29,7 @@ import InvestorPovDebtProjectInfo from './InvestorPovDebtProjectInfo';
 import InvestorPovEquityProjectInfo from './InvestorPovEquityProjectInfo';
 import tiddixIcon from 'app/assets/icons/png/tiddix.png';
 import { verify } from 'app/assets/svgs/home';
+import useApiPrivate from 'app/hooks/useApiPrivate';
 
 export type projectT = {
   amount: number;
@@ -66,9 +66,10 @@ const SingleProject = () => {
   const { id } = useParams();
   const [project, setProject] = useState<projectT | undefined>();
   const [reload, setReload] = useState(false);
+  const apiPrivate = useApiPrivate();
 
   useEffect(() => {
-    api
+    apiPrivate
       .get(`/projects/${id}`)
       .then(({ data }) => {
         console.log('PROJECT DATA', data.project);
