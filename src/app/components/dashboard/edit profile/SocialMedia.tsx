@@ -21,11 +21,31 @@ import tiktok from 'app/assets/images/dashboard/tiktok.png';
 import facebook from 'app/assets/images/dashboard/facebook.png';
 import insta from 'app/assets/images/dashboard/insta.png';
 import youtube from 'app/assets/images/dashboard/youtube.png';
+import spotify from 'app/assets/images/dashboard/spotify.png';
+import twitch from 'app/assets/images/dashboard/twitch.png';
 import React, { FC } from 'react';
 import CustomModal from 'app/components/common/CustomModal';
 import { CustomInput } from '../../common/CustomInput';
 import { Link } from 'react-router-dom';
 import { MdClear } from 'react-icons/md';
+
+const SocialIconWrapper = ({ children, onClick }: any) => {
+  return (
+    <Box
+      p="1rem"
+      bg="#232629"
+      transition="0.5 ease"
+      _hover={{
+        cursor: 'pointer',
+        transform: 'scale(1.03)',
+      }}
+      borderRadius="10px"
+      onClick={onClick}
+    >
+      {children}
+    </Box>
+  );
+};
 
 const SocialMedia: FC = () => {
   const authContext = useAuth();
@@ -106,54 +126,62 @@ const SocialMedia: FC = () => {
             permission.
           </Text>
           <HStack spacing="1.3rem">
-            <Box
-              p="1rem"
-              bg="#232629"
-              transition="0.5 ease"
-              _hover={{
-                cursor: 'pointer',
-                transform: 'scale(1.03)',
-              }}
-              borderRadius="10px"
-              onClick={() => {
-                setPlatform('twitter');
-                onOpen();
-              }}
-            >
-              <Image src={twitter} w="3rem" h="3rem" alt="twitter" />
-            </Box>
-            <Box
-              p="1rem"
-              transition="0.5 ease"
-              _hover={{
-                cursor: 'pointer',
-                transform: 'scale(1.03)',
-              }}
-              bg="#232629"
-              borderRadius="10px"
+            <SocialIconWrapper
               onClick={() => {
                 setPlatform('google');
                 onOpen();
               }}
             >
               <Image src={google} w="3rem" h="3rem" alt="google" />
-            </Box>
-            <Box
-              p="1rem"
-              transition="0.5 ease"
-              _hover={{
-                cursor: 'pointer',
-                transform: 'scale(1.03)',
+            </SocialIconWrapper>
+            <SocialIconWrapper
+              onClick={() => {
+                setPlatform('instagram');
+                onOpen();
               }}
-              bg="#232629"
-              borderRadius="10px"
+            >
+              <Image src={insta} w="3rem" h="3rem" alt="google" />
+            </SocialIconWrapper>
+            <SocialIconWrapper
               onClick={() => {
                 setPlatform('tiktok');
                 onOpen();
               }}
             >
               <Image src={tiktok} w="3rem" h="3rem" alt="tiktok" />
-            </Box>
+            </SocialIconWrapper>
+            <SocialIconWrapper
+              onClick={() => {
+                setPlatform('facebook');
+                onOpen();
+              }}
+            >
+              <Image src={facebook} w="3rem" h="3rem" alt="tiktok" />
+            </SocialIconWrapper>
+            <SocialIconWrapper
+              onClick={() => {
+                setPlatform('youtube');
+                onOpen();
+              }}
+            >
+              <Image src={youtube} w="3rem" h="3rem" alt="tiktok" />
+            </SocialIconWrapper>
+            <SocialIconWrapper
+              onClick={() => {
+                setPlatform('spotify');
+                onOpen();
+              }}
+            >
+              <Image src={spotify} w="3rem" h="3rem" alt="tiktok" />
+            </SocialIconWrapper>
+            <SocialIconWrapper
+              onClick={() => {
+                setPlatform('twitch');
+                onOpen();
+              }}
+            >
+              <Image src={twitch} w="3rem" h="3rem" alt="tiktok" />
+            </SocialIconWrapper>
           </HStack>
         </Stack>
 

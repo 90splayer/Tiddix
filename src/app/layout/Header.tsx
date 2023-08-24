@@ -264,17 +264,21 @@ const TopNav = () => {
             <Stack
               mt="14rem"
               spacing="25px"
-              alignItems="center"
+              // alignItems="center"
               fontWeight="600"
               color="white"
-              px="2rem"
+              px="3rem"
             >
               <Text
                 onClick={() => {
                   if (isMobile === 'flex') closeMenu();
                 }}
                 transition="0.5s ease-in-out"
-                _hover={{ textDecoration: 'underline' }}
+                _hover={{
+                  textDecoration: 'underline',
+                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                  bgClip: 'text',
+                }}
               >
                 <NavLink to="/">Home</NavLink>
               </Text>
@@ -283,7 +287,11 @@ const TopNav = () => {
                   if (isMobile === 'flex') closeMenu();
                 }}
                 transition="0.5s ease-in-out"
-                _hover={{ textDecoration: 'underline' }}
+                _hover={{
+                  textDecoration: 'underline',
+                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                  bgClip: 'text',
+                }}
               >
                 <NavLink to="/explore">Explore</NavLink>
               </Text>
@@ -292,7 +300,11 @@ const TopNav = () => {
                   if (isMobile === 'flex') closeMenu();
                 }}
                 transition="0.5s ease-in-out"
-                _hover={{ textDecoration: 'underline' }}
+                _hover={{
+                  textDecoration: 'underline',
+                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                  bgClip: 'text',
+                }}
               >
                 <NavLink to="/creatives">Creatives</NavLink>
               </Text>
@@ -301,11 +313,40 @@ const TopNav = () => {
                   if (isMobile === 'flex') closeMenu();
                 }}
                 transition="0.5s ease-in-out"
-                _hover={{ textDecoration: 'underline' }}
+                _hover={{
+                  textDecoration: 'underline',
+                  bgGradient: 'linear(to-bl,#FFC227, #FF8CDF,#4EFCF9)',
+                  bgClip: 'text',
+                }}
               >
                 <NavLink to="/investors">Investors</NavLink>
               </Text>
 
+              <NavLink to="/signup">
+                <Button
+                  variant="whiteBg"
+                  width="100%"
+                  onClick={() => {
+                    if (isMobile === 'flex') closeMenu();
+                  }}
+                  size="md"
+                >
+                  Sign Up
+                </Button>
+              </NavLink>
+              <NavLink to="/login">
+                <Button
+                  width="100%"
+                  variant="multiradial"
+                  onClick={() => {
+                    if (isMobile === 'flex') closeMenu();
+                  }}
+                  size="md"
+                >
+                  Login
+                </Button>
+              </NavLink>
+              {/* 
               <Text
                 onClick={() => {
                   if (isMobile === 'flex') closeMenu();
@@ -333,7 +374,7 @@ const TopNav = () => {
                 _hover={{ textDecoration: 'underline' }}
               >
                 <NavLink to="/code-of-conduct">Code of Conduct</NavLink>
-              </Text>
+              </Text> */}
             </Stack>
           </Flex>
         </Flex>

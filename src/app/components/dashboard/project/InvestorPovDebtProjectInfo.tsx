@@ -47,6 +47,7 @@ const InvestorPovDebtProjectInfo = ({
   repaymentFrequency,
   reload,
   setReload,
+  isOwner,
 }: any) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState(false);
@@ -91,7 +92,7 @@ const InvestorPovDebtProjectInfo = ({
     }
 
     apiPrivate
-      .post(url, { amount })
+      .post(url, { amount, ...(angelInvestorMode ? { hero: true } : {}) })
       .then(({ data }) => {
         if (balanceConfirmed) {
           chkToaster.success({ title: 'Investment Successful' });
@@ -109,6 +110,7 @@ const InvestorPovDebtProjectInfo = ({
             });
           setAmount(0);
           setBalanceConfirmed(false);
+          setAngelInvestorMode(false);
         } else {
           if (data.status) {
             setBalanceConfirmed(data.status);
@@ -215,14 +217,16 @@ const InvestorPovDebtProjectInfo = ({
             />
           </Flex>
 
-          <Flex align="center" justify="space-between">
-            <Box>
-              <Text size="body2">Amount Due</Text>
-              <Heading fontSize="3.2rem">
-                £{thousandsSeparators(amountDue)}
-              </Heading>
-            </Box>
-          </Flex>
+          {!angelInvestorMode && (
+            <Flex align="center" justify="space-between">
+              <Box>
+                <Text size="body2">Amount Due</Text>
+                <Heading fontSize="3.2rem">
+                  £{thousandsSeparators(amountDue)}
+                </Heading>
+              </Box>
+            </Flex>
+          )}
 
           <SimpleGrid columns={{ sm: 2, md: 3 }} spacing={8}>
             {!angelInvestorMode && (
@@ -375,56 +379,46 @@ const InvestorPovDebtProjectInfo = ({
                     </Text>
                   </Box>
                 </Stack>
-                {/* <Stack>
-    <Box maxW="143px">
-      <Text size="body2">Period </Text>
-      <Text size="body2" color="#fff">
-        5 Months
-      </Text>
-    </Box>
-  </Stack> */}
-                {/* <Stack>
-    <Box maxW="143px">
-      <Text size="body2">Interest Payment </Text>
-      <Text size="body2" color="#fff">
-        £20007
-      </Text>
-    </Box>
-  </Stack> */}
               </Flex>
 
-              <Box>
-                <CustomInput
-                  placeholder="Enter Amount"
-                  size="lg"
-                  value={amount === 0 ? '' : `\£${thousandsSeparators(amount)}`}
-                  onChange={handleChange}
-                />
-              </Box>
+              {!isOwner && (
+                <>
+                  <Box>
+                    <CustomInput
+                      placeholder="Enter Amount"
+                      size="lg"
+                      value={
+                        amount === 0 ? '' : `\£${thousandsSeparators(amount)}`
+                      }
+                      onChange={handleChange}
+                    />
+                  </Box>
 
-              <Flex gap={16} justify="space-between">
-                <Button
-                  variant="multiradial"
-                  w="100%"
-                  fontSize="1.6rem"
-                  onClick={handleSubmit}
-                  isLoading={loading && !angelInvestorMode}
-                >
-                  Initiate Investment
-                </Button>
-                <Button
-                  variant="primary"
-                  w="100%"
-                  fontSize="1.6rem"
-                  onClick={() => {
-                    setAngelInvestorMode(true);
-                    handleSubmit();
-                  }}
-                  isLoading={loading && angelInvestorMode}
-                >
-                  Invest as Angel
-                </Button>
-              </Flex>
+                  <Flex gap={16} justify="space-between">
+                    <Button
+                      variant="multiradial"
+                      w="100%"
+                      fontSize="1.6rem"
+                      onClick={handleSubmit}
+                      isLoading={loading && !angelInvestorMode}
+                    >
+                      Initiate Investment
+                    </Button>
+                    <Button
+                      variant="primary"
+                      w="100%"
+                      fontSize="1.6rem"
+                      onClick={() => {
+                        setAngelInvestorMode(true);
+                        handleSubmit();
+                      }}
+                      isLoading={loading && angelInvestorMode}
+                    >
+                      Invest as Angel
+                    </Button>
+                  </Flex>
+                </>
+              )}
             </Flex>
           )}
         </Stack>

@@ -78,12 +78,15 @@ const CategoryCard: FC<{ project: any }> = ({ project }) => {
             </Text>
             <Progress
               borderRadius="10px"
-              bgColor="#485155"
-              colorScheme="navy"
-              // bgGradient="linear(235.92deg, #FFC227 -14.27%, #FF8CDF 50.09%, #4EFCF9 114.81%)"
+              background="blackShade.3"
+              sx={{
+                '& > div': {
+                  background: 'gradientStyle.1',
+                },
+              }}
               w="8.8rem"
               size="md"
-              value={25}
+              value={progress}
             />
           </Flex>
           <Flex justify="space-between" align="center">

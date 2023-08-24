@@ -975,8 +975,15 @@ const CreateProjectPage: FC = () => {
                                 variant="unstyled"
                                 border="0px"
                                 icon={<IoCloudUploadSharp />}
+                                sx={
+                                  imageInfo && {
+                                    path: { fill: '#33ba7c' },
+                                  }
+                                }
                               />
-                              <small>{imageInfo?.fileName}</small>
+                              <small style={{ color: '#33ba7c' }}>
+                                {imageInfo?.fileName}
+                              </small>
                               <Text size="body2">
                                 Upload, Drag and Drop jpg, jpeg, or png files
                               </Text>
@@ -1033,8 +1040,13 @@ const CreateProjectPage: FC = () => {
                                 variant="unstyled"
                                 border="0px"
                                 icon={<IoCloudUploadSharp />}
+                                sx={
+                                  videoInfo && {
+                                    path: { fill: '#33ba7c' },
+                                  }
+                                }
                               />
-                              <small>
+                              <small style={{ color: '#33ba7c' }}>
                                 {videoInfo?.fileName && videoInfo.fileName}
                               </small>
                               <Text size="body2">
@@ -1090,8 +1102,13 @@ const CreateProjectPage: FC = () => {
                                 variant="unstyled"
                                 border="0px"
                                 icon={<IoCloudUploadSharp />}
+                                sx={
+                                  documentInfo && {
+                                    path: { fill: '#33ba7c' },
+                                  }
+                                }
                               />
-                              <small>
+                              <small style={{ color: '#33ba7c' }}>
                                 {documentInfo?.fileName &&
                                   documentInfo.fileName}
                               </small>
