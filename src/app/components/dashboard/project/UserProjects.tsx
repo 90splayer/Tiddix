@@ -94,7 +94,12 @@ const UserProjects: FC = () => {
   return projects.length === 0 ? (
     <NoUserProjects />
   ) : (
-    <SimpleGrid w="100%" columns={3} spacingX="24px" spacingY="30px">
+    <SimpleGrid
+      w="100%"
+      columns={{ base: 1, sm: 2, md: 3 }}
+      spacingX="24px"
+      spacingY="30px"
+    >
       <ConfirmationDialogModal
         dialogContent={confirmActionDialogue}
         next={withdrawProjectFunds}

@@ -77,7 +77,7 @@ const Intro: FC = () => {
               </Text>
             </Fade>
 
-            <Flex gap={{ base: '1.5rem', sm: '2.4' }}>
+            <Flex gap={{ base: '1.5rem', sm: '2.4rem' }}>
               <Link to="/signup">
                 <Button variant="multicolor" size="lg">
                   Get Started
