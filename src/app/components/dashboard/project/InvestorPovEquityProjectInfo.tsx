@@ -198,7 +198,7 @@ const InvestorPovEquityProjectInfo = ({
         <>
           <Stack
             spacing="3rem"
-            p="3rem"
+            p={{ base: '2rem', sm: '3rem' }}
             bg="#232629"
             borderRadius="20px"
             mb="1.9rem"
@@ -361,11 +361,11 @@ const InvestorPovEquityProjectInfo = ({
                     />
                   </Box>
 
-                  <Flex gap={16} justify="space-between">
+                  <Flex gap={{ base: 10, sm: 16 }} justify="space-between">
                     <Button
                       variant="multiradial"
                       w="100%"
-                      fontSize="1.6rem"
+                      fontSize={{ base: '1.4rem', sm: '1.6rem' }}
                       onClick={handleSubmit}
                       isLoading={loading && !angelInvestorMode}
                     >
@@ -374,7 +374,7 @@ const InvestorPovEquityProjectInfo = ({
                     <Button
                       variant="primary"
                       w="100%"
-                      fontSize="1.6rem"
+                      fontSize={{ base: '1.4rem', sm: '1.6rem' }}
                       onClick={() => {
                         setAngelInvestorMode(true);
                         handleSubmit();

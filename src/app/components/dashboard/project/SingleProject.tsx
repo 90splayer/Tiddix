@@ -148,7 +148,6 @@ const SingleProject = () => {
           >
             <Box position={{ base: 'unset', md: 'sticky' }} top="4rem">
               <Image
-                // maxW="58.4rem"
                 h={{ base: 'auto', md: '61rem' }}
                 objectFit="cover"
                 borderRadius="20px"
@@ -163,8 +162,7 @@ const SingleProject = () => {
                 bg="#232629"
                 borderRadius="20px"
                 maxW="55rem"
-                // w="55rem"
-                p="3rem"
+                p="2rem"
                 gap="3rem"
                 mb="2.4rem"
               >

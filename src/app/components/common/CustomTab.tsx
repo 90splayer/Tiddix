@@ -74,7 +74,7 @@ const CustomTab: FC<ChkTabProps> = ({
                     ? { base: '2.5rem', sm: '3.35rem', md: '3.4rem' }
                     : { base: '1.5rem', sm: '1.9rem', md: '2.4rem' }
                 }
-                p="1rem 4.0rem"
+                p={{ base: '1rem 2rem', md: '1rem 4.0rem' }}
                 color="blackShade.4"
                 borderBottom="2px"
                 borderBottomColor="blackShade.3"
@@ -107,7 +107,7 @@ const CustomTab: FC<ChkTabProps> = ({
                 ml="auto"
                 gap=".5rem"
                 paddingBottom="1.2rem"
-                paddingLeft="4.0rem"
+                paddingLeft={{ base: '2rem', md: '4.0rem' }}
               >
                 {sideButtons}
               </Flex>

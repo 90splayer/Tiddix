@@ -43,7 +43,7 @@ const SingleProjHeader = ({
         mb={{ base: '2rem', md: '0' }}
         spacing={{ base: '14px', lg: '24px' }}
       >
-        <HStack spacing="2.7rem" whiteSpace="nowrap">
+        <Flex gap={{ base: '1rem', md: '2.7rem' }} flexDir="column">
           <Box>
             <Heading size="display2">{projectName}</Heading>
           </Box>
@@ -53,7 +53,7 @@ const SingleProjHeader = ({
               {dateFormat(dateCreated).easyDate}
             </Text>
           </HStack>
-        </HStack>
+        </Flex>
         <Link to={`/user-profile/${creativeId}`}>
           <HStack spacing="10px">
             <Avatar boxSize="25px" name={creativeName} src={creativePicture} />

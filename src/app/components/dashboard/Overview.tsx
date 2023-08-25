@@ -52,7 +52,7 @@ const Overview: FC = () => {
         }}
       >
         <Flex justify="space-between" mb="5rem">
-          <Flex gap="4rem" align="center">
+          <Flex gap="4rem" align="center" flexWrap="wrap">
             <Box>
               <Avatar
                 border="2px solid pink"

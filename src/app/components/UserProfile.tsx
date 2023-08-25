@@ -67,16 +67,21 @@ const UserProfile: FC = () => {
         zIndex={3}
         p={{
           base: '3.5rem 2rem',
-          sm: '4rem 5rem',
           md: '5rem 5.2rem',
           lg: '5rem 10.2rem',
         }}
       >
-        <Flex gap={70} mb="5rem">
+        <Flex
+          flexDir={{ base: 'column', sm: 'row' }}
+          gap={{ base: 20, md: 70 }}
+          mb="5rem"
+          align={{ base: 'flex-start', md: 'center' }}
+          justify={{ base: 'center', sm: 'unset' }}
+        >
           <Box>
             <Avatar
               border="2px solid pink"
-              boxSize="200px"
+              boxSize={{ base: '150px', md: '200px' }}
               name={`${firstName} ${lastName}`}
               src={profilePicture ?? undefined}
             />
@@ -187,23 +192,6 @@ const UserProfile: FC = () => {
             },
           ]}
         />
-
-        {/* <Stack w="20%" spacing="10rem">
-          <Stack spacing="3rem">
-          <HStack spacing="8px">
-              <Text letterSpacing="1px" fontSize="1.4rem" color="#fff">
-                SKILLS
-              </Text>
-              <Box w="100%" border="1px solid #485155"></Box>
-            </HStack>
-            <Stack spacing="8px">
-              <Text size="body2">UI/UX</Text>
-              <Text size="body2">Web DesignX</Text>
-              <Text size="body2">Packaging</Text>
-              <Text size="body2">Coordinating</Text>
-            </Stack>
-          </Stack>
-        </Stack> */}
       </Container>
     </Box>
   );
