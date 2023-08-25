@@ -63,7 +63,11 @@ const DashboardOverview: FC = () => {
       {/* {UserData.map((item) => ( */}
       <Grid
         // key={item.id}
-        templateColumns="repeat(3, 1fr)"
+        templateColumns={{
+          base: 'repeat(1, 1fr)',
+          sm: 'repeat(2, 1fr)',
+          md: 'repeat(3, 1fr)',
+        }}
         gap="2.6rem"
         pt="3.6rem"
         pb="2.5rem"
