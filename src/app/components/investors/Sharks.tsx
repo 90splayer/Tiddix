@@ -12,7 +12,7 @@ import React, { FC } from 'react';
 import shakes from '../../assets/images/investor/golden-goose1.png';
 import { Zoom, Fade } from 'react-reveal';
 
-const Shakes: FC = () => {
+const Sharks: FC = () => {
   return (
     <Box>
       <Container
@@ -42,7 +42,7 @@ const Shakes: FC = () => {
               bgClip="text"
               mb="1.8rem"
             >
-              Shakes
+              Sharks
             </Text>
             <Fade duration="2500">
               <Heading
@@ -56,14 +56,14 @@ const Shakes: FC = () => {
 
             <Text maxW="52.8rem">
               <Fade duration="3500">
-                Tiddix will be bringing you daily opportunities from the globe,
-                vetted with our algorithm for a trusted evaluation.
+                Do you believe in the future of the creative economy?
+                <br /> Do you want to be an early stage investor in some of the
+                world's coolest creatives and their projects?
               </Fade>
               <br />
               <Fade duration="4500">
-                Get rewarded whether you invest as a philanthropist or for the
-                money,sit back and watch the creatives execute and the benefit
-                rolls in{' '}
+                Tiddix will be bringing you daily opportunities from about the
+                globe, vetted with our algorithm for a trusted evaluation.
               </Fade>
             </Text>
           </Stack>
@@ -78,4 +78,4 @@ const Shakes: FC = () => {
   );
 };
 
-export default Shakes;
+export default Sharks;
