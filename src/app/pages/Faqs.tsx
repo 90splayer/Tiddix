@@ -24,15 +24,15 @@ const Faqs: FC = () => {
       <Container
         id="faqs"
         p={{
-          base: '4.5rem 2rem 7.7rem 2rem',
-          sm: '3.5rem 5rem 8.7rem 5rem',
-          md: '7.3rem 10.3rem 16rem 10.3rem',
+          base: '7rem 2rem 7.7rem',
+          sm: '7.3rem 5rem 8.7rem',
+          md: '7.3rem 10.3rem 16rem',
           lg: '10.3rem 17.2rem 18rem 17.5rem',
         }}
         maxW="144rem"
       >
         <Flex flexDir="column" fontFamily="bold" align="center" w="full">
-          <VStack mb="12.7rem">
+          <VStack mb={{ base: '5rem', md: '12.7rem' }}>
             <Text
               mb="5rem"
               size="body2"
