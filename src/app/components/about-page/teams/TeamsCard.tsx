@@ -74,12 +74,14 @@ const TeamsCard: FC<Props> = ({ image, name, title, portfolio }) => {
               align="center"
               justify="center"
               w="100%"
-              h="12rem"
+              visibility={{ base: 'hidden', sm: 'unset' }}
+              minH="12rem"
               bg="gradientStyle.1"
               borderRadius="10px"
             ></Flex>
             <ModalCloseButton
               color="#000"
+              visibility={{ base: 'hidden', sm: 'unset' }}
               p="10px"
               bg="white"
               _hover={{ opacity: '0.5' }}
@@ -87,13 +89,13 @@ const TeamsCard: FC<Props> = ({ image, name, title, portfolio }) => {
               fontSize="lg"
             />
             <ModalBody>
-              <VStack mt="-100px" pb="2rem">
+              <VStack mt={{ base: '50px', sm: '-100px' }} pb="2rem">
                 <Avatar
                   border="3px solid #232629"
                   // size="2xl"
-                  w="150px"
-                  h="150px"
-                  name="Christian Nwamba"
+                  w={{ base: '120px', sm: '150px' }}
+                  h={{ base: '120px', sm: '150px' }}
+                  name={name}
                   src={image}
                 />
                 <Heading
