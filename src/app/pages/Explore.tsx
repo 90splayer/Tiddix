@@ -149,15 +149,22 @@ const Explore: FC = () => {
             md: '6.4rem 7.2rem 8rem ',
           }}
         >
-          <Flex justify="space-between" gap={5} mb="7.4rem">
+          <Flex
+            justify="space-between"
+            flexDir={{ base: 'column', md: 'row' }}
+            gap={5}
+            mb="7.4rem"
+          >
             <Stack spacing="1.4rem" maxW="44rem">
-              <Heading size="display3">Top Trending Projects</Heading>
+              <Heading size={{ base: 'display4', sm: 'display3' }}>
+                Top Trending Projects
+              </Heading>
               <Text size="body2">
                 Top projects currently raising funds on Tiddix ranked by the
                 amount raised and project type.
               </Text>
             </Stack>
-            <Flex flexWrap="wrap" gap={{ base: '1.6rem', md: '2.3rem' }}>
+            <Flex gap={{ base: '1.6rem', md: '2.3rem' }}>
               <CustomSelectField
                 // placeholder="Recent Projects"
                 defaultValue="allTime"
