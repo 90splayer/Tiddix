@@ -68,32 +68,32 @@ const SignUpForm = () => {
   });
 
   const onSubmitHandler = (data: SignUpInputT) => {
-    setLoading(true);
-    const { email, firstName, lastName, password } = data;
-    api
-      .post('/register', {
-        email: email,
-        first_name: firstName,
-        last_name: lastName,
-        password: password,
-      })
-      .then((response: any) => {
-        setLoading(false);
-        chkToaster.success({
-          title: 'Account created successfully',
-          description: 'Please check your email for verification link',
-        });
+    // setLoading(true);
+    // const { email, firstName, lastName, password } = data;
+    // api
+    //   .post('/register', {
+    //     email: email,
+    //     first_name: firstName,
+    //     last_name: lastName,
+    //     password: password,
+    //   })
+    //   .then((response: any) => {
+    //     setLoading(false);
+    //     chkToaster.success({
+    //       title: 'Account created successfully',
+    //       description: 'Please check your email for verification link',
+    //     });
 
-        setTimeout(() => {
-          navigate('/login', { replace: true });
-        }, 3000);
-      })
-      .catch((error: any) => {
-        setLoading(false);
-        chkToaster.error({
-          title: error.response.data.message,
-        });
-      });
+    //     setTimeout(() => {
+    //       navigate('/login', { replace: true });
+    //     }, 3000);
+    //   })
+    //   .catch((error: any) => {
+    //     setLoading(false);
+    //     chkToaster.error({
+    //       title: error.response.data.message,
+    //     });
+    //   });
   };
 
   return (

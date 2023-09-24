@@ -67,41 +67,41 @@ const LoginForm = () => {
   });
 
   const onSubmitHandler = (data: LoginInputT) => {
-    setLoading(true);
-    const { email, password } = data;
+    // setLoading(true);
+    // const { email, password } = data;
 
-    
-    api
-      .post<AuthUserT>('/login', { email, password })
-      .then(({ data }) => {
-        const {
-          accessToken,
-          firstName,
-          lastName,
-          profilePicture,
-          bio,
-          walletBalance,
-        } = data;
-        authContext?.setAuth({
-          accessToken,
-          firstName,
-          lastName,
-          profilePicture,
-          bio,
-          walletBalance,
-        });
 
-        setLoading(false);
-        reset();
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        chkToaster.error({
-          title: error.response.data.message || 'Unable to login',
-        });
+    // api
+    //   .post<AuthUserT>('/login', { email, password })
+    //   .then(({ data }) => {
+    //     const {
+    //       accessToken,
+    //       firstName,
+    //       lastName,
+    //       profilePicture,
+    //       bio,
+    //       walletBalance,
+    //     } = data;
+    //     authContext?.setAuth({
+    //       accessToken,
+    //       firstName,
+    //       lastName,
+    //       profilePicture,
+    //       bio,
+    //       walletBalance,
+    //     });
 
-        setLoading(false);
-      });
+    //     setLoading(false);
+    //     reset();
+    //     navigate(from, { replace: true });
+    //   })
+    //   .catch((error) => {
+    //     chkToaster.error({
+    //       title: error.response.data.message || 'Unable to login',
+    //     });
+
+    //     setLoading(false);
+    //   });
   };
 
   return (
